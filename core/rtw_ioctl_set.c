@@ -34,6 +34,7 @@ extern void indicate_wx_scan_complete_event(_adapter *padapter);
 
 u8 rtw_validate_bssid(u8 *bssid)
 {
+	printk(KERN_DEBUG "rtw_ioctl_set.c - ");
 	u8 ret = _TRUE;
 
 	if (is_zero_mac_addr(bssid)
@@ -48,6 +49,7 @@ u8 rtw_validate_bssid(u8 *bssid)
 
 u8 rtw_validate_ssid(NDIS_802_11_SSID *ssid)
 {
+	printk(KERN_DEBUG "rtw_ioctl_set.c - ");
 	u8	 i;
 	u8	ret=_TRUE;
 
@@ -81,6 +83,7 @@ _func_exit_;
 u8 rtw_do_join(_adapter * padapter);
 u8 rtw_do_join(_adapter * padapter)
 {
+	printk(KERN_DEBUG "rtw_ioctl_set.c - ");
 	_irqL	irqL;
 	_list	*plist, *phead;
 	u8* pibss = NULL;
@@ -224,6 +227,7 @@ _func_exit_;
 #ifdef PLATFORM_WINDOWS
 u8 rtw_pnp_set_power_wakeup(_adapter* padapter)
 {
+	printk(KERN_DEBUG "rtw_ioctl_set.c - ");
 	u8 res=_SUCCESS;
 
 _func_enter_;
@@ -241,6 +245,7 @@ _func_exit_;
 
 u8 rtw_pnp_set_power_sleep(_adapter* padapter)
 {
+	printk(KERN_DEBUG "rtw_ioctl_set.c - ");
 	u8 res=_SUCCESS;	
 	
 _func_enter_;
@@ -259,6 +264,7 @@ _func_exit_;
 
 u8 rtw_set_802_11_reload_defaults(_adapter * padapter, NDIS_802_11_RELOAD_DEFAULTS reloadDefaults)
 {
+	printk(KERN_DEBUG "rtw_ioctl_set.c - ");
 _func_enter_;
 
 	switch( reloadDefaults)
@@ -282,6 +288,7 @@ _func_exit_;
 
 u8 set_802_11_test(_adapter* padapter, NDIS_802_11_TEST *test)
 {
+	printk(KERN_DEBUG "rtw_ioctl_set.c - ");
 	u8 ret=_TRUE;
 	
 _func_enter_;
@@ -310,6 +317,7 @@ _func_exit_;
 
 u8	rtw_set_802_11_pmkid(_adapter*	padapter, NDIS_802_11_PMKID *pmkid)
 {
+	printk(KERN_DEBUG "rtw_ioctl_set.c - ");
 	u8	ret=_SUCCESS;
 
 	return ret;
@@ -319,6 +327,7 @@ u8	rtw_set_802_11_pmkid(_adapter*	padapter, NDIS_802_11_PMKID *pmkid)
 
 u8 rtw_set_802_11_bssid(_adapter* padapter, u8 *bssid)
 {	
+	printk(KERN_DEBUG "rtw_ioctl_set.c - ");
 	_irqL irqL;	
 	u8 status=_SUCCESS;
 
@@ -403,6 +412,7 @@ _func_exit_;
 
 u8 rtw_set_802_11_ssid(_adapter* padapter, NDIS_802_11_SSID *ssid)
 {	
+	printk(KERN_DEBUG "rtw_ioctl_set.c - ");
 	_irqL irqL;
 	u8 status = _SUCCESS;
 	u32 cur_time = 0;
@@ -527,6 +537,7 @@ _func_exit_;
 
 u8 rtw_set_802_11_connect(_adapter* padapter, u8 *bssid, NDIS_802_11_SSID *ssid)
 {
+	printk(KERN_DEBUG "rtw_ioctl_set.c - ");
 	_irqL irqL;
 	u8 status = _SUCCESS;
 	u32 cur_time = 0;
@@ -605,6 +616,7 @@ _func_exit_;
 u8 rtw_set_802_11_infrastructure_mode(_adapter* padapter, 
 	NDIS_802_11_NETWORK_INFRASTRUCTURE networktype)
 {
+	printk(KERN_DEBUG "rtw_ioctl_set.c - ");
 	_irqL irqL;
 	struct	mlme_priv	*pmlmepriv = &padapter->mlmepriv;
 	struct	wlan_network	*cur_network = &pmlmepriv->cur_network;
@@ -695,6 +707,7 @@ _func_exit_;
 
 u8 rtw_set_802_11_disassociate(_adapter *padapter)
 {
+	printk(KERN_DEBUG "rtw_ioctl_set.c - ");
 	_irqL irqL;
 	struct mlme_priv * pmlmepriv = &padapter->mlmepriv;
 
@@ -723,6 +736,7 @@ _func_exit_;
 
 u8 rtw_set_802_11_bssid_list_scan(_adapter* padapter, NDIS_802_11_SSID *pssid, int ssid_max_num)
 {	
+	printk(KERN_DEBUG "rtw_ioctl_set.c - ");
 	_irqL	irqL;
 	struct	mlme_priv		*pmlmepriv= &padapter->mlmepriv;
 	u8	res=_TRUE;
@@ -775,6 +789,7 @@ _func_exit_;
 
 u8 rtw_set_802_11_authentication_mode(_adapter* padapter, NDIS_802_11_AUTHENTICATION_MODE authmode) 
 {
+	printk(KERN_DEBUG "rtw_ioctl_set.c - ");
 	struct security_priv *psecuritypriv = &padapter->securitypriv;
 	int res;
 	u8 ret;
@@ -808,6 +823,7 @@ _func_exit_;
 }
 
 u8 rtw_set_802_11_add_wep(_adapter* padapter, NDIS_802_11_WEP *wep){
+	printk(KERN_DEBUG "rtw_ioctl_set.c - ");
 
 	u8		bdefaultkey;
 	u8		btransmitkey;
@@ -872,6 +888,7 @@ _func_exit_;
 }
 
 u8 rtw_set_802_11_remove_wep(_adapter* padapter, u32 keyindex){
+	printk(KERN_DEBUG "rtw_ioctl_set.c - ");
 	
 	u8 ret=_SUCCESS;
 	
@@ -915,6 +932,7 @@ _func_exit_;
 }
 
 u8 rtw_set_802_11_add_key(_adapter* padapter, NDIS_802_11_KEY *key){
+	printk(KERN_DEBUG "rtw_ioctl_set.c - ");
 
 	uint	encryptionalgo;
 	u8 * pbssid;
@@ -1286,6 +1304,7 @@ _func_exit_;
 }
 
 u8 rtw_set_802_11_remove_key(_adapter*	padapter, NDIS_802_11_REMOVE_KEY *key){
+	printk(KERN_DEBUG "rtw_ioctl_set.c - ");
 	
 	uint				encryptionalgo;
 	u8 * pbssid;
@@ -1346,6 +1365,7 @@ _func_exit_;
 */
 u16 rtw_get_cur_max_rate(_adapter *adapter)
 {
+	printk(KERN_DEBUG "rtw_ioctl_set.c - ");
 	int	i = 0;
 	u16	rate = 0, max_rate = 0;
 	struct mlme_priv	*pmlmepriv = &adapter->mlmepriv;
@@ -1416,6 +1436,7 @@ u16 rtw_get_cur_max_rate(_adapter *adapter)
 */
 int rtw_set_scan_mode(_adapter *adapter, RT_SCAN_TYPE scan_mode)
 {
+	printk(KERN_DEBUG "rtw_ioctl_set.c - ");
 	if(scan_mode != SCAN_ACTIVE && scan_mode != SCAN_PASSIVE)
 		return _FAIL;
 	
@@ -1433,6 +1454,7 @@ int rtw_set_scan_mode(_adapter *adapter, RT_SCAN_TYPE scan_mode)
 */
 int rtw_set_channel_plan(_adapter *adapter, u8 channel_plan)
 {
+	printk(KERN_DEBUG "rtw_ioctl_set.c - ");
 	struct registry_priv *pregistrypriv = &adapter->registrypriv;
 	struct mlme_priv *pmlmepriv = &adapter->mlmepriv;
 
@@ -1449,6 +1471,7 @@ int rtw_set_channel_plan(_adapter *adapter, u8 channel_plan)
 */
 int rtw_set_country(_adapter *adapter, const char *country_code)
 {
+	printk(KERN_DEBUG "rtw_ioctl_set.c - ");
 #ifdef CONFIG_RTW_IOCTL_SET_COUNTRY
 	return rtw_set_country_cmd(adapter, RTW_CMDF_WAIT_ACK, country_code, 1);
 #else
@@ -1465,6 +1488,7 @@ int rtw_set_country(_adapter *adapter, const char *country_code)
 */
 int rtw_set_band(_adapter *adapter, u8 band)
 {
+	printk(KERN_DEBUG "rtw_ioctl_set.c - ");
 	if (rtw_band_valid(band)) {
 		DBG_871X(FUNC_ADPT_FMT" band:%d\n", FUNC_ADPT_ARG(adapter), band);
 		adapter->setband = band;

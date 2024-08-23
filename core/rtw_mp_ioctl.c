@@ -26,6 +26,7 @@
 //****************  oid_rtl_seg_81_85   section start ****************
 NDIS_STATUS oid_rt_wireless_mode_hdl(struct oid_par_priv *poid_par_priv)
 {
+	printk(KERN_DEBUG "rtw_mp_ioctl.c - ");
 	NDIS_STATUS status = NDIS_STATUS_SUCCESS;
 	PADAPTER Adapter = (PADAPTER)(poid_par_priv->adapter_context);
 
@@ -51,6 +52,7 @@ _func_exit_;
 //****************  oid_rtl_seg_81_87_80   section start ****************
 NDIS_STATUS oid_rt_pro_write_bb_reg_hdl(struct oid_par_priv *poid_par_priv)
 {
+	printk(KERN_DEBUG "rtw_mp_ioctl.c - ");
 #ifdef PLATFORM_OS_XP
 	_irqL oldirql;
 #endif
@@ -92,6 +94,7 @@ _func_exit_;
 //------------------------------------------------------------------------------
 NDIS_STATUS oid_rt_pro_read_bb_reg_hdl(struct oid_par_priv *poid_par_priv)
 {
+	printk(KERN_DEBUG "rtw_mp_ioctl.c - ");
 #ifdef PLATFORM_OS_XP
 	_irqL oldirql;
 #endif
@@ -133,6 +136,7 @@ _func_exit_;
 //------------------------------------------------------------------------------
 NDIS_STATUS oid_rt_pro_write_rf_reg_hdl(struct oid_par_priv *poid_par_priv)
 {
+	printk(KERN_DEBUG "rtw_mp_ioctl.c - ");
 #ifdef PLATFORM_OS_XP
 	_irqL oldirql;
 #endif
@@ -181,6 +185,7 @@ _func_exit_;
 //------------------------------------------------------------------------------
 NDIS_STATUS oid_rt_pro_read_rf_reg_hdl(struct oid_par_priv *poid_par_priv)
 {
+	printk(KERN_DEBUG "rtw_mp_ioctl.c - ");
 #ifdef PLATFORM_OS_XP
 	_irqL oldirql;
 #endif
@@ -234,6 +239,7 @@ _func_exit_;
 //------------------------------------------------------------------------------
 NDIS_STATUS oid_rt_pro_set_data_rate_hdl(struct oid_par_priv *poid_par_priv)
 {
+	printk(KERN_DEBUG "rtw_mp_ioctl.c - ");
 #ifdef PLATFORM_OS_XP
 	_irqL		oldirql;
 #endif
@@ -271,6 +277,7 @@ _func_exit_;
 //------------------------------------------------------------------------------
 NDIS_STATUS oid_rt_pro_start_test_hdl(struct oid_par_priv *poid_par_priv)
 {
+	printk(KERN_DEBUG "rtw_mp_ioctl.c - ");
 #ifdef PLATFORM_OS_XP
 	_irqL		oldirql;
 #endif
@@ -312,6 +319,7 @@ _func_exit_;
 //------------------------------------------------------------------------------
 NDIS_STATUS oid_rt_pro_stop_test_hdl(struct oid_par_priv *poid_par_priv)
 {
+	printk(KERN_DEBUG "rtw_mp_ioctl.c - ");
 #ifdef PLATFORM_OS_XP
 	_irqL		oldirql;
 #endif
@@ -338,6 +346,7 @@ _func_exit_;
 //------------------------------------------------------------------------------
 NDIS_STATUS oid_rt_pro_set_channel_direct_call_hdl(struct oid_par_priv *poid_par_priv)
 {
+	printk(KERN_DEBUG "rtw_mp_ioctl.c - ");
 #ifdef PLATFORM_OS_XP
 	_irqL		oldirql;
 #endif
@@ -377,6 +386,7 @@ _func_exit_;
 //------------------------------------------------------------------------------
 NDIS_STATUS oid_rt_set_bandwidth_hdl(struct oid_par_priv *poid_par_priv)
 {
+	printk(KERN_DEBUG "rtw_mp_ioctl.c - ");
 #ifdef PLATFORM_OS_XP
 	_irqL		oldirql;
 #endif
@@ -419,6 +429,7 @@ _func_exit_;
 //------------------------------------------------------------------------------
 NDIS_STATUS oid_rt_pro_set_antenna_bb_hdl(struct oid_par_priv *poid_par_priv)
 {
+	printk(KERN_DEBUG "rtw_mp_ioctl.c - ");
 #ifdef PLATFORM_OS_XP
 	_irqL		oldirql;
 #endif
@@ -458,6 +469,7 @@ _func_exit_;
 
 NDIS_STATUS oid_rt_pro_set_tx_power_control_hdl(struct oid_par_priv *poid_par_priv)
 {
+	printk(KERN_DEBUG "rtw_mp_ioctl.c - ");
 #ifdef PLATFORM_OS_XP
 	_irqL		oldirql;
 #endif
@@ -499,6 +511,7 @@ _func_exit_;
 //------------------------------------------------------------------------------
 NDIS_STATUS oid_rt_pro_query_tx_packet_sent_hdl(struct oid_par_priv *poid_par_priv)
 {
+	printk(KERN_DEBUG "rtw_mp_ioctl.c - ");
 	NDIS_STATUS	status = NDIS_STATUS_SUCCESS;
 	PADAPTER	Adapter = (PADAPTER)(poid_par_priv->adapter_context);
 
@@ -523,6 +536,7 @@ _func_exit_;
 //------------------------------------------------------------------------------
 NDIS_STATUS oid_rt_pro_query_rx_packet_received_hdl(struct oid_par_priv *poid_par_priv)
 {
+	printk(KERN_DEBUG "rtw_mp_ioctl.c - ");
 	NDIS_STATUS	status = NDIS_STATUS_SUCCESS;
 	PADAPTER	Adapter = (PADAPTER)(poid_par_priv->adapter_context);
 
@@ -548,6 +562,7 @@ _func_exit_;
 //------------------------------------------------------------------------------
 NDIS_STATUS oid_rt_pro_query_rx_packet_crc32_error_hdl(struct oid_par_priv *poid_par_priv)
 {
+	printk(KERN_DEBUG "rtw_mp_ioctl.c - ");
 	NDIS_STATUS	status = NDIS_STATUS_SUCCESS;
 	PADAPTER	Adapter = (PADAPTER)(poid_par_priv->adapter_context);
 
@@ -574,6 +589,7 @@ _func_exit_;
 
 NDIS_STATUS oid_rt_pro_reset_tx_packet_sent_hdl(struct oid_par_priv *poid_par_priv)
 {
+	printk(KERN_DEBUG "rtw_mp_ioctl.c - ");
 	NDIS_STATUS	status = NDIS_STATUS_SUCCESS;
 	PADAPTER	Adapter = (PADAPTER)(poid_par_priv->adapter_context);
 
@@ -594,6 +610,7 @@ _func_exit_;
 //------------------------------------------------------------------------------
 NDIS_STATUS oid_rt_pro_reset_rx_packet_received_hdl(struct oid_par_priv *poid_par_priv)
 {
+	printk(KERN_DEBUG "rtw_mp_ioctl.c - ");
 	NDIS_STATUS	status = NDIS_STATUS_SUCCESS;
 	PADAPTER	Adapter = (PADAPTER)(poid_par_priv->adapter_context);
 
@@ -619,6 +636,7 @@ _func_exit_;
 //------------------------------------------------------------------------------
 NDIS_STATUS oid_rt_reset_phy_rx_packet_count_hdl(struct oid_par_priv *poid_par_priv)
 {
+	printk(KERN_DEBUG "rtw_mp_ioctl.c - ");
 #ifdef PLATFORM_OS_XP
 	_irqL		oldirql;
 #endif
@@ -643,6 +661,7 @@ _func_exit_;
 //------------------------------------------------------------------------------
 NDIS_STATUS oid_rt_get_phy_rx_packet_received_hdl(struct oid_par_priv *poid_par_priv)
 {
+	printk(KERN_DEBUG "rtw_mp_ioctl.c - ");
 #ifdef PLATFORM_OS_XP
 	_irqL		oldirql;
 #endif
@@ -674,6 +693,7 @@ _func_exit_;
 //------------------------------------------------------------------------------
 NDIS_STATUS oid_rt_get_phy_rx_packet_crc32_error_hdl(struct oid_par_priv *poid_par_priv)
 {
+	printk(KERN_DEBUG "rtw_mp_ioctl.c - ");
 #ifdef PLATFORM_OS_XP
 	_irqL		oldirql;
 #endif
@@ -706,6 +726,7 @@ _func_exit_;
 //****************  oid_rtl_seg_81_80_20   section end ****************
 NDIS_STATUS oid_rt_pro_set_continuous_tx_hdl(struct oid_par_priv *poid_par_priv)
 {
+	printk(KERN_DEBUG "rtw_mp_ioctl.c - ");
 #ifdef PLATFORM_OS_XP
 	_irqL		oldirql;
 #endif
@@ -744,6 +765,7 @@ _func_exit_;
 
 NDIS_STATUS oid_rt_pro_set_single_carrier_tx_hdl(struct oid_par_priv *poid_par_priv)
 {
+	printk(KERN_DEBUG "rtw_mp_ioctl.c - ");
 #ifdef PLATFORM_OS_XP
 	_irqL		oldirql;
 #endif
@@ -782,6 +804,7 @@ _func_exit_;
 
 NDIS_STATUS oid_rt_pro_set_carrier_suppression_tx_hdl(struct oid_par_priv *poid_par_priv)
 {
+	printk(KERN_DEBUG "rtw_mp_ioctl.c - ");
 #ifdef PLATFORM_OS_XP
 	_irqL		oldirql;
 #endif
@@ -820,6 +843,7 @@ _func_exit_;
 
 NDIS_STATUS oid_rt_pro_set_single_tone_tx_hdl(struct oid_par_priv *poid_par_priv)
 {
+	printk(KERN_DEBUG "rtw_mp_ioctl.c - ");
 #ifdef PLATFORM_OS_XP
 	_irqL		oldirql;
 #endif
@@ -847,11 +871,13 @@ _func_exit_;
 
 NDIS_STATUS oid_rt_pro_set_modulation_hdl(struct oid_par_priv* poid_par_priv)
 {
+	printk(KERN_DEBUG "rtw_mp_ioctl.c - ");
 	return 0;
 }
 
 NDIS_STATUS oid_rt_pro_trigger_gpio_hdl(struct oid_par_priv *poid_par_priv)
 {
+	printk(KERN_DEBUG "rtw_mp_ioctl.c - ");
 	PADAPTER	Adapter = (PADAPTER)(poid_par_priv->adapter_context);
 
 #ifdef PLATFORM_OS_XP
@@ -875,6 +901,7 @@ _func_exit_;
 //------------------------------------------------------------------------------
 NDIS_STATUS oid_rt_pro8711_join_bss_hdl(struct oid_par_priv *poid_par_priv)
 {
+	printk(KERN_DEBUG "rtw_mp_ioctl.c - ");
 #if 0
 	PADAPTER	Adapter = (PADAPTER)(poid_par_priv->adapter_context);
 
@@ -916,6 +943,7 @@ _func_exit_;
 //------------------------------------------------------------------------------
 NDIS_STATUS oid_rt_pro_read_register_hdl(struct oid_par_priv *poid_par_priv)
 {
+	printk(KERN_DEBUG "rtw_mp_ioctl.c - ");
 #ifdef PLATFORM_OS_XP
 	_irqL		oldirql;
 #endif
@@ -968,6 +996,7 @@ _func_exit_;
 //------------------------------------------------------------------------------
 NDIS_STATUS oid_rt_pro_write_register_hdl(struct oid_par_priv *poid_par_priv)
 {
+	printk(KERN_DEBUG "rtw_mp_ioctl.c - ");
 #ifdef PLATFORM_OS_XP
 	_irqL		oldirql;
 #endif
@@ -1031,6 +1060,7 @@ _func_exit_;
 //------------------------------------------------------------------------------
 NDIS_STATUS oid_rt_pro_burst_read_register_hdl(struct oid_par_priv *poid_par_priv)
 {
+	printk(KERN_DEBUG "rtw_mp_ioctl.c - ");
 #if 0
 #ifdef PLATFORM_OS_XP
 	_irqL		oldirql;
@@ -1066,6 +1096,7 @@ _func_exit_;
 //------------------------------------------------------------------------------
 NDIS_STATUS oid_rt_pro_burst_write_register_hdl(struct oid_par_priv *poid_par_priv)
 {
+	printk(KERN_DEBUG "rtw_mp_ioctl.c - ");
 #if 0
 #ifdef PLATFORM_OS_XP
 	_irqL		oldirql;
@@ -1099,6 +1130,7 @@ _func_exit_;
 //------------------------------------------------------------------------------
 NDIS_STATUS oid_rt_pro_write_txcmd_hdl(struct oid_par_priv *poid_par_priv)
 {
+	printk(KERN_DEBUG "rtw_mp_ioctl.c - ");
 #if 0
 	NDIS_STATUS	status = NDIS_STATUS_SUCCESS;
 
@@ -1146,6 +1178,7 @@ _func_exit_;
 //------------------------------------------------------------------------------
 NDIS_STATUS oid_rt_pro_read16_eeprom_hdl(struct oid_par_priv *poid_par_priv)
 {
+	printk(KERN_DEBUG "rtw_mp_ioctl.c - ");
 #if 0
 #ifdef PLATFORM_OS_XP
 	_irqL		oldirql;
@@ -1471,6 +1504,7 @@ _func_exit_;
 //------------------------------------------------------------------------------
 NDIS_STATUS oid_rt_pro_set_data_rate_ex_hdl(struct oid_par_priv *poid_par_priv)
 {
+	printk(KERN_DEBUG "rtw_mp_ioctl.c - ");
 	PADAPTER	Adapter = (PADAPTER)(poid_par_priv->adapter_context);
 
 #ifdef PLATFORM_OS_XP
@@ -1499,6 +1533,7 @@ _func_exit_;
 //-----------------------------------------------------------------------------
 NDIS_STATUS oid_rt_get_thermal_meter_hdl(struct oid_par_priv *poid_par_priv)
 {
+	printk(KERN_DEBUG "rtw_mp_ioctl.c - ");
 #ifdef PLATFORM_OS_XP
 	_irqL		oldirql;
 #endif
@@ -1575,6 +1610,7 @@ _func_exit_;
 //------------------------------------------------------------------------------
 NDIS_STATUS oid_rt_pro_set_power_tracking_hdl(struct oid_par_priv *poid_par_priv)
 {
+	printk(KERN_DEBUG "rtw_mp_ioctl.c - ");
 #ifdef PLATFORM_OS_XP
 	_irqL		oldirql;
 #endif
@@ -2262,6 +2298,7 @@ NDIS_STATUS oid_rt_pro_rx_packet_type_hdl(struct oid_par_priv *poid_par_priv)
 //------------------------------------------------------------------------------
 NDIS_STATUS oid_rt_pro_read_efuse_hdl(struct oid_par_priv *poid_par_priv)
 {
+	printk(KERN_DEBUG "rtw_mp_ioctl.c - ");
 #ifdef PLATFORM_OS_XP
 	_irqL oldirql;
 #endif
@@ -2310,6 +2347,7 @@ _func_exit_;
 //------------------------------------------------------------------------------
 NDIS_STATUS oid_rt_pro_write_efuse_hdl(struct oid_par_priv *poid_par_priv)
 {
+	printk(KERN_DEBUG "rtw_mp_ioctl.c - ");
 #ifdef PLATFORM_OS_XP
 	_irqL oldirql;
 #endif
@@ -2353,6 +2391,7 @@ _func_exit_;
 //------------------------------------------------------------------------------
 NDIS_STATUS oid_rt_pro_rw_efuse_pgpkt_hdl(struct oid_par_priv *poid_par_priv)
 {
+	printk(KERN_DEBUG "rtw_mp_ioctl.c - ");
 #ifdef PLATFORM_OS_XP
 	_irqL		oldirql;
 #endif
@@ -2410,6 +2449,7 @@ _func_exit_;
 //------------------------------------------------------------------------------
 NDIS_STATUS oid_rt_get_efuse_current_size_hdl(struct oid_par_priv *poid_par_priv)
 {
+	printk(KERN_DEBUG "rtw_mp_ioctl.c - ");
 #ifdef PLATFORM_OS_XP
 	_irqL		oldirql;
 #endif
@@ -2442,6 +2482,7 @@ _func_exit_;
 //------------------------------------------------------------------------------
 NDIS_STATUS oid_rt_get_efuse_max_size_hdl(struct oid_par_priv *poid_par_priv)
 {
+	printk(KERN_DEBUG "rtw_mp_ioctl.c - ");
 	NDIS_STATUS	status = NDIS_STATUS_SUCCESS;
 	PADAPTER	Adapter = (PADAPTER)(poid_par_priv->adapter_context);
 
@@ -2467,6 +2508,7 @@ _func_exit_;
 //------------------------------------------------------------------------------
 NDIS_STATUS oid_rt_pro_efuse_hdl(struct oid_par_priv *poid_par_priv)
 {
+	printk(KERN_DEBUG "rtw_mp_ioctl.c - ");
 	NDIS_STATUS	status;
 
 _func_enter_;
@@ -2487,6 +2529,7 @@ _func_exit_;
 //------------------------------------------------------------------------------
 NDIS_STATUS oid_rt_pro_efuse_map_hdl(struct oid_par_priv *poid_par_priv)
 {
+	printk(KERN_DEBUG "rtw_mp_ioctl.c - ");
 #ifdef PLATFORM_OS_XP
 	_irqL		oldirql;
 #endif
@@ -2584,6 +2627,7 @@ _func_exit_;
 
 NDIS_STATUS oid_rt_set_rx_packet_type_hdl(struct oid_par_priv *poid_par_priv)
 {
+	printk(KERN_DEBUG "rtw_mp_ioctl.c - ");
 #ifdef PLATFORM_OS_XP
 	_irqL		oldirql;
 #endif
@@ -2753,6 +2797,7 @@ _func_exit_;
 
 unsigned int mp_ioctl_xmit_packet_hdl(struct oid_par_priv *poid_par_priv)
 {
+	printk(KERN_DEBUG "rtw_mp_ioctl.c - ");
 	PMP_XMIT_PARM pparm;
 	PADAPTER padapter;
 	struct mp_priv *pmp_priv;
@@ -2868,6 +2913,7 @@ unsigned int mp_ioctl_xmit_packet_hdl(struct oid_par_priv *poid_par_priv)
 //------------------------------------------------------------------------------
 NDIS_STATUS oid_rt_set_power_down_hdl(struct oid_par_priv *poid_par_priv)
 {
+	printk(KERN_DEBUG "rtw_mp_ioctl.c - ");
 #ifdef PLATFORM_OS_XP
 	_irqL		oldirql;
 #endif

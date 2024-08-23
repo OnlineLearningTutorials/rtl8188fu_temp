@@ -60,6 +60,7 @@ static void
 xor_block(void *dst, void *src1, void *src2)
 /* 128-bit xor: *dst = *src1 xor *src2. Pointers must be 32-bit aligned  */
 {
+	printk(KERN_DEBUG "rtw_wapi_sms4.c - ");
     ((u32 *)dst)[0] = ((u32 *)src1)[0] ^ ((u32 *)src2)[0];
     ((u32 *)dst)[1] = ((u32 *)src1)[1] ^ ((u32 *)src2)[1];
     ((u32 *)dst)[2] = ((u32 *)src1)[2] ^ ((u32 *)src2)[2];
@@ -69,6 +70,7 @@ xor_block(void *dst, void *src1, void *src2)
 
 void SMS4Crypt(u8 *Input, u8 *Output, u32 *rk)
 {
+	printk(KERN_DEBUG "rtw_wapi_sms4.c - ");
 	 u32 r, mid, x0, x1, x2, x3, *p;
 	 p = (u32 *)Input;
 	 x0 = p[0];
@@ -113,6 +115,7 @@ void SMS4Crypt(u8 *Input, u8 *Output, u32 *rk)
 
 void SMS4KeyExt(u8 *Key, u32 *rk, u32 CryptFlag)
 {
+	printk(KERN_DEBUG "rtw_wapi_sms4.c - ");
 	 u32 r, mid, x0, x1, x2, x3, *p;
 
 	 p = (u32 *)Key;
@@ -157,6 +160,7 @@ void SMS4KeyExt(u8 *Key, u32 *rk, u32 CryptFlag)
 void WapiSMS4Cryption(u8 *Key, u8 *IV, u8 *Input, u16 InputLength,
                                                 u8 *Output, u16 *OutputLength, u32 CryptFlag)
 {
+	printk(KERN_DEBUG "rtw_wapi_sms4.c - ");
 	u32 blockNum,i,j, rk[32];
 	u16 remainder;
 	u8 blockIn[16],blockOut[16], tempIV[16], k;
@@ -198,6 +202,7 @@ void WapiSMS4Cryption(u8 *Key, u8 *IV, u8 *Input, u16 InputLength,
 void WapiSMS4Encryption(u8 *Key, u8 *IV, u8 *Input, u16 InputLength,
                                                     u8 *Output, u16 *OutputLength)
 {
+	printk(KERN_DEBUG "rtw_wapi_sms4.c - ");
 
 	WapiSMS4Cryption(Key, IV, Input, InputLength, Output, OutputLength, ENCRYPT);
 }
@@ -205,6 +210,7 @@ void WapiSMS4Encryption(u8 *Key, u8 *IV, u8 *Input, u16 InputLength,
 void WapiSMS4Decryption(u8 *Key, u8 *IV, u8 *Input, u16 InputLength,
                                                     u8 *Output, u16 *OutputLength)
 {
+	printk(KERN_DEBUG "rtw_wapi_sms4.c - ");
 	// OFB mode: is also ENCRYPT flag
 	WapiSMS4Cryption(Key, IV, Input, InputLength, Output, OutputLength, ENCRYPT);
 }
@@ -212,6 +218,7 @@ void WapiSMS4Decryption(u8 *Key, u8 *IV, u8 *Input, u16 InputLength,
 void WapiSMS4CalculateMic(u8 *Key, u8 *IV, u8 *Input1, u8 Input1Length,
                                                  u8 *Input2, u16 Input2Length, u8 *Output, u8 *OutputLength)
 {
+	printk(KERN_DEBUG "rtw_wapi_sms4.c - ");
 	u32 blockNum, i, remainder, rk[32];
 	u8 BlockIn[16], BlockOut[16], TempBlock[16], tempIV[16], k;
 
@@ -270,6 +277,7 @@ void SecCalculateMicSMS4(
 	u8        *MicBuffer
 	)
 {
+	printk(KERN_DEBUG "rtw_wapi_sms4.c - ");
 #if 0
 	struct ieee80211_hdr_3addr_qos *header;
 	u8 TempBuf[34], TempLen = 32, MicLen, QosOffset, *IV;
@@ -338,6 +346,7 @@ void SecCalculateMicSMS4(
  */
 u8 WapiIncreasePN(u8 *PN, u8 AddCount)
 {
+	printk(KERN_DEBUG "rtw_wapi_sms4.c - ");
 	u8  i;
 
 	if (NULL == PN)
@@ -380,6 +389,7 @@ void WapiGetLastRxUnicastPNForQoSData(
 	u8 *PNOut
 )
 {
+	printk(KERN_DEBUG "rtw_wapi_sms4.c - ");
 	WAPI_TRACE(WAPI_RX, "===========> %s\n", __FUNCTION__);
 	switch(UserPriority)
 	{
@@ -413,6 +423,7 @@ void WapiSetLastRxUnicastPNForQoSData(
 	PRT_WAPI_STA_INFO    pWapiStaInfo
 )
 {
+	printk(KERN_DEBUG "rtw_wapi_sms4.c - ");
 	WAPI_TRACE(WAPI_RX, "===========> %s\n", __FUNCTION__);
 	switch(UserPriority)
 	{
@@ -450,6 +461,7 @@ u8 WapiCheckPnInSwDecrypt(
 	struct sk_buff *pskb
 )
 {
+	printk(KERN_DEBUG "rtw_wapi_sms4.c - ");
 	u8 				ret = false;
 
 #if 0
@@ -482,6 +494,7 @@ u8 WapiCheckPnInSwDecrypt(
 
 int SecSMS4HeaderFillIV(_adapter *padapter, u8 *pxmitframe)
 {
+	printk(KERN_DEBUG "rtw_wapi_sms4.c - ");
 	struct pkt_attrib *pattrib = &((struct xmit_frame*)pxmitframe)->attrib;
 	u8 * frame = ((struct xmit_frame *)pxmitframe)->buf_addr + TXDESC_OFFSET;
 	u8 *pSecHeader = NULL, *pos = NULL, *pRA = NULL;
@@ -581,6 +594,7 @@ void SecSWSMS4Encryption(
 	u8 * pxmitframe
 	)
 {
+	printk(KERN_DEBUG "rtw_wapi_sms4.c - ");
 	PRT_WAPI_T		pWapiInfo = &padapter->wapiInfo;
 	PRT_WAPI_STA_INFO   pWapiSta = NULL;
 	u8 *pframe = ((struct xmit_frame*)pxmitframe)->buf_addr + TXDESC_SIZE;
@@ -663,6 +677,7 @@ u8 SecSWSMS4Decryption(
 	struct recv_priv *precv_priv
 	)
 {
+	printk(KERN_DEBUG "rtw_wapi_sms4.c - ");
 	PRT_WAPI_T pWapiInfo = &padapter->wapiInfo;
 	struct recv_frame_hdr *precv_hdr;
 	PRT_WAPI_STA_INFO   pWapiSta = NULL;
@@ -850,6 +865,7 @@ u8 SecSWSMS4Decryption(
 
 u32	rtw_sms4_encrypt(_adapter *padapter, u8 *pxmitframe)
 {
+	printk(KERN_DEBUG "rtw_wapi_sms4.c - ");
 
 	u8	*pframe;
 	u32 res = _SUCCESS;
@@ -875,6 +891,7 @@ u32	rtw_sms4_encrypt(_adapter *padapter, u8 *pxmitframe)
 
 u32	rtw_sms4_decrypt(_adapter *padapter, u8 *precvframe)
 {
+	printk(KERN_DEBUG "rtw_wapi_sms4.c - ");
 	u8	*pframe;
 	u32 res = _SUCCESS;
 
@@ -907,6 +924,7 @@ u32	rtw_sms4_decrypt(_adapter *padapter, u8 *precvframe)
 
 u32	rtw_sms4_encrypt(_adapter *padapter, u8 *pxmitframe)
 {
+	printk(KERN_DEBUG "rtw_wapi_sms4.c - ");
 	WAPI_TRACE(WAPI_TX, "=========>Dummy %s\n", __FUNCTION__);
 	WAPI_TRACE(WAPI_TX, "<=========Dummy %s\n", __FUNCTION__);
 	return _SUCCESS;
@@ -914,6 +932,7 @@ u32	rtw_sms4_encrypt(_adapter *padapter, u8 *pxmitframe)
 
 u32	rtw_sms4_decrypt(_adapter *padapter, u8 *precvframe)
 {
+	printk(KERN_DEBUG "rtw_wapi_sms4.c - ");
 	WAPI_TRACE(WAPI_RX, "=========>Dummy %s\n", __FUNCTION__);
 	WAPI_TRACE(WAPI_RX, "<=========Dummy %s\n", __FUNCTION__);
 	return _SUCCESS;

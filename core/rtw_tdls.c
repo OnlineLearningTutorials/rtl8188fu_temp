@@ -31,6 +31,7 @@ extern void process_wmmps_data(_adapter *padapter, union recv_frame *precv_frame
 
 void rtw_reset_tdls_info(_adapter* padapter)
 {
+	printk(KERN_DEBUG "rtw_tdls.c - ");
 	struct tdls_info *ptdlsinfo = &padapter->tdlsinfo;
 
 	ptdlsinfo->ap_prohibited = _FALSE;
@@ -70,6 +71,7 @@ void rtw_reset_tdls_info(_adapter* padapter)
 
 int rtw_init_tdls_info(_adapter* padapter)
 {
+	printk(KERN_DEBUG "rtw_tdls.c - ");
 	int	res = _SUCCESS;
 	struct tdls_info *ptdlsinfo = &padapter->tdlsinfo;
 
@@ -91,6 +93,7 @@ int rtw_init_tdls_info(_adapter* padapter)
 
 void rtw_free_tdls_info(struct tdls_info *ptdlsinfo)
 {
+	printk(KERN_DEBUG "rtw_tdls.c - ");
 	_rtw_spinlock_free(&ptdlsinfo->cmd_lock);
 	_rtw_spinlock_free(&ptdlsinfo->hdl_lock);
 
@@ -100,6 +103,7 @@ void rtw_free_tdls_info(struct tdls_info *ptdlsinfo)
 
 int check_ap_tdls_prohibited(u8 *pframe, u8 pkt_len)
 {
+	printk(KERN_DEBUG "rtw_tdls.c - ");
 	u8 tdls_prohibited_bit = 0x40; /* bit(38); TDLS_prohibited */
 
 	if (pkt_len < 5) {
@@ -115,6 +119,7 @@ int check_ap_tdls_prohibited(u8 *pframe, u8 pkt_len)
 
 int check_ap_tdls_ch_switching_prohibited(u8 *pframe, u8 pkt_len)
 {
+	printk(KERN_DEBUG "rtw_tdls.c - ");
 	u8 tdls_ch_swithcing_prohibited_bit = 0x80; /* bit(39); TDLS_channel_switching prohibited */
 
 	if (pkt_len < 5) {
@@ -130,6 +135,7 @@ int check_ap_tdls_ch_switching_prohibited(u8 *pframe, u8 pkt_len)
 
 u8 rtw_tdls_is_setup_allowed(_adapter *padapter)
 {
+	printk(KERN_DEBUG "rtw_tdls.c - ");
 	struct tdls_info *ptdlsinfo = &padapter->tdlsinfo;
 
 	if (ptdlsinfo->ap_prohibited == _TRUE)
@@ -141,6 +147,7 @@ u8 rtw_tdls_is_setup_allowed(_adapter *padapter)
 #ifdef CONFIG_TDLS_CH_SW
 u8 rtw_tdls_is_chsw_allowed(_adapter *padapter)
 {
+	printk(KERN_DEBUG "rtw_tdls.c - ");
 	struct tdls_info *ptdlsinfo = &padapter->tdlsinfo;
 
 	if (ptdlsinfo->ch_switch_prohibited == _TRUE)
@@ -155,6 +162,7 @@ u8 rtw_tdls_is_chsw_allowed(_adapter *padapter)
 
 int _issue_nulldata_to_TDLS_peer_STA(_adapter *padapter, unsigned char *da, unsigned int power_mode, int wait_ack)
 {
+	printk(KERN_DEBUG "rtw_tdls.c - ");
 	int ret = _FAIL;
 	struct xmit_frame			*pmgntframe;
 	struct pkt_attrib			*pattrib;
@@ -229,6 +237,7 @@ exit:
  */
 int issue_nulldata_to_TDLS_peer_STA(_adapter *padapter, unsigned char *da, unsigned int power_mode, int try_cnt, int wait_ms)
 {
+	printk(KERN_DEBUG "rtw_tdls.c - ");
 	int ret;
 	int i = 0;
 	u32 start = rtw_get_current_time();
@@ -285,6 +294,7 @@ exit:
 
 void free_tdls_sta(_adapter *padapter, struct sta_info *ptdls_sta)
 {
+	printk(KERN_DEBUG "rtw_tdls.c - ");
 	struct tdls_info *ptdlsinfo = &padapter->tdlsinfo;
    	struct sta_priv *pstapriv = &padapter->stapriv;
 	_irqL irqL;
@@ -318,6 +328,7 @@ void free_tdls_sta(_adapter *padapter, struct sta_info *ptdls_sta)
 /* TDLS encryption(if needed) will always be CCMP */
 void rtw_tdls_set_key(_adapter *padapter, struct sta_info *ptdls_sta)
 {
+	printk(KERN_DEBUG "rtw_tdls.c - ");
 	ptdls_sta->dot118021XPrivacy=_AES_;
 	rtw_setstakey_cmd(padapter, ptdls_sta, TDLS_KEY, _TRUE);
 }
@@ -325,6 +336,7 @@ void rtw_tdls_set_key(_adapter *padapter, struct sta_info *ptdls_sta)
 #ifdef CONFIG_80211N_HT
 void rtw_tdls_process_ht_cap(_adapter *padapter, struct sta_info *ptdls_sta, u8 *data, u8 Length)
 {
+	printk(KERN_DEBUG "rtw_tdls.c - ");
 	struct mlme_ext_priv	*pmlmeext = &padapter->mlmeextpriv;
 	struct mlme_ext_info	*pmlmeinfo = &(pmlmeext->mlmext_info);
 	struct mlme_priv		*pmlmepriv = &padapter->mlmepriv;
@@ -421,6 +433,7 @@ void rtw_tdls_process_ht_cap(_adapter *padapter, struct sta_info *ptdls_sta, u8 
 
 u8 *rtw_tdls_set_ht_cap(_adapter *padapter, u8 *pframe, struct pkt_attrib *pattrib)
 {
+	printk(KERN_DEBUG "rtw_tdls.c - ");
 	rtw_ht_use_default_setting(padapter);
 
 	rtw_restructure_ht_ie(padapter, NULL, pframe, 0, &(pattrib->pktlen), padapter->mlmeextpriv.cur_channel);
@@ -432,6 +445,7 @@ u8 *rtw_tdls_set_ht_cap(_adapter *padapter, u8 *pframe, struct pkt_attrib *pattr
 #ifdef CONFIG_80211AC_VHT
 void rtw_tdls_process_vht_cap(_adapter *padapter, struct sta_info *ptdls_sta, u8 *data, u8 Length)
 {
+	printk(KERN_DEBUG "rtw_tdls.c - ");
 	struct mlme_priv		*pmlmepriv = &padapter->mlmepriv;
 	struct vht_priv			*pvhtpriv = &pmlmepriv->vhtpriv;
 	u8	cur_ldpc_cap = 0, cur_stbc_cap = 0, cur_beamform_cap = 0, rf_type = RF_1T1R;
@@ -520,11 +534,13 @@ void rtw_tdls_process_vht_cap(_adapter *padapter, struct sta_info *ptdls_sta, u8
 
 u8 *rtw_tdls_set_aid(_adapter *padapter, u8 *pframe, struct pkt_attrib *pattrib)
 {
+	printk(KERN_DEBUG "rtw_tdls.c - ");
 	return rtw_set_ie(pframe, EID_AID, 2, (u8 *)&(padapter->mlmepriv.cur_network.aid), &(pattrib->pktlen));
 }
 
 u8 *rtw_tdls_set_vht_cap(_adapter *padapter, u8 *pframe, struct pkt_attrib *pattrib)
 {
+	printk(KERN_DEBUG "rtw_tdls.c - ");
 	u32 ie_len = 0;
 	
 	rtw_vht_use_default_setting(padapter);
@@ -537,6 +553,7 @@ u8 *rtw_tdls_set_vht_cap(_adapter *padapter, u8 *pframe, struct pkt_attrib *patt
 
 u8 *rtw_tdls_set_vht_operation(_adapter *padapter, u8 *pframe, struct pkt_attrib *pattrib, u8 channel)
 {
+	printk(KERN_DEBUG "rtw_tdls.c - ");
 	u32 ie_len = 0;
 
 	ie_len = rtw_build_vht_operation_ie(padapter, pframe, channel);
@@ -547,6 +564,7 @@ u8 *rtw_tdls_set_vht_operation(_adapter *padapter, u8 *pframe, struct pkt_attrib
 
 u8 *rtw_tdls_set_vht_op_mode_notify(_adapter *padapter, u8 *pframe, struct pkt_attrib *pattrib, u8 bw)
 {
+	printk(KERN_DEBUG "rtw_tdls.c - ");
 	u32 ie_len = 0;
 	
 	ie_len = rtw_build_vht_op_mode_notify_ie(padapter, pframe, bw);
@@ -559,6 +577,7 @@ u8 *rtw_tdls_set_vht_op_mode_notify(_adapter *padapter, u8 *pframe, struct pkt_a
 
 u8 *rtw_tdls_set_sup_ch(struct mlme_ext_priv *pmlmeext, u8 *pframe, struct pkt_attrib *pattrib)
 {
+	printk(KERN_DEBUG "rtw_tdls.c - ");
 	u8 sup_ch[30 * 2] = {0x00}, ch_set_idx = 0, sup_ch_idx = 2;	
 
 	do {
@@ -577,6 +596,7 @@ u8 *rtw_tdls_set_sup_ch(struct mlme_ext_priv *pmlmeext, u8 *pframe, struct pkt_a
 
 u8 *rtw_tdls_set_rsnie(struct tdls_txmgmt *ptxmgmt, u8 *pframe, struct pkt_attrib *pattrib,  int init, struct sta_info *ptdls_sta)
 {
+	printk(KERN_DEBUG "rtw_tdls.c - ");
 	u8 *p = NULL;
 	int len = 0;
 
@@ -594,16 +614,19 @@ u8 *rtw_tdls_set_rsnie(struct tdls_txmgmt *ptxmgmt, u8 *pframe, struct pkt_attri
 
 u8 *rtw_tdls_set_ext_cap(u8 *pframe, struct pkt_attrib *pattrib)
 {
+	printk(KERN_DEBUG "rtw_tdls.c - ");
 	return rtw_set_ie(pframe, _EXT_CAP_IE_ , sizeof(TDLS_EXT_CAPIE), TDLS_EXT_CAPIE, &(pattrib->pktlen));
 }
 
 u8 *rtw_tdls_set_qos_cap(u8 *pframe, struct pkt_attrib *pattrib)
 {
+	printk(KERN_DEBUG "rtw_tdls.c - ");
 	return rtw_set_ie(pframe, _VENDOR_SPECIFIC_IE_, sizeof(TDLS_WMMIE), TDLS_WMMIE,  &(pattrib->pktlen));
 }
 
 u8 *rtw_tdls_set_ftie(struct tdls_txmgmt *ptxmgmt, u8 *pframe, struct pkt_attrib *pattrib, u8 *ANonce, u8 *SNonce)
 {
+	printk(KERN_DEBUG "rtw_tdls.c - ");
 	struct wpa_tdls_ftie FTIE = {0};
 	u8 *p = NULL;
 	int len = 0;
@@ -624,6 +647,7 @@ u8 *rtw_tdls_set_ftie(struct tdls_txmgmt *ptxmgmt, u8 *pframe, struct pkt_attrib
 
 u8 *rtw_tdls_set_timeout_interval(struct tdls_txmgmt *ptxmgmt, u8 *pframe, struct pkt_attrib *pattrib, int init, struct sta_info *ptdls_sta)
 {
+	printk(KERN_DEBUG "rtw_tdls.c - ");
 	u8 timeout_itvl[5];	/* set timeout interval to maximum value */
 	u32 timeout_interval= TDLS_TPK_RESEND_COUNT;
 	u8 *p = NULL;
@@ -648,6 +672,7 @@ u8 *rtw_tdls_set_timeout_interval(struct tdls_txmgmt *ptxmgmt, u8 *pframe, struc
 
 u8 *rtw_tdls_set_bss_coexist(_adapter *padapter, u8 *pframe, struct pkt_attrib *pattrib)
 {
+	printk(KERN_DEBUG "rtw_tdls.c - ");
 	u8 iedata=0;
 
 	if (padapter->mlmepriv.num_FortyMHzIntolerant > 0)
@@ -701,6 +726,7 @@ u8 *rtw_tdls_set_second_channel_offset(u8 *pframe, struct pkt_attrib *pattrib, u
 
 u8 *rtw_tdls_set_capability(_adapter *padapter, u8 *pframe, struct pkt_attrib *pattrib)
 {
+	printk(KERN_DEBUG "rtw_tdls.c - ");
 	struct mlme_ext_priv	*pmlmeext = &padapter->mlmeextpriv;
 	struct mlme_ext_info	*pmlmeinfo = &pmlmeext->mlmext_info;
 	u8 cap_from_ie[2] = {0};
@@ -712,6 +738,7 @@ u8 *rtw_tdls_set_capability(_adapter *padapter, u8 *pframe, struct pkt_attrib *p
 
 u8 *rtw_tdls_set_supported_rate(_adapter *padapter, u8 *pframe, struct pkt_attrib *pattrib)
 {
+	printk(KERN_DEBUG "rtw_tdls.c - ");
 	u8 bssrate[NDIS_802_11_LENGTH_RATES_EX];
  	int bssrate_len = 0;
 	u8 more_supportedrates = 0;
@@ -736,11 +763,13 @@ u8 *rtw_tdls_set_supported_rate(_adapter *padapter, u8 *pframe, struct pkt_attri
 
 u8 *rtw_tdls_set_sup_reg_class(u8 *pframe, struct pkt_attrib *pattrib)
 {
+	printk(KERN_DEBUG "rtw_tdls.c - ");
 	return rtw_set_ie(pframe, _SRC_IE_ , sizeof(TDLS_SRC), TDLS_SRC, &(pattrib->pktlen));
 }
 
 u8 *rtw_tdls_set_linkid(u8 *pframe, struct pkt_attrib *pattrib, u8 init)
 {
+	printk(KERN_DEBUG "rtw_tdls.c - ");
 	u8 link_id_addr[18] = {0};
 	if (init == _TRUE) {
 		_rtw_memcpy(link_id_addr, pattrib->ra, 6);
@@ -757,6 +786,7 @@ u8 *rtw_tdls_set_linkid(u8 *pframe, struct pkt_attrib *pattrib, u8 init)
 #ifdef CONFIG_TDLS_CH_SW
 u8 *rtw_tdls_set_target_ch(_adapter *padapter, u8 *pframe, struct pkt_attrib *pattrib)
 {
+	printk(KERN_DEBUG "rtw_tdls.c - ");
 	u8 target_ch = 1;
 	if (padapter->tdlsinfo.chsw_info.off_ch_num)
 		return rtw_set_fixed_ie(pframe, 1, &(padapter->tdlsinfo.chsw_info.off_ch_num), &(pattrib->pktlen));
@@ -766,6 +796,7 @@ u8 *rtw_tdls_set_target_ch(_adapter *padapter, u8 *pframe, struct pkt_attrib *pa
 
 u8 *rtw_tdls_set_ch_sw(u8 *pframe, struct pkt_attrib *pattrib, struct sta_info *ptdls_sta)
 {
+	printk(KERN_DEBUG "rtw_tdls.c - ");
 	u8 ch_switch_timing[4] = {0};
 	u16 switch_time = (ptdls_sta->ch_switch_time >= TDLS_CH_SWITCH_TIME * 1000) ? 
 		ptdls_sta->ch_switch_time : TDLS_CH_SWITCH_TIME;
@@ -780,6 +811,7 @@ u8 *rtw_tdls_set_ch_sw(u8 *pframe, struct pkt_attrib *pattrib, struct sta_info *
 
 void rtw_tdls_set_ch_sw_oper_control(_adapter *padapter, u8 enable)
 {
+	printk(KERN_DEBUG "rtw_tdls.c - ");
 	if (ATOMIC_READ(&padapter->tdlsinfo.chsw_info.chsw_on) != enable)
 		ATOMIC_SET(&padapter->tdlsinfo.chsw_info.chsw_on, enable);
 
@@ -789,6 +821,7 @@ void rtw_tdls_set_ch_sw_oper_control(_adapter *padapter, u8 enable)
 
 void rtw_tdls_ch_sw_back_to_base_chnl(_adapter *padapter)
 {
+	printk(KERN_DEBUG "rtw_tdls.c - ");
 	struct mlme_priv *pmlmepriv;
 	struct tdls_ch_switch *pchsw_info = &padapter->tdlsinfo.chsw_info;
 
@@ -805,6 +838,7 @@ void rtw_tdls_ch_sw_back_to_base_chnl(_adapter *padapter)
 
 static void rtw_tdls_chsw_oper_init(_adapter* padapter, u32 timeout_ms)
 {
+	printk(KERN_DEBUG "rtw_tdls.c - ");
 	struct submit_ctx	*chsw_sctx = &padapter->tdlsinfo.chsw_info.chsw_sctx;
 	
 	rtw_sctx_init(chsw_sctx, timeout_ms);
@@ -812,6 +846,7 @@ static void rtw_tdls_chsw_oper_init(_adapter* padapter, u32 timeout_ms)
 
 static int rtw_tdls_chsw_oper_wait(_adapter* padapter)
 {
+	printk(KERN_DEBUG "rtw_tdls.c - ");
 	struct submit_ctx	*chsw_sctx = &padapter->tdlsinfo.chsw_info.chsw_sctx;
 
 	return rtw_sctx_wait(chsw_sctx, __func__);
@@ -819,6 +854,7 @@ static int rtw_tdls_chsw_oper_wait(_adapter* padapter)
 
 void rtw_tdls_chsw_oper_done(_adapter* padapter)
 {
+	printk(KERN_DEBUG "rtw_tdls.c - ");
 	struct submit_ctx	*chsw_sctx = &padapter->tdlsinfo.chsw_info.chsw_sctx;
 	
 	rtw_sctx_done(&chsw_sctx);
@@ -826,6 +862,7 @@ void rtw_tdls_chsw_oper_done(_adapter* padapter)
 
 s32 rtw_tdls_do_ch_sw(_adapter *padapter, struct sta_info *ptdls_sta, u8 chnl_type, u8 channel, u8 channel_offset, u16 bwmode, u16 ch_switch_time)
 {
+	printk(KERN_DEBUG "rtw_tdls.c - ");
 	HAL_DATA_TYPE *pHalData = GET_HAL_DATA(padapter);
 	u8 center_ch, chnl_offset80 = HAL_PRIME_CHNL_OFFSET_DONT_CARE;
 	u32 ch_sw_time_start, ch_sw_time_spent, wait_time;
@@ -899,6 +936,7 @@ s32 rtw_tdls_do_ch_sw(_adapter *padapter, struct sta_info *ptdls_sta, u8 chnl_ty
 
 u8 *rtw_tdls_set_wmm_params(_adapter *padapter, u8 *pframe, struct pkt_attrib *pattrib)
 {
+	printk(KERN_DEBUG "rtw_tdls.c - ");
 	struct mlme_ext_priv	*pmlmeext = &(padapter->mlmeextpriv);	
 	struct mlme_ext_info	*pmlmeinfo = &(pmlmeext->mlmext_info);
 	u8 wmm_param_ele[24] = {0};
@@ -919,6 +957,7 @@ u8 *rtw_tdls_set_wmm_params(_adapter *padapter, u8 *pframe, struct pkt_attrib *p
 #ifdef CONFIG_WFD
 void rtw_tdls_process_wfd_ie(struct tdls_info *ptdlsinfo, u8 *ptr, u8 length)
 {
+	printk(KERN_DEBUG "rtw_tdls.c - ");
 	u8 *wfd_ie;
 	u32	wfd_ielen = 0;
 
@@ -954,6 +993,7 @@ void rtw_tdls_process_wfd_ie(struct tdls_info *ptdlsinfo, u8 *ptr, u8 length)
 
 int issue_tunneled_probe_req(_adapter *padapter)
 {
+	printk(KERN_DEBUG "rtw_tdls.c - ");
 	struct xmit_frame			*pmgntframe;
 	struct pkt_attrib			*pattrib;
 	struct mlme_priv	*pmlmepriv = &padapter->mlmepriv;
@@ -996,6 +1036,7 @@ exit:
 
 int issue_tunneled_probe_rsp(_adapter *padapter, union recv_frame *precv_frame)
 {
+	printk(KERN_DEBUG "rtw_tdls.c - ");
 	struct xmit_frame			*pmgntframe;
 	struct pkt_attrib			*pattrib;
 	struct mlme_priv	*pmlmepriv = &padapter->mlmepriv;
@@ -1038,6 +1079,7 @@ exit:
 
 int issue_tdls_setup_req(_adapter *padapter, struct tdls_txmgmt *ptxmgmt, int wait_ack)
 {
+	printk(KERN_DEBUG "rtw_tdls.c - ");
 	struct tdls_info	*ptdlsinfo = &padapter->tdlsinfo;
 	struct xmit_frame			*pmgntframe;
 	struct pkt_attrib			*pattrib;
@@ -1117,6 +1159,7 @@ exit:
 
 int _issue_tdls_teardown(_adapter *padapter, struct tdls_txmgmt *ptxmgmt, u8 wait_ack)
 {
+	printk(KERN_DEBUG "rtw_tdls.c - ");
 	struct xmit_frame			*pmgntframe;
 	struct pkt_attrib			*pattrib;
 	struct mlme_priv	*pmlmepriv = &padapter->mlmepriv;
@@ -1186,6 +1229,7 @@ exit:
 
 int issue_tdls_teardown(_adapter *padapter, struct tdls_txmgmt *ptxmgmt, u8 wait_ack)
 {
+	printk(KERN_DEBUG "rtw_tdls.c - ");
 	int ret = _FAIL;
 	
 	ret = _issue_tdls_teardown(padapter, ptxmgmt, wait_ack);
@@ -1200,6 +1244,7 @@ int issue_tdls_teardown(_adapter *padapter, struct tdls_txmgmt *ptxmgmt, u8 wait
 
 int issue_tdls_dis_req(_adapter *padapter, struct tdls_txmgmt *ptxmgmt)
 {
+	printk(KERN_DEBUG "rtw_tdls.c - ");
 	struct xmit_frame			*pmgntframe;
 	struct pkt_attrib			*pattrib;
 	struct mlme_priv	*pmlmepriv = &padapter->mlmepriv;
@@ -1239,6 +1284,7 @@ exit:
 
 int issue_tdls_setup_rsp(_adapter *padapter, struct tdls_txmgmt *ptxmgmt)
 {
+	printk(KERN_DEBUG "rtw_tdls.c - ");
 	struct xmit_frame			*pmgntframe;
 	struct pkt_attrib			*pattrib;
 	struct xmit_priv			*pxmitpriv = &(padapter->xmitpriv);
@@ -1278,6 +1324,7 @@ exit:
 
 int issue_tdls_setup_cfm(_adapter *padapter, struct tdls_txmgmt *ptxmgmt)
 {
+	printk(KERN_DEBUG "rtw_tdls.c - ");
 	struct tdls_info *ptdlsinfo = &padapter->tdlsinfo;
 	struct xmit_frame			*pmgntframe;
 	struct pkt_attrib			*pattrib;
@@ -1319,6 +1366,7 @@ exit:
 /* TDLS Discovery Response frame is a management action frame */
 int issue_tdls_dis_rsp(_adapter *padapter, struct tdls_txmgmt *ptxmgmt, u8 privacy)
 {
+	printk(KERN_DEBUG "rtw_tdls.c - ");
 	struct xmit_frame		*pmgntframe;
 	struct pkt_attrib		*pattrib;
 	unsigned char			*pframe;
@@ -1373,6 +1421,7 @@ exit:
 
 int issue_tdls_peer_traffic_rsp(_adapter *padapter, struct sta_info *ptdls_sta, struct tdls_txmgmt *ptxmgmt)
 {
+	printk(KERN_DEBUG "rtw_tdls.c - ");
 	struct xmit_frame	*pmgntframe;
 	struct pkt_attrib	*pattrib;
 	struct mlme_priv	*pmlmepriv = &padapter->mlmepriv;
@@ -1415,6 +1464,7 @@ exit:
 
 int issue_tdls_peer_traffic_indication(_adapter *padapter, struct sta_info *ptdls_sta)
 {
+	printk(KERN_DEBUG "rtw_tdls.c - ");
 	struct xmit_frame			*pmgntframe;
 	struct pkt_attrib			*pattrib;
 	struct mlme_priv	*pmlmepriv = &padapter->mlmepriv;
@@ -1462,6 +1512,7 @@ exit:
 #ifdef CONFIG_TDLS_CH_SW
 int issue_tdls_ch_switch_req(_adapter *padapter, struct sta_info *ptdls_sta)
 {
+	printk(KERN_DEBUG "rtw_tdls.c - ");
 	struct xmit_frame	*pmgntframe;
 	struct pkt_attrib	*pattrib;
 	struct mlme_priv	*pmlmepriv = &padapter->mlmepriv;
@@ -1509,6 +1560,7 @@ exit:
 
 int issue_tdls_ch_switch_rsp(_adapter *padapter, struct tdls_txmgmt *ptxmgmt, int wait_ack)
 {
+	printk(KERN_DEBUG "rtw_tdls.c - ");
 	struct xmit_frame	*pmgntframe;
 	struct pkt_attrib	*pattrib;
 	struct mlme_priv	*pmlmepriv = &padapter->mlmepriv;
@@ -1566,6 +1618,7 @@ exit:
 
 int On_TDLS_Dis_Rsp(_adapter *padapter, union recv_frame *precv_frame)
 {
+	printk(KERN_DEBUG "rtw_tdls.c - ");
 	struct sta_info *ptdls_sta = NULL, *psta = rtw_get_stainfo(&(padapter->stapriv), get_bssid(&(padapter->mlmepriv)));
 	struct recv_priv *precvpriv = &(padapter->recvpriv);
 	u8 *ptr = precv_frame->u.hdr.rx_data, *psa;
@@ -1633,6 +1686,7 @@ exit:
 
 sint On_TDLS_Setup_Req(_adapter *padapter, union recv_frame *precv_frame)
 {
+	printk(KERN_DEBUG "rtw_tdls.c - ");
 	struct tdls_info *ptdlsinfo = &padapter->tdlsinfo;
 	u8 *psa, *pmyid;
 	struct sta_info *ptdls_sta= NULL;
@@ -1847,6 +1901,7 @@ exit:
 
 int On_TDLS_Setup_Rsp(_adapter *padapter, union recv_frame *precv_frame)
 {
+	printk(KERN_DEBUG "rtw_tdls.c - ");
 	struct registry_priv	*pregistrypriv = &padapter->registrypriv;
 	struct tdls_info *ptdlsinfo = &padapter->tdlsinfo;
 	struct sta_info *ptdls_sta= NULL;
@@ -2042,6 +2097,7 @@ exit:
 
 int On_TDLS_Setup_Cfm(_adapter *padapter, union recv_frame *precv_frame)
 {
+	printk(KERN_DEBUG "rtw_tdls.c - ");
 	struct tdls_info *ptdlsinfo = &padapter->tdlsinfo;
 	struct sta_info *ptdls_sta= NULL;
    	struct sta_priv *pstapriv = &padapter->stapriv;
@@ -2165,6 +2221,7 @@ exit:
 
 int On_TDLS_Dis_Req(_adapter *padapter, union recv_frame *precv_frame)
 {
+	printk(KERN_DEBUG "rtw_tdls.c - ");
 	struct rx_pkt_attrib	*prx_pkt_attrib = &precv_frame->u.hdr.attrib;
 	struct sta_priv *pstapriv = &padapter->stapriv;
 	struct sta_info *psta_ap;
@@ -2224,6 +2281,7 @@ exit:
 
 int On_TDLS_Teardown(_adapter *padapter, union recv_frame *precv_frame)
 {
+	printk(KERN_DEBUG "rtw_tdls.c - ");
 	u8 *psa;
 	u8 *ptr = precv_frame->u.hdr.rx_data;
 	struct rx_pkt_attrib	*prx_pkt_attrib = &precv_frame->u.hdr.attrib;
@@ -2264,6 +2322,7 @@ u8 TDLS_check_ch_state(uint state){
 
 int On_TDLS_Peer_Traffic_Indication(_adapter *padapter, union recv_frame *precv_frame)
 {
+	printk(KERN_DEBUG "rtw_tdls.c - ");
 	struct rx_pkt_attrib	*pattrib = &precv_frame->u.hdr.attrib;
 	struct sta_info *ptdls_sta = rtw_get_stainfo(&padapter->stapriv, pattrib->src);	
 	u8 *ptr = precv_frame->u.hdr.rx_data;
@@ -2287,6 +2346,7 @@ int On_TDLS_Peer_Traffic_Indication(_adapter *padapter, union recv_frame *precv_
 /* We process buffered data for 1. U-APSD, 2. ch. switch, 3. U-APSD + ch. switch here */
 int On_TDLS_Peer_Traffic_Rsp(_adapter *padapter, union recv_frame *precv_frame)
 {
+	printk(KERN_DEBUG "rtw_tdls.c - ");
 	struct tdls_info *ptdlsinfo = &padapter->tdlsinfo;
 	struct mlme_ext_priv *pmlmeext = &padapter->mlmeextpriv;
 	struct rx_pkt_attrib	*pattrib = & precv_frame->u.hdr.attrib;
@@ -2355,6 +2415,7 @@ int On_TDLS_Peer_Traffic_Rsp(_adapter *padapter, union recv_frame *precv_frame)
 #ifdef CONFIG_TDLS_CH_SW
 sint On_TDLS_Ch_Switch_Req(_adapter *padapter, union recv_frame *precv_frame)
 {
+	printk(KERN_DEBUG "rtw_tdls.c - ");
 	struct tdls_ch_switch *pchsw_info = &padapter->tdlsinfo.chsw_info;
 	struct sta_info *ptdls_sta= NULL;
    	struct sta_priv *pstapriv = &padapter->stapriv;
@@ -2481,6 +2542,7 @@ sint On_TDLS_Ch_Switch_Req(_adapter *padapter, union recv_frame *precv_frame)
 
 sint On_TDLS_Ch_Switch_Rsp(_adapter *padapter, union recv_frame *precv_frame)
 {
+	printk(KERN_DEBUG "rtw_tdls.c - ");
 	struct tdls_ch_switch *pchsw_info = &padapter->tdlsinfo.chsw_info;
 	struct sta_info *ptdls_sta= NULL;
    	struct sta_priv *pstapriv = &padapter->stapriv;
@@ -2574,6 +2636,7 @@ exit:
 #ifdef CONFIG_WFD
 void wfd_ie_tdls(_adapter * padapter, u8 *pframe, u32 *pktlen )
 {
+	printk(KERN_DEBUG "rtw_tdls.c - ");
 	struct mlme_priv		*pmlmepriv = &padapter->mlmepriv;
 	struct wifi_display_info	*pwfd_info = padapter->tdlsinfo.wfd_info;
 	u8 wfdie[ MAX_WFD_IE_LEN] = { 0x00 };
@@ -2664,6 +2727,7 @@ void wfd_ie_tdls(_adapter * padapter, u8 *pframe, u32 *pktlen )
 
 void rtw_build_tdls_setup_req_ies(_adapter * padapter, struct xmit_frame * pxmitframe, u8 *pframe, struct tdls_txmgmt *ptxmgmt)
 {
+	printk(KERN_DEBUG "rtw_tdls.c - ");
 	struct registry_priv	*pregistrypriv = &padapter->registrypriv;
 	struct mlme_ext_priv	*pmlmeext = &(padapter->mlmeextpriv);
 	struct pkt_attrib	*pattrib = &pxmitframe->attrib;
@@ -2741,6 +2805,7 @@ void rtw_build_tdls_setup_req_ies(_adapter * padapter, struct xmit_frame * pxmit
 
 void rtw_build_tdls_setup_rsp_ies(_adapter * padapter, struct xmit_frame * pxmitframe, u8 *pframe, struct tdls_txmgmt *ptxmgmt)
 {
+	printk(KERN_DEBUG "rtw_tdls.c - ");
 	struct registry_priv	*pregistrypriv = &padapter->registrypriv;
 	struct mlme_ext_priv	*pmlmeext = &(padapter->mlmeextpriv);
 	struct pkt_attrib	*pattrib = &pxmitframe->attrib;
@@ -2842,6 +2907,7 @@ void rtw_build_tdls_setup_rsp_ies(_adapter * padapter, struct xmit_frame * pxmit
 
 void rtw_build_tdls_setup_cfm_ies(_adapter * padapter, struct xmit_frame * pxmitframe, u8 *pframe, struct tdls_txmgmt *ptxmgmt)
 {
+	printk(KERN_DEBUG "rtw_tdls.c - ");
 	struct registry_priv	*pregistrypriv = &padapter->registrypriv;
 	struct mlme_ext_priv	*pmlmeext = &(padapter->mlmeextpriv);
 	struct mlme_ext_info	*pmlmeinfo = &(pmlmeext->mlmext_info);
@@ -2912,6 +2978,7 @@ void rtw_build_tdls_setup_cfm_ies(_adapter * padapter, struct xmit_frame * pxmit
 
 void rtw_build_tdls_teardown_ies(_adapter * padapter, struct xmit_frame * pxmitframe, u8 *pframe, struct tdls_txmgmt *ptxmgmt)
 {
+	printk(KERN_DEBUG "rtw_tdls.c - ");
 	struct pkt_attrib	*pattrib = &pxmitframe->attrib;
 	struct sta_info *ptdls_sta = rtw_get_stainfo( &(padapter->stapriv) , pattrib->dst);
 	u8  *pftie = NULL, *pftie_mic = NULL, *plinkid_ie = NULL;
@@ -2943,6 +3010,7 @@ void rtw_build_tdls_teardown_ies(_adapter * padapter, struct xmit_frame * pxmitf
 
 void rtw_build_tdls_dis_req_ies(_adapter * padapter, struct xmit_frame * pxmitframe, u8 *pframe, struct tdls_txmgmt *ptxmgmt)
 {
+	printk(KERN_DEBUG "rtw_tdls.c - ");
 	struct pkt_attrib *pattrib = &pxmitframe->attrib;
 
 	pframe = rtw_tdls_set_payload_type(pframe, pattrib);
@@ -2955,6 +3023,7 @@ void rtw_build_tdls_dis_req_ies(_adapter * padapter, struct xmit_frame * pxmitfr
 
 void rtw_build_tdls_dis_rsp_ies(_adapter * padapter, struct xmit_frame * pxmitframe, u8 *pframe, struct tdls_txmgmt *ptxmgmt, u8 privacy)
 {
+	printk(KERN_DEBUG "rtw_tdls.c - ");
 	struct registry_priv	*pregistrypriv = &padapter->registrypriv;
 	struct mlme_ext_priv	*pmlmeext = &padapter->mlmeextpriv;
 	struct pkt_attrib	*pattrib = &pxmitframe->attrib;
@@ -2995,6 +3064,7 @@ void rtw_build_tdls_dis_rsp_ies(_adapter * padapter, struct xmit_frame * pxmitfr
 
 void rtw_build_tdls_peer_traffic_indication_ies(_adapter * padapter, struct xmit_frame * pxmitframe, u8 *pframe, struct tdls_txmgmt *ptxmgmt)
 {
+	printk(KERN_DEBUG "rtw_tdls.c - ");
 
 	struct pkt_attrib	*pattrib = &pxmitframe->attrib;
 	u8 AC_queue=0;
@@ -3026,6 +3096,7 @@ void rtw_build_tdls_peer_traffic_indication_ies(_adapter * padapter, struct xmit
 
 void rtw_build_tdls_peer_traffic_rsp_ies(_adapter * padapter, struct xmit_frame * pxmitframe, u8 *pframe, struct tdls_txmgmt *ptxmgmt)
 {
+	printk(KERN_DEBUG "rtw_tdls.c - ");
 
 	struct pkt_attrib	*pattrib = &pxmitframe->attrib;
 	struct sta_info *ptdls_sta = rtw_get_stainfo(&padapter->stapriv, pattrib->dst);
@@ -3044,6 +3115,7 @@ void rtw_build_tdls_peer_traffic_rsp_ies(_adapter * padapter, struct xmit_frame 
 #ifdef CONFIG_TDLS_CH_SW
 void rtw_build_tdls_ch_switch_req_ies(_adapter * padapter, struct xmit_frame * pxmitframe, u8 *pframe, struct tdls_txmgmt *ptxmgmt)
 {
+	printk(KERN_DEBUG "rtw_tdls.c - ");
 	struct tdls_info *ptdlsinfo = &padapter->tdlsinfo;
 	struct pkt_attrib	*pattrib = &pxmitframe->attrib;
 	struct sta_priv 	*pstapriv = &padapter->stapriv;
@@ -3082,6 +3154,7 @@ void rtw_build_tdls_ch_switch_req_ies(_adapter * padapter, struct xmit_frame * p
 
 void rtw_build_tdls_ch_switch_rsp_ies(_adapter * padapter, struct xmit_frame * pxmitframe, u8 *pframe, struct tdls_txmgmt *ptxmgmt)
 {
+	printk(KERN_DEBUG "rtw_tdls.c - ");
 
 	struct pkt_attrib	*pattrib = &pxmitframe->attrib;
 	struct sta_priv 	*pstapriv = &padapter->stapriv;	
@@ -3104,6 +3177,7 @@ void rtw_build_tdls_ch_switch_rsp_ies(_adapter * padapter, struct xmit_frame * p
 #ifdef CONFIG_WFD
 void rtw_build_tunneled_probe_req_ies(_adapter * padapter, struct xmit_frame * pxmitframe, u8 *pframe)
 {
+	printk(KERN_DEBUG "rtw_tdls.c - ");
 
 	struct pkt_attrib	*pattrib = &pxmitframe->attrib;
 	struct wifidirect_info *pwdinfo = &padapter->wdinfo;
@@ -3132,6 +3206,7 @@ void rtw_build_tunneled_probe_req_ies(_adapter * padapter, struct xmit_frame * p
 
 void rtw_build_tunneled_probe_rsp_ies(_adapter * padapter, struct xmit_frame * pxmitframe, u8 *pframe)
 {
+	printk(KERN_DEBUG "rtw_tdls.c - ");
 
 	struct pkt_attrib	*pattrib = &pxmitframe->attrib;
 	struct wifidirect_info *pwdinfo = &padapter->wdinfo;
@@ -3161,6 +3236,7 @@ void rtw_build_tunneled_probe_rsp_ies(_adapter * padapter, struct xmit_frame * p
 
 void _tdls_tpk_timer_hdl(void *FunctionContext)
 {
+	printk(KERN_DEBUG "rtw_tdls.c - ");
 	struct sta_info *ptdls_sta = (struct sta_info *)FunctionContext;
 	struct tdls_txmgmt txmgmt;
 
@@ -3181,6 +3257,7 @@ void _tdls_tpk_timer_hdl(void *FunctionContext)
 #ifdef CONFIG_TDLS_CH_SW
 void _tdls_ch_switch_timer_hdl(void *FunctionContext)
 {
+	printk(KERN_DEBUG "rtw_tdls.c - ");
 	struct sta_info *ptdls_sta = (struct sta_info *)FunctionContext;
 	_adapter *padapter = ptdls_sta->padapter;
 	struct tdls_ch_switch *pchsw_info = &padapter->tdlsinfo.chsw_info;
@@ -3191,6 +3268,7 @@ void _tdls_ch_switch_timer_hdl(void *FunctionContext)
 
 void _tdls_delay_timer_hdl(void *FunctionContext)
 {
+	printk(KERN_DEBUG "rtw_tdls.c - ");
 	struct sta_info *ptdls_sta = (struct sta_info *)FunctionContext;
 	_adapter *padapter = ptdls_sta->padapter;
 	struct tdls_ch_switch *pchsw_info = &padapter->tdlsinfo.chsw_info;
@@ -3201,6 +3279,7 @@ void _tdls_delay_timer_hdl(void *FunctionContext)
 
 void _tdls_stay_on_base_chnl_timer_hdl(void *FunctionContext)
 {
+	printk(KERN_DEBUG "rtw_tdls.c - ");
 	struct sta_info *ptdls_sta = (struct sta_info *)FunctionContext;
 	_adapter *padapter = ptdls_sta->padapter;
 	struct tdls_ch_switch *pchsw_info = &padapter->tdlsinfo.chsw_info;
@@ -3213,6 +3292,7 @@ void _tdls_stay_on_base_chnl_timer_hdl(void *FunctionContext)
 
 void _tdls_ch_switch_monitor_timer_hdl(void *FunctionContext)
 {
+	printk(KERN_DEBUG "rtw_tdls.c - ");
 	struct sta_info *ptdls_sta = (struct sta_info *)FunctionContext;
 	_adapter *padapter = ptdls_sta->padapter;
 	struct tdls_ch_switch *pchsw_info = &padapter->tdlsinfo.chsw_info;
@@ -3225,6 +3305,7 @@ void _tdls_ch_switch_monitor_timer_hdl(void *FunctionContext)
 
 void _tdls_handshake_timer_hdl(void *FunctionContext)
 {
+	printk(KERN_DEBUG "rtw_tdls.c - ");
 	struct sta_info *ptdls_sta = (struct sta_info *)FunctionContext;
 	_adapter *padapter = ptdls_sta->padapter;
 	struct tdls_txmgmt txmgmt;
@@ -3248,6 +3329,7 @@ void _tdls_handshake_timer_hdl(void *FunctionContext)
 
 void _tdls_pti_timer_hdl(void *FunctionContext)
 {
+	printk(KERN_DEBUG "rtw_tdls.c - ");
 	struct sta_info *ptdls_sta = (struct sta_info *)FunctionContext;
 	_adapter *padapter = ptdls_sta->padapter;
 	struct tdls_txmgmt txmgmt;
@@ -3267,6 +3349,7 @@ void _tdls_pti_timer_hdl(void *FunctionContext)
 
 void rtw_init_tdls_timer(_adapter *padapter, struct sta_info *psta)
 {
+	printk(KERN_DEBUG "rtw_tdls.c - ");
 	psta->padapter=padapter;
 	_init_timer(&psta->TPK_timer, padapter->pnetdev, _tdls_tpk_timer_hdl, psta);
 #ifdef CONFIG_TDLS_CH_SW	
@@ -3281,6 +3364,7 @@ void rtw_init_tdls_timer(_adapter *padapter, struct sta_info *psta)
 
 void rtw_free_tdls_timer(struct sta_info *psta)
 {
+	printk(KERN_DEBUG "rtw_tdls.c - ");
 	_cancel_timer_ex(&psta->TPK_timer);
 #ifdef CONFIG_TDLS_CH_SW	
 	_cancel_timer_ex(&psta->ch_sw_timer);
@@ -3294,11 +3378,13 @@ void rtw_free_tdls_timer(struct sta_info *psta)
 
 u8	update_sgi_tdls(_adapter *padapter, struct sta_info *psta)
 {
+	printk(KERN_DEBUG "rtw_tdls.c - ");
 	return query_ra_short_GI(psta);
 }
 
 u32 update_mask_tdls(_adapter *padapter, struct sta_info *psta)
 {
+	printk(KERN_DEBUG "rtw_tdls.c - ");
 	unsigned char sta_band = 0;
 	unsigned int tx_ra_bitmap=0;
 	struct mlme_priv *pmlmepriv = &(padapter->mlmepriv);
@@ -3330,11 +3416,13 @@ u32 update_mask_tdls(_adapter *padapter, struct sta_info *psta)
 
 int rtw_tdls_is_driver_setup(_adapter *padapter)
 {
+	printk(KERN_DEBUG "rtw_tdls.c - ");
 	return padapter->tdlsinfo.driver_setup;
 }
 
 const char * rtw_tdls_action_txt(enum TDLS_ACTION_FIELD action)
 {
+	printk(KERN_DEBUG "rtw_tdls.c - ");
 	switch (action) {
 	case TDLS_SETUP_REQUEST:
 		return "TDLS_SETUP_REQUEST";

@@ -116,6 +116,7 @@ struct rate_section_ent rates_by_sections[RATE_SECTION_NUM] = {
 
 int rtw_get_bit_value_from_ieee_value(u8 val)
 {
+	printk(KERN_DEBUG "rtw_ieee80211.c - ");
 	unsigned char dot11_rate_table[]={2,4,11,22,12,18,24,36,48,72,96,108,0}; // last element must be zero!!
 
 	int i=0;
@@ -129,6 +130,7 @@ int rtw_get_bit_value_from_ieee_value(u8 val)
 
 uint	rtw_is_cckrates_included(u8 *rate)
 {	
+	printk(KERN_DEBUG "rtw_ieee80211.c - ");
 		u32	i = 0;			
 
 		while(rate[i]!=0)
@@ -144,6 +146,7 @@ uint	rtw_is_cckrates_included(u8 *rate)
 
 uint	rtw_is_cckratesonly_included(u8 *rate)
 {
+	printk(KERN_DEBUG "rtw_ieee80211.c - ");
 	u32 i = 0;
 
 
@@ -162,6 +165,7 @@ uint	rtw_is_cckratesonly_included(u8 *rate)
 
 int rtw_check_network_type(unsigned char *rate, int ratelen, int channel)
 {
+	printk(KERN_DEBUG "rtw_ieee80211.c - ");
 	if (channel > 14)
 	{
 		if ((rtw_is_cckrates_included(rate)) == _TRUE)
@@ -184,6 +188,7 @@ int rtw_check_network_type(unsigned char *rate, int ratelen, int channel)
 u8 *rtw_set_fixed_ie(unsigned char *pbuf, unsigned int len, unsigned char *source,
 				unsigned int *frlen)
 {
+	printk(KERN_DEBUG "rtw_ieee80211.c - ");
 	_rtw_memcpy((void *)pbuf, (void *)source, len);
 	*frlen = *frlen + len;
 	return (pbuf + len);
@@ -199,6 +204,7 @@ u8 *rtw_set_ie
 	uint *frlen //frame length
 )
 {
+	printk(KERN_DEBUG "rtw_ieee80211.c - ");
 	*pbuf = (u8)index;
 
 	*(pbuf + 1) = (u8)len;
@@ -214,6 +220,7 @@ u8 *rtw_set_ie
 inline u8 *rtw_set_ie_ch_switch(u8 *buf, u32 *buf_len, u8 ch_switch_mode,
 	u8 new_ch, u8 ch_switch_cnt)
 {
+	printk(KERN_DEBUG "rtw_ieee80211.c - ");
 	u8 ie_data[3];
 
 	ie_data[0] = ch_switch_mode;
@@ -224,6 +231,7 @@ inline u8 *rtw_set_ie_ch_switch(u8 *buf, u32 *buf_len, u8 ch_switch_mode,
 
 inline u8 secondary_ch_offset_to_hal_ch_offset(u8 ch_offset)
 {
+	printk(KERN_DEBUG "rtw_ieee80211.c - ");
 	if (ch_offset == SCN)
 		return HAL_PRIME_CHNL_OFFSET_DONT_CARE;
 	else if(ch_offset == SCA)
@@ -236,6 +244,7 @@ inline u8 secondary_ch_offset_to_hal_ch_offset(u8 ch_offset)
 
 inline u8 hal_ch_offset_to_secondary_ch_offset(u8 ch_offset)
 {
+	printk(KERN_DEBUG "rtw_ieee80211.c - ");
 	if (ch_offset == HAL_PRIME_CHNL_OFFSET_DONT_CARE)
 		return SCN;
 	else if(ch_offset == HAL_PRIME_CHNL_OFFSET_LOWER)
@@ -248,12 +257,14 @@ inline u8 hal_ch_offset_to_secondary_ch_offset(u8 ch_offset)
 
 inline u8 *rtw_set_ie_secondary_ch_offset(u8 *buf, u32 *buf_len, u8 secondary_ch_offset)
 {
+	printk(KERN_DEBUG "rtw_ieee80211.c - ");
 	return rtw_set_ie(buf, WLAN_EID_SECONDARY_CHANNEL_OFFSET,  1, &secondary_ch_offset, buf_len);
 }
 
 inline u8 *rtw_set_ie_mesh_ch_switch_parm(u8 *buf, u32 *buf_len, u8 ttl,
 	u8 flags, u16 reason, u16 precedence)
 {
+	printk(KERN_DEBUG "rtw_ieee80211.c - ");
 	u8 ie_data[6];
 
 	ie_data[0] = ttl;
@@ -269,6 +280,7 @@ index: the information element id index, limit is the limit for search
 -----------------------------------------------------------------------------*/
 u8 *rtw_get_ie(u8 *pbuf, sint index, sint *len, sint limit)
 {
+	printk(KERN_DEBUG "rtw_ieee80211.c - ");
 	sint tmp,i;
 	u8 *p;
 _func_enter_;
@@ -314,6 +326,7 @@ _func_exit_;
  */
 u8 *rtw_get_ie_ex(u8 *in_ie, uint in_len, u8 eid, u8 *oui, u8 oui_len, u8 *ie, uint *ielen)
 {
+	printk(KERN_DEBUG "rtw_ieee80211.c - ");
 	uint cnt;
 	u8 *target_ie = NULL;
 
@@ -364,6 +377,7 @@ u8 *rtw_get_ie_ex(u8 *in_ie, uint in_len, u8 eid, u8 *oui, u8 oui_len, u8 *ie, u
  */
 int rtw_ies_remove_ie(u8 *ies, uint *ies_len, uint offset, u8 eid, u8 *oui, u8 oui_len)
 {
+	printk(KERN_DEBUG "rtw_ieee80211.c - ");
 	int ret = _FAIL;
 	u8 *target_ie;
 	u32 target_ielen;
@@ -398,6 +412,7 @@ exit:
 
 void rtw_set_supported_rate(u8* SupportedRates, uint mode) 
 {
+	printk(KERN_DEBUG "rtw_ieee80211.c - ");
 _func_enter_;
 
 	_rtw_memset(SupportedRates, 0, NDIS_802_11_LENGTH_RATES_EX);
@@ -430,6 +445,7 @@ _func_exit_;
 
 uint	rtw_get_rateset_len(u8	*rateset)
 {
+	printk(KERN_DEBUG "rtw_ieee80211.c - ");
 	uint i = 0;
 _func_enter_;	
 	while(1)
@@ -448,6 +464,7 @@ _func_exit_;
 
 int rtw_generate_ie(struct registry_priv *pregistrypriv)
 {
+	printk(KERN_DEBUG "rtw_ieee80211.c - ");
 	u8	wireless_mode;
 	int 	sz = 0, rateLen;
 	WLAN_BSSID_EX*	pdev_network = &pregistrypriv->dev_network;
@@ -543,6 +560,7 @@ _func_exit_;
 
 unsigned char *rtw_get_wpa_ie(unsigned char *pie, int *wpa_ie_len, int limit)
 {
+	printk(KERN_DEBUG "rtw_ieee80211.c - ");
 	int len;
 	u16 val16;
 	unsigned char wpa_oui_type[] = {0x00, 0x50, 0xf2, 0x01};
@@ -598,6 +616,7 @@ check_next_ie:
 
 unsigned char *rtw_get_wpa2_ie(unsigned char *pie, int *rsn_ie_len, int limit)
 {	
+	printk(KERN_DEBUG "rtw_ieee80211.c - ");
 
 	return rtw_get_ie(pie, _WPA2_IE_ID_,rsn_ie_len, limit);
 
@@ -605,6 +624,7 @@ unsigned char *rtw_get_wpa2_ie(unsigned char *pie, int *rsn_ie_len, int limit)
 
 int rtw_get_wpa_cipher_suite(u8 *s)
 {
+	printk(KERN_DEBUG "rtw_ieee80211.c - ");
 	if (_rtw_memcmp(s, WPA_CIPHER_SUITE_NONE, WPA_SELECTOR_LEN) == _TRUE)
 		return WPA_CIPHER_NONE;
 	if (_rtw_memcmp(s, WPA_CIPHER_SUITE_WEP40, WPA_SELECTOR_LEN) == _TRUE)
@@ -621,6 +641,7 @@ int rtw_get_wpa_cipher_suite(u8 *s)
 
 int rtw_get_wpa2_cipher_suite(u8 *s)
 {
+	printk(KERN_DEBUG "rtw_ieee80211.c - ");
 	if (_rtw_memcmp(s, RSN_CIPHER_SUITE_NONE, RSN_SELECTOR_LEN) == _TRUE)
 		return WPA_CIPHER_NONE;
 	if (_rtw_memcmp(s, RSN_CIPHER_SUITE_WEP40, RSN_SELECTOR_LEN) == _TRUE)
@@ -638,6 +659,7 @@ int rtw_get_wpa2_cipher_suite(u8 *s)
 
 int rtw_parse_wpa_ie(u8* wpa_ie, int wpa_ie_len, int *group_cipher, int *pairwise_cipher, int *is_8021x)
 {
+	printk(KERN_DEBUG "rtw_ieee80211.c - ");
 	int i, ret=_SUCCESS;
 	int left, count;
 	u8 *pos;
@@ -723,6 +745,7 @@ int rtw_parse_wpa_ie(u8* wpa_ie, int wpa_ie_len, int *group_cipher, int *pairwis
 
 int rtw_parse_wpa2_ie(u8* rsn_ie, int rsn_ie_len, int *group_cipher, int *pairwise_cipher, int *is_8021x)
 {
+	printk(KERN_DEBUG "rtw_ieee80211.c - ");
 	int i, ret=_SUCCESS;
 	int left, count;
 	u8 *pos;
@@ -803,6 +826,7 @@ int rtw_parse_wpa2_ie(u8* rsn_ie, int rsn_ie_len, int *group_cipher, int *pairwi
 //#ifdef CONFIG_WAPI_SUPPORT
 int rtw_get_wapi_ie(u8 *in_ie,uint in_len,u8 *wapi_ie,u16 *wapi_len)
 {
+	printk(KERN_DEBUG "rtw_ieee80211.c - ");
 	int len = 0;
 	u8 authmode, i;
 	uint 	cnt;
@@ -860,6 +884,7 @@ _func_exit_;
 
 int rtw_get_sec_ie(u8 *in_ie,uint in_len,u8 *rsn_ie,u16 *rsn_len,u8 *wpa_ie,u16 *wpa_len)
 {
+	printk(KERN_DEBUG "rtw_ieee80211.c - ");
 	u8 authmode, sec_idx, i;
 	u8 wpa_oui[4]={0x0,0x50,0xf2,0x01};
 	uint 	cnt;
@@ -928,6 +953,7 @@ _func_exit_;
 
 u8 rtw_is_wps_ie(u8 *ie_ptr, uint *wps_ielen)
 {	
+	printk(KERN_DEBUG "rtw_ieee80211.c - ");
 	u8 match = _FALSE;
 	u8 eid, wps_oui[4]={0x0,0x50,0xf2,0x04};
 	
@@ -946,6 +972,7 @@ u8 rtw_is_wps_ie(u8 *ie_ptr, uint *wps_ielen)
 
 u8 *rtw_get_wps_ie_from_scan_queue(u8 *in_ie, uint in_len, u8 *wps_ie, uint *wps_ielen, u8 frame_type)
 {
+	printk(KERN_DEBUG "rtw_ieee80211.c - ");
 	u8*	wps = NULL;
 
 	DBG_871X( "[%s] frame_type = %d\n", __FUNCTION__, frame_type );
@@ -977,6 +1004,7 @@ u8 *rtw_get_wps_ie_from_scan_queue(u8 *in_ie, uint in_len, u8 *wps_ie, uint *wps
  */
 u8 *rtw_get_wps_ie(u8 *in_ie, uint in_len, u8 *wps_ie, uint *wps_ielen)
 {
+	printk(KERN_DEBUG "rtw_ieee80211.c - ");
 	uint cnt;
 	u8 *wpsie_ptr = NULL;
 	u8 eid, wps_oui[4] = {0x00, 0x50, 0xf2, 0x04};
@@ -1033,6 +1061,7 @@ u8 *rtw_get_wps_ie(u8 *in_ie, uint in_len, u8 *wps_ie, uint *wps_ielen)
  */
 u8 *rtw_get_wps_attr(u8 *wps_ie, uint wps_ielen, u16 target_attr_id ,u8 *buf_attr, u32 *len_attr)
 {
+	printk(KERN_DEBUG "rtw_ieee80211.c - ");
 	u8 *attr_ptr = NULL;
 	u8 * target_attr_ptr = NULL;
 	u8 wps_oui[4]={0x00,0x50,0xF2,0x04};
@@ -1091,6 +1120,7 @@ u8 *rtw_get_wps_attr(u8 *wps_ie, uint wps_ielen, u16 target_attr_id ,u8 *buf_att
  */
 u8 *rtw_get_wps_attr_content(u8 *wps_ie, uint wps_ielen, u16 target_attr_id ,u8 *buf_content, uint *len_content)
 {
+	printk(KERN_DEBUG "rtw_ieee80211.c - ");
 	u8 *attr_ptr;
 	u32 attr_len;
 
@@ -1117,6 +1147,7 @@ static int rtw_ieee802_11_parse_vendor_specific(u8 *pos, uint elen,
 					    struct rtw_ieee802_11_elems *elems,
 					    int show_errors)
 {
+	printk(KERN_DEBUG "rtw_ieee80211.c - ");
 	unsigned int oui;
 
 	/* first 3 bytes in vendor specific information element are the IEEE
@@ -1222,6 +1253,7 @@ ParseRes rtw_ieee802_11_parse_elems(u8 *start, uint len,
 				struct rtw_ieee802_11_elems *elems,
 				int show_errors)
 {
+	printk(KERN_DEBUG "rtw_ieee80211.c - ");
 	uint left = len;
 	u8 *pos = start;
 	int unknown = 0;
@@ -1361,6 +1393,7 @@ ParseRes rtw_ieee802_11_parse_elems(u8 *start, uint len,
 static u8 key_char2num(u8 ch);
 static u8 key_char2num(u8 ch)
 {
+	printk(KERN_DEBUG "rtw_ieee80211.c - ");
     if((ch>='0')&&(ch<='9'))
         return ch - '0';
     else if ((ch>='a')&&(ch<='f'))
@@ -1374,18 +1407,21 @@ static u8 key_char2num(u8 ch)
 u8 str_2char2num(u8 hch, u8 lch);
 u8 str_2char2num(u8 hch, u8 lch)
 {
+	printk(KERN_DEBUG "rtw_ieee80211.c - ");
     return ((key_char2num(hch) * 10 ) + key_char2num(lch));
 }
 
 u8 key_2char2num(u8 hch, u8 lch);
 u8 key_2char2num(u8 hch, u8 lch)
 {
+	printk(KERN_DEBUG "rtw_ieee80211.c - ");
     return ((key_char2num(hch) << 4) | key_char2num(lch));
 }
 
 void macstr2num(u8 *dst, u8 *src);
 void macstr2num(u8 *dst, u8 *src)
 {
+	printk(KERN_DEBUG "rtw_ieee80211.c - ");
 	int	jj, kk;
 	for (jj = 0, kk = 0; jj < ETH_ALEN; jj++, kk += 3)
 	{
@@ -1395,6 +1431,7 @@ void macstr2num(u8 *dst, u8 *src)
 
 u8 convert_ip_addr(u8 hch, u8 mch, u8 lch)
 {
+	printk(KERN_DEBUG "rtw_ieee80211.c - ");
     return ((key_char2num(hch) * 100) + (key_char2num(mch) * 10 ) + key_char2num(lch));
 }
 
@@ -1403,6 +1440,7 @@ u8 convert_ip_addr(u8 hch, u8 mch, u8 lch)
 
 int rtw_get_mac_addr_intel(unsigned char *buf)
 {
+	printk(KERN_DEBUG "rtw_ieee80211.c - ");
 	int ret = 0;
 	int i;
 	struct file *fp = NULL;
@@ -1450,6 +1488,7 @@ int rtw_get_mac_addr_intel(unsigned char *buf)
  */
 u8 rtw_check_invalid_mac_address(u8 *mac_addr, u8 check_local_bit)
 {
+	printk(KERN_DEBUG "rtw_ieee80211.c - ");
 	u8 null_mac_addr[ETH_ALEN] = {0, 0, 0, 0, 0, 0};
 	u8 multi_mac_addr[ETH_ALEN] = {0xff, 0xff, 0xff, 0xff, 0xff, 0xff};
 	u8 res = _FALSE;
@@ -1488,6 +1527,7 @@ extern char* rtw_initmac;
  */
 void rtw_macaddr_cfg(u8 *out, const u8 *hw_mac_addr)
 {
+	printk(KERN_DEBUG "rtw_ieee80211.c - ");
 #define DEFAULT_RANDOM_MACADDR 1
 	u8 mac[ETH_ALEN];
 
@@ -1544,6 +1584,7 @@ err_chk:
 #ifdef CONFIG_80211N_HT
 void dump_ht_cap_ie_content(void *sel, u8 *buf, u32 buf_len)
 {
+	printk(KERN_DEBUG "rtw_ieee80211.c - ");
 	if (buf_len != 26) {
 		DBG_871X_SEL_NL(sel, "Invalid HT capability IE len:%d != %d\n", buf_len, 26);
 		return;
@@ -1558,6 +1599,7 @@ void dump_ht_cap_ie_content(void *sel, u8 *buf, u32 buf_len)
 
 void dump_ht_cap_ie(void *sel, u8 *ie, u32 ie_len)
 {
+	printk(KERN_DEBUG "rtw_ieee80211.c - ");
 	u8* pos = (u8*)ie;
 	u16 id;
 	u16 len;
@@ -1575,6 +1617,7 @@ void dump_ht_cap_ie(void *sel, u8 *ie, u32 ie_len)
 
 void dump_ies(void *sel, u8 *buf, u32 buf_len)
 {
+	printk(KERN_DEBUG "rtw_ieee80211.c - ");
 	u8* pos = (u8*)buf;
 	u8 id, len;
 
@@ -1600,6 +1643,7 @@ void dump_ies(void *sel, u8 *buf, u32 buf_len)
 
 void dump_wps_ie(void *sel, u8 *ie, u32 ie_len)
 {
+	printk(KERN_DEBUG "rtw_ieee80211.c - ");
 	u8* pos = (u8*)ie;
 	u16 id;
 	u16 len;
@@ -1633,6 +1677,7 @@ void dump_wps_ie(void *sel, u8 *ie, u32 ie_len)
  */
 void rtw_ies_get_chbw(u8 *ies, int ies_len, u8 *ch, u8 *bw, u8 *offset)
 {
+	printk(KERN_DEBUG "rtw_ieee80211.c - ");
 	u8 *p;
 	int	ie_len;
 
@@ -1696,6 +1741,7 @@ void rtw_ies_get_chbw(u8 *ies, int ies_len, u8 *ch, u8 *bw, u8 *offset)
 
 void rtw_bss_get_chbw(WLAN_BSSID_EX *bss, u8 *ch, u8 *bw, u8 *offset)
 {
+	printk(KERN_DEBUG "rtw_ieee80211.c - ");
 	rtw_ies_get_chbw(bss->IEs + sizeof(NDIS_802_11_FIXED_IEs)
 		, bss->IELength - sizeof(NDIS_802_11_FIXED_IEs)
 		, ch, bw, offset);
@@ -1722,6 +1768,7 @@ void rtw_bss_get_chbw(WLAN_BSSID_EX *bss, u8 *ch, u8 *bw, u8 *offset)
 bool rtw_is_chbw_grouped(u8 ch_a, u8 bw_a, u8 offset_a
 	, u8 ch_b, u8 bw_b, u8 offset_b)
 {
+	printk(KERN_DEBUG "rtw_ieee80211.c - ");
 	bool is_grouped = _FALSE;
 
 	if (ch_a != ch_b) {
@@ -1752,6 +1799,7 @@ exit:
 void rtw_sync_chbw(u8 *req_ch, u8 *req_bw, u8 *req_offset
 	, u8 *g_ch, u8 *g_bw, u8 *g_offset)
 {
+	printk(KERN_DEBUG "rtw_ieee80211.c - ");
 
 	*req_ch = *g_ch;
 
@@ -1807,6 +1855,7 @@ void rtw_sync_chbw(u8 *req_ch, u8 *req_bw, u8 *req_offset
  */
 u32 rtw_get_p2p_merged_ies_len(u8 *in_ie, u32 in_len)
 {
+	printk(KERN_DEBUG "rtw_ieee80211.c - ");
 	PNDIS_802_11_VARIABLE_IEs	pIE;
 	u8 OUI[4] = { 0x50, 0x6f, 0x9a, 0x09 };
 	int i=0;
@@ -1836,6 +1885,7 @@ u32 rtw_get_p2p_merged_ies_len(u8 *in_ie, u32 in_len)
  */
 int rtw_p2p_merge_ies(u8 *in_ie, u32 in_len, u8 *merge_ie)
 {
+	printk(KERN_DEBUG "rtw_ieee80211.c - ");
 	PNDIS_802_11_VARIABLE_IEs	pIE;
 	u8 len = 0;
 	u8 OUI[4] = { 0x50, 0x6f, 0x9a, 0x09 };
@@ -1872,6 +1922,7 @@ int rtw_p2p_merge_ies(u8 *in_ie, u32 in_len, u8 *merge_ie)
 
 void dump_p2p_ie(void *sel, u8 *ie, u32 ie_len)
 {
+	printk(KERN_DEBUG "rtw_ieee80211.c - ");
 	u8* pos = (u8*)ie;
 	u8 id;
 	u16 len;
@@ -1906,6 +1957,7 @@ void dump_p2p_ie(void *sel, u8 *ie, u32 ie_len)
  */
 u8 *rtw_get_p2p_ie(u8 *in_ie, int in_len, u8 *p2p_ie, uint *p2p_ielen)
 {
+	printk(KERN_DEBUG "rtw_ieee80211.c - ");
 	uint cnt;
 	u8 *p2p_ie_ptr = NULL;
 	u8 eid, p2p_oui[4] = {0x50, 0x6F, 0x9A, 0x09};
@@ -1962,6 +2014,7 @@ u8 *rtw_get_p2p_ie(u8 *in_ie, int in_len, u8 *p2p_ie, uint *p2p_ielen)
  */
 u8 *rtw_get_p2p_attr(u8 *p2p_ie, uint p2p_ielen, u8 target_attr_id ,u8 *buf_attr, u32 *len_attr)
 {
+	printk(KERN_DEBUG "rtw_ieee80211.c - ");
 	u8 *attr_ptr = NULL;
 	u8 *target_attr_ptr = NULL;
 	u8 p2p_oui[4] = {0x50, 0x6F, 0x9A, 0x09};
@@ -2020,6 +2073,7 @@ u8 *rtw_get_p2p_attr(u8 *p2p_ie, uint p2p_ielen, u8 target_attr_id ,u8 *buf_attr
  */
 u8 *rtw_get_p2p_attr_content(u8 *p2p_ie, uint p2p_ielen, u8 target_attr_id ,u8 *buf_content, uint *len_content)
 {
+	printk(KERN_DEBUG "rtw_ieee80211.c - ");
 	u8 *attr_ptr;
 	u32 attr_len;
 
@@ -2043,6 +2097,7 @@ u8 *rtw_get_p2p_attr_content(u8 *p2p_ie, uint p2p_ielen, u8 target_attr_id ,u8 *
 
 u32 rtw_set_p2p_attr_content(u8 *pbuf, u8 attr_id, u16 attr_len, u8 *pdata_attr)
 {	
+	printk(KERN_DEBUG "rtw_ieee80211.c - ");
 	u32 a_len;
 
 	*pbuf = attr_id;
@@ -2060,6 +2115,7 @@ u32 rtw_set_p2p_attr_content(u8 *pbuf, u8 attr_id, u16 attr_len, u8 *pdata_attr)
 
 uint rtw_del_p2p_ie(u8 *ies, uint ies_len_ori, const char *msg)
 {
+	printk(KERN_DEBUG "rtw_ieee80211.c - ");
 #define DBG_DEL_P2P_IE 0
 
 	u8 *target_ie;
@@ -2102,6 +2158,7 @@ uint rtw_del_p2p_ie(u8 *ies, uint ies_len_ori, const char *msg)
 
 uint rtw_del_p2p_attr(u8 *ie, uint ielen_ori, u8 attr_id)
 {
+	printk(KERN_DEBUG "rtw_ieee80211.c - ");
 #define DBG_DEL_P2P_ATTR 0
 
 	u8 *target_attr;
@@ -2150,6 +2207,7 @@ inline u8 *rtw_bss_ex_get_p2p_ie(WLAN_BSSID_EX *bss_ex, u8 *p2p_ie, uint *p2p_ie
 
 void rtw_bss_ex_del_p2p_ie(WLAN_BSSID_EX *bss_ex)
 {
+	printk(KERN_DEBUG "rtw_ieee80211.c - ");
 #define DBG_BSS_EX_DEL_P2P_IE 0
 
 	u8 *ies = BSS_EX_TLV_IES(bss_ex);
@@ -2162,6 +2220,7 @@ void rtw_bss_ex_del_p2p_ie(WLAN_BSSID_EX *bss_ex)
 
 void rtw_bss_ex_del_p2p_attr(WLAN_BSSID_EX *bss_ex, u8 attr_id)
 {
+	printk(KERN_DEBUG "rtw_ieee80211.c - ");
 #define DBG_BSS_EX_DEL_P2P_ATTR 0
 
 	u8 *ies = BSS_EX_TLV_IES(bss_ex);
@@ -2222,6 +2281,7 @@ void rtw_bss_ex_del_p2p_attr(WLAN_BSSID_EX *bss_ex, u8 attr_id)
 
 void dump_wfd_ie(void *sel, u8 *ie, u32 ie_len)
 {
+	printk(KERN_DEBUG "rtw_ieee80211.c - ");
 	u8* pos = (u8*)ie;
 	u8 id;
 	u16 len;
@@ -2256,6 +2316,7 @@ void dump_wfd_ie(void *sel, u8 *ie, u32 ie_len)
  */
 u8 *rtw_get_wfd_ie(u8 *in_ie, int in_len, u8 *wfd_ie, uint *wfd_ielen)
 {
+	printk(KERN_DEBUG "rtw_ieee80211.c - ");
 	uint cnt;
 	u8 *wfd_ie_ptr = NULL;
 	u8 eid, wfd_oui[4] = {0x50, 0x6F, 0x9A, 0x0A};
@@ -2312,6 +2373,7 @@ u8 *rtw_get_wfd_ie(u8 *in_ie, int in_len, u8 *wfd_ie, uint *wfd_ielen)
  */
 u8 *rtw_get_wfd_attr(u8 *wfd_ie, uint wfd_ielen, u8 target_attr_id, u8 *buf_attr, u32 *len_attr)
 {
+	printk(KERN_DEBUG "rtw_ieee80211.c - ");
 	u8 *attr_ptr = NULL;
 	u8 *target_attr_ptr = NULL;
 	u8 wfd_oui[4] = {0x50, 0x6F, 0x9A, 0x0A};
@@ -2370,6 +2432,7 @@ u8 *rtw_get_wfd_attr(u8 *wfd_ie, uint wfd_ielen, u8 target_attr_id, u8 *buf_attr
  */
 u8 *rtw_get_wfd_attr_content(u8 *wfd_ie, uint wfd_ielen, u8 target_attr_id, u8 *buf_content, uint *len_content)
 {
+	printk(KERN_DEBUG "rtw_ieee80211.c - ");
 	u8 *attr_ptr;
 	u32 attr_len;
 
@@ -2393,6 +2456,7 @@ u8 *rtw_get_wfd_attr_content(u8 *wfd_ie, uint wfd_ielen, u8 target_attr_id, u8 *
 
 uint rtw_del_wfd_ie(u8 *ies, uint ies_len_ori, const char *msg)
 {
+	printk(KERN_DEBUG "rtw_ieee80211.c - ");
 #define DBG_DEL_WFD_IE 0
 
 	u8 *target_ie;
@@ -2435,6 +2499,7 @@ uint rtw_del_wfd_ie(u8 *ies, uint ies_len_ori, const char *msg)
 
 uint rtw_del_wfd_attr(u8 *ie, uint ielen_ori, u8 attr_id)
 {
+	printk(KERN_DEBUG "rtw_ieee80211.c - ");
 #define DBG_DEL_WFD_ATTR 0
 
 	u8 *target_attr;
@@ -2483,6 +2548,7 @@ inline u8 *rtw_bss_ex_get_wfd_ie(WLAN_BSSID_EX *bss_ex, u8 *wfd_ie, uint *wfd_ie
 
 void rtw_bss_ex_del_wfd_ie(WLAN_BSSID_EX *bss_ex)
 {
+	printk(KERN_DEBUG "rtw_ieee80211.c - ");
 #define DBG_BSS_EX_DEL_WFD_IE 0
 	u8 *ies = BSS_EX_TLV_IES(bss_ex);
 	uint ies_len_ori = BSS_EX_TLV_IES_LEN(bss_ex);
@@ -2494,6 +2560,7 @@ void rtw_bss_ex_del_wfd_ie(WLAN_BSSID_EX *bss_ex)
 
 void rtw_bss_ex_del_wfd_attr(WLAN_BSSID_EX *bss_ex, u8 attr_id)
 {
+	printk(KERN_DEBUG "rtw_ieee80211.c - ");
 #define DBG_BSS_EX_DEL_WFD_ATTR 0
 
 	u8 *ies = BSS_EX_TLV_IES(bss_ex);
@@ -2555,6 +2622,7 @@ void rtw_bss_ex_del_wfd_attr(WLAN_BSSID_EX *bss_ex, u8 attr_id)
 //Baron adds to avoid FreeBSD warning
 int ieee80211_is_empty_essid(const char *essid, int essid_len)
 {
+	printk(KERN_DEBUG "rtw_ieee80211.c - ");
 	/* Single white space is for Linksys APs */
 	if (essid_len == 1 && essid[0] == ' ')
 		return 1;
@@ -2571,6 +2639,7 @@ int ieee80211_is_empty_essid(const char *essid, int essid_len)
 
 int ieee80211_get_hdrlen(u16 fc)
 {
+	printk(KERN_DEBUG "rtw_ieee80211.c - ");
 	int hdrlen = 24;
 
 	switch (WLAN_FC_GET_TYPE(fc)) {
@@ -2598,6 +2667,7 @@ int ieee80211_get_hdrlen(u16 fc)
 
 int rtw_get_cipher_info(struct wlan_network *pnetwork)
 {
+	printk(KERN_DEBUG "rtw_ieee80211.c - ");
 	u32 wpa_ielen;
 	unsigned char *pbuf;
 	int group_cipher = 0, pairwise_cipher = 0, is8021x = 0;
@@ -2639,6 +2709,7 @@ int rtw_get_cipher_info(struct wlan_network *pnetwork)
 
 void rtw_get_bcn_info(struct wlan_network *pnetwork)
 {
+	printk(KERN_DEBUG "rtw_ieee80211.c - ");
 	unsigned short cap = 0;
 	u8 bencrypt = 0;
 	//u8 wpa_ie[255],rsn_ie[255];
@@ -2697,6 +2768,7 @@ void rtw_get_bcn_info(struct wlan_network *pnetwork)
 
 u8	rtw_ht_mcsset_to_nss(u8 *supp_mcs_set)
 {
+	printk(KERN_DEBUG "rtw_ieee80211.c - ");
 	u8 nss = 1;
 	
 	if (supp_mcs_set[3])
@@ -2716,6 +2788,7 @@ u8	rtw_ht_mcsset_to_nss(u8 *supp_mcs_set)
 //show MCS rate, unit: 100Kbps
 u16 rtw_mcs_rate(u8 rf_type, u8 bw_40MHz, u8 short_GI, unsigned char * MCS_rate)
 {
+	printk(KERN_DEBUG "rtw_ieee80211.c - ");
 	u16 max_rate = 0;
 
 	/*MCS_rate[2] = 3T3R , MCS_rate[1] = 2T2R , MCS_rate[0] = 1T1R*/
@@ -2777,6 +2850,7 @@ u16 rtw_mcs_rate(u8 rf_type, u8 bw_40MHz, u8 short_GI, unsigned char * MCS_rate)
 
 int rtw_action_frame_parse(const u8 *frame, u32 frame_len, u8* category, u8 *action)
 {
+	printk(KERN_DEBUG "rtw_ieee80211.c - ");
 	const u8 *frame_body = frame + sizeof(struct rtw_ieee80211_hdr_3addr);
 	u16 fc;
 	u8 c;

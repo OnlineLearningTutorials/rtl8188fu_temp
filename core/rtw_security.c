@@ -115,6 +115,7 @@ struct arc4context
 
 static void arcfour_init(struct arc4context 	*parc4ctx, u8 * key,u32	key_len)
 {
+	printk(KERN_DEBUG "rtw_security.c - ");
 	u32	t, u;
 	u32	keyindex;
 	u32	stateindex;
@@ -142,6 +143,7 @@ _func_exit_;
 }
 static u32 arcfour_byte(	struct arc4context	*parc4ctx)
 {
+	printk(KERN_DEBUG "rtw_security.c - ");
 	u32 x;
 	u32 y;
 	u32 sx, sy;
@@ -166,6 +168,7 @@ static void arcfour_encrypt(	struct arc4context	*parc4ctx,
 	u8 * src, 
 	u32 len)
 {
+	printk(KERN_DEBUG "rtw_security.c - ");
 	u32	i;
 _func_enter_;	
 	for (i = 0; i < len; i++)
@@ -179,11 +182,13 @@ static u32 crc32_table[256];
 
 static u8 crc32_reverseBit( u8 data)
 {
+	printk(KERN_DEBUG "rtw_security.c - ");
 	return( (u8)((data<<7)&0x80) | ((data<<5)&0x40) | ((data<<3)&0x20) | ((data<<1)&0x10) | ((data>>1)&0x08) | ((data>>3)&0x04) | ((data>>5)&0x02) | ((data>>7)&0x01) );
 }
 
 static void crc32_init(void)
 {
+	printk(KERN_DEBUG "rtw_security.c - ");
 _func_enter_;	
 	if (bcrc32initialized == 1) 
 		goto exit;
@@ -216,6 +221,7 @@ _func_exit_;
 
 static u32 getcrc32(u8 *buf, sint len)
 {
+	printk(KERN_DEBUG "rtw_security.c - ");
 	u8 *p;
 	u32  crc;
 _func_enter_;	
@@ -237,6 +243,7 @@ _func_exit_;
 */
 void rtw_wep_encrypt(_adapter *padapter, u8 *pxmitframe)
 {																	// exclude ICV
+	printk(KERN_DEBUG "rtw_security.c - ");
 	
 	unsigned char	crc[4];
 	struct arc4context	 mycontext;
@@ -318,6 +325,7 @@ _func_exit_;
 
 void rtw_wep_decrypt(_adapter  *padapter, u8 *precvframe)
 {								
+	printk(KERN_DEBUG "rtw_security.c - ");
 	// exclude ICV
 	u8	crc[4];
 	struct arc4context	 mycontext;
@@ -373,6 +381,7 @@ _func_exit_;
 static u32 secmicgetuint32( u8 * p )
 // Convert from Byte[] to Us4Byte32 in a portable way
 {
+	printk(KERN_DEBUG "rtw_security.c - ");
 	s32 i;
 	u32 res = 0;
 _func_enter_;		
@@ -387,6 +396,7 @@ _func_exit_;
 static void secmicputuint32( u8 * p, u32 val )
 // Convert from Us4Byte32 to Byte[] in a portable way
 {
+	printk(KERN_DEBUG "rtw_security.c - ");
 	long i;
 _func_enter_;			
 	for( i=0; i<4; i++ )
@@ -399,6 +409,7 @@ _func_exit_;
 
 static void secmicclear(struct mic_data *pmicdata)
 {
+	printk(KERN_DEBUG "rtw_security.c - ");
 // Reset the state to the empty message.
 _func_enter_;	
 	pmicdata->L = pmicdata->K0;
@@ -410,6 +421,7 @@ _func_exit_;
 
 void rtw_secmicsetkey(struct mic_data *pmicdata, u8 * key )
 {
+	printk(KERN_DEBUG "rtw_security.c - ");
 	// Set the key
 _func_enter_;		
 	pmicdata->K0 = secmicgetuint32( key );
@@ -421,6 +433,7 @@ _func_exit_;
 
 void rtw_secmicappendbyte(struct mic_data *pmicdata, u8 b )
 {
+	printk(KERN_DEBUG "rtw_security.c - ");
 _func_enter_;	
 	// Append the byte to our word-sized buffer
 	pmicdata->M |= ((unsigned long)b) << (8*pmicdata->nBytesInM);
@@ -446,6 +459,7 @@ _func_exit_;
 
 void rtw_secmicappend(struct mic_data *pmicdata, u8 * src, u32 nbytes )
 {
+	printk(KERN_DEBUG "rtw_security.c - ");
 _func_enter_;	
 	// This is simple
 	while( nbytes > 0 )
@@ -458,6 +472,7 @@ _func_exit_;
 
 void rtw_secgetmic(struct mic_data *pmicdata, u8 * dst )
 {
+	printk(KERN_DEBUG "rtw_security.c - ");
 _func_enter_;	
 	// Append the minimum padding
 	rtw_secmicappendbyte(pmicdata, 0x5a );
@@ -481,6 +496,7 @@ _func_exit_;
 
 void rtw_seccalctkipmic(u8 * key,u8 *header,u8 *data,u32 data_len,u8 *mic_code, u8 pri)
 {
+	printk(KERN_DEBUG "rtw_security.c - ");
 
 	struct mic_data	micdata;
 	u8 priority[4]={0x0,0x0,0x0,0x0};
@@ -631,6 +647,7 @@ static const unsigned short Sbox1[2][256]=       /* Sbox for hash (can be in ROM
 */
 static void phase1(u16 *p1k,const u8 *tk,const u8 *ta,u32 iv32)
 {
+	printk(KERN_DEBUG "rtw_security.c - ");
 	sint  i;
 _func_enter_;
 	/* Initialize the 80 bits of P1K[] from IV32 and TA[0..5]     */
@@ -680,6 +697,7 @@ _func_exit_;
 */
 static void phase2(u8 *rc4key,const u8 *tk,const u16 *p1k,u16 iv16)
 {
+	printk(KERN_DEBUG "rtw_security.c - ");
 	sint  i;
 	u16 PPK[6];                          /* temporary key for mixing    */
 _func_enter_;
@@ -727,6 +745,7 @@ _func_exit_;
 //The hlen isn't include the IV
 u32	rtw_tkip_encrypt(_adapter *padapter, u8 *pxmitframe)
 {																	// exclude ICV
+	printk(KERN_DEBUG "rtw_security.c - ");
 	u16	pnl;
 	u32	pnh;
 	u8	rc4key[16];
@@ -854,6 +873,7 @@ _func_exit_;
 //The hlen isn't include the IV
 u32 rtw_tkip_decrypt(_adapter *padapter, u8 *precvframe)
 {																	// exclude ICV
+	printk(KERN_DEBUG "rtw_security.c - ");
 	u16 pnl;
 	u32 pnh;
 	u8   rc4key[16];
@@ -1071,6 +1091,7 @@ static void aes128k128d(u8 *key, u8 *data, u8 *ciphertext);
 /****************************************/
 static void xor_128(u8 *a, u8 *b, u8 *out)
 {
+	printk(KERN_DEBUG "rtw_security.c - ");
     sint i;
 _func_enter_;	
     for (i=0;i<16; i++)
@@ -1083,6 +1104,7 @@ _func_exit_;
 
 static void xor_32(u8 *a, u8 *b, u8 *out)
 {
+	printk(KERN_DEBUG "rtw_security.c - ");
     sint i;
 _func_enter_;		
     for (i=0;i<4; i++)
@@ -1095,12 +1117,14 @@ _func_exit_;
 
 static u8 sbox(u8 a)
 {
+	printk(KERN_DEBUG "rtw_security.c - ");
     return sbox_table[(sint)a];
 }
 
 
 static void next_key(u8 *key, sint round)
 {
+	printk(KERN_DEBUG "rtw_security.c - ");
     u8 rcon;
     u8 sbox_key[4];
     u8 rcon_table[12] =
@@ -1128,6 +1152,7 @@ _func_exit_;
 
 static void byte_sub(u8 *in, u8 *out)
 {
+	printk(KERN_DEBUG "rtw_security.c - ");
     sint i;
 _func_enter_;			
     for (i=0; i< 16; i++)
@@ -1140,6 +1165,7 @@ _func_exit_;
 
 static void shift_row(u8 *in, u8 *out)
 {
+	printk(KERN_DEBUG "rtw_security.c - ");
 _func_enter_;	
     out[0] =  in[0];
     out[1] =  in[5];
@@ -1163,6 +1189,7 @@ _func_exit_;
 
 static void mix_column(u8 *in, u8 *out)
 {
+	printk(KERN_DEBUG "rtw_security.c - ");
     sint i;
     u8 add1b[4];
     u8 add1bf7[4];
@@ -1226,6 +1253,7 @@ _func_exit_;
 
 static void aes128k128d(u8 *key, u8 *data, u8 *ciphertext)
 {
+	printk(KERN_DEBUG "rtw_security.c - ");
     sint round;
     sint i;
     u8 intermediatea[16];
@@ -1279,6 +1307,7 @@ static void construct_mic_iv(
                         uint frtype// add for CONFIG_IEEE80211W, none 11w also can use
                         )
 {
+	printk(KERN_DEBUG "rtw_security.c - ");
     sint i;
 _func_enter_;	
     mic_iv[0] = 0x59;
@@ -1318,6 +1347,7 @@ static void construct_mic_header1(
                         uint frtype// add for CONFIG_IEEE80211W, none 11w also can use
                         )
 {
+	printk(KERN_DEBUG "rtw_security.c - ");
 _func_enter_;	
     mic_header1[0] = (u8)((header_length - 2) / 256);
     mic_header1[1] = (u8)((header_length - 2) % 256);
@@ -1358,6 +1388,7 @@ static void construct_mic_header2(
                 sint qc_exists
                 )
 {
+	printk(KERN_DEBUG "rtw_security.c - ");
     sint i;
 _func_enter_;	
     for (i = 0; i<16; i++) mic_header2[i]=0x00;
@@ -1415,6 +1446,7 @@ static void construct_ctr_preload(
                         uint frtype // add for CONFIG_IEEE80211W, none 11w also can use
                         )
 {
+	printk(KERN_DEBUG "rtw_security.c - ");
     sint i = 0;
 _func_enter_;		
     for (i=0; i<16; i++) ctr_preload[i] = 0x00;
@@ -1451,6 +1483,7 @@ _func_exit_;
 /************************************/
 static void bitwise_xor(u8 *ina, u8 *inb, u8 *out)
 {
+	printk(KERN_DEBUG "rtw_security.c - ");
     sint i;
 _func_enter_;		
     for (i=0; i<16; i++)
@@ -1464,6 +1497,7 @@ _func_exit_;
 static sint aes_cipher(u8 *key, uint	hdrlen,
 			u8 *pframe, uint plen)
 {
+	printk(KERN_DEBUG "rtw_security.c - ");
 //	/*static*/ unsigned char	message[MAX_MSG_SIZE];
 	uint	qc_exists, a4_exists, i, j, payload_remainder,
 		num_blocks, payload_index;
@@ -1664,6 +1698,7 @@ _func_exit_;
 
 u32	rtw_aes_encrypt(_adapter *padapter, u8 *pxmitframe)
 {	// exclude ICV
+	printk(KERN_DEBUG "rtw_security.c - ");
 
 
 	/*static*/ 
@@ -1785,6 +1820,7 @@ _func_exit_;
 static sint aes_decipher(u8 *key, uint	hdrlen,
 			u8 *pframe, uint plen)
 {
+	printk(KERN_DEBUG "rtw_security.c - ");
 	static u8	message[MAX_MSG_SIZE];
 	uint	qc_exists, a4_exists, i, j, payload_remainder,
 			num_blocks, payload_index;
@@ -2058,6 +2094,7 @@ _func_exit_;
 
 u32	rtw_aes_decrypt(_adapter *padapter, u8 *precvframe)
 {	// exclude ICV
+	printk(KERN_DEBUG "rtw_security.c - ");
 
 
 	/*static*/ 
@@ -2181,6 +2218,7 @@ exit:
 #ifdef CONFIG_IEEE80211W
 u32	rtw_BIP_verify(_adapter *padapter, u8 *precvframe)
 {
+	printk(KERN_DEBUG "rtw_security.c - ");
 	struct rx_pkt_attrib *pattrib = &((union recv_frame *)precvframe)->u.hdr.attrib;
 	u8 *pframe;
 	u8 *BIP_AAD, *p;
@@ -2283,6 +2321,7 @@ BIP_exit:
 /* compress 512-bits */
 static int sha256_compress(struct rtw_sha256_state *md, unsigned char *buf)
 {
+	printk(KERN_DEBUG "rtw_security.c - ");
 	u32 S[8], W[64], t0, t1;
 	u32 t;
 	int i;
@@ -2325,6 +2364,7 @@ static int sha256_compress(struct rtw_sha256_state *md, unsigned char *buf)
 /* Initialize the hash state */
 static void sha256_init(struct rtw_sha256_state *md)
 {
+	printk(KERN_DEBUG "rtw_security.c - ");
 	md->curlen = 0;
 	md->length = 0;
 	md->state[0] = 0x6A09E667UL;
@@ -2347,6 +2387,7 @@ static void sha256_init(struct rtw_sha256_state *md)
 static int sha256_process(struct rtw_sha256_state *md, unsigned char *in,
 			  unsigned long inlen)
 {
+	printk(KERN_DEBUG "rtw_security.c - ");
 	unsigned long n;
 #define block_size 64
 
@@ -2387,6 +2428,7 @@ static int sha256_process(struct rtw_sha256_state *md, unsigned char *in,
 */
 static int sha256_done(struct rtw_sha256_state *md, unsigned char *out)
 {
+	printk(KERN_DEBUG "rtw_security.c - ");
 	int i;
 
 	if (md->curlen >= sizeof(md->buf))
@@ -2437,6 +2479,7 @@ static int sha256_done(struct rtw_sha256_state *md, unsigned char *out)
 static int sha256_vector(size_t num_elem, u8 *addr[], size_t *len,
 		  u8 *mac)
 {
+	printk(KERN_DEBUG "rtw_security.c - ");
 	struct rtw_sha256_state ctx;
 	size_t i;
 
@@ -2451,6 +2494,7 @@ static int sha256_vector(size_t num_elem, u8 *addr[], size_t *len,
 
 static u8 os_strlen(const char *s)
 {
+	printk(KERN_DEBUG "rtw_security.c - ");
 	const char *p = s;
 	while (*p)
 		p++;
@@ -2459,6 +2503,7 @@ static u8 os_strlen(const char *s)
 
 static int os_memcmp(void *s1, void *s2, u8 n)
 {
+	printk(KERN_DEBUG "rtw_security.c - ");
 	unsigned char *p1 = s1, *p2 = s2;
 
 	if (n == 0)
@@ -2487,6 +2532,7 @@ static int os_memcmp(void *s1, void *s2, u8 n)
 static void hmac_sha256_vector(u8 *key, size_t key_len, size_t num_elem,
 			u8 *addr[], size_t *len, u8 *mac)
 {
+	printk(KERN_DEBUG "rtw_security.c - ");
 	unsigned char k_pad[64]; /* padding - key XORd with ipad/opad */
 	unsigned char tk[32];
 	u8 *_addr[6];
@@ -2563,6 +2609,7 @@ static void hmac_sha256_vector(u8 *key, size_t key_len, size_t num_elem,
 static void sha256_prf(u8 *key, size_t key_len, char *label,
 		u8 *data, size_t data_len, u8 *buf, size_t buf_len)
 {
+	printk(KERN_DEBUG "rtw_security.c - ");
 	u16 counter = 1;
 	size_t pos, plen;
 	u8 hash[SHA256_MAC_LEN];
@@ -2778,6 +2825,7 @@ const u8 rcons[] = {
 #ifndef PLATFORM_FREEBSD //Baron
 static void rijndaelKeySetupEnc(u32 rk[/*44*/], const u8 cipherKey[])
 {
+	printk(KERN_DEBUG "rtw_security.c - ");
 	int i;
 	u32 temp;
 
@@ -2799,6 +2847,7 @@ static void rijndaelKeySetupEnc(u32 rk[/*44*/], const u8 cipherKey[])
 
 static void rijndaelEncrypt(u32 rk[/*44*/], u8 pt[16], u8 ct[16])
 {
+	printk(KERN_DEBUG "rtw_security.c - ");
 	u32 s0, s1, s2, s3, t0, t1, t2, t3;
 	int Nr = 10;
 #ifndef FULL_UNROLL
@@ -2866,6 +2915,7 @@ d##3 = TE0(s##3) ^ TE1(s##0) ^ TE2(s##1) ^ TE3(s##2) ^ rk[4 * i + 3]
 
 static void * aes_encrypt_init(u8 *key, size_t len)
 {
+	printk(KERN_DEBUG "rtw_security.c - ");
 	u32 *rk;
 	if (len != 16)
 		return NULL;
@@ -2878,12 +2928,14 @@ static void * aes_encrypt_init(u8 *key, size_t len)
 
 static void aes_128_encrypt(void *ctx, u8 *plain, u8 *crypt)
 {
+	printk(KERN_DEBUG "rtw_security.c - ");
 	rijndaelEncrypt(ctx, plain, crypt);
 }
 
 
 static void gf_mulx(u8 *pad)
 {
+	printk(KERN_DEBUG "rtw_security.c - ");
 	int i, carry;
 
 	carry = pad[0] & 0x80;
@@ -2896,6 +2948,7 @@ static void gf_mulx(u8 *pad)
 
 static void aes_encrypt_deinit(void *ctx)
 {
+	printk(KERN_DEBUG "rtw_security.c - ");
 	_rtw_memset(ctx, 0, AES_PRIV_SIZE);
 	rtw_mfree(ctx, AES_PRIV_SIZE);
 }
@@ -2917,6 +2970,7 @@ static void aes_encrypt_deinit(void *ctx)
 static int omac1_aes_128_vector(u8 *key, size_t num_elem,
 							 u8 *addr[], size_t *len, u8 *mac)
 {
+	printk(KERN_DEBUG "rtw_security.c - ");
 	void *ctx;
 	u8 cbc[AES_BLOCK_SIZE], pad[AES_BLOCK_SIZE];
 	u8 *pos, *end;
@@ -2989,6 +3043,7 @@ static int omac1_aes_128_vector(u8 *key, size_t num_elem,
  */ //modify for CONFIG_IEEE80211W
 int omac1_aes_128(u8 *key, u8 *data, size_t data_len, u8 *mac)
 {
+	printk(KERN_DEBUG "rtw_security.c - ");
 	return omac1_aes_128_vector(key, 1, &data, &data_len, mac);
 }
 #endif //PLATFORM_FREEBSD Baron
@@ -2996,6 +3051,7 @@ int omac1_aes_128(u8 *key, u8 *data, size_t data_len, u8 *mac)
 #ifdef CONFIG_TDLS
 void wpa_tdls_generate_tpk(_adapter *padapter, PVOID sta)
 {
+	printk(KERN_DEBUG "rtw_security.c - ");
 	struct sta_info *psta = (struct sta_info *)sta;
 	struct mlme_priv	*pmlmepriv = &padapter->mlmepriv;
 	u8 *SNonce = psta->SNonce;
@@ -3058,6 +3114,7 @@ int wpa_tdls_ftie_mic(u8 *kck, u8 trans_seq,
 							u8 *lnkid, u8 *rsnie, u8 *timeoutie, u8 *ftie,
 							u8 *mic)
 {
+	printk(KERN_DEBUG "rtw_security.c - ");
 	u8 *buf, *pos;
 	struct wpa_tdls_ftie *_ftie;
 	struct wpa_tdls_lnkid *_lnkid;
@@ -3116,6 +3173,7 @@ int wpa_tdls_ftie_mic(u8 *kck, u8 trans_seq,
 int wpa_tdls_teardown_ftie_mic(u8 *kck, u8 *lnkid, u16 reason, 
 	u8 dialog_token, u8 trans_seq, u8 *ftie, u8 *mic)
 {
+	printk(KERN_DEBUG "rtw_security.c - ");
 	u8 *buf, *pos;
 	struct wpa_tdls_ftie *_ftie;
 	int ret;
@@ -3153,6 +3211,7 @@ int wpa_tdls_teardown_ftie_mic(u8 *kck, u8 *lnkid, u16 reason,
 int tdls_verify_mic(u8 *kck, u8 trans_seq,
 							u8 *lnkid, u8 *rsnie, u8 *timeoutie, u8 *ftie)
 {
+	printk(KERN_DEBUG "rtw_security.c - ");
 	u8 *buf, *pos;
 	int len;
 	u8 mic[16];
@@ -3215,6 +3274,7 @@ int tdls_verify_mic(u8 *kck, u8 trans_seq,
 
 void rtw_use_tkipkey_handler(RTW_TIMER_HDL_ARGS)
 {
+	printk(KERN_DEBUG "rtw_security.c - ");
         _adapter *padapter = (_adapter *)FunctionContext;
 
 _func_enter_;			
@@ -3242,6 +3302,7 @@ _func_exit_;
 /* Restore HW wep key setting according to key_mask */
 void rtw_sec_restore_wep_key(_adapter *adapter)
 {
+	printk(KERN_DEBUG "rtw_security.c - ");
 	struct security_priv* securitypriv=&(adapter->securitypriv);
 	sint keyid;
 
@@ -3259,6 +3320,7 @@ void rtw_sec_restore_wep_key(_adapter *adapter)
 
 u8 rtw_handle_tkip_countermeasure(_adapter* adapter, const char *caller)
 {
+	printk(KERN_DEBUG "rtw_security.c - ");
 	struct security_priv* securitypriv=&(adapter->securitypriv);
 	u8 status = _SUCCESS;
 

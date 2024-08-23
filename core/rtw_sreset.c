@@ -24,6 +24,7 @@
 
 void sreset_init_value(_adapter *padapter)
 {
+	printk(KERN_DEBUG "rtw_sreset.c - ");
 #if defined(DBG_CONFIG_ERROR_DETECT)
 	HAL_DATA_TYPE	*pHalData = GET_HAL_DATA(padapter);
 	struct sreset_priv *psrtpriv = &pHalData->srestpriv;
@@ -37,6 +38,7 @@ void sreset_init_value(_adapter *padapter)
 }
 void sreset_reset_value(_adapter *padapter)
 {
+	printk(KERN_DEBUG "rtw_sreset.c - ");
 #if defined(DBG_CONFIG_ERROR_DETECT)
 	HAL_DATA_TYPE	*pHalData = GET_HAL_DATA(padapter);
 	struct sreset_priv *psrtpriv = &pHalData->srestpriv;
@@ -49,6 +51,7 @@ void sreset_reset_value(_adapter *padapter)
 
 u8 sreset_get_wifi_status(_adapter *padapter)
 {
+	printk(KERN_DEBUG "rtw_sreset.c - ");
 #if defined(DBG_CONFIG_ERROR_DETECT)
 	HAL_DATA_TYPE	*pHalData = GET_HAL_DATA(padapter);
 	struct sreset_priv *psrtpriv = &pHalData->srestpriv;
@@ -87,6 +90,7 @@ u8 sreset_get_wifi_status(_adapter *padapter)
 
 void sreset_set_wifi_error_status(_adapter *padapter, u32 status)
 {
+	printk(KERN_DEBUG "rtw_sreset.c - ");
 #if defined(DBG_CONFIG_ERROR_DETECT)
 	HAL_DATA_TYPE	*pHalData = GET_HAL_DATA(padapter);
 	pHalData->srestpriv.Wifi_Error_Status = status;
@@ -95,6 +99,7 @@ void sreset_set_wifi_error_status(_adapter *padapter, u32 status)
 
 void sreset_set_trigger_point(_adapter *padapter, s32 tgp)
 {
+	printk(KERN_DEBUG "rtw_sreset.c - ");
 #if defined(DBG_CONFIG_ERROR_DETECT)
 	HAL_DATA_TYPE	*pHalData = GET_HAL_DATA(padapter);
 	pHalData->srestpriv.dbg_trigger_point = tgp;
@@ -103,6 +108,7 @@ void sreset_set_trigger_point(_adapter *padapter, s32 tgp)
 
 bool sreset_inprogress(_adapter *padapter)
 {
+	printk(KERN_DEBUG "rtw_sreset.c - ");
 #if defined(DBG_CONFIG_ERROR_RESET)
 	HAL_DATA_TYPE	*pHalData = GET_HAL_DATA(padapter);
 	return pHalData->srestpriv.silent_reset_inprogress;
@@ -113,6 +119,7 @@ bool sreset_inprogress(_adapter *padapter)
 
 void sreset_restore_security_station(_adapter *padapter)
 {
+	printk(KERN_DEBUG "rtw_sreset.c - ");
 	u8 EntryId = 0;
 	struct mlme_priv *mlmepriv = &padapter->mlmepriv;
 	struct sta_priv * pstapriv = &padapter->stapriv;
@@ -171,6 +178,7 @@ void sreset_restore_security_station(_adapter *padapter)
 
 void sreset_restore_network_station(_adapter *padapter)
 {
+	printk(KERN_DEBUG "rtw_sreset.c - ");
 	struct mlme_priv *mlmepriv = &padapter->mlmepriv;
 	struct mlme_ext_priv	*pmlmeext = &padapter->mlmeextpriv;
 	struct mlme_ext_info	*pmlmeinfo = &(pmlmeext->mlmext_info);
@@ -244,6 +252,7 @@ void sreset_restore_network_station(_adapter *padapter)
 
 void sreset_restore_network_status(_adapter *padapter)
 {
+	printk(KERN_DEBUG "rtw_sreset.c - ");
 	struct mlme_priv *mlmepriv = &padapter->mlmepriv;
 	struct mlme_ext_priv	*pmlmeext = &padapter->mlmeextpriv;
 	struct mlme_ext_info	*pmlmeinfo = &(pmlmeext->mlmext_info);
@@ -263,6 +272,7 @@ void sreset_restore_network_status(_adapter *padapter)
 
 void sreset_stop_adapter(_adapter *padapter)
 {
+	printk(KERN_DEBUG "rtw_sreset.c - ");
 	struct mlme_priv	*pmlmepriv = &(padapter->mlmepriv);
 	struct xmit_priv	*pxmitpriv = &padapter->xmitpriv;
 
@@ -293,6 +303,7 @@ void sreset_stop_adapter(_adapter *padapter)
 
 void sreset_start_adapter(_adapter *padapter)
 {
+	printk(KERN_DEBUG "rtw_sreset.c - ");
 	struct mlme_priv	*pmlmepriv = &(padapter->mlmepriv);
 	struct xmit_priv	*pxmitpriv = &padapter->xmitpriv;
 
@@ -318,6 +329,7 @@ void sreset_start_adapter(_adapter *padapter)
 
 void sreset_reset(_adapter *padapter)
 {
+	printk(KERN_DEBUG "rtw_sreset.c - ");
 #ifdef DBG_CONFIG_ERROR_RESET
 	HAL_DATA_TYPE	*pHalData = GET_HAL_DATA(padapter);
 	struct sreset_priv *psrtpriv = &pHalData->srestpriv;

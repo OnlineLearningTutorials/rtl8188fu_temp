@@ -104,6 +104,7 @@ const char *odm_dbg_level_str[] = {
 
 void rtw_odm_dbg_comp_msg(void *sel, _adapter *adapter)
 {
+	printk(KERN_DEBUG "rtw_odm.c - ");
 	HAL_DATA_TYPE *pHalData = GET_HAL_DATA(adapter);
 	DM_ODM_T *odm = &pHalData->odmpriv;
 	int cnt = 0;
@@ -122,11 +123,13 @@ void rtw_odm_dbg_comp_msg(void *sel, _adapter *adapter)
 
 inline void rtw_odm_dbg_comp_set(_adapter *adapter, u64 comps)
 {
+	printk(KERN_DEBUG "rtw_odm.c - ");
 	rtw_hal_set_odm_var(adapter, HAL_ODM_DBG_FLAG, &comps, _FALSE);
 }
 
 void rtw_odm_dbg_level_msg(void *sel, _adapter *adapter)
 {
+	printk(KERN_DEBUG "rtw_odm.c - ");
 	HAL_DATA_TYPE *pHalData = GET_HAL_DATA(adapter);
 	DM_ODM_T *odm = &pHalData->odmpriv;
 	int cnt = 0;
@@ -143,11 +146,13 @@ void rtw_odm_dbg_level_msg(void *sel, _adapter *adapter)
 
 inline void rtw_odm_dbg_level_set(_adapter *adapter, u32 level)
 {
+	printk(KERN_DEBUG "rtw_odm.c - ");
 	rtw_hal_set_odm_var(adapter, HAL_ODM_DBG_LEVEL, &level, _FALSE);
 }
 
 void rtw_odm_ability_msg(void *sel, _adapter *adapter)
 {
+	printk(KERN_DEBUG "rtw_odm.c - ");
 	HAL_DATA_TYPE *pHalData = GET_HAL_DATA(adapter);
 	DM_ODM_T *odm = &pHalData->odmpriv;
 	int cnt = 0;
@@ -165,12 +170,14 @@ void rtw_odm_ability_msg(void *sel, _adapter *adapter)
 
 inline void rtw_odm_ability_set(_adapter *adapter, u32 ability)
 {
+	printk(KERN_DEBUG "rtw_odm.c - ");
 	rtw_phydm_ability_set(adapter, ability);
 }
 
 /* set ODM_CMNINFO_IC_TYPE based on chip_type */
 void rtw_odm_init_ic_type(_adapter *adapter)
 {
+	printk(KERN_DEBUG "rtw_odm.c - ");
 	HAL_DATA_TYPE *hal_data = GET_HAL_DATA(adapter);
 	DM_ODM_T *odm = &hal_data->odmpriv;
 	u4Byte ic_type = chip_type_to_odm_ic_type(rtw_get_chip_type(adapter));
@@ -182,6 +189,7 @@ void rtw_odm_init_ic_type(_adapter *adapter)
 
 void rtw_odm_adaptivity_ver_msg(void *sel, _adapter *adapter)
 {
+	printk(KERN_DEBUG "rtw_odm.c - ");
 	DBG_871X_SEL_NL(sel, "ADAPTIVITY_VERSION "ADAPTIVITY_VERSION"\n");
 }
 
@@ -190,6 +198,7 @@ void rtw_odm_adaptivity_ver_msg(void *sel, _adapter *adapter)
 
 void rtw_odm_adaptivity_en_msg(void *sel, _adapter *adapter)
 {
+	printk(KERN_DEBUG "rtw_odm.c - ");
 	struct registry_priv *regsty = &adapter->registrypriv;
 	struct mlme_priv *mlme = &adapter->mlmepriv;
 	HAL_DATA_TYPE *hal_data = GET_HAL_DATA(adapter);
@@ -211,6 +220,7 @@ void rtw_odm_adaptivity_en_msg(void *sel, _adapter *adapter)
 
 void rtw_odm_adaptivity_mode_msg(void *sel, _adapter *adapter)
 {
+	printk(KERN_DEBUG "rtw_odm.c - ");
 	struct registry_priv *regsty = &adapter->registrypriv;
 
 	DBG_871X_SEL_NL(sel, "RTW_ADAPTIVITY_MODE_");
@@ -229,6 +239,7 @@ void rtw_odm_adaptivity_mode_msg(void *sel, _adapter *adapter)
 
 void rtw_odm_adaptivity_dml_msg(void *sel, _adapter *adapter)
 {
+	printk(KERN_DEBUG "rtw_odm.c - ");
 	struct registry_priv *regsty = &adapter->registrypriv;
 
 	DBG_871X_SEL_NL(sel, "RTW_ADAPTIVITY_DML_");
@@ -244,6 +255,7 @@ void rtw_odm_adaptivity_dml_msg(void *sel, _adapter *adapter)
 
 void rtw_odm_adaptivity_dc_backoff_msg(void *sel, _adapter *adapter)
 {
+	printk(KERN_DEBUG "rtw_odm.c - ");
 	struct registry_priv *regsty = &adapter->registrypriv;
 
 	DBG_871X_SEL_NL(sel, "RTW_ADAPTIVITY_DC_BACKOFF:%u\n", regsty->adaptivity_dc_backoff);
@@ -251,6 +263,7 @@ void rtw_odm_adaptivity_dc_backoff_msg(void *sel, _adapter *adapter)
 
 void rtw_odm_adaptivity_config_msg(void *sel, _adapter *adapter)
 {
+	printk(KERN_DEBUG "rtw_odm.c - ");
 	rtw_odm_adaptivity_ver_msg(sel, adapter);
 	rtw_odm_adaptivity_en_msg(sel, adapter);
 	rtw_odm_adaptivity_mode_msg(sel, adapter);
@@ -260,6 +273,7 @@ void rtw_odm_adaptivity_config_msg(void *sel, _adapter *adapter)
 
 bool rtw_odm_adaptivity_needed(_adapter *adapter)
 {
+	printk(KERN_DEBUG "rtw_odm.c - ");
 	struct registry_priv *regsty = &adapter->registrypriv;
 	struct mlme_priv *mlme = &adapter->mlmepriv;
 	bool ret = _FALSE;
@@ -272,6 +286,7 @@ bool rtw_odm_adaptivity_needed(_adapter *adapter)
 
 void rtw_odm_adaptivity_parm_msg(void *sel, _adapter *adapter)
 {
+	printk(KERN_DEBUG "rtw_odm.c - ");
 	HAL_DATA_TYPE *pHalData = GET_HAL_DATA(adapter);
 	DM_ODM_T *odm = &pHalData->odmpriv;
 
@@ -296,6 +311,7 @@ void rtw_odm_adaptivity_parm_msg(void *sel, _adapter *adapter)
 
 void rtw_odm_adaptivity_parm_set(_adapter *adapter, s8 TH_L2H_ini, s8 TH_EDCCA_HL_diff, s8 TH_L2H_ini_mode2, s8 TH_EDCCA_HL_diff_mode2, u8 EDCCA_enable)
 {
+	printk(KERN_DEBUG "rtw_odm.c - ");
 	HAL_DATA_TYPE *pHalData = GET_HAL_DATA(adapter);
 	DM_ODM_T *odm = &pHalData->odmpriv;
 
@@ -308,6 +324,7 @@ void rtw_odm_adaptivity_parm_set(_adapter *adapter, s8 TH_L2H_ini, s8 TH_EDCCA_H
 
 void rtw_odm_get_perpkt_rssi(void *sel, _adapter *adapter)
 {
+	printk(KERN_DEBUG "rtw_odm.c - ");
 	HAL_DATA_TYPE *hal_data = GET_HAL_DATA(adapter);
 	DM_ODM_T *odm = &(hal_data->odmpriv);	
 	
@@ -318,6 +335,7 @@ void rtw_odm_get_perpkt_rssi(void *sel, _adapter *adapter)
 
 void rtw_odm_acquirespinlock(_adapter *adapter,	RT_SPINLOCK_TYPE type)
 {
+	printk(KERN_DEBUG "rtw_odm.c - ");
 	PHAL_DATA_TYPE	pHalData = GET_HAL_DATA(adapter);
 	_irqL irqL;
 
@@ -332,6 +350,7 @@ void rtw_odm_acquirespinlock(_adapter *adapter,	RT_SPINLOCK_TYPE type)
 
 void rtw_odm_releasespinlock(_adapter *adapter,	RT_SPINLOCK_TYPE type)
 {
+	printk(KERN_DEBUG "rtw_odm.c - ");
 	PHAL_DATA_TYPE	pHalData = GET_HAL_DATA(adapter);
 	_irqL irqL;
 
@@ -347,6 +366,7 @@ void rtw_odm_releasespinlock(_adapter *adapter,	RT_SPINLOCK_TYPE type)
 #ifdef CONFIG_DFS_MASTER
 VOID rtw_odm_radar_detect_reset(_adapter *adapter)
 {
+	printk(KERN_DEBUG "rtw_odm.c - ");
 	HAL_DATA_TYPE *hal_data = GET_HAL_DATA(adapter);
 	PDM_ODM_T pDM_Odm = &(hal_data->odmpriv);
 
@@ -364,6 +384,7 @@ VOID rtw_odm_radar_detect_reset(_adapter *adapter)
 
 VOID rtw_odm_radar_detect_disable(_adapter *adapter)
 {
+	printk(KERN_DEBUG "rtw_odm.c - ");
 	HAL_DATA_TYPE *hal_data = GET_HAL_DATA(adapter);
 	PDM_ODM_T pDM_Odm = &(hal_data->odmpriv);
 
@@ -378,6 +399,7 @@ VOID rtw_odm_radar_detect_disable(_adapter *adapter)
 /* called after ch, bw is set, chance to adjust parameter for different ch conditions */
 VOID rtw_odm_radar_detect_enable(_adapter *adapter)
 {
+	printk(KERN_DEBUG "rtw_odm.c - ");
 	HAL_DATA_TYPE *hal_data = GET_HAL_DATA(adapter);
 	PDM_ODM_T pDM_Odm = &(hal_data->odmpriv);
 
@@ -404,6 +426,7 @@ VOID rtw_odm_radar_detect_enable(_adapter *adapter)
 
 BOOLEAN rtw_odm_radar_detect(_adapter *adapter)
 {
+	printk(KERN_DEBUG "rtw_odm.c - ");
 	HAL_DATA_TYPE *hal_data = GET_HAL_DATA(adapter);
 	PDM_ODM_T pDM_Odm = &(hal_data->odmpriv);
 	BOOLEAN enable_DFS = FALSE;

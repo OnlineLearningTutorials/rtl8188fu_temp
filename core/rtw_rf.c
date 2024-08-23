@@ -55,6 +55,7 @@ struct center_chs_ent center_chs_5g_by_bw[] = {
 
 inline u8 center_chs_5g_num(u8 bw)
 {
+	printk(KERN_DEBUG "rtw_rf.c - ");
 	if (bw >= CHANNEL_WIDTH_160)
 		return 0;
 	
@@ -63,6 +64,7 @@ inline u8 center_chs_5g_num(u8 bw)
 
 inline u8 center_chs_5g(u8 bw, u8 id)
 {
+	printk(KERN_DEBUG "rtw_rf.c - ");
 	if (bw >= CHANNEL_WIDTH_160)
 		return 0;
 
@@ -74,6 +76,7 @@ inline u8 center_chs_5g(u8 bw, u8 id)
 
 int rtw_ch2freq(int chan)
 {
+	printk(KERN_DEBUG "rtw_rf.c - ");
 	/* see 802.11 17.3.8.3.2 and Annex J
 	* there are overlapping channel numbers in 5GHz and 2GHz bands */
 
@@ -96,6 +99,7 @@ int rtw_ch2freq(int chan)
 
 int rtw_freq2ch(int freq)
 {
+	printk(KERN_DEBUG "rtw_rf.c - ");
 	/* see 802.11 17.3.8.3.2 and Annex J */
 	if (freq == 2484)
 		return 14;
@@ -113,6 +117,7 @@ int rtw_freq2ch(int freq)
 
 bool rtw_chbw_to_freq_range(u8 ch, u8 bw, u8 offset, u32 *hi, u32 *lo)
 {
+	printk(KERN_DEBUG "rtw_rf.c - ");
 	u8 c_ch;
 	u32 freq;
 	u32 hi_ret = 0, lo_ret = 0;
@@ -274,6 +279,7 @@ static const u16 RTL8192EEBT_HMC_M2_country_chplan_map_sz = sizeof(RTL8192EEBT_H
  */
 static const struct country_chplan *rtw_def_module_get_chplan_from_country(const char *country_code)
 {
+	printk(KERN_DEBUG "rtw_rf.c - ");
 	const struct country_chplan *ent = NULL;
 	const struct country_chplan *hal_map = NULL;
 	u16 hal_map_sz = 0;
@@ -563,6 +569,7 @@ u16 const country_chplan_map_sz = sizeof(country_chplan_map)/sizeof(struct count
 */
 const struct country_chplan *rtw_get_chplan_from_country(const char *country_code)
 {
+	printk(KERN_DEBUG "rtw_rf.c - ");
 	const struct country_chplan *ent = NULL;
 	const struct country_chplan *map = NULL;
 	u16 map_sz = 0;
@@ -604,6 +611,7 @@ exit:
 
 int rtw_ch_to_bb_gain_sel(int ch)
 {
+	printk(KERN_DEBUG "rtw_rf.c - ");
 	int sel = -1;
 
 	if (ch >= 1 && ch <= 14)
@@ -626,6 +634,7 @@ int rtw_ch_to_bb_gain_sel(int ch)
 
 s8 rtw_rf_get_kfree_tx_gain_offset(_adapter *padapter, u8 path, u8 ch)
 {
+	printk(KERN_DEBUG "rtw_rf.c - ");
 	s8 kfree_offset = 0;
 
 #ifdef CONFIG_RF_POWER_TRIM
@@ -651,6 +660,7 @@ exit:
 
 void rtw_rf_set_tx_gain_offset(_adapter *adapter, u8 path, s8 offset)
 {
+	printk(KERN_DEBUG "rtw_rf.c - ");
 	u8 write_value;
 
 	DBG_871X("kfree gain_offset 0x55:0x%x ", rtw_hal_read_rfreg(adapter, path, 0x55, 0xffffffff));
@@ -696,6 +706,7 @@ void rtw_rf_set_tx_gain_offset(_adapter *adapter, u8 path, s8 offset)
 
 void rtw_rf_apply_tx_gain_offset(_adapter *adapter, u8 ch)
 {
+	printk(KERN_DEBUG "rtw_rf.c - ");
 	HAL_DATA_TYPE *hal_data = GET_HAL_DATA(adapter);
 	s8 kfree_offset = 0;
 	s8 tx_pwr_track_offset = 0; /* TODO: 8814A should consider tx pwr track when setting tx gain offset */
@@ -711,11 +722,13 @@ void rtw_rf_apply_tx_gain_offset(_adapter *adapter, u8 ch)
 
 bool rtw_is_dfs_range(u32 hi, u32 lo)
 {
+	printk(KERN_DEBUG "rtw_rf.c - ");
 	return rtw_is_range_overlap(hi, lo, 5720 + 10, 5260 - 10)?_TRUE:_FALSE;
 }
 
 bool rtw_is_dfs_ch(u8 ch, u8 bw, u8 offset)
 {
+	printk(KERN_DEBUG "rtw_rf.c - ");
 	u32 hi, lo;
 
 	if (rtw_chbw_to_freq_range(ch, bw, offset, &hi, &lo) == _FALSE)
@@ -726,11 +739,13 @@ bool rtw_is_dfs_ch(u8 ch, u8 bw, u8 offset)
 
 bool rtw_is_long_cac_range(u32 hi, u32 lo)
 {
+	printk(KERN_DEBUG "rtw_rf.c - ");
 	return rtw_is_range_overlap(hi, lo, 5660 + 10, 5600 - 10)?_TRUE:_FALSE;
 }
 
 bool rtw_is_long_cac_ch(u8 ch, u8 bw, u8 offset)
 {
+	printk(KERN_DEBUG "rtw_rf.c - ");
 	u32 hi, lo;
 
 	if (rtw_chbw_to_freq_range(ch, bw, offset, &hi, &lo) == _FALSE)

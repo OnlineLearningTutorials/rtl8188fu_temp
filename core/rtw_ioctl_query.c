@@ -33,6 +33,7 @@ query_802_11_capability(
 	u32 *		pulOutLen
 )
 {
+	printk(KERN_DEBUG "rtw_ioctl_query.c - ");
 	static NDIS_802_11_AUTHENTICATION_ENCRYPTION szAuthEnc[] = 
 	{
 		{Ndis802_11AuthModeOpen, Ndis802_11EncryptionDisabled}, 
@@ -79,6 +80,7 @@ query_802_11_capability(
 
 u8 query_802_11_association_information(	_adapter *padapter,PNDIS_802_11_ASSOCIATION_INFORMATION	pAssocInfo)
 {
+	printk(KERN_DEBUG "rtw_ioctl_query.c - ");
 	struct wlan_network *tgt_network;
 	struct	mlme_priv	*pmlmepriv = &(padapter->mlmepriv);
 	struct	security_priv  *psecuritypriv=&(padapter->securitypriv);

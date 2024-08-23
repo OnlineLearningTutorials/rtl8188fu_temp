@@ -46,6 +46,7 @@ const u16 VHT_MCS_DATA_RATE[3][2][30] =
 
 u8	rtw_get_vht_highest_rate(u8 *pvht_mcs_map)
 {
+	printk(KERN_DEBUG "rtw_vht.c - ");
 	u8	i, j;
 	u8	bit_map;
 	u8	vht_mcs_rate = 0;
@@ -70,6 +71,7 @@ u8	rtw_get_vht_highest_rate(u8 *pvht_mcs_map)
 
 u8	rtw_vht_mcsmap_to_nss(u8 *pvht_mcs_map)
 {
+	printk(KERN_DEBUG "rtw_vht.c - ");
 	u8	i, j;
 	u8	bit_map;
 	u8	nss = 0;
@@ -94,6 +96,7 @@ u8	rtw_vht_mcsmap_to_nss(u8 *pvht_mcs_map)
 
 void	rtw_vht_nss_to_mcsmap(u8 nss, u8 *target_mcs_map, u8 *cur_mcs_map)
 {
+	printk(KERN_DEBUG "rtw_vht.c - ");
 	u8	i, j;
 	u8	cur_rate, target_rate;
 	
@@ -119,6 +122,7 @@ void	rtw_vht_nss_to_mcsmap(u8 nss, u8 *target_mcs_map, u8 *cur_mcs_map)
 
 u16	rtw_vht_mcs_to_data_rate(u8 bw, u8 short_GI, u8 vht_mcs_rate)
 {
+	printk(KERN_DEBUG "rtw_vht.c - ");
 	if(vht_mcs_rate > MGN_VHT3SS_MCS9)
 		vht_mcs_rate = MGN_VHT3SS_MCS9;
 	/* DBG_871X("bw=%d, short_GI=%d, ((vht_mcs_rate - MGN_VHT1SS_MCS0)&0x3f)=%d\n", bw, short_GI, ((vht_mcs_rate - MGN_VHT1SS_MCS0)&0x3f)); */
@@ -127,6 +131,7 @@ u16	rtw_vht_mcs_to_data_rate(u8 bw, u8 short_GI, u8 vht_mcs_rate)
 
 void	rtw_vht_use_default_setting(_adapter *padapter)
 {
+	printk(KERN_DEBUG "rtw_vht.c - ");
 	struct mlme_priv 		*pmlmepriv = &padapter->mlmepriv;
 	struct vht_priv		*pvhtpriv = &pmlmepriv->vhtpriv;
 	struct registry_priv	*pregistrypriv = &padapter->registrypriv;
@@ -247,6 +252,7 @@ void	rtw_vht_use_default_setting(_adapter *padapter)
 
 u64	rtw_vht_rate_to_bitmap(u8 *pVHTRate)
 {
+	printk(KERN_DEBUG "rtw_vht.c - ");
 
 	u8	i,j , tmpRate;
 	u64	RateBitmap = 0;
@@ -279,6 +285,7 @@ u64	rtw_vht_rate_to_bitmap(u8 *pVHTRate)
 
 void	update_sta_vht_info_apmode(_adapter *padapter, PVOID sta)
 {
+	printk(KERN_DEBUG "rtw_vht.c - ");
 	struct sta_info	*psta = (struct sta_info *)sta;
 	struct mlme_priv	*pmlmepriv = &(padapter->mlmepriv);
 	struct mlme_ext_priv	*pmlmeext = &padapter->mlmeextpriv;
@@ -365,6 +372,7 @@ void	update_sta_vht_info_apmode(_adapter *padapter, PVOID sta)
 
 void	update_hw_vht_param(_adapter *padapter)
 {
+	printk(KERN_DEBUG "rtw_vht.c - ");
 	struct mlme_priv		*pmlmepriv = &padapter->mlmepriv;
 	struct vht_priv		*pvhtpriv = &pmlmepriv->vhtpriv;
 	struct mlme_ext_priv	*pmlmeext = &padapter->mlmeextpriv;
@@ -379,6 +387,7 @@ void	update_hw_vht_param(_adapter *padapter)
 
 void VHT_caps_handler(_adapter *padapter, PNDIS_802_11_VARIABLE_IEs pIE)
 {
+	printk(KERN_DEBUG "rtw_vht.c - ");
 	struct mlme_priv 		*pmlmepriv = &padapter->mlmepriv;
 	struct vht_priv		*pvhtpriv = &pmlmepriv->vhtpriv;
 	struct mlme_ext_priv	*pmlmeext = &padapter->mlmeextpriv;
@@ -460,6 +469,7 @@ void VHT_caps_handler(_adapter *padapter, PNDIS_802_11_VARIABLE_IEs pIE)
 
 void VHT_operation_handler(_adapter *padapter, PNDIS_802_11_VARIABLE_IEs pIE)
 {
+	printk(KERN_DEBUG "rtw_vht.c - ");
 	struct mlme_priv 		*pmlmepriv = &padapter->mlmepriv;
 	struct vht_priv		*pvhtpriv = &pmlmepriv->vhtpriv;
 
@@ -470,6 +480,7 @@ void VHT_operation_handler(_adapter *padapter, PNDIS_802_11_VARIABLE_IEs pIE)
 
 void rtw_process_vht_op_mode_notify(_adapter *padapter, u8 *pframe, PVOID sta)
 {
+	printk(KERN_DEBUG "rtw_vht.c - ");
 	struct sta_info		*psta = (struct sta_info *)sta;
 	struct mlme_priv 		*pmlmepriv = &padapter->mlmepriv;
 	struct vht_priv		*pvhtpriv = &pmlmepriv->vhtpriv;
@@ -512,6 +523,7 @@ void rtw_process_vht_op_mode_notify(_adapter *padapter, u8 *pframe, PVOID sta)
 
 u32	rtw_build_vht_operation_ie(_adapter *padapter, u8 *pbuf, u8 channel)
 {
+	printk(KERN_DEBUG "rtw_vht.c - ");
 	struct registry_priv	*pregistrypriv = &padapter->registrypriv;
 	struct mlme_priv		*pmlmepriv = &padapter->mlmepriv;
 	struct vht_priv		*pvhtpriv = &pmlmepriv->vhtpriv;
@@ -578,6 +590,7 @@ u32	rtw_build_vht_operation_ie(_adapter *padapter, u8 *pbuf, u8 channel)
 
 u32	rtw_build_vht_op_mode_notify_ie(_adapter *padapter, u8 *pbuf, u8 bw)
 {
+	printk(KERN_DEBUG "rtw_vht.c - ");
 	//struct registry_priv *pregistrypriv = &padapter->registrypriv;
 	struct mlme_priv	*pmlmepriv = &padapter->mlmepriv;
 	struct vht_priv	*pvhtpriv = &pmlmepriv->vhtpriv;
@@ -608,6 +621,7 @@ u32	rtw_build_vht_op_mode_notify_ie(_adapter *padapter, u8 *pbuf, u8 bw)
 
 u32	rtw_build_vht_cap_ie(_adapter *padapter, u8 *pbuf)
 {
+	printk(KERN_DEBUG "rtw_vht.c - ");
 	u8	bw, rf_type, rf_num, rx_stbc_nss = 0;
 	u16	HighestRate;
 	u8	*pcap, *pcap_mcs;
@@ -732,6 +746,7 @@ u32	rtw_build_vht_cap_ie(_adapter *padapter, u8 *pbuf)
 
 u32 rtw_restructure_vht_ie(_adapter *padapter, u8 *in_ie, u8 *out_ie, uint in_len, uint *pout_len)
 {
+	printk(KERN_DEBUG "rtw_vht.c - ");
 	u32	ielen=0, out_len=0;
 	u8	cap_len=0, notify_len=0, notify_bw=0, operation_bw=0, supported_chnl_width=0;
 	u8	*p, *pframe;
@@ -793,6 +808,7 @@ u32 rtw_restructure_vht_ie(_adapter *padapter, u8 *in_ie, u8 *out_ie, uint in_le
 
 void VHTOnAssocRsp(_adapter *padapter)
 {
+	printk(KERN_DEBUG "rtw_vht.c - ");
 	struct mlme_priv		*pmlmepriv = &padapter->mlmepriv;
 	struct vht_priv		*pvhtpriv = &pmlmepriv->vhtpriv;
 	struct mlme_ext_priv	*pmlmeext = &padapter->mlmeextpriv;

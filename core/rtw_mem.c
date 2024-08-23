@@ -12,24 +12,28 @@ struct u8* rtk_buf_mem[NR_RECVBUFF];
 
 struct u8	* rtw_get_buf_premem(int index)
 {
+	printk(KERN_DEBUG "rtw_mem.c - ");
 	printk("%s, rtk_buf_mem index : %d\n", __func__, index);
 	return rtk_buf_mem[index];
 }
 
 u16 rtw_rtkm_get_buff_size(void)
 {
+	printk(KERN_DEBUG "rtw_mem.c - ");
 	return MAX_RTKM_RECVBUF_SZ;
 }
 EXPORT_SYMBOL(rtw_rtkm_get_buff_size);
 
 u8 rtw_rtkm_get_nr_recv_skb(void)
 {
+	printk(KERN_DEBUG "rtw_mem.c - ");
 	return MAX_RTKM_NR_PREALLOC_RECV_SKB;
 }
 EXPORT_SYMBOL(rtw_rtkm_get_nr_recv_skb);
 
 struct sk_buff *rtw_alloc_skb_premem(u16 in_size)
 {
+	printk(KERN_DEBUG "rtw_mem.c - ");
 	struct sk_buff *skb = NULL;
 
 	if (in_size > MAX_RTKM_RECVBUF_SZ) {
@@ -48,6 +52,7 @@ EXPORT_SYMBOL(rtw_alloc_skb_premem);
 
 int rtw_free_skb_premem(struct sk_buff *pskb)
 {
+	printk(KERN_DEBUG "rtw_mem.c - ");
 	if(!pskb)
 		return -1;
 
@@ -64,6 +69,7 @@ EXPORT_SYMBOL(rtw_free_skb_premem);
 
 static int __init rtw_mem_init(void)
 {
+	printk(KERN_DEBUG "rtw_mem.c - ");
 	int i;
 	SIZE_PTR tmpaddr=0;
 	SIZE_PTR alignment=0;
@@ -109,6 +115,7 @@ static int __init rtw_mem_init(void)
 
 static void __exit rtw_mem_exit(void)
 {
+	printk(KERN_DEBUG "rtw_mem.c - ");
 	if (skb_queue_len(&rtk_skb_mem_q)) {
 		printk("%s, rtk_skb_mem_q len : %d\n", __func__, skb_queue_len(&rtk_skb_mem_q));
 	}

@@ -35,6 +35,7 @@
 
 int rtfloor(float x)
 {
+	printk(KERN_DEBUG "rtw_mp.c - ");
 int i = x - 2;
 while
 (++i <= x - 1);
@@ -46,6 +47,7 @@ return i;
 
 u32 read_macreg(_adapter *padapter, u32 addr, u32 sz)
 {
+	printk(KERN_DEBUG "rtw_mp.c - ");
 	u32 val = 0;
 
 	switch(sz)
@@ -70,6 +72,7 @@ u32 read_macreg(_adapter *padapter, u32 addr, u32 sz)
 
 void write_macreg(_adapter *padapter, u32 addr, u32 val, u32 sz)
 {
+	printk(KERN_DEBUG "rtw_mp.c - ");
 	switch(sz)
 	{
 		case 1:
@@ -89,36 +92,43 @@ void write_macreg(_adapter *padapter, u32 addr, u32 val, u32 sz)
 
 u32 read_bbreg(_adapter *padapter, u32 addr, u32 bitmask)
 {
+	printk(KERN_DEBUG "rtw_mp.c - ");
 	return rtw_hal_read_bbreg(padapter, addr, bitmask);
 }
 
 void write_bbreg(_adapter *padapter, u32 addr, u32 bitmask, u32 val)
 {
+	printk(KERN_DEBUG "rtw_mp.c - ");
 	rtw_hal_write_bbreg(padapter, addr, bitmask, val);
 }
 
 u32 _read_rfreg(PADAPTER padapter, u8 rfpath, u32 addr, u32 bitmask)
 {
+	printk(KERN_DEBUG "rtw_mp.c - ");
 	return rtw_hal_read_rfreg(padapter, rfpath, addr, bitmask);
 }
 
 void _write_rfreg(PADAPTER padapter, u8 rfpath, u32 addr, u32 bitmask, u32 val)
 {
+	printk(KERN_DEBUG "rtw_mp.c - ");
 	rtw_hal_write_rfreg(padapter, rfpath, addr, bitmask, val);
 }
 
 u32 read_rfreg(PADAPTER padapter, u8 rfpath, u32 addr)
 {
+	printk(KERN_DEBUG "rtw_mp.c - ");
 	return _read_rfreg(padapter, rfpath, addr, bRFRegOffsetMask);
 }
 
 void write_rfreg(PADAPTER padapter, u8 rfpath, u32 addr, u32 val)
 {
+	printk(KERN_DEBUG "rtw_mp.c - ");
 	_write_rfreg(padapter, rfpath, addr, bRFRegOffsetMask, val);
 }
 
 static void _init_mp_priv_(struct mp_priv *pmp_priv)
 {
+	printk(KERN_DEBUG "rtw_mp.c - ");
 	WLAN_BSSID_EX *pnetwork;
 
 	_rtw_memset(pmp_priv, 0, sizeof(struct mp_priv));
@@ -209,6 +219,7 @@ void mp_wi_callback(
 
 static int init_mp_priv_by_os(struct mp_priv *pmp_priv)
 {
+	printk(KERN_DEBUG "rtw_mp.c - ");
 	struct mp_wi_cntx *pmp_wi_cntx;
 
 	if (pmp_priv == NULL) return _FAIL;
@@ -232,6 +243,7 @@ static int init_mp_priv_by_os(struct mp_priv *pmp_priv)
 #ifdef PLATFORM_LINUX
 static int init_mp_priv_by_os(struct mp_priv *pmp_priv)
 {
+	printk(KERN_DEBUG "rtw_mp.c - ");
 	int i, res;
 	struct mp_xmit_frame *pmp_xmitframe;
 
@@ -274,6 +286,7 @@ _exit_init_mp_priv:
 
 static void mp_init_xmit_attrib(struct mp_tx *pmptx, PADAPTER padapter)
 {
+	printk(KERN_DEBUG "rtw_mp.c - ");
 	HAL_DATA_TYPE	*pHalData = GET_HAL_DATA(padapter);
 
 	struct pkt_attrib *pattrib;
@@ -320,6 +333,7 @@ static void mp_init_xmit_attrib(struct mp_tx *pmptx, PADAPTER padapter)
 
 s32 init_mp_priv(PADAPTER padapter)
 {
+	printk(KERN_DEBUG "rtw_mp.c - ");
 	struct mp_priv *pmppriv = &padapter->mppriv;
 	PHAL_DATA_TYPE pHalData;
 
@@ -365,6 +379,7 @@ s32 init_mp_priv(PADAPTER padapter)
 
 void free_mp_priv(struct mp_priv *pmp_priv)
 {
+	printk(KERN_DEBUG "rtw_mp.c - ");
 	if (pmp_priv->pallocated_mp_xmitframe_buf) {
 		rtw_mfree(pmp_priv->pallocated_mp_xmitframe_buf, 0);
 		pmp_priv->pallocated_mp_xmitframe_buf = NULL;
@@ -378,6 +393,7 @@ static VOID PHY_IQCalibrate_default(
 	IN	BOOLEAN 	bReCovery
 	)
 {	
+	printk(KERN_DEBUG "rtw_mp.c - ");
 	DBG_871X("%s\n", __func__);
 }
 
@@ -385,6 +401,7 @@ static VOID PHY_LCCalibrate_default(
 	IN	PADAPTER	pAdapter
 	)
 {
+	printk(KERN_DEBUG "rtw_mp.c - ");
 	DBG_871X("%s\n", __func__);
 }
 
@@ -393,12 +410,14 @@ static VOID PHY_SetRFPathSwitch_default(
 	IN	BOOLEAN		bMain
 	)
 {
+	printk(KERN_DEBUG "rtw_mp.c - ");
 	DBG_871X("%s\n", __func__);
 }
 
 
 void mpt_InitHWConfig(PADAPTER Adapter)
 {
+	printk(KERN_DEBUG "rtw_mp.c - ");
 	if (IS_HARDWARE_TYPE_8723B(Adapter)) {
 		// TODO: <20130114, Kordan> The following setting is only for DPDT and Fixed board type.
 		// TODO:  A better solution is configure it according EFUSE during the run-time. 
@@ -471,6 +490,7 @@ void mpt_InitHWConfig(PADAPTER Adapter)
 #ifdef CONFIG_RTL8723B
 static void PHY_IQCalibrate(PADAPTER padapter, u8 bReCovery)
 {
+	printk(KERN_DEBUG "rtw_mp.c - ");
 	PHAL_DATA_TYPE pHalData;
 	u8 b2ant;	//false:1ant, true:2-ant
 	u8 RF_Path;	//0:S1, 1:S0
@@ -489,6 +509,7 @@ static void PHY_IQCalibrate(PADAPTER padapter, u8 bReCovery)
 #ifdef CONFIG_RTL8703B
 static void PHY_IQCalibrate(PADAPTER padapter, u8 bReCovery) 
 {
+	printk(KERN_DEBUG "rtw_mp.c - ");
 	PHY_IQCalibrate_8703B(padapter, bReCovery);
 }
 
@@ -500,6 +521,7 @@ static void PHY_IQCalibrate(PADAPTER padapter, u8 bReCovery)
 #ifdef CONFIG_RTL8188F
 static void PHY_IQCalibrate(PADAPTER padapter, u8 bReCovery)
 {
+	printk(KERN_DEBUG "rtw_mp.c - ");
 	PHY_IQCalibrate_8188F(padapter, bReCovery, _FALSE);
 }
 
@@ -514,6 +536,7 @@ MPT_InitializeAdapter(
 	IN	u8				Channel
 	)
 {
+	printk(KERN_DEBUG "rtw_mp.c - ");
 	HAL_DATA_TYPE	*pHalData = GET_HAL_DATA(pAdapter);
 	s32		rtStatus = _SUCCESS;
 	PMPT_CONTEXT	pMptCtx = &pAdapter->mppriv.MptCtx;
@@ -608,6 +631,7 @@ MPT_DeInitAdapter(
 	IN	PADAPTER	pAdapter
 	)
 {
+	printk(KERN_DEBUG "rtw_mp.c - ");
 	PMPT_CONTEXT		pMptCtx = &pAdapter->mppriv.MptCtx;
 
 	pMptCtx->bMptDrvUnload = _TRUE;
@@ -634,6 +658,7 @@ MPT_DeInitAdapter(
 
 static u8 mpt_ProStartTest(PADAPTER padapter)
 {
+	printk(KERN_DEBUG "rtw_mp.c - ");
 	PMPT_CONTEXT pMptCtx = &padapter->mppriv.MptCtx;
 
 	pMptCtx->bMassProdTest = _TRUE;
@@ -653,6 +678,7 @@ static u8 mpt_ProStartTest(PADAPTER padapter)
  */
 s32 SetPowerTracking(PADAPTER padapter, u8 enable)
 {
+	printk(KERN_DEBUG "rtw_mp.c - ");
 
 	hal_mpt_SetPowerTracking(padapter, enable);
 	return 0;
@@ -660,11 +686,13 @@ s32 SetPowerTracking(PADAPTER padapter, u8 enable)
 
 void GetPowerTracking(PADAPTER padapter, u8 *enable)
 {
+	printk(KERN_DEBUG "rtw_mp.c - ");
 	hal_mpt_GetPowerTracking(padapter, enable);
 }
 
 static void disable_dm(PADAPTER padapter)
 {
+	printk(KERN_DEBUG "rtw_mp.c - ");
 	u8 v8;
 	HAL_DATA_TYPE	*pHalData = GET_HAL_DATA(padapter);
 	PDM_ODM_T		pDM_Odm = &pHalData->odmpriv;
@@ -690,6 +718,7 @@ static void disable_dm(PADAPTER padapter)
 
 void MPT_PwrCtlDM(PADAPTER padapter, u32 bstart)
 {
+	printk(KERN_DEBUG "rtw_mp.c - ");
 	HAL_DATA_TYPE	*pHalData = GET_HAL_DATA(padapter);
 	PDM_ODM_T		pDM_Odm = &pHalData->odmpriv;
 
@@ -727,6 +756,7 @@ void MPT_PwrCtlDM(PADAPTER padapter, u32 bstart)
 
 u32 mp_join(PADAPTER padapter,u8 mode)
 {
+	printk(KERN_DEBUG "rtw_mp.c - ");
 	WLAN_BSSID_EX bssid;
 	struct sta_info *psta;
 	u32 length;
@@ -842,6 +872,7 @@ end_of_mp_start_test:
 //This function initializes the DUT to the MP test mode
 s32 mp_start_test(PADAPTER padapter)
 {
+	printk(KERN_DEBUG "rtw_mp.c - ");
 	struct mp_priv *pmppriv = &padapter->mppriv;
 	s32 res = _SUCCESS;
 
@@ -904,6 +935,7 @@ s32 mp_start_test(PADAPTER padapter)
 //This function change the DUT from the MP test mode into normal mode
 void mp_stop_test(PADAPTER padapter)
 {
+	printk(KERN_DEBUG "rtw_mp.c - ");
 	struct mp_priv *pmppriv = &padapter->mppriv;
 	struct mlme_priv *pmlmepriv = &padapter->mlmepriv;
 	struct wlan_network *tgt_network = &pmlmepriv->cur_network;
@@ -1021,6 +1053,7 @@ static VOID mpt_AdjustRFRegByRateByChan92CU(PADAPTER pAdapter, u8 RateIdx, u8 Ch
  *---------------------------------------------------------------------------*/
 static void mpt_SwitchRfSetting(PADAPTER pAdapter)
 {
+	printk(KERN_DEBUG "rtw_mp.c - ");
 	hal_mpt_SwitchRfSetting(pAdapter);
     }
 
@@ -1028,11 +1061,13 @@ static void mpt_SwitchRfSetting(PADAPTER pAdapter)
 /*---------------------------hal\rtl8192c\MPT_HelperFunc.c---------------------------*/
 static void MPT_CCKTxPowerAdjust(PADAPTER Adapter, BOOLEAN bInCH14)
 {
+	printk(KERN_DEBUG "rtw_mp.c - ");
 	hal_mpt_CCKTxPowerAdjust(Adapter, bInCH14);
 }
 
 static void MPT_CCKTxPowerAdjustbyIndex(PADAPTER pAdapter, BOOLEAN beven)
 {
+	printk(KERN_DEBUG "rtw_mp.c - ");
 	hal_mpt_CCKTxPowerAdjustbyIndex(pAdapter, beven);
 	}
 
@@ -1046,6 +1081,7 @@ static void MPT_CCKTxPowerAdjustbyIndex(PADAPTER pAdapter, BOOLEAN beven)
  */
 void SetChannel(PADAPTER pAdapter)
 {
+	printk(KERN_DEBUG "rtw_mp.c - ");
 	hal_mpt_SetChannel(pAdapter);
 }
 
@@ -1055,17 +1091,20 @@ void SetChannel(PADAPTER pAdapter)
  */
 void SetBandwidth(PADAPTER pAdapter)
 {
+	printk(KERN_DEBUG "rtw_mp.c - ");
 	hal_mpt_SetBandwidth(pAdapter);
 
 }
 
 void SetAntenna(PADAPTER pAdapter)
 {
+	printk(KERN_DEBUG "rtw_mp.c - ");
 	hal_mpt_SetAntenna(pAdapter);
 }
 
 int SetTxPower(PADAPTER pAdapter)
 {
+	printk(KERN_DEBUG "rtw_mp.c - ");
 
 	hal_mpt_SetTxPower(pAdapter);
 	return _TRUE;
@@ -1073,6 +1112,7 @@ int SetTxPower(PADAPTER pAdapter)
 
 void SetTxAGCOffset(PADAPTER pAdapter, u32 ulTxAGCOffset)
 {
+	printk(KERN_DEBUG "rtw_mp.c - ");
 	u32 TxAGCOffset_B, TxAGCOffset_C, TxAGCOffset_D,tmpAGC;
 
 	TxAGCOffset_B = (ulTxAGCOffset&0x000000ff);
@@ -1086,11 +1126,13 @@ void SetTxAGCOffset(PADAPTER pAdapter, u32 ulTxAGCOffset)
 
 void SetDataRate(PADAPTER pAdapter)
 {
+	printk(KERN_DEBUG "rtw_mp.c - ");
 	hal_mpt_SetDataRate(pAdapter);
 }
 
 void MP_PHY_SetRFPathSwitch(PADAPTER pAdapter ,BOOLEAN bMain)
 {
+	printk(KERN_DEBUG "rtw_mp.c - ");
 
 	PHY_SetRFPathSwitch(pAdapter, bMain);
 
@@ -1156,6 +1198,7 @@ void SetContinuousTx(PADAPTER pAdapter, u8 bStart)
 
 void PhySetTxPowerLevel(PADAPTER pAdapter)
 {
+	printk(KERN_DEBUG "rtw_mp.c - ");
 	struct mp_priv *pmp_priv = &pAdapter->mppriv;
 		
 	if (pmp_priv->bSetTxPower==0) // for NO manually set power index
@@ -1183,11 +1226,13 @@ void PhySetTxPowerLevel(PADAPTER pAdapter)
 //------------------------------------------------------------------------------
 static void dump_mpframe(PADAPTER padapter, struct xmit_frame *pmpframe)
 {
+	printk(KERN_DEBUG "rtw_mp.c - ");
 	rtw_hal_mgnt_xmit(padapter, pmpframe);
 }
 
 static struct xmit_frame *alloc_mp_xmitframe(struct xmit_priv *pxmitpriv)
 {
+	printk(KERN_DEBUG "rtw_mp.c - ");
 	struct xmit_frame	*pmpframe;
 	struct xmit_buf	*pxmitbuf;
 
@@ -1216,6 +1261,7 @@ static struct xmit_frame *alloc_mp_xmitframe(struct xmit_priv *pxmitpriv)
 
 static thread_return mp_xmit_packet_thread(thread_context context)
 {
+	printk(KERN_DEBUG "rtw_mp.c - ");
 	struct xmit_frame	*pxmitframe;
 	struct mp_tx		*pmptx;
 	struct mp_priv	*pmp_priv;
@@ -1273,6 +1319,7 @@ exit:
 
 void fill_txdesc_for_mp(PADAPTER padapter, u8 *ptxdesc)
 {		
+	printk(KERN_DEBUG "rtw_mp.c - ");
 	struct mp_priv *pmp_priv = &padapter->mppriv;
 	_rtw_memcpy(ptxdesc, pmp_priv->tx.desc, TXDESC_SIZE);
 }
@@ -1280,6 +1327,7 @@ void fill_txdesc_for_mp(PADAPTER padapter, u8 *ptxdesc)
 #if defined(CONFIG_RTL8188E) 
 void fill_tx_desc_8188e(PADAPTER padapter)
 {
+	printk(KERN_DEBUG "rtw_mp.c - ");
 	struct mp_priv *pmp_priv = &padapter->mppriv;
 	struct tx_desc *desc   = (struct tx_desc *)&(pmp_priv->tx.desc);
 	struct pkt_attrib *pattrib = &(pmp_priv->tx.attrib);
@@ -1333,6 +1381,7 @@ void fill_tx_desc_8188e(PADAPTER padapter)
 #if defined(CONFIG_RTL8814A)
 void fill_tx_desc_8814a(PADAPTER padapter)
 {
+	printk(KERN_DEBUG "rtw_mp.c - ");
 	struct mp_priv *pmp_priv = &padapter->mppriv;
 	u8 *pDesc   = (u8 *)&(pmp_priv->tx.desc);
 	struct pkt_attrib *pattrib = &(pmp_priv->tx.attrib);
@@ -1394,6 +1443,7 @@ void fill_tx_desc_8814a(PADAPTER padapter)
 #if defined(CONFIG_RTL8812A) || defined(CONFIG_RTL8821A)
 void fill_tx_desc_8812a(PADAPTER padapter)
 {
+	printk(KERN_DEBUG "rtw_mp.c - ");
 	struct mp_priv *pmp_priv = &padapter->mppriv;
 	u8 *pDesc   = (u8 *)&(pmp_priv->tx.desc);
 	struct pkt_attrib *pattrib = &(pmp_priv->tx.attrib);
@@ -1450,6 +1500,7 @@ void fill_tx_desc_8812a(PADAPTER padapter)
 #if defined(CONFIG_RTL8192E)
 void fill_tx_desc_8192e(PADAPTER padapter)
 {
+	printk(KERN_DEBUG "rtw_mp.c - ");
 	struct mp_priv *pmp_priv = &padapter->mppriv;
 	u8 *pDesc	= (u8 *)&(pmp_priv->tx.desc);
 	struct pkt_attrib *pattrib = &(pmp_priv->tx.attrib);
@@ -1508,6 +1559,7 @@ void fill_tx_desc_8192e(PADAPTER padapter)
 #if defined(CONFIG_RTL8723B)
 void fill_tx_desc_8723b(PADAPTER padapter)
 {
+	printk(KERN_DEBUG "rtw_mp.c - ");
 	struct mp_priv *pmp_priv = &padapter->mppriv;
 	struct pkt_attrib *pattrib = &(pmp_priv->tx.attrib);
 	u8 *ptxdesc = pmp_priv->tx.desc;
@@ -1541,6 +1593,7 @@ void fill_tx_desc_8723b(PADAPTER padapter)
 #if defined(CONFIG_RTL8703B)
 void fill_tx_desc_8703b(PADAPTER padapter) 
 {
+	printk(KERN_DEBUG "rtw_mp.c - ");
 	struct mp_priv *pmp_priv = &padapter->mppriv;
 	struct pkt_attrib *pattrib = &(pmp_priv->tx.attrib);
 	u8 *ptxdesc = pmp_priv->tx.desc;
@@ -1573,6 +1626,7 @@ void fill_tx_desc_8703b(PADAPTER padapter)
 #if defined(CONFIG_RTL8188F)
 void fill_tx_desc_8188f(PADAPTER padapter)
 {
+	printk(KERN_DEBUG "rtw_mp.c - ");
 	struct mp_priv *pmp_priv = &padapter->mppriv;
 	struct pkt_attrib *pattrib = &(pmp_priv->tx.attrib);
 	u8 *ptxdesc = pmp_priv->tx.desc;
@@ -1603,6 +1657,7 @@ void fill_tx_desc_8188f(PADAPTER padapter)
 
 static void Rtw_MPSetMacTxEDCA(PADAPTER padapter)
 {
+	printk(KERN_DEBUG "rtw_mp.c - ");
 
 	rtw_write32(padapter, 0x508 , 0x00a422); //Disable EDCA BE Txop for MP pkt tx adjust Packet interval
 	//DBG_871X("%s:write 0x508~~~~~~ 0x%x\n", __func__,rtw_read32(padapter, 0x508));
@@ -1618,6 +1673,7 @@ static void Rtw_MPSetMacTxEDCA(PADAPTER padapter)
 
 void SetPacketTx(PADAPTER padapter)
 {
+	printk(KERN_DEBUG "rtw_mp.c - ");
 	u8 *ptr, *pkt_start, *pkt_end,*fctrl;
 	u32 pkt_size,offset,startPlace,i;
 	struct rtw_ieee80211_hdr *hdr;
@@ -1773,6 +1829,7 @@ exit:
 
 void SetPacketRx(PADAPTER pAdapter, u8 bStartRx, u8 bAB)
 {
+	printk(KERN_DEBUG "rtw_mp.c - ");
 	PHAL_DATA_TYPE pHalData = GET_HAL_DATA(pAdapter);
 	struct mp_priv *pmppriv = &pAdapter->mppriv;
 
@@ -1815,6 +1872,7 @@ void SetPacketRx(PADAPTER pAdapter, u8 bStartRx, u8 bAB)
 
 void ResetPhyRxPktCount(PADAPTER pAdapter)
 {
+	printk(KERN_DEBUG "rtw_mp.c - ");
 	u32 i, phyrx_set = 0;
 
 	for (i = 0; i <= 0xF; i++) {
@@ -1827,6 +1885,7 @@ void ResetPhyRxPktCount(PADAPTER pAdapter)
 
 static u32 GetPhyRxPktCounts(PADAPTER pAdapter, u32 selbit)
 {
+	printk(KERN_DEBUG "rtw_mp.c - ");
 	//selection
 	u32 phyrx_set = 0, count = 0;
 
@@ -1841,6 +1900,7 @@ static u32 GetPhyRxPktCounts(PADAPTER pAdapter, u32 selbit)
 
 u32 GetPhyRxPktReceived(PADAPTER pAdapter)
 {
+	printk(KERN_DEBUG "rtw_mp.c - ");
 	u32 OFDM_cnt = 0, CCK_cnt = 0, HT_cnt = 0;
 
 	OFDM_cnt = GetPhyRxPktCounts(pAdapter, RXERR_TYPE_OFDM_MPDU_OK);
@@ -1852,6 +1912,7 @@ u32 GetPhyRxPktReceived(PADAPTER pAdapter)
 
 u32 GetPhyRxPktCRC32Error(PADAPTER pAdapter)
 {
+	printk(KERN_DEBUG "rtw_mp.c - ");
 	u32 OFDM_cnt = 0, CCK_cnt = 0, HT_cnt = 0;
 
 	OFDM_cnt = GetPhyRxPktCounts(pAdapter, RXERR_TYPE_OFDM_MPDU_FAIL);
@@ -1866,6 +1927,7 @@ u32 GetPhyRxPktCRC32Error(PADAPTER pAdapter)
 //reg 0x8B4[15:0]: FFT data y report
 static u32 rtw_GetPSDData(PADAPTER pAdapter, u32 point)
 {
+	printk(KERN_DEBUG "rtw_mp.c - ");
 	u32 psd_val=0;
 	
 #if defined(CONFIG_RTL8812A) || defined(CONFIG_RTL8821A) || defined(CONFIG_RTL8814A)
@@ -1904,6 +1966,7 @@ static u32 rtw_GetPSDData(PADAPTER pAdapter, u32 point)
  */
 u32 mp_query_psd(PADAPTER pAdapter, u8 *data)
 {
+	printk(KERN_DEBUG "rtw_mp.c - ");
 	u32 i, psd_pts=0, psd_start=0, psd_stop=0;
 	u32 psd_data=0;
 
@@ -2053,6 +2116,7 @@ ULONG getPowerDiffByRate8188E(
 	IN	ULONG		RfPath
 	)
 {
+	printk(KERN_DEBUG "rtw_mp.c - ");
 	PMPT_CONTEXT			pMptCtx = &(pAdapter->mppriv.MptCtx);
 	HAL_DATA_TYPE	*pHalData	= GET_HAL_DATA(pAdapter);
 	ULONG	PwrGroup=0;
@@ -2250,6 +2314,7 @@ mpt_ProQueryCalTxPower_8188E(
 	IN	u1Byte			RfPath	
 	)
 {
+	printk(KERN_DEBUG "rtw_mp.c - ");
 	HAL_DATA_TYPE		*pHalData = GET_HAL_DATA(pAdapter);
 	u1Byte				TxCount=TX_1S, i = 0;	//default set to 1S
 	//PMGNT_INFO			pMgntInfo = &(pAdapter->MgntInfo); 
@@ -2347,6 +2412,7 @@ MptToMgntRate(
 	IN	ULONG	MptRateIdx
 	)
 {
+	printk(KERN_DEBUG "rtw_mp.c - ");
 // Mapped to MGN_XXX defined in MgntGen.h
 	switch (MptRateIdx) 
 	{
@@ -2452,6 +2518,7 @@ MptToMgntRate(
 
 u8 HwRateToMPTRate(u8 rate)
 {
+	printk(KERN_DEBUG "rtw_mp.c - ");
 	u8	ret_rate = MGN_1M;
 
 		switch (rate) {
@@ -2633,6 +2700,7 @@ u8 HwRateToMPTRate(u8 rate)
 
 u8 rtw_mpRateParseFunc(PADAPTER pAdapter, u8 *targetStr)
 {
+	printk(KERN_DEBUG "rtw_mp.c - ");
 	u16 i=0;
  	u8* rateindex_Array[] = { "1M","2M","5.5M","11M","6M","9M","12M","18M","24M","36M","48M","54M",
  								"HTMCS0","HTMCS1","HTMCS2","HTMCS3","HTMCS4","HTMCS5","HTMCS6","HTMCS7",
@@ -2665,6 +2733,7 @@ ULONG mpt_ProQueryCalTxPower(
 		u8		RfPath
 	)
 {
+	printk(KERN_DEBUG "rtw_mp.c - ");
 
 	HAL_DATA_TYPE	*pHalData	= GET_HAL_DATA(pAdapter);
 	PMPT_CONTEXT		pMptCtx = &(pAdapter->mppriv.MptCtx);
@@ -2723,6 +2792,7 @@ ULONG mpt_ProQueryCalTxPower(
 #ifdef CONFIG_MP_VHT_HW_TX_MODE
 static inline void dump_buf(u8 *buf, u32 len)
 {
+	printk(KERN_DEBUG "rtw_mp.c - ");
 	u32 i;
 
 	DBG_871X("-----------------Len %d----------------\n", len);
@@ -2736,6 +2806,7 @@ void ByteToBit(
 	bool	*in,
 	UCHAR	in_size)
 {
+	printk(KERN_DEBUG "rtw_mp.c - ");
 	UCHAR i = 0, j = 0;
 
 	for (i = 0; i < in_size; i++) {
@@ -2753,6 +2824,7 @@ void CRC16_generator(
 	UCHAR in_size
 )
 {
+	printk(KERN_DEBUG "rtw_mp.c - ");
 	UCHAR i = 0;
 	bool temp = 0, reg[] = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
 
@@ -2793,6 +2865,7 @@ void CCK_generator(
 	PRT_PMAC_PKT_INFO	pPMacPktInfo
 	)
 {
+	printk(KERN_DEBUG "rtw_mp.c - ");
 	double	ratio = 0;
 	bool	crc16_in[32] = {0}, crc16_out[16] = {0};
 	bool LengthExtBit;
@@ -2869,6 +2942,7 @@ void PMAC_Get_Pkt_Param(
 	PRT_PMAC_TX_INFO	pPMacTxInfo,
 	PRT_PMAC_PKT_INFO	pPMacPktInfo)
 {
+	printk(KERN_DEBUG "rtw_mp.c - ");
 
 	UCHAR		TX_RATE_HEX = 0, MCS = 0;
 	UCHAR		TX_RATE = pPMacTxInfo->TX_RATE;
@@ -2942,6 +3016,7 @@ UINT LDPC_parameter_generator(
 	UINT N_TCB_int
 )
 {
+	printk(KERN_DEBUG "rtw_mp.c - ");
 	double	CR = 0.;
 	double	N_pld = (double)N_pld_int;
 	double	N_TCB = (double)N_TCB_int;
@@ -3017,6 +3092,7 @@ void PMAC_Nsym_generator(
 	PRT_PMAC_TX_INFO	pPMacTxInfo,
 	PRT_PMAC_PKT_INFO	pPMacPktInfo)
 {
+	printk(KERN_DEBUG "rtw_mp.c - ");
 	UINT	SIGA2B3 = 0;
 	UCHAR	TX_RATE = pPMacTxInfo->TX_RATE;
 
@@ -3157,6 +3233,7 @@ void L_SIG_generator(
 	PRT_PMAC_TX_INFO	pPMacTxInfo,
 	PRT_PMAC_PKT_INFO	pPMacPktInfo)
 {
+	printk(KERN_DEBUG "rtw_mp.c - ");
 	u8	sig_bi[24] = {0};	/* 24 BIT*/
 	UINT	mode, LENGTH;
 	int i;
@@ -3250,6 +3327,7 @@ void CRC8_generator(
 	UCHAR	in_size
 	)
 {
+	printk(KERN_DEBUG "rtw_mp.c - ");
 	UCHAR i = 0;
 	bool temp = 0, reg[] = {1, 1, 1, 1, 1, 1, 1, 1};
 
@@ -3279,6 +3357,7 @@ void HT_SIG_generator(
 	PRT_PMAC_PKT_INFO	pPMacPktInfo
 	)
 {
+	printk(KERN_DEBUG "rtw_mp.c - ");
 	UINT i;
 	bool sig_bi[48] = {0}, crc8[8] = {0};
 	/*	MCS Field*/
@@ -3346,6 +3425,7 @@ void VHT_SIG_A_generator(
 	PRT_PMAC_TX_INFO	pPMacTxInfo,
 	PRT_PMAC_PKT_INFO	pPMacPktInfo)
 {
+	printk(KERN_DEBUG "rtw_mp.c - ");
 	UINT i;
 	bool sig_bi[48], crc8[8];
 
@@ -3409,6 +3489,7 @@ void VHT_SIG_A_generator(
 void VHT_SIG_B_generator(
 	PRT_PMAC_TX_INFO	pPMacTxInfo)
 {
+	printk(KERN_DEBUG "rtw_mp.c - ");
 	bool sig_bi[32], crc8_bi[8];
 	UINT i, len, res, tail = 6, total_len, crc8_in_len;
 	UINT sigb_len;
@@ -3476,6 +3557,7 @@ void VHT_Delimiter_generator(
 	PRT_PMAC_TX_INFO	pPMacTxInfo
 	)
 {
+	printk(KERN_DEBUG "rtw_mp.c - ");
 	bool sig_bi[32] = {0}, crc8[8] = {0};
 	UINT crc8_in_len = 16;
 	UINT PacketLength = pPMacTxInfo->PacketLength;
