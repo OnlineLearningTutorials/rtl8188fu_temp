@@ -71,7 +71,7 @@ jackson@realtek.com.tw
 
 u8 _rtw_read8(_adapter *adapter, u32 addr)
 {
-	printk(KERN_DEBUG "rtw_io.c - _rtw_read8");
+	//printk(KERN_DEBUG "rtw_io.c - _rtw_read8");
 	u8 r_val;
 	//struct	io_queue  	*pio_queue = (struct io_queue *)adapter->pio_queue;
 	struct io_priv *pio_priv = &adapter->iopriv;
@@ -82,12 +82,13 @@ u8 _rtw_read8(_adapter *adapter, u32 addr)
 
 	r_val = _read8(pintfhdl, addr);
 	_func_exit_;
+	printk(KERN_DEBUG "rtw_io.c - _rtw_read8(adapter, addr: 0x%08x)->0x%08x", addr, r_val);
 	return r_val;
 }
 
 u16 _rtw_read16(_adapter *adapter, u32 addr)
 {
-	printk(KERN_DEBUG "rtw_io.c - _rtw_read16");
+	//printk(KERN_DEBUG "rtw_io.c - _rtw_read16");
 	u16 r_val;
 	//struct	io_queue  	*pio_queue = (struct io_queue *)adapter->pio_queue;
 	struct io_priv *pio_priv = &adapter->iopriv;
@@ -98,12 +99,13 @@ u16 _rtw_read16(_adapter *adapter, u32 addr)
 
 	r_val = _read16(pintfhdl, addr);
 	_func_exit_;
+	printk(KERN_DEBUG "rtw_io.c - _rtw_read16(adapter, addr: 0x%08x)->0x%08x", addr, r_val);
 	return rtw_le16_to_cpu(r_val);
 }
 
 u32 _rtw_read32(_adapter *adapter, u32 addr)
 {
-	printk(KERN_DEBUG "rtw_io.c - _rtw_read32");
+	printk(KERN_DEBUG "rtw_io.c - _rtw_read32(adapter, addr: 0x%08x)", addr);
 	u32 r_val;
 	//struct	io_queue  	*pio_queue = (struct io_queue *)adapter->pio_queue;
 	struct io_priv *pio_priv = &adapter->iopriv;
@@ -120,7 +122,7 @@ u32 _rtw_read32(_adapter *adapter, u32 addr)
 
 int _rtw_write8(_adapter *adapter, u32 addr, u8 val)
 {
-	printk(KERN_DEBUG "rtw_io.c - _rtw_write8");
+	printk(KERN_DEBUG "rtw_io.c - _rtw_write8(adapter, addr: 0x%08x, val: 0x%08x", addr, val);
 	//struct	io_queue  	*pio_queue = (struct io_queue *)adapter->pio_queue;
 	struct io_priv *pio_priv = &adapter->iopriv;
 	struct	intf_hdl		*pintfhdl = &(pio_priv->intf);
@@ -136,7 +138,7 @@ int _rtw_write8(_adapter *adapter, u32 addr, u8 val)
 }
 int _rtw_write16(_adapter *adapter, u32 addr, u16 val)
 {
-	printk(KERN_DEBUG "rtw_io.c - _rtw_write16");
+	printk(KERN_DEBUG "rtw_io.c - _rtw_write16(adapter, addr: 0x%08x, val: 0x%08x)", addr, val);
 	//struct	io_queue  	*pio_queue = (struct io_queue *)adapter->pio_queue;
 	struct io_priv *pio_priv = &adapter->iopriv;
 	struct	intf_hdl		*pintfhdl = &(pio_priv->intf);
@@ -153,7 +155,7 @@ int _rtw_write16(_adapter *adapter, u32 addr, u16 val)
 }
 int _rtw_write32(_adapter *adapter, u32 addr, u32 val)
 {
-	printk(KERN_DEBUG "rtw_io.c - _rtw_write32");
+	printk(KERN_DEBUG "rtw_io.c - _rtw_write32(adapter, addr: 0x%08x, val: 0x%08x)", addr, val);
 	//struct	io_queue  	*pio_queue = (struct io_queue *)adapter->pio_queue;
 	struct io_priv *pio_priv = &adapter->iopriv;
 	struct	intf_hdl		*pintfhdl = &(pio_priv->intf);
@@ -171,7 +173,7 @@ int _rtw_write32(_adapter *adapter, u32 addr, u32 val)
 
 int _rtw_writeN(_adapter *adapter, u32 addr ,u32 length , u8 *pdata)
 {
-	printk(KERN_DEBUG "rtw_io.c - _rtw_writeN");
+	printk(KERN_DEBUG "rtw_io.c - _rtw_writeN(adapter, addr: 0x%08x, length: 0x%08x, pdata)", addr, length);
 	//struct	io_queue  	*pio_queue = (struct io_queue *)adapter->pio_queue;
 	struct io_priv *pio_priv = &adapter->iopriv;
         struct	intf_hdl	*pintfhdl = (struct intf_hdl*)(&(pio_priv->intf));
