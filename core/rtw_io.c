@@ -545,7 +545,7 @@ int rtw_inc_and_chk_continual_io_error(struct dvobj_priv *dvobj)
 */
 void rtw_reset_continual_io_error(struct dvobj_priv *dvobj)
 {
-	printk(KERN_DEBUG "rtw_io.c - rtw_reset_continual_io_error");
+	//printk(KERN_DEBUG "rtw_io.c - rtw_reset_continual_io_error");
 	ATOMIC_SET(&dvobj->continual_io_error, 0);	
 }
 
