@@ -71,7 +71,7 @@ jackson@realtek.com.tw
 
 u8 _rtw_read8(_adapter *adapter, u32 addr)
 {
-	printk(KERN_DEBUG "rtw_io.c - ");
+	printk(KERN_DEBUG "rtw_io.c - _rtw_read8");
 	u8 r_val;
 	//struct	io_queue  	*pio_queue = (struct io_queue *)adapter->pio_queue;
 	struct io_priv *pio_priv = &adapter->iopriv;
@@ -87,7 +87,7 @@ u8 _rtw_read8(_adapter *adapter, u32 addr)
 
 u16 _rtw_read16(_adapter *adapter, u32 addr)
 {
-	printk(KERN_DEBUG "rtw_io.c - ");
+	printk(KERN_DEBUG "rtw_io.c - _rtw_read16");
 	u16 r_val;
 	//struct	io_queue  	*pio_queue = (struct io_queue *)adapter->pio_queue;
 	struct io_priv *pio_priv = &adapter->iopriv;
@@ -103,7 +103,7 @@ u16 _rtw_read16(_adapter *adapter, u32 addr)
 
 u32 _rtw_read32(_adapter *adapter, u32 addr)
 {
-	printk(KERN_DEBUG "rtw_io.c - ");
+	printk(KERN_DEBUG "rtw_io.c - _rtw_read32");
 	u32 r_val;
 	//struct	io_queue  	*pio_queue = (struct io_queue *)adapter->pio_queue;
 	struct io_priv *pio_priv = &adapter->iopriv;
@@ -120,7 +120,7 @@ u32 _rtw_read32(_adapter *adapter, u32 addr)
 
 int _rtw_write8(_adapter *adapter, u32 addr, u8 val)
 {
-	printk(KERN_DEBUG "rtw_io.c - ");
+	printk(KERN_DEBUG "rtw_io.c - _rtw_write8");
 	//struct	io_queue  	*pio_queue = (struct io_queue *)adapter->pio_queue;
 	struct io_priv *pio_priv = &adapter->iopriv;
 	struct	intf_hdl		*pintfhdl = &(pio_priv->intf);
@@ -136,7 +136,7 @@ int _rtw_write8(_adapter *adapter, u32 addr, u8 val)
 }
 int _rtw_write16(_adapter *adapter, u32 addr, u16 val)
 {
-	printk(KERN_DEBUG "rtw_io.c - ");
+	printk(KERN_DEBUG "rtw_io.c - _rtw_write16");
 	//struct	io_queue  	*pio_queue = (struct io_queue *)adapter->pio_queue;
 	struct io_priv *pio_priv = &adapter->iopriv;
 	struct	intf_hdl		*pintfhdl = &(pio_priv->intf);
@@ -153,7 +153,7 @@ int _rtw_write16(_adapter *adapter, u32 addr, u16 val)
 }
 int _rtw_write32(_adapter *adapter, u32 addr, u32 val)
 {
-	printk(KERN_DEBUG "rtw_io.c - ");
+	printk(KERN_DEBUG "rtw_io.c - _rtw_write32");
 	//struct	io_queue  	*pio_queue = (struct io_queue *)adapter->pio_queue;
 	struct io_priv *pio_priv = &adapter->iopriv;
 	struct	intf_hdl		*pintfhdl = &(pio_priv->intf);
@@ -171,7 +171,7 @@ int _rtw_write32(_adapter *adapter, u32 addr, u32 val)
 
 int _rtw_writeN(_adapter *adapter, u32 addr ,u32 length , u8 *pdata)
 {
-	printk(KERN_DEBUG "rtw_io.c - ");
+	printk(KERN_DEBUG "rtw_io.c - _rtw_writeN");
 	//struct	io_queue  	*pio_queue = (struct io_queue *)adapter->pio_queue;
 	struct io_priv *pio_priv = &adapter->iopriv;
         struct	intf_hdl	*pintfhdl = (struct intf_hdl*)(&(pio_priv->intf));
@@ -189,7 +189,7 @@ int _rtw_writeN(_adapter *adapter, u32 addr ,u32 length , u8 *pdata)
 #ifdef CONFIG_SDIO_HCI
 u8 _rtw_sd_f0_read8(_adapter *adapter, u32 addr)
 {
-	printk(KERN_DEBUG "rtw_io.c - ");
+	printk(KERN_DEBUG "rtw_io.c - _rtw_sd_f0_read8");
 	u8 r_val = 0x00;
 	struct io_priv *pio_priv = &adapter->iopriv;
 	struct intf_hdl *pintfhdl = &(pio_priv->intf);
@@ -210,7 +210,7 @@ u8 _rtw_sd_f0_read8(_adapter *adapter, u32 addr)
 #ifdef CONFIG_SDIO_INDIRECT_ACCESS
 u8 _rtw_sd_iread8(_adapter *adapter, u32 addr)
 {
-	printk(KERN_DEBUG "rtw_io.c - ");
+	printk(KERN_DEBUG "rtw_io.c - _rtw_sd_iread8");
 	u8 r_val = 0x00;
 	struct io_priv *pio_priv = &adapter->iopriv;
 	struct intf_hdl *pintfhdl = &(pio_priv->intf);
@@ -228,7 +228,7 @@ u8 _rtw_sd_iread8(_adapter *adapter, u32 addr)
 
 u16 _rtw_sd_iread16(_adapter *adapter, u32 addr)
 {
-	printk(KERN_DEBUG "rtw_io.c - ");
+	printk(KERN_DEBUG "rtw_io.c - _rtw_sd_iread16");
 	u16 r_val = 0x00;
 	struct io_priv *pio_priv = &adapter->iopriv;
 	struct intf_hdl *pintfhdl = &(pio_priv->intf);
@@ -246,7 +246,7 @@ u16 _rtw_sd_iread16(_adapter *adapter, u32 addr)
 
 u32 _rtw_sd_iread32(_adapter *adapter, u32 addr)
 {
-	printk(KERN_DEBUG "rtw_io.c - ");
+	printk(KERN_DEBUG "rtw_io.c - _rtw_sd_iread32");
 	u32 r_val = 0x00;
 	struct io_priv *pio_priv = &adapter->iopriv;
 	struct intf_hdl *pintfhdl = &(pio_priv->intf);
@@ -264,7 +264,7 @@ u32 _rtw_sd_iread32(_adapter *adapter, u32 addr)
 
 int _rtw_sd_iwrite8(_adapter *adapter, u32 addr, u8 val)
 {
-	printk(KERN_DEBUG "rtw_io.c - ");
+	printk(KERN_DEBUG "rtw_io.c - _rtw_sd_iwrite8");
 	struct io_priv *pio_priv = &adapter->iopriv;
 	struct intf_hdl *pintfhdl = &(pio_priv->intf);
 	int (*_sd_iwrite8)(struct intf_hdl *pintfhdl, u32 addr, u8 val);
@@ -282,7 +282,7 @@ int _rtw_sd_iwrite8(_adapter *adapter, u32 addr, u8 val)
 
 int _rtw_sd_iwrite16(_adapter *adapter, u32 addr, u16 val)
 {
-	printk(KERN_DEBUG "rtw_io.c - ");
+	printk(KERN_DEBUG "rtw_io.c - _rtw_sd_iwrite16");
 	struct io_priv *pio_priv = &adapter->iopriv;
 	struct intf_hdl *pintfhdl = &(pio_priv->intf);
 	int (*_sd_iwrite16)(struct intf_hdl *pintfhdl, u32 addr, u16 val);
@@ -299,7 +299,7 @@ int _rtw_sd_iwrite16(_adapter *adapter, u32 addr, u16 val)
 }
 int _rtw_sd_iwrite32(_adapter *adapter, u32 addr, u32 val)
 {
-	printk(KERN_DEBUG "rtw_io.c - ");
+	printk(KERN_DEBUG "rtw_io.c - _rtw_sd_iwrite32");
 	struct io_priv *pio_priv = &adapter->iopriv;
 	struct intf_hdl *pintfhdl = &(pio_priv->intf);
 	int (*_sd_iwrite32)(struct intf_hdl *pintfhdl, u32 addr, u32 val);
@@ -321,7 +321,7 @@ int _rtw_sd_iwrite32(_adapter *adapter, u32 addr, u32 val)
 
 int _rtw_write8_async(_adapter *adapter, u32 addr, u8 val)
 {
-	printk(KERN_DEBUG "rtw_io.c - ");
+	printk(KERN_DEBUG "rtw_io.c - _rtw_write8_async");
 	//struct	io_queue  	*pio_queue = (struct io_queue *)adapter->pio_queue;
 	struct io_priv *pio_priv = &adapter->iopriv;
 	struct	intf_hdl		*pintfhdl = &(pio_priv->intf);
@@ -337,7 +337,7 @@ int _rtw_write8_async(_adapter *adapter, u32 addr, u8 val)
 }
 int _rtw_write16_async(_adapter *adapter, u32 addr, u16 val)
 {
-	printk(KERN_DEBUG "rtw_io.c - ");
+	printk(KERN_DEBUG "rtw_io.c - _rtw_write16_async");
 	//struct	io_queue  	*pio_queue = (struct io_queue *)adapter->pio_queue;
 	struct io_priv *pio_priv = &adapter->iopriv;
 	struct	intf_hdl		*pintfhdl = &(pio_priv->intf);
@@ -353,7 +353,7 @@ int _rtw_write16_async(_adapter *adapter, u32 addr, u16 val)
 }
 int _rtw_write32_async(_adapter *adapter, u32 addr, u32 val)
 {
-	printk(KERN_DEBUG "rtw_io.c - ");
+	printk(KERN_DEBUG "rtw_io.c - _rtw_write32_async");
 	//struct	io_queue  	*pio_queue = (struct io_queue *)adapter->pio_queue;
 	struct io_priv *pio_priv = &adapter->iopriv;
 	struct	intf_hdl		*pintfhdl = &(pio_priv->intf);
@@ -370,7 +370,7 @@ int _rtw_write32_async(_adapter *adapter, u32 addr, u32 val)
 
 void _rtw_read_mem(_adapter *adapter, u32 addr, u32 cnt, u8 *pmem)
 {
-	printk(KERN_DEBUG "rtw_io.c - ");
+	printk(KERN_DEBUG "rtw_io.c - _rtw_read_mem");
 	void (*_read_mem)(struct intf_hdl *pintfhdl, u32 addr, u32 cnt, u8 *pmem);
 	//struct	io_queue  	*pio_queue = (struct io_queue *)adapter->pio_queue;
 	struct io_priv *pio_priv = &adapter->iopriv;
@@ -395,7 +395,7 @@ void _rtw_read_mem(_adapter *adapter, u32 addr, u32 cnt, u8 *pmem)
 
 void _rtw_write_mem(_adapter *adapter, u32 addr, u32 cnt, u8 *pmem)
 {
-	printk(KERN_DEBUG "rtw_io.c - ");
+	printk(KERN_DEBUG "rtw_io.c - _rtw_write_mem");
 	void (*_write_mem)(struct intf_hdl *pintfhdl, u32 addr, u32 cnt, u8 *pmem);
 	//struct	io_queue  	*pio_queue = (struct io_queue *)adapter->pio_queue;
 	struct io_priv *pio_priv = &adapter->iopriv;
@@ -413,7 +413,7 @@ void _rtw_write_mem(_adapter *adapter, u32 addr, u32 cnt, u8 *pmem)
 
 void _rtw_read_port(_adapter *adapter, u32 addr, u32 cnt, u8 *pmem)
 {
-	printk(KERN_DEBUG "rtw_io.c - ");
+	printk(KERN_DEBUG "rtw_io.c - _rtw_read_port");
 	u32 (*_read_port)(struct intf_hdl *pintfhdl, u32 addr, u32 cnt, u8 *pmem);
 	//struct	io_queue  	*pio_queue = (struct io_queue *)adapter->pio_queue;
 	struct io_priv *pio_priv = &adapter->iopriv;
@@ -438,7 +438,7 @@ void _rtw_read_port(_adapter *adapter, u32 addr, u32 cnt, u8 *pmem)
 
 void _rtw_read_port_cancel(_adapter *adapter)
 {
-	printk(KERN_DEBUG "rtw_io.c - ");
+	printk(KERN_DEBUG "rtw_io.c - _rtw_read_port_cancel");
 	void (*_read_port_cancel)(struct intf_hdl *pintfhdl);
 	struct io_priv *pio_priv = &adapter->iopriv;
 	struct intf_hdl *pintfhdl = &(pio_priv->intf);
@@ -453,7 +453,7 @@ void _rtw_read_port_cancel(_adapter *adapter)
 
 u32 _rtw_write_port(_adapter *adapter, u32 addr, u32 cnt, u8 *pmem)
 {
-	printk(KERN_DEBUG "rtw_io.c - ");
+	printk(KERN_DEBUG "rtw_io.c - _rtw_write_port");
 	u32 (*_write_port)(struct intf_hdl *pintfhdl, u32 addr, u32 cnt, u8 *pmem);
 	//struct	io_queue  	*pio_queue = (struct io_queue *)adapter->pio_queue;
 	struct io_priv *pio_priv = &adapter->iopriv;
@@ -473,7 +473,7 @@ u32 _rtw_write_port(_adapter *adapter, u32 addr, u32 cnt, u8 *pmem)
 
 u32 _rtw_write_port_and_wait(_adapter *adapter, u32 addr, u32 cnt, u8 *pmem, int timeout_ms)
 {
-	printk(KERN_DEBUG "rtw_io.c - ");
+	printk(KERN_DEBUG "rtw_io.c - _rtw_write_port_and_wait");
 	int ret = _SUCCESS;
 	struct xmit_buf *pxmitbuf = (struct xmit_buf *)pmem;
 	struct submit_ctx sctx;
@@ -491,7 +491,7 @@ u32 _rtw_write_port_and_wait(_adapter *adapter, u32 addr, u32 cnt, u8 *pmem, int
 
 void _rtw_write_port_cancel(_adapter *adapter)
 {
-	printk(KERN_DEBUG "rtw_io.c - ");
+	printk(KERN_DEBUG "rtw_io.c - _rtw_write_port_cancel");
 	void (*_write_port_cancel)(struct intf_hdl *pintfhdl);
 	struct io_priv *pio_priv = &adapter->iopriv;
 	struct intf_hdl *pintfhdl = &(pio_priv->intf);
@@ -505,7 +505,7 @@ void _rtw_write_port_cancel(_adapter *adapter)
 }
 int rtw_init_io_priv(_adapter *padapter, void (*set_intf_ops)(_adapter *padapter,struct _io_ops *pops))
 {
-	printk(KERN_DEBUG "rtw_io.c - ");
+	printk(KERN_DEBUG "rtw_io.c - rtw_init_io_priv");
 	struct io_priv	*piopriv = &padapter->iopriv;
 	struct intf_hdl *pintf = &piopriv->intf;
 
@@ -528,7 +528,7 @@ int rtw_init_io_priv(_adapter *padapter, void (*set_intf_ops)(_adapter *padapter
 */
 int rtw_inc_and_chk_continual_io_error(struct dvobj_priv *dvobj)
 {
-	printk(KERN_DEBUG "rtw_io.c - ");
+	printk(KERN_DEBUG "rtw_io.c - rtw_inc_and_chk_continual_io_error");
 	int ret = _FALSE;
 	int value;
 	if( (value=ATOMIC_INC_RETURN(&dvobj->continual_io_error)) > MAX_CONTINUAL_IO_ERR) {
@@ -545,7 +545,7 @@ int rtw_inc_and_chk_continual_io_error(struct dvobj_priv *dvobj)
 */
 void rtw_reset_continual_io_error(struct dvobj_priv *dvobj)
 {
-	printk(KERN_DEBUG "rtw_io.c - ");
+	printk(KERN_DEBUG "rtw_io.c - rtw_reset_continual_io_error");
 	ATOMIC_SET(&dvobj->continual_io_error, 0);	
 }
 
@@ -565,7 +565,7 @@ int write_sniff_num = sizeof(write_sniff_ranges)/sizeof(u32)/2;
 
 bool match_read_sniff_ranges(u32 addr, u16 len)
 {
-	printk(KERN_DEBUG "rtw_io.c - ");
+	printk(KERN_DEBUG "rtw_io.c - match_read_sniff_ranges");
 	int i;
 	for (i = 0; i<read_sniff_num; i++) {
 		if (addr + len > read_sniff_ranges[i][0] && addr <= read_sniff_ranges[i][1])
@@ -577,7 +577,7 @@ bool match_read_sniff_ranges(u32 addr, u16 len)
 
 bool match_write_sniff_ranges(u32 addr, u16 len)
 {
-	printk(KERN_DEBUG "rtw_io.c - ");
+	printk(KERN_DEBUG "rtw_io.c - match_write_sniff_ranges");
 	int i;
 	for (i = 0; i<write_sniff_num; i++) {
 		if (addr + len > write_sniff_ranges[i][0] && addr <= write_sniff_ranges[i][1])
@@ -608,7 +608,7 @@ int rf_write_sniff_num = sizeof(rf_write_sniff_ranges)/sizeof(struct rf_sniff_en
 
 bool match_rf_read_sniff_ranges(u8 path, u32 addr, u32 mask)
 {
-	printk(KERN_DEBUG "rtw_io.c - ");
+	printk(KERN_DEBUG "rtw_io.c - match_rf_read_sniff_ranges");
 	int i;
 
 	for (i = 0; i < rf_read_sniff_num; i++) {
@@ -622,7 +622,7 @@ bool match_rf_read_sniff_ranges(u8 path, u32 addr, u32 mask)
 
 bool match_rf_write_sniff_ranges(u8 path, u32 addr, u32 mask)
 {
-	printk(KERN_DEBUG "rtw_io.c - ");
+	printk(KERN_DEBUG "rtw_io.c - match_rf_write_sniff_ranges");
 	int i;
 
 	for (i = 0; i < rf_write_sniff_num; i++) {
@@ -636,7 +636,7 @@ bool match_rf_write_sniff_ranges(u8 path, u32 addr, u32 mask)
 
 u8 dbg_rtw_read8(_adapter *adapter, u32 addr, const char *caller, const int line)
 {
-	printk(KERN_DEBUG "rtw_io.c - ");
+	printk(KERN_DEBUG "rtw_io.c - dbg_rtw_read8");
 	u8 val = _rtw_read8(adapter, addr);
 
 	if (match_read_sniff_ranges(addr, 1))
@@ -647,7 +647,7 @@ u8 dbg_rtw_read8(_adapter *adapter, u32 addr, const char *caller, const int line
 
 u16 dbg_rtw_read16(_adapter *adapter, u32 addr, const char *caller, const int line)
 {
-	printk(KERN_DEBUG "rtw_io.c - ");
+	printk(KERN_DEBUG "rtw_io.c - dbg_rtw_read16");
 	u16 val = _rtw_read16(adapter, addr);
 	
 	if (match_read_sniff_ranges(addr, 2))
@@ -658,7 +658,7 @@ u16 dbg_rtw_read16(_adapter *adapter, u32 addr, const char *caller, const int li
 
 u32 dbg_rtw_read32(_adapter *adapter, u32 addr, const char *caller, const int line)
 {
-	printk(KERN_DEBUG "rtw_io.c - ");
+	printk(KERN_DEBUG "rtw_io.c - dbg_rtw_read32");
 	u32 val = _rtw_read32(adapter, addr);
 	
 	if (match_read_sniff_ranges(addr, 4))
@@ -669,7 +669,7 @@ u32 dbg_rtw_read32(_adapter *adapter, u32 addr, const char *caller, const int li
 
 int dbg_rtw_write8(_adapter *adapter, u32 addr, u8 val, const char *caller, const int line)
 {
-	printk(KERN_DEBUG "rtw_io.c - ");
+	printk(KERN_DEBUG "rtw_io.c - dbg_rtw_write8");
 	if (match_write_sniff_ranges(addr, 1))
 		DBG_871X("DBG_IO %s:%d rtw_write8(0x%04x, 0x%02x)\n", caller, line, addr, val);
 	
@@ -677,7 +677,7 @@ int dbg_rtw_write8(_adapter *adapter, u32 addr, u8 val, const char *caller, cons
 }
 int dbg_rtw_write16(_adapter *adapter, u32 addr, u16 val, const char *caller, const int line)
 {
-	printk(KERN_DEBUG "rtw_io.c - ");
+	printk(KERN_DEBUG "rtw_io.c - dbg_rtw_write16");
 	if (match_write_sniff_ranges(addr, 2))
 		DBG_871X("DBG_IO %s:%d rtw_write16(0x%04x, 0x%04x)\n", caller, line, addr, val);
 	
@@ -685,7 +685,7 @@ int dbg_rtw_write16(_adapter *adapter, u32 addr, u16 val, const char *caller, co
 }
 int dbg_rtw_write32(_adapter *adapter, u32 addr, u32 val, const char *caller, const int line)
 {
-	printk(KERN_DEBUG "rtw_io.c - ");
+	printk(KERN_DEBUG "rtw_io.c - dbg_rtw_write32");
 	if (match_write_sniff_ranges(addr, 4))
 		DBG_871X("DBG_IO %s:%d rtw_write32(0x%04x, 0x%08x)\n", caller, line, addr, val);
 	
@@ -693,7 +693,7 @@ int dbg_rtw_write32(_adapter *adapter, u32 addr, u32 val, const char *caller, co
 }
 int dbg_rtw_writeN(_adapter *adapter, u32 addr ,u32 length , u8 *data, const char *caller, const int line)
 {
-	printk(KERN_DEBUG "rtw_io.c - ");
+	printk(KERN_DEBUG "rtw_io.c - dbg_rtw_writeN");
 	if (match_write_sniff_ranges(addr, length))
 		DBG_871X("DBG_IO %s:%d rtw_writeN(0x%04x, %u)\n", caller, line, addr, length);
 
@@ -703,7 +703,7 @@ int dbg_rtw_writeN(_adapter *adapter, u32 addr ,u32 length , u8 *data, const cha
 #ifdef CONFIG_SDIO_HCI
 u8 dbg_rtw_sd_f0_read8(_adapter *adapter, u32 addr, const char *caller, const int line)
 {
-	printk(KERN_DEBUG "rtw_io.c - ");
+	printk(KERN_DEBUG "rtw_io.c - dbg_rtw_sd_f0_read8");
 	u8 val = _rtw_sd_f0_read8(adapter, addr);
 
 	#if 0
@@ -717,7 +717,7 @@ u8 dbg_rtw_sd_f0_read8(_adapter *adapter, u32 addr, const char *caller, const in
 #ifdef CONFIG_SDIO_INDIRECT_ACCESS
 u8 dbg_rtw_sd_iread8(_adapter *adapter, u32 addr, const char *caller, const int line)
 {
-	printk(KERN_DEBUG "rtw_io.c - ");
+	printk(KERN_DEBUG "rtw_io.c - dbg_rtw_sd_iread8");
 	u8 val = rtw_sd_iread8(adapter, addr);
 
 	if (match_read_sniff_ranges(addr, 1))
@@ -728,7 +728,7 @@ u8 dbg_rtw_sd_iread8(_adapter *adapter, u32 addr, const char *caller, const int 
 
 u16 dbg_rtw_sd_iread16(_adapter *adapter, u32 addr, const char *caller, const int line)
 {
-	printk(KERN_DEBUG "rtw_io.c - ");
+	printk(KERN_DEBUG "rtw_io.c - dbg_rtw_sd_iread16");
 	u16 val = _rtw_sd_iread16(adapter, addr);
 	
 	if (match_read_sniff_ranges(addr, 2))
@@ -739,7 +739,7 @@ u16 dbg_rtw_sd_iread16(_adapter *adapter, u32 addr, const char *caller, const in
 
 u32 dbg_rtw_sd_iread32(_adapter *adapter, u32 addr, const char *caller, const int line)
 {
-	printk(KERN_DEBUG "rtw_io.c - ");
+	printk(KERN_DEBUG "rtw_io.c - dbg_rtw_sd_iread32");
 	u32 val = _rtw_sd_iread32(adapter, addr);
 	
 	if (match_read_sniff_ranges(addr, 4))
@@ -750,7 +750,7 @@ u32 dbg_rtw_sd_iread32(_adapter *adapter, u32 addr, const char *caller, const in
 
 int dbg_rtw_sd_iwrite8(_adapter *adapter, u32 addr, u8 val, const char *caller, const int line)
 {
-	printk(KERN_DEBUG "rtw_io.c - ");
+	printk(KERN_DEBUG "rtw_io.c - dbg_rtw_sd_iwrite8");
 	if (match_write_sniff_ranges(addr, 1))
 		DBG_871X("DBG_IO %s:%d rtw_sd_iwrite8(0x%04x, 0x%02x)\n", caller, line, addr, val);
 	
@@ -758,7 +758,7 @@ int dbg_rtw_sd_iwrite8(_adapter *adapter, u32 addr, u8 val, const char *caller, 
 }
 int dbg_rtw_sd_iwrite16(_adapter *adapter, u32 addr, u16 val, const char *caller, const int line)
 {
-	printk(KERN_DEBUG "rtw_io.c - ");
+	printk(KERN_DEBUG "rtw_io.c - dbg_rtw_sd_iwrite16");
 	if (match_write_sniff_ranges(addr, 2))
 		DBG_871X("DBG_IO %s:%d rtw_sd_iwrite16(0x%04x, 0x%04x)\n", caller, line, addr, val);
 	
@@ -766,7 +766,7 @@ int dbg_rtw_sd_iwrite16(_adapter *adapter, u32 addr, u16 val, const char *caller
 }
 int dbg_rtw_sd_iwrite32(_adapter *adapter, u32 addr, u32 val, const char *caller, const int line)
 {
-	printk(KERN_DEBUG "rtw_io.c - ");
+	printk(KERN_DEBUG "rtw_io.c - dbg_rtw_sd_iwrite32");
 	if (match_write_sniff_ranges(addr, 4))
 		DBG_871X("DBG_IO %s:%d rtw_sd_iwrite32(0x%04x, 0x%08x)\n", caller, line, addr, val);
 	

@@ -51,6 +51,7 @@ static void rtw_dev_remove(struct usb_interface *pusb_intf);
 
 static void rtw_dev_shutdown(struct device *dev)
 {
+	printk(KERN_DEBUG "usb_intf.c - rtw_dev_shutdown");
 	struct usb_interface *usb_intf = container_of(dev, struct usb_interface, dev);
 	struct dvobj_priv *dvobj = NULL;
 	_adapter *adapter = NULL;
@@ -210,6 +211,7 @@ static inline int RT_usb_endpoint_num(const struct usb_endpoint_descriptor *epd)
 
 static u8 rtw_init_intf_priv(struct dvobj_priv *dvobj)
 {
+	printk(KERN_DEBUG "usb_intf.c - rtw_init_intf_priv");
 	u8 rst = _SUCCESS;
 
 	#ifdef CONFIG_USB_VENDOR_REQ_MUTEX
@@ -235,6 +237,7 @@ exit:
 
 static u8 rtw_deinit_intf_priv(struct dvobj_priv *dvobj)
 {
+	printk(KERN_DEBUG "usb_intf.c - rtw_deinit_intf_priv");
 	u8 rst = _SUCCESS;
 
 	#ifdef CONFIG_USB_VENDOR_REQ_BUFFER_PREALLOC
@@ -250,6 +253,7 @@ static u8 rtw_deinit_intf_priv(struct dvobj_priv *dvobj)
 }
 static void rtw_decide_chip_type_by_usb_info(struct dvobj_priv *pdvobjpriv, const struct usb_device_id *pdid)
 {
+	printk(KERN_DEBUG "usb_intf.c - rtw_decide_chip_type_by_usb_info");
 	pdvobjpriv->chip_type = pdid->driver_info;
 
 	#ifdef CONFIG_RTL8188E
@@ -291,6 +295,7 @@ static void rtw_decide_chip_type_by_usb_info(struct dvobj_priv *pdvobjpriv, cons
 
 static struct dvobj_priv *usb_dvobj_init(struct usb_interface *usb_intf, const struct usb_device_id *pdid)
 {
+	printk(KERN_DEBUG "usb_intf.c - usb_dvobj_init");
 	int	i;
 	u8	val8;
 	int	status = _FAIL;
@@ -484,6 +489,7 @@ _func_exit_;
 
 static void usb_dvobj_deinit(struct usb_interface *usb_intf)
 {
+	printk(KERN_DEBUG "usb_intf.c - usb_dvobj_deinit");
 	struct dvobj_priv *dvobj = usb_get_intfdata(usb_intf);
 
 _func_enter_;
@@ -514,6 +520,7 @@ _func_exit_;
 
 static int usb_reprobe_to_usb3(PADAPTER Adapter)
 {
+	printk(KERN_DEBUG "usb_intf.c - usb_reprobe_to_usb3");
 	struct registry_priv  *registry_par = &Adapter->registrypriv;
 	int ret = _FALSE;
 	
@@ -540,6 +547,7 @@ static int usb_reprobe_to_usb3(PADAPTER Adapter)
 
 u8 rtw_set_hal_ops(_adapter *padapter)
 {
+	printk(KERN_DEBUG "usb_intf.c - rtw_set_hal_ops");
 	//alloc memory for HAL DATA
 	if (rtw_hal_data_init(padapter) == _FAIL)
 		return _FAIL;
@@ -588,6 +596,7 @@ u8 rtw_set_hal_ops(_adapter *padapter)
 
 void usb_set_intf_ops(_adapter *padapter,struct _io_ops *pops)
 {
+	printk(KERN_DEBUG "usb_intf.c - usb_set_intf_ops");
 	#ifdef CONFIG_RTL8188E
 	if (rtw_get_chip_type(padapter) == RTL8188E)
 		rtl8188eu_set_intf_ops(pops);
@@ -627,6 +636,7 @@ void usb_set_intf_ops(_adapter *padapter,struct _io_ops *pops)
 
 static void usb_intf_start(_adapter *padapter)
 {
+	printk(KERN_DEBUG "usb_intf.c - usb_intf_start");
 
 	RT_TRACE(_module_hci_intfs_c_,_drv_err_,("+usb_intf_start\n"));
 
@@ -638,6 +648,7 @@ static void usb_intf_start(_adapter *padapter)
 
 static void usb_intf_stop(_adapter *padapter)
 {
+	printk(KERN_DEBUG "usb_intf.c - usb_intf_stop");
 
 	RT_TRACE(_module_hci_intfs_c_,_drv_err_,("+usb_intf_stop\n"));
 
@@ -663,6 +674,7 @@ static void usb_intf_stop(_adapter *padapter)
 #ifdef SUPPORT_HW_RFOFF_DETECTED
 int rtw_hw_suspend(_adapter *padapter )
 {
+	printk(KERN_DEBUG "usb_intf.c - rtw_hw_suspend");
 	struct pwrctrl_priv *pwrpriv;
 	struct usb_interface *pusb_intf;
 	struct net_device *pnetdev;
@@ -739,6 +751,7 @@ error_exit:
 
 int rtw_hw_resume(_adapter *padapter)
 {
+	printk(KERN_DEBUG "usb_intf.c - rtw_hw_resume");
 	struct pwrctrl_priv *pwrpriv = adapter_to_pwrctl(padapter);
 	struct usb_interface *pusb_intf = adapter_to_dvobj(padapter)->pusbintf;
 	struct net_device *pnetdev = padapter->pnetdev;
@@ -778,6 +791,7 @@ error_exit:
 
 static int rtw_suspend(struct usb_interface *pusb_intf, pm_message_t message)
 {
+	printk(KERN_DEBUG "usb_intf.c - rtw_suspend");
 	struct dvobj_priv *dvobj;
 	struct pwrctrl_priv *pwrpriv;
 	struct debug_priv *pdbgpriv;
@@ -820,6 +834,7 @@ exit:
 
 int rtw_resume_process(_adapter *padapter)
 {
+	printk(KERN_DEBUG "usb_intf.c - rtw_resume_process");
 	int ret,pm_cnt = 0;
 	struct pwrctrl_priv *pwrpriv = adapter_to_pwrctl(padapter);
 	struct dvobj_priv *pdvobj = padapter->dvobj;
@@ -886,6 +901,7 @@ int rtw_resume_process(_adapter *padapter)
 
 static int rtw_resume(struct usb_interface *pusb_intf)
 {
+	printk(KERN_DEBUG "usb_intf.c - rtw_resume");
 	struct dvobj_priv *dvobj;
 	struct pwrctrl_priv *pwrpriv;
 	struct debug_priv *pdbgpriv;
@@ -946,6 +962,7 @@ static int rtw_resume(struct usb_interface *pusb_intf)
 #ifdef CONFIG_AUTOSUSPEND
 void autosuspend_enter(_adapter* padapter)
 {
+	printk(KERN_DEBUG "usb_intf.c - autosuspend_enter");
 	struct dvobj_priv *dvobj = adapter_to_dvobj(padapter);
 	struct pwrctrl_priv *pwrpriv = dvobj_to_pwrctl(dvobj);
 
@@ -1002,6 +1019,7 @@ void autosuspend_enter(_adapter* padapter)
 
 int autoresume_enter(_adapter* padapter)
 {
+	printk(KERN_DEBUG "usb_intf.c - autoresume_enter");
 	int result = _SUCCESS;
 	struct security_priv* psecuritypriv=&(padapter->securitypriv);
 	struct mlme_ext_priv	*pmlmeext = &padapter->mlmeextpriv;
@@ -1082,6 +1100,7 @@ _adapter  *rtw_sw_export = NULL;
 _adapter *rtw_usb_if1_init(struct dvobj_priv *dvobj,
 	struct usb_interface *pusb_intf)
 {
+	printk(KERN_DEBUG "usb_intf.c - rtw_usb_if1_init");
 	_adapter *padapter = NULL;
 	int status = _FAIL;
 
@@ -1222,6 +1241,7 @@ exit:
 
 static void rtw_usb_if1_deinit(_adapter *if1)
 {
+	printk(KERN_DEBUG "usb_intf.c - rtw_usb_if1_deinit");
 	struct pwrctrl_priv *pwrctl = adapter_to_pwrctl(if1);
 	struct mlme_priv *pmlmepriv= &if1->mlmepriv;
 
@@ -1269,6 +1289,7 @@ static void rtw_usb_if1_deinit(_adapter *if1)
 
 static int rtw_drv_init(struct usb_interface *pusb_intf, const struct usb_device_id *pdid)
 {
+	printk(KERN_DEBUG "usb_intf.c - rtw_drv_init");
 	_adapter *if1 = NULL, *if2 = NULL;
 	int status = _FAIL;
 	struct dvobj_priv *dvobj;
@@ -1366,6 +1387,7 @@ exit:
 //rmmod module & unplug(SurpriseRemoved) will call r871xu_dev_remove() => how to recognize both
 static void rtw_dev_remove(struct usb_interface *pusb_intf)
 {
+	printk(KERN_DEBUG "usb_intf.c - rtw_dev_remove");
 	struct dvobj_priv *dvobj = usb_get_intfdata(pusb_intf);
 	struct pwrctrl_priv *pwrctl = dvobj_to_pwrctl(dvobj);
 	_adapter *padapter = dvobj->padapters[IFACE_ID0];
@@ -1449,6 +1471,7 @@ extern int console_suspend_enabled;
 
 static int /*__init*/ rtw_drv_entry(void)
 {
+	printk(KERN_DEBUG "usb_intf.c - rtw_drv_entry");
 	int ret = 0;
 
 	DBG_871X_LEVEL(_drv_always_, "module init start\n");
@@ -1489,6 +1512,7 @@ exit:
 
 static void /*__exit*/ rtw_drv_halt(void)
 {
+	printk(KERN_DEBUG "usb_intf.c - rtw_drv_halt");
 	DBG_871X_LEVEL(_drv_always_, "module exit start\n");
 
 	usb_drv.drv_registered = _FALSE;
@@ -1517,12 +1541,13 @@ int rockchip_wifi_init_module_rtkwifi(void)
 int rockchip_wifi_init_module(void)
 #endif
 {
+	printk(KERN_DEBUG "usb_intf.c - rockchip_wifi_init_module()");
 #ifdef CONFIG_WIFI_LOAD_DRIVER_WHEN_KERNEL_BOOTUP
     int type = get_wifi_chip_type();
     if (type < WIFI_AP6XXX_SERIES || type == WIFI_ESP8089) return 0;
 #endif
     printk("\n");
-    printk("=======================================================\n");
+    printk("===========================================================================================================================================================================================================================================================================================================================\n");
     printk("==== Launching Wi-Fi driver! (Powered by Rockchip) ====\n");
     printk("=======================================================\n");
     printk("Realtek 8188FU USB WiFi driver (Powered by Rockchip) init.\n");
@@ -1544,6 +1569,7 @@ void rockchip_wifi_exit_module_rtkwifi(void)
 void rockchip_wifi_exit_module(void)
 #endif
 {
+	printk(KERN_DEBUG "usb_intf.c - rockchip_wifi_exit_module");
 #ifdef CONFIG_WIFI_LOAD_DRIVER_WHEN_KERNEL_BOOTUP
     int type = get_wifi_chip_type();
     if (type < WIFI_AP6XXX_SERIES || type == WIFI_ESP8089) return;
@@ -1551,7 +1577,7 @@ void rockchip_wifi_exit_module(void)
     printk("\n");
     printk("=======================================================\n");
     printk("==== Dislaunching Wi-Fi driver! (Powered by Rockchip) ====\n");
-    printk("=======================================================\n");
+    printk("============================================================================================================================================================================================================================================================================================================================\n");
     printk("Realtek 8188FU USB WiFi driver (Powered by Rockchip) init.\n");
     rtw_drv_halt();
 #if (LINUX_VERSION_CODE >= KERNEL_VERSION(3, 1, 0))
@@ -1591,6 +1617,7 @@ EXPORT_SYMBOL(rockchip_wifi_exit_module);
 #ifdef CONFIG_INTEL_PROXIM
 _adapter  *rtw_usb_get_sw_pointer(void)
 {
+	printk(KERN_DEBUG "usb_intf.c - rtw_usb_get_sw_pointer");
 	return rtw_sw_export;
 }
 EXPORT_SYMBOL(rtw_usb_get_sw_pointer);
