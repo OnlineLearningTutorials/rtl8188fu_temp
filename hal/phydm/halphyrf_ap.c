@@ -48,6 +48,7 @@ void ConfigureTxpowerTrack(
 	OUT	PTXPWRTRACK_CFG	pConfig
 	)
 {
+	printk(KERN_DEBUG "halphyrf_ap.c - ");
 	PDM_ODM_T		pDM_Odm = (PDM_ODM_T)pDM_VOID;
 #if RTL8812A_SUPPORT
 #if (DM_ODM_SUPPORT_TYPE == ODM_WIN)
@@ -80,6 +81,7 @@ ODM_TXPowerTrackingCallback_ThermalMeter_92E(
 #endif
 	)
 {
+	printk(KERN_DEBUG "halphyrf_ap.c - ");
 	PDM_ODM_T		pDM_Odm = (PDM_ODM_T)pDM_VOID;
 	u1Byte	ThermalValue = 0, delta, delta_IQK, delta_LCK, channel, is_decrease, rf_mimo_mode;
 	u1Byte	ThermalValue_AVG_count = 0;
@@ -316,6 +318,7 @@ ODM_TXPowerTrackingCallback_ThermalMeter_JaguarSeries2(
 #endif
 	)
 {
+	printk(KERN_DEBUG "halphyrf_ap.c - ");
 	PDM_ODM_T		pDM_Odm = (PDM_ODM_T)pDM_VOID;
 	u1Byte			ThermalValue = 0, delta, delta_LCK, delta_IQK, channel, is_increase;
 	u1Byte			ThermalValue_AVG_count = 0, p = 0, i = 0;
@@ -575,6 +578,7 @@ ODM_TXPowerTrackingCallback_ThermalMeter_JaguarSeries(
 #endif
 	)
 {
+	printk(KERN_DEBUG "halphyrf_ap.c - ");
 	PDM_ODM_T		pDM_Odm = (PDM_ODM_T)pDM_VOID;
 	unsigned char			ThermalValue = 0, delta, delta_LCK, channel, is_decrease;
 	unsigned char			ThermalValue_AVG_count = 0;
@@ -780,6 +784,7 @@ ODM_TXPowerTrackingCallback_ThermalMeter(
 #endif
 	)
 {
+	printk(KERN_DEBUG "halphyrf_ap.c - ");
 	PDM_ODM_T		pDM_Odm = (PDM_ODM_T)pDM_VOID;
 	PODM_RF_CAL_T	pRFCalibrateInfo = &(pDM_Odm->RFCalibrateInfo);
 #if (RTL8814A_SUPPORT == 1)		//use this function to do power tracking after 8814 by YuChen
@@ -1073,6 +1078,7 @@ phy_PathAStandBy(
 	IN	PADAPTER	pAdapter
 	)
 {
+	printk(KERN_DEBUG "halphyrf_ap.c - ");
 	RTPRINT(FINIT, INIT_IQK, ("Path-A standby mode!\n"));
 
 	PHY_SetBBReg(pAdapter, rFPGA0_IQK, 0xffffff00, 0x0);
@@ -1090,6 +1096,7 @@ phy_PathA_IQK_8192C(
 	IN	BOOLEAN		configPathB
 	)
 {
+	printk(KERN_DEBUG "halphyrf_ap.c - ");
 
 	u4Byte regEAC, regE94, regE9C, regEA4;
 	u1Byte result = 0x00;
@@ -1171,6 +1178,7 @@ phy_PathB_IQK_8192C(
 	IN	PADAPTER	pAdapter
 	)
 {
+	printk(KERN_DEBUG "halphyrf_ap.c - ");
 	u4Byte regEAC, regEB4, regEBC, regEC4, regECC;
 	u1Byte	result = 0x00;
 	RTPRINT(FINIT, INIT_IQK, ("Path B IQK!\n"));
@@ -1224,6 +1232,7 @@ phy_PathAFillIQKMatrix(
 	IN  BOOLEAN		bTxOnly
 	)
 {
+	printk(KERN_DEBUG "halphyrf_ap.c - ");
 	u4Byte	Oldval_0, X, TX0_A, reg;
 	s4Byte	Y, TX0_C;
 	HAL_DATA_TYPE	*pHalData = GET_HAL_DATA(pAdapter);	
@@ -1285,6 +1294,7 @@ phy_PathBFillIQKMatrix(
 	IN	BOOLEAN		bTxOnly			//do Tx only
 	)
 {
+	printk(KERN_DEBUG "halphyrf_ap.c - ");
 	u4Byte	Oldval_1, X, TX1_A, reg;
 	s4Byte	Y, TX1_C;
 	HAL_DATA_TYPE	*pHalData = GET_HAL_DATA(pAdapter);	
@@ -1340,6 +1350,7 @@ phy_SimularityCompare_92C(
 	IN	u1Byte		 c2
 	)
 {
+	printk(KERN_DEBUG "halphyrf_ap.c - ");
 	u4Byte		i, j, diff, SimularityBitMap, bound = 0;
 	HAL_DATA_TYPE	*pHalData = GET_HAL_DATA(pAdapter);	
 	u1Byte		final_candidate[2] = {0xFF, 0xFF};	//for path A and path B
@@ -1412,6 +1423,7 @@ phy_SimularityCompare(
 	IN	u1Byte		 c2
 	)
 {	
+	printk(KERN_DEBUG "halphyrf_ap.c - ");
 	return phy_SimularityCompare_92C(pAdapter, result, c1, c2);	
 
 }
@@ -1424,6 +1436,7 @@ phy_IQCalibrate_8192C(
 	IN	BOOLEAN		is2T
 	)
 {
+	printk(KERN_DEBUG "halphyrf_ap.c - ");
 	HAL_DATA_TYPE	*pHalData = GET_HAL_DATA(pAdapter);
 	u4Byte			i;
 	u1Byte			PathAOK, PathBOK;
@@ -1622,6 +1635,7 @@ phy_LCCalibrate92C(
 	IN	BOOLEAN		is2T
 	)
 {
+	printk(KERN_DEBUG "halphyrf_ap.c - ");
 	u1Byte	tmpReg;
 	u4Byte	RF_Amode=0, RF_Bmode=0, LC_Cal;
 //	HAL_DATA_TYPE	*pHalData = GET_HAL_DATA(pAdapter);
@@ -1686,6 +1700,7 @@ phy_LCCalibrate(
 	IN	BOOLEAN		is2T
 	)
 {
+	printk(KERN_DEBUG "halphyrf_ap.c - ");
 	phy_LCCalibrate92C(pAdapter, is2T);
 }
 
@@ -1703,6 +1718,7 @@ phy_APCalibrate_8192C(
 	IN	BOOLEAN		is2T
 	)
 {
+	printk(KERN_DEBUG "halphyrf_ap.c - ");
 	HAL_DATA_TYPE	*pHalData = GET_HAL_DATA(pAdapter);
 
 	u4Byte 			regD[PATH_NUM];
@@ -2138,6 +2154,7 @@ PHY_IQCalibrate_8192C(
 	IN	BOOLEAN 	bReCovery
 	)
 {
+	printk(KERN_DEBUG "halphyrf_ap.c - ");
 	HAL_DATA_TYPE	*pHalData = GET_HAL_DATA(pAdapter);
 	s4Byte			result[4][8];	//last is final result
 	u1Byte			i, final_candidate, Indexforchannel;
@@ -2301,6 +2318,7 @@ PHY_LCCalibrate_8192C(
 	IN	PADAPTER	pAdapter
 	)
 {
+	printk(KERN_DEBUG "halphyrf_ap.c - ");
 	HAL_DATA_TYPE	*pHalData = GET_HAL_DATA(pAdapter);
 	BOOLEAN 		bStartContTx = FALSE, bSingleTone = FALSE, bCarrierSuppression = FALSE;
 	PMGNT_INFO		pMgntInfo=&pAdapter->MgntInfo;
@@ -2367,6 +2385,7 @@ PHY_APCalibrate_8192C(
 	IN	s1Byte 		delta	
 	)
 {
+	printk(KERN_DEBUG "halphyrf_ap.c - ");
 	HAL_DATA_TYPE	*pHalData = GET_HAL_DATA(pAdapter);
 
 	//default disable APK, because Tx NG issue, suggest by Jenyu, 2011.11.25
@@ -2408,6 +2427,7 @@ ODM_ResetIQKResult(
 #if 1//!(DM_ODM_SUPPORT_TYPE & ODM_AP)
 u1Byte ODM_GetRightChnlPlaceforIQK(u1Byte chnl)
 {
+	printk(KERN_DEBUG "halphyrf_ap.c - ");
 	u1Byte	channel_all[ODM_TARGET_CHNL_NUM_2G_5G] = 
 	{1,2,3,4,5,6,7,8,9,10,11,12,13,14,36,38,40,42,44,46,48,50,52,54,56,58,60,62,64,100,102,104,106,108,110,112,114,116,118,120,122,124,126,128,130,132,134,136,138,140,149,151,153,155,157,159,161,163,165};
 	u1Byte	place = chnl;
@@ -2433,6 +2453,7 @@ odm_IQCalibrate(
 		IN	PDM_ODM_T	pDM_Odm 
 		)
 {
+	printk(KERN_DEBUG "halphyrf_ap.c - ");
 	PADAPTER	Adapter = pDM_Odm->Adapter;
 
 #if (DM_ODM_SUPPORT_TYPE == ODM_WIN)	
@@ -2477,6 +2498,7 @@ odm_IQCalibrate(
 
 void phydm_rf_init(IN	PVOID		pDM_VOID)
 {
+	printk(KERN_DEBUG "halphyrf_ap.c - ");
 	PDM_ODM_T		pDM_Odm = (PDM_ODM_T)pDM_VOID;
 	odm_TXPowerTrackingInit(pDM_Odm);
 
@@ -2495,6 +2517,7 @@ void phydm_rf_init(IN	PVOID		pDM_VOID)
 
 void phydm_rf_watchdog(IN	PVOID		pDM_VOID)
 {
+	printk(KERN_DEBUG "halphyrf_ap.c - ");
 	PDM_ODM_T		pDM_Odm = (PDM_ODM_T)pDM_VOID;
 #if (DM_ODM_SUPPORT_TYPE & (ODM_WIN|ODM_CE))
 	ODM_TXPowerTrackingCheck(pDM_Odm);

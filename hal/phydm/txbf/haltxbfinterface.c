@@ -16,6 +16,7 @@ Beamforming_GidPAid(
 	PRT_TCB		pTcb
 )
 {
+	printk(KERN_DEBUG "haltxbfinterface.c - ");
 	u1Byte		Idx = 0;
 	u1Byte		RA[6] ={0};
 	pu1Byte		pHeader = GET_FRAME_OF_FIRST_FRAG(Adapter, pTcb);
@@ -86,6 +87,7 @@ Beamforming_GetReportFrame(
 	IN	POCTET_STRING	pPduOS
 	)
 {
+	printk(KERN_DEBUG "haltxbfinterface.c - ");
 	HAL_DATA_TYPE				*pHalData = GET_HAL_DATA(Adapter);
 	PDM_ODM_T					pDM_Odm = &pHalData->DM_OutSrc;
 	PRT_BEAMFORMEE_ENTRY		pBeamformEntry = NULL;
@@ -138,6 +140,7 @@ ConstructHTNDPAPacket(
 	CHANNEL_WIDTH	BW
 	)
 {
+	printk(KERN_DEBUG "haltxbfinterface.c - ");
 	u2Byte					Duration= 0;
 	PMGNT_INFO				pMgntInfo = &(Adapter->MgntInfo);
 	OCTET_STRING			pNDPAFrame,ActionContent;
@@ -185,6 +188,7 @@ SendFWHTNDPAPacket(
 	IN	CHANNEL_WIDTH	BW
 	)
 {
+	printk(KERN_DEBUG "haltxbfinterface.c - ");
 	PDM_ODM_T				pDM_Odm = (PDM_ODM_T)pDM_VOID;
 	PADAPTER				Adapter = pDM_Odm->Adapter;
 	PRT_TCB 				pTcb;
@@ -253,6 +257,7 @@ SendSWHTNDPAPacket(
 	IN	CHANNEL_WIDTH	BW
 	)
 {
+	printk(KERN_DEBUG "haltxbfinterface.c - ");
 	PDM_ODM_T				pDM_Odm = (PDM_ODM_T)pDM_VOID;
 	PADAPTER				Adapter = pDM_Odm->Adapter;
 	PRT_TCB					pTcb;
@@ -306,6 +311,7 @@ ConstructVHTNDPAPacket(
 	CHANNEL_WIDTH	BW
 	)
 {
+	printk(KERN_DEBUG "haltxbfinterface.c - ");
 	u2Byte					Duration= 0;
 	u1Byte					Sequence = 0;
 	pu1Byte					pNDPAFrame = Buffer;
@@ -355,6 +361,7 @@ SendFWVHTNDPAPacket(
 	IN	CHANNEL_WIDTH	BW
 	)
 {
+	printk(KERN_DEBUG "haltxbfinterface.c - ");
 	PDM_ODM_T				pDM_Odm = (PDM_ODM_T)pDM_VOID;
 	PADAPTER				Adapter = pDM_Odm->Adapter;
 	PRT_TCB					pTcb;
@@ -429,6 +436,7 @@ SendSWVHTNDPAPacket(
 	IN	CHANNEL_WIDTH	BW
 	)
 {
+	printk(KERN_DEBUG "haltxbfinterface.c - ");
 	PDM_ODM_T				pDM_Odm = (PDM_ODM_T)pDM_VOID;
 	PADAPTER				Adapter = pDM_Odm->Adapter;
 	PRT_TCB					pTcb;
@@ -483,6 +491,7 @@ Beamforming_GetVHTGIDMgntFrame(
 	IN	POCTET_STRING	pPduOS
 	)
 {
+	printk(KERN_DEBUG "haltxbfinterface.c - ");
 	HAL_DATA_TYPE	*pHalData = GET_HAL_DATA(Adapter);
 	PDM_ODM_T		pDM_Odm = &pHalData->DM_OutSrc;
 	RT_STATUS		rtStatus = RT_STATUS_SUCCESS;
@@ -585,6 +594,7 @@ ConstructVHTGIDMgntFrame(
 	
 )
 {
+	printk(KERN_DEBUG "haltxbfinterface.c - ");
 	PRT_BEAMFORMING_INFO	pBeamInfo = &(pDM_Odm->BeamformingInfo);
 	PADAPTER				Adapter = pBeamInfo->SourceAdapter;
 	OCTET_STRING		osFTMFrame, tmp;
@@ -619,6 +629,7 @@ SendSWVHTGIDMgntFrame(
 	IN	u1Byte			Idx
 	)
 {
+	printk(KERN_DEBUG "haltxbfinterface.c - ");
 	PDM_ODM_T				pDM_Odm = (PDM_ODM_T)pDM_VOID;
 	PRT_TCB					pTcb;
 	PRT_TX_LOCAL_BUFFER		pBuf;
@@ -669,6 +680,7 @@ ConstructVHTBFReportPoll(
 	OUT	pu4Byte			pLength
 )
 {
+	printk(KERN_DEBUG "haltxbfinterface.c - ");
 	PRT_BEAMFORMING_INFO	pBeamInfo = &(pDM_Odm->BeamformingInfo);
 	PADAPTER				Adapter = pBeamInfo->SourceAdapter;
 	pu1Byte			pBFRptPoll = Buffer;
@@ -702,6 +714,7 @@ SendSWVHTBFReportPoll(
 	IN	BOOLEAN			bFinalPoll
 	)
 {
+	printk(KERN_DEBUG "haltxbfinterface.c - ");
 	PDM_ODM_T				pDM_Odm = (PDM_ODM_T)pDM_VOID;
 	PRT_TCB					pTcb;
 	PRT_TX_LOCAL_BUFFER		pBuf;
@@ -760,6 +773,7 @@ ConstructVHTMUNDPAPacket(
 	OUT pu4Byte			pLength
 	)
 {	
+	printk(KERN_DEBUG "haltxbfinterface.c - ");
 	PRT_BEAMFORMING_INFO	pBeamInfo = &(pDM_Odm->BeamformingInfo);
 	PADAPTER				Adapter = pBeamInfo->SourceAdapter;
 	u2Byte					Duration = 0;
@@ -831,6 +845,7 @@ SendSWVHTMUNDPAPacket(
 	IN	CHANNEL_WIDTH	BW
 	)
 {
+	printk(KERN_DEBUG "haltxbfinterface.c - ");
 	PDM_ODM_T				pDM_Odm = (PDM_ODM_T)pDM_VOID;
 	PRT_TCB					pTcb;
 	PRT_TX_LOCAL_BUFFER		pBuf;
@@ -881,6 +896,7 @@ Beamforming_GetReportFrame(
 	union recv_frame *precv_frame
 	)
 {
+	printk(KERN_DEBUG "haltxbfinterface.c - ");
 	PDM_ODM_T				pDM_Odm = (PDM_ODM_T)pDM_VOID;
 	u4Byte					ret = _SUCCESS;
 	PRT_BEAMFORMEE_ENTRY	pBeamformEntry = NULL;
@@ -914,6 +930,7 @@ SendFWHTNDPAPacket(
 	IN	CHANNEL_WIDTH	BW
 	)
 {
+	printk(KERN_DEBUG "haltxbfinterface.c - ");
 	PDM_ODM_T				pDM_Odm = (PDM_ODM_T)pDM_VOID;
 	PADAPTER				Adapter = pDM_Odm->Adapter;
 	struct xmit_frame		*pmgntframe;
@@ -1002,6 +1019,7 @@ SendSWHTNDPAPacket(
 	IN	CHANNEL_WIDTH	BW
 	)
 {
+	printk(KERN_DEBUG "haltxbfinterface.c - ");
 	PDM_ODM_T				pDM_Odm = (PDM_ODM_T)pDM_VOID;
 	PADAPTER				Adapter = pDM_Odm->Adapter;
 	struct xmit_frame		*pmgntframe;
@@ -1090,6 +1108,7 @@ SendFWVHTNDPAPacket(
 	IN	CHANNEL_WIDTH	BW
 	)
 {
+	printk(KERN_DEBUG "haltxbfinterface.c - ");
 	PDM_ODM_T				pDM_Odm = (PDM_ODM_T)pDM_VOID;
 	PADAPTER				Adapter = pDM_Odm->Adapter;
 	struct xmit_frame		*pmgntframe;
@@ -1192,6 +1211,7 @@ SendSWVHTNDPAPacket(
 	IN	CHANNEL_WIDTH	BW
 	)
 {
+	printk(KERN_DEBUG "haltxbfinterface.c - ");
 	PDM_ODM_T				pDM_Odm = (PDM_ODM_T)pDM_VOID;
 	PADAPTER				Adapter = pDM_Odm->Adapter;
 	struct xmit_frame		*pmgntframe;
@@ -1298,6 +1318,7 @@ Beamforming_GetNDPAFrame(
 #endif
 )
 {
+	printk(KERN_DEBUG "haltxbfinterface.c - ");
 	PDM_ODM_T					pDM_Odm = (PDM_ODM_T)pDM_VOID;
 	PADAPTER					Adapter = pDM_Odm->Adapter;
 	pu1Byte						TA ;

@@ -24,6 +24,7 @@
 // A mapping from HalData to ODM.
 ODM_BOARD_TYPE_E boardType(u8 InterfaceSel)
 {
+	printk(KERN_DEBUG "hal_dm.c - ");
     ODM_BOARD_TYPE_E        board	= ODM_BOARD_DEFAULT;
 
 #ifdef CONFIG_PCI_HCI
@@ -74,6 +75,7 @@ ODM_BOARD_TYPE_E boardType(u8 InterfaceSel)
 
 void Init_ODM_ComInfo(_adapter *adapter)
 {
+	printk(KERN_DEBUG "hal_dm.c - ");
 	struct dvobj_priv *dvobj = adapter_to_dvobj(adapter);
 	PHAL_DATA_TYPE	pHalData = GET_HAL_DATA(adapter);
 	PDM_ODM_T		pDM_Odm = &(pHalData->odmpriv);

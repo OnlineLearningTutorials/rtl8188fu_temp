@@ -43,6 +43,7 @@ PHY_CalculateBitShift(
 	u32 BitMask
 	)
 {
+	printk(KERN_DEBUG "hal_phy.c - ");
 	u32 i;
 
 	for(i=0; i<=31; i++)
@@ -89,6 +90,7 @@ PHY_RFShadowRead(
 	IN	u8				eRFPath,
 	IN	u32				Offset)
 {
+	printk(KERN_DEBUG "hal_phy.c - ");
 	return	RF_Shadow[eRFPath][Offset].Value;
 
 }	/* PHY_RFShadowRead */
@@ -101,6 +103,7 @@ PHY_RFShadowWrite(
 	IN	u32				Offset,
 	IN	u32				Data)
 {
+	printk(KERN_DEBUG "hal_phy.c - ");
 	RF_Shadow[eRFPath][Offset].Value = (Data & bRFRegOffsetMask);
 	RF_Shadow[eRFPath][Offset].Driver_Write = _TRUE;
 
@@ -113,6 +116,7 @@ PHY_RFShadowCompare(
 	IN	u8				eRFPath,
 	IN	u32				Offset)
 {
+	printk(KERN_DEBUG "hal_phy.c - ");
 	u32	reg;
 	// Check if we need to check the register
 	if (RF_Shadow[eRFPath][Offset].Compare == _TRUE)
@@ -139,6 +143,7 @@ PHY_RFShadowRecorver(
 	IN	u8				eRFPath,
 	IN	u32				Offset)
 {
+	printk(KERN_DEBUG "hal_phy.c - ");
 	// Check if the address is error
 	if (RF_Shadow[eRFPath][Offset].ErrorOrNot == _TRUE)
 	{
@@ -160,6 +165,7 @@ VOID
 PHY_RFShadowCompareAll(
 	IN	PADAPTER			Adapter)
 {
+	printk(KERN_DEBUG "hal_phy.c - ");
 	u8		eRFPath = 0 ;
 	u32		Offset = 0, maxReg= GET_RF6052_REAL_MAX_REG(Adapter);
 
@@ -178,6 +184,7 @@ VOID
 PHY_RFShadowRecorverAll(
 	IN	PADAPTER			Adapter)
 {
+	printk(KERN_DEBUG "hal_phy.c - ");
 	u8		eRFPath =0;
 	u32		Offset = 0, maxReg= GET_RF6052_REAL_MAX_REG(Adapter);
 
@@ -199,6 +206,7 @@ PHY_RFShadowCompareFlagSet(
 	IN	u32				Offset,
 	IN	u8				Type)
 {
+	printk(KERN_DEBUG "hal_phy.c - ");
 	// Set True or False!!!
 	RF_Shadow[eRFPath][Offset].Compare = Type;
 
@@ -212,6 +220,7 @@ PHY_RFShadowRecorverFlagSet(
 	IN	u32				Offset,
 	IN	u8				Type)
 {
+	printk(KERN_DEBUG "hal_phy.c - ");
 	// Set True or False!!!
 	RF_Shadow[eRFPath][Offset].Recorver= Type;
 
@@ -222,6 +231,7 @@ VOID
 PHY_RFShadowCompareFlagSetAll(
 	IN	PADAPTER			Adapter)
 {
+	printk(KERN_DEBUG "hal_phy.c - ");
 	u8		eRFPath = 0;
 	u32		Offset = 0, maxReg= GET_RF6052_REAL_MAX_REG(Adapter);
 
@@ -244,6 +254,7 @@ VOID
 PHY_RFShadowRecorverFlagSetAll(
 	IN	PADAPTER			Adapter)
 {
+	printk(KERN_DEBUG "hal_phy.c - ");
 	u8		eRFPath = 0;
 	u32		Offset = 0, maxReg= GET_RF6052_REAL_MAX_REG(Adapter);
 
@@ -265,6 +276,7 @@ VOID
 PHY_RFShadowRefresh(
 	IN	PADAPTER			Adapter)
 {
+	printk(KERN_DEBUG "hal_phy.c - ");
 	u8		eRFPath = 0;
 	u32		Offset = 0, maxReg= GET_RF6052_REAL_MAX_REG(Adapter);
 

@@ -32,6 +32,7 @@ CheckPositive(
 	IN	const u4Byte  Condition4
 )
 {
+	printk(KERN_DEBUG "halhwimg8188f_bb.c - ");
 	u1Byte    _BoardType = ((pDM_Odm->BoardType & BIT4) >> 4) << 0 | /* _GLNA*/
 				((pDM_Odm->BoardType & BIT3) >> 3) << 1 | /* _GPA*/ 
 				((pDM_Odm->BoardType & BIT7) >> 7) << 2 | /* _ALNA*/
@@ -112,6 +113,7 @@ CheckNegative(
 	IN  const u4Byte  Condition2
 )
 {
+	printk(KERN_DEBUG "halhwimg8188f_bb.c - ");
 	return TRUE;
 }
 
@@ -194,6 +196,7 @@ ODM_ReadAndConfig_MP_8188F_AGC_TAB(
 	IN   PDM_ODM_T  pDM_Odm
 )
 {
+	printk(KERN_DEBUG "halhwimg8188f_bb.c - ");
 	u4Byte     i         = 0;
 	u1Byte     cCond;
 	BOOLEAN bMatched = TRUE, bSkipped = FALSE;
@@ -246,6 +249,7 @@ ODM_ReadAndConfig_MP_8188F_AGC_TAB(
 u4Byte
 ODM_GetVersion_MP_8188F_AGC_TAB(void)
 {
+	printk(KERN_DEBUG "halhwimg8188f_bb.c - ");
 	   return 31;
 }
 
@@ -481,6 +485,7 @@ ODM_ReadAndConfig_MP_8188F_PHY_REG(
 	IN   PDM_ODM_T  pDM_Odm
 )
 {
+	printk(KERN_DEBUG "halhwimg8188f_bb.c - ");
 	u4Byte     i         = 0;
 	u1Byte     cCond;
 	BOOLEAN bMatched = TRUE, bSkipped = FALSE;
@@ -533,6 +538,7 @@ ODM_ReadAndConfig_MP_8188F_PHY_REG(
 u4Byte
 ODM_GetVersion_MP_8188F_PHY_REG(void)
 {
+	printk(KERN_DEBUG "halhwimg8188f_bb.c - ");
 	   return 31;
 }
 
@@ -554,6 +560,7 @@ ODM_ReadAndConfig_MP_8188F_PHY_REG_PG(
 	IN   PDM_ODM_T  pDM_Odm
 )
 {
+	printk(KERN_DEBUG "halhwimg8188f_bb.c - ");
 	u4Byte     i         = 0;
 	u4Byte     ArrayLen    = sizeof(Array_MP_8188F_PHY_REG_PG)/sizeof(u4Byte);
 	pu4Byte    Array       = Array_MP_8188F_PHY_REG_PG;

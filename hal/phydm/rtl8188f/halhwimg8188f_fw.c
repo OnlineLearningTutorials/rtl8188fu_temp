@@ -2668,6 +2668,7 @@ ODM_ReadFirmware_MP_8188F_FW_NIC(
 	OUT  u4Byte       *pFirmwareSize
 )
 {
+	printk(KERN_DEBUG "halhwimg8188f_fw.c - ");
 #if (DM_ODM_SUPPORT_TYPE & (ODM_CE))
 	*((SIZE_PTR *)pFirmware) = (SIZE_PTR)Array_MP_8188F_FW_NIC;
 #else

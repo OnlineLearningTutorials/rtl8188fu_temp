@@ -68,6 +68,7 @@ u1Byte Array_MP_8188F_MUSB[] = {
 u2Byte
 EFUSE_GetArrayLen_MP_8188F_MUSB(VOID)
 {
+	printk(KERN_DEBUG "HalEfuseMask8188F_USB.c - ");
 	return sizeof(Array_MP_8188F_MUSB)/sizeof(u1Byte);
 }
 
@@ -76,6 +77,7 @@ EFUSE_GetMaskArray_MP_8188F_MUSB(
 	IN 	OUT pu1Byte Array
 	)
 {
+	printk(KERN_DEBUG "HalEfuseMask8188F_USB.c - ");
 	u2Byte len = EFUSE_GetArrayLen_MP_8188F_MUSB(), i = 0;
 
 	for (i = 0; i < len; ++i)
@@ -86,6 +88,7 @@ EFUSE_IsAddressMasked_MP_8188F_MUSB(
  	IN   u2Byte  Offset
  	)
 {
+	printk(KERN_DEBUG "HalEfuseMask8188F_USB.c - ");
 	int r = Offset/16;
 	int c = (Offset%16) / 2;
 	int result = 0;

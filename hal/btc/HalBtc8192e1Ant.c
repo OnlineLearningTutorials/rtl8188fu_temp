@@ -49,6 +49,7 @@ halbtc8192e1ant_BtRssiState(
 	u1Byte			rssiThresh1
 	)
 {
+	printk(KERN_DEBUG "HalBtc8192e1Ant.c - ");
 	s4Byte			btRssi=0;
 	u1Byte			btRssiState=pCoexSta->preBtRssiState;
 
@@ -143,6 +144,7 @@ halbtc8192e1ant_WifiRssiState(
 	IN	u1Byte			rssiThresh1
 	)
 {
+	printk(KERN_DEBUG "HalBtc8192e1Ant.c - ");
 	s4Byte			wifiRssi=0;
 	u1Byte			wifiRssiState=pCoexSta->preWifiRssiState[index];
 
@@ -235,6 +237,7 @@ halbtc8192e1ant_UpdateRaMask(
 	IN	u4Byte				disRateMask
 	)
 {
+	printk(KERN_DEBUG "HalBtc8192e1Ant.c - ");
 	pCoexDm->curRaMask = disRateMask;
 	
 	if( bForceExec || (pCoexDm->preRaMask != pCoexDm->curRaMask))
@@ -251,6 +254,7 @@ halbtc8192e1ant_AutoRateFallbackRetry(
 	IN	u1Byte				type
 	)
 {
+	printk(KERN_DEBUG "HalBtc8192e1Ant.c - ");
 	BOOLEAN	bWifiUnderBMode=FALSE;
 	
 	pCoexDm->curArfrType = type;
@@ -291,6 +295,7 @@ halbtc8192e1ant_RetryLimit(
 	IN	u1Byte				type
 	)
 {
+	printk(KERN_DEBUG "HalBtc8192e1Ant.c - ");
 	pCoexDm->curRetryLimitType = type;
 
 	if( bForceExec || (pCoexDm->preRetryLimitType != pCoexDm->curRetryLimitType))
@@ -318,6 +323,7 @@ halbtc8192e1ant_AmpduMaxTime(
 	IN	u1Byte				type
 	)
 {
+	printk(KERN_DEBUG "HalBtc8192e1Ant.c - ");
 	pCoexDm->curAmpduTimeType = type;
 
 	if( bForceExec || (pCoexDm->preAmpduTimeType != pCoexDm->curAmpduTimeType))
@@ -348,6 +354,7 @@ halbtc8192e1ant_LimitedTx(
 	IN	u1Byte				ampduTimeType
 	)
 {
+	printk(KERN_DEBUG "HalBtc8192e1Ant.c - ");
 	switch(raMaskType)
 	{
 		case 0:	// normal mode
@@ -377,6 +384,7 @@ halbtc8192e1ant_LimitedRx(
 	IN	u1Byte				aggBufSize
 	)
 {
+	printk(KERN_DEBUG "HalBtc8192e1Ant.c - ");
 	BOOLEAN	bRejectRxAgg=bRejApAggPkt;
 	BOOLEAN	bBtCtrlRxAggSize=bBtCtrlAggBufSize;
 	u1Byte	rxAggSize=aggBufSize;
@@ -400,6 +408,7 @@ halbtc8192e1ant_QueryBtInfo(
 	IN	PBTC_COEXIST		pBtCoexist
 	)
 {
+	printk(KERN_DEBUG "HalBtc8192e1Ant.c - ");
 	u1Byte			H2C_Parameter[1] ={0};
 
 	pCoexSta->bC2hBtInfoReqSent = TRUE;
@@ -417,6 +426,7 @@ halbtc8192e1ant_MonitorBtCtr(
 	IN	PBTC_COEXIST		pBtCoexist
 	)
 {
+	printk(KERN_DEBUG "HalBtc8192e1Ant.c - ");
 	u4Byte 			regHPTxRx, regLPTxRx, u4Tmp, u4Tmp1;
 	u4Byte			regHPTx=0, regHPRx=0, regLPTx=0, regLPRx=0;
 	u1Byte			u1Tmp, u1Tmp1;
@@ -477,6 +487,7 @@ halbtc8192e1ant_MonitorWiFiCtr(
 	IN	PBTC_COEXIST		pBtCoexist
 	)
 {
+	printk(KERN_DEBUG "HalBtc8192e1Ant.c - ");
 	u4Byte 	u4Tmp;
 	u2Byte 	u2Tmp[3];
 	s4Byte	wifiRssi=0;
@@ -574,6 +585,7 @@ halbtc8192e1ant_IsWifiStatusChanged(
 	IN	PBTC_COEXIST		pBtCoexist
 	)
 {
+	printk(KERN_DEBUG "HalBtc8192e1Ant.c - ");
 	static BOOLEAN	bPreWifiBusy=FALSE, bPreUnder4way=FALSE, bPreBtHsOn=FALSE;
 	BOOLEAN bWifiBusy=FALSE, bUnder4way=FALSE, bBtHsOn=FALSE;
 	BOOLEAN bWifiConnected=FALSE;
@@ -610,6 +622,7 @@ halbtc8192e1ant_UpdateBtLinkInfo(
 	IN	PBTC_COEXIST		pBtCoexist
 	)
 {
+	printk(KERN_DEBUG "HalBtc8192e1Ant.c - ");
 	PBTC_BT_LINK_INFO	pBtLinkInfo=&pBtCoexist->btLinkInfo;
 	BOOLEAN				bBtHsOn=FALSE;
 
@@ -670,6 +683,7 @@ halbtc8192e1ant_ActionAlgorithm(
 	IN	PBTC_COEXIST		pBtCoexist
 	)
 {
+	printk(KERN_DEBUG "HalBtc8192e1Ant.c - ");
 	PBTC_BT_LINK_INFO	pBtLinkInfo=&pBtCoexist->btLinkInfo;
 	BOOLEAN				bBtHsOn=FALSE;
 	u1Byte				algorithm=BT_8192E_1ANT_COEX_ALGO_UNDEFINED;
@@ -881,6 +895,7 @@ halbtc8192e1ant_SetBtAutoReport(
 	IN	BOOLEAN			bEnableAutoReport
 	)
 {
+	printk(KERN_DEBUG "HalBtc8192e1Ant.c - ");
 	u1Byte			H2C_Parameter[1] ={0};
 	
 	H2C_Parameter[0] = 0;
@@ -903,6 +918,7 @@ halbtc8192e1ant_BtAutoReport(
 	IN	BOOLEAN			bEnableAutoReport
 	)
 {
+	printk(KERN_DEBUG "HalBtc8192e1Ant.c - ");
 	RT_TRACE(COMP_COEX, DBG_TRACE, ("[BTCoex], %s BT Auto report = %s\n",  
 		(bForceExec? "force to":""), ((bEnableAutoReport)? "Enabled":"Disabled")));
 	pCoexDm->bCurBtAutoReport = bEnableAutoReport;
@@ -923,6 +939,7 @@ halbtc8192e1ant_SetSwPenaltyTxRateAdaptive(
 	IN	BOOLEAN			bLowPenaltyRa
 	)
 {
+	printk(KERN_DEBUG "HalBtc8192e1Ant.c - ");
 	u1Byte			H2C_Parameter[6] ={0};
 	
 	H2C_Parameter[0] = 0x6;	// opCode, 0x6= Retry_Penalty
@@ -949,6 +966,7 @@ halbtc8192e1ant_LowPenaltyRa(
 	IN	BOOLEAN			bLowPenaltyRa
 	)
 {
+	printk(KERN_DEBUG "HalBtc8192e1Ant.c - ");
 	pCoexDm->bCurLowPenaltyRa = bLowPenaltyRa;
 
 	if(!bForceExec)
@@ -970,6 +988,7 @@ halbtc8192e1ant_SetCoexTable(
 	IN	u1Byte		val0x6cc
 	)
 {
+	printk(KERN_DEBUG "HalBtc8192e1Ant.c - ");
 	RT_TRACE(COMP_COEX, DBG_TRACE, ("[BTCoex], set coex table, set 0x6c0=0x%x\n", val0x6c0));
 	pBtCoexist->fBtcWrite4Byte(pBtCoexist, 0x6c0, val0x6c0);
 
@@ -993,6 +1012,7 @@ halbtc8192e1ant_CoexTable(
 	IN	u1Byte			val0x6cc
 	)
 {
+	printk(KERN_DEBUG "HalBtc8192e1Ant.c - ");
 	RT_TRACE(COMP_COEX, DBG_TRACE, ("[BTCoex], %s write Coex Table 0x6c0=0x%x, 0x6c4=0x%x, 0x6cc=0x%x\n", 
 		(bForceExec? "force to":""), val0x6c0, val0x6c4, val0x6cc));
 	pCoexDm->curVal0x6c0 = val0x6c0;
@@ -1023,6 +1043,7 @@ halbtc8192e1ant_CoexTableWithType(
 	IN	u1Byte				type
 	)
 {
+	printk(KERN_DEBUG "HalBtc8192e1Ant.c - ");
 	RT_TRACE(COMP_COEX, DBG_LOUD, ("[BTCoex], ********** CoexTable(%d) **********\n", type));
 	
 	pCoexSta->nCoexTableType = type;
@@ -1064,6 +1085,7 @@ halbtc8192e1ant_SetFwIgnoreWlanAct(
 	IN	BOOLEAN			bEnable
 	)
 {
+	printk(KERN_DEBUG "HalBtc8192e1Ant.c - ");
 	u1Byte			H2C_Parameter[1] ={0};
 		
 	if(bEnable)
@@ -1084,6 +1106,7 @@ halbtc8192e1ant_IgnoreWlanAct(
 	IN	BOOLEAN			bEnable
 	)
 {
+	printk(KERN_DEBUG "HalBtc8192e1Ant.c - ");
 	RT_TRACE(COMP_COEX, DBG_TRACE, ("[BTCoex], %s turn Ignore WlanAct %s\n", 
 		(bForceExec? "force to":""), (bEnable? "ON":"OFF")));
 	pCoexDm->bCurIgnoreWlanAct = bEnable;
@@ -1105,6 +1128,7 @@ halbtc8192e1ant_SetLpsRpwm(
 	IN	u1Byte			rpwmVal
 	)
 {
+	printk(KERN_DEBUG "HalBtc8192e1Ant.c - ");
 	u1Byte	lps=lpsVal;
 	u1Byte	rpwm=rpwmVal;
 	
@@ -1120,6 +1144,7 @@ halbtc8192e1ant_LpsRpwm(
 	IN	u1Byte			rpwmVal
 	)
 {
+	printk(KERN_DEBUG "HalBtc8192e1Ant.c - ");
 	BOOLEAN	bForceExecPwrCmd=FALSE;
 	
 	RT_TRACE(COMP_COEX, DBG_TRACE, ("[BTCoex], %s set lps/rpwm=0x%x/0x%x \n", 
@@ -1147,6 +1172,7 @@ halbtc8192e1ant_SwMechanism(
 	IN	BOOLEAN 		bLowPenaltyRA
 	) 
 {
+	printk(KERN_DEBUG "HalBtc8192e1Ant.c - ");
 	halbtc8192e1ant_LowPenaltyRa(pBtCoexist, NORMAL_EXEC, bLowPenaltyRA);
 }
 
@@ -1158,6 +1184,7 @@ halbtc8192e1ant_SetAntPath(
 	IN	BOOLEAN				bWifiOff
 	)
 {
+	printk(KERN_DEBUG "HalBtc8192e1Ant.c - ");
 	u4Byte			u4Tmp=0;
 	
 	if(bInitHwCfg)
@@ -1215,6 +1242,7 @@ halbtc8192e1ant_SetFwPstdma(
 	IN	u1Byte			byte5
 	)
 {
+	printk(KERN_DEBUG "HalBtc8192e1Ant.c - ");
 	u1Byte			H2C_Parameter[5] ={0};
 	u1Byte			realByte1=byte1, realByte5=byte5;
 	BOOLEAN			bApEnable=FALSE;
@@ -1262,6 +1290,7 @@ halbtc8192e1ant_PsTdma(
 	IN	u1Byte			type
 	)
 {
+	printk(KERN_DEBUG "HalBtc8192e1Ant.c - ");
 	PBTC_BOARD_INFO	pBoardInfo=&pBtCoexist->boardInfo;
 	PBTC_BT_LINK_INFO pBtLinkInfo=&pBtCoexist->btLinkInfo;
 	BOOLEAN			bTurnOnByCnt=FALSE, bWifiBusy=FALSE, bWiFiNoisy=FALSE;
@@ -1465,6 +1494,7 @@ halbtc8192e1ant_CoexAllOff(
 	IN	PBTC_COEXIST		pBtCoexist
 	)
 {
+	printk(KERN_DEBUG "HalBtc8192e1Ant.c - ");
 	// sw all off
 	halbtc8192e1ant_SwMechanism(pBtCoexist, FALSE);
 
@@ -1477,6 +1507,7 @@ halbtc8192e1ant_IsCommonAction(
 	IN	PBTC_COEXIST		pBtCoexist
 	)
 {
+	printk(KERN_DEBUG "HalBtc8192e1Ant.c - ");
 	BOOLEAN			bCommon=FALSE, bWifiConnected=FALSE, bWifiBusy=FALSE;
 
 	pBtCoexist->fBtcGet(pBtCoexist, BTC_GET_BL_WIFI_CONNECTED, &bWifiConnected);
@@ -1551,6 +1582,7 @@ halbtc8192e1ant_TdmaDurationAdjustForAcl(
 	IN	u1Byte				wifiStatus
 	)
 {
+	printk(KERN_DEBUG "HalBtc8192e1Ant.c - ");
 	static s4Byte		up,dn,m,n,WaitCount;
 	s4Byte			result;   //0: no change, +1: increase WiFi duration, -1: decrease WiFi duration
 	u1Byte			retryCount=0, btInfoExt;
@@ -1754,6 +1786,7 @@ halbtc8192e1ant_PsTdmaCheckForPowerSaveState(
 	IN	BOOLEAN			bNewPsState
 	)
 {
+	printk(KERN_DEBUG "HalBtc8192e1Ant.c - ");
 	u1Byte	lpsMode=0x0;
 
 	pBtCoexist->fBtcGet(pBtCoexist, BTC_GET_U1_LPS_MODE, &lpsMode);
@@ -1792,6 +1825,7 @@ halbtc8192e1ant_PowerSaveState(
 	IN	u1Byte				rpwmVal
 	)
 {
+	printk(KERN_DEBUG "HalBtc8192e1Ant.c - ");
 	BOOLEAN		bLowPwrDisable=FALSE;
 	
 	switch(psType)
@@ -1828,6 +1862,7 @@ halbtc8192e1ant_ActionWifiOnly(
 	IN	PBTC_COEXIST		pBtCoexist
 	)
 {
+	printk(KERN_DEBUG "HalBtc8192e1Ant.c - ");
 	halbtc8192e1ant_CoexTableWithType(pBtCoexist, NORMAL_EXEC, 0);
 	halbtc8192e1ant_PsTdma(pBtCoexist, NORMAL_EXEC, FALSE, 9);	
 }
@@ -1837,6 +1872,7 @@ halbtc8192e1ant_MonitorBtEnableDisable(
 	IN 	PBTC_COEXIST		pBtCoexist
 	)
 {
+	printk(KERN_DEBUG "HalBtc8192e1Ant.c - ");
 	static BOOLEAN	bPreBtDisabled=FALSE;
 	static u4Byte		btDisableCnt=0;
 	BOOLEAN			bBtActive=TRUE, bBtDisabled=FALSE;
@@ -2000,6 +2036,7 @@ halbtc8192e1ant_ActionWifiMultiPort(
 	IN	PBTC_COEXIST		pBtCoexist
 	)
 {
+	printk(KERN_DEBUG "HalBtc8192e1Ant.c - ");
 	halbtc8192e1ant_PowerSaveState(pBtCoexist, BTC_PS_WIFI_NATIVE, 0x0, 0x0);
 	
 	halbtc8192e1ant_PsTdma(pBtCoexist, NORMAL_EXEC, FALSE, 8);
@@ -2011,6 +2048,7 @@ halbtc8192e1ant_ActionHs(
 	IN	PBTC_COEXIST		pBtCoexist
 	)
 {
+	printk(KERN_DEBUG "HalBtc8192e1Ant.c - ");
 	halbtc8192e1ant_PsTdma(pBtCoexist, NORMAL_EXEC, TRUE, 5);
 	halbtc8192e1ant_CoexTableWithType(pBtCoexist, NORMAL_EXEC, 2);
 }
@@ -2020,6 +2058,7 @@ halbtc8192e1ant_ActionBtInquiry(
 	IN	PBTC_COEXIST		pBtCoexist
 	)
 {	
+	printk(KERN_DEBUG "HalBtc8192e1Ant.c - ");
 	PBTC_BT_LINK_INFO pBtLinkInfo=&pBtCoexist->btLinkInfo;
 	BOOLEAN			bWifiConnected=FALSE, bApEnable=FALSE, bWifiBusy=FALSE, bBtBusy=FALSE;
 
@@ -2065,6 +2104,7 @@ halbtc8192e1ant_ActionBtScoHidOnlyBusy(
 	IN	u1Byte				wifiStatus
 	)
 {
+	printk(KERN_DEBUG "HalBtc8192e1Ant.c - ");
 	PBTC_BT_LINK_INFO pBtLinkInfo=&pBtCoexist->btLinkInfo;
 	BOOLEAN	bWifiConnected=FALSE;
 	u1Byte	wifiRssiState=BTC_RSSI_STATE_HIGH;
@@ -2091,6 +2131,7 @@ halbtc8192e1ant_ActionWifiConnectedBtAclBusy(
 	IN	u1Byte				wifiStatus
 	)
 {
+	printk(KERN_DEBUG "HalBtc8192e1Ant.c - ");
 	u1Byte		btRssiState;
 	
 	PBTC_BT_LINK_INFO pBtLinkInfo=&pBtCoexist->btLinkInfo;
@@ -2165,6 +2206,7 @@ halbtc8192e1ant_ActionWifiNotConnected(
 	IN	PBTC_COEXIST		pBtCoexist
 	)
 {
+	printk(KERN_DEBUG "HalBtc8192e1Ant.c - ");
 	// power save state
 	halbtc8192e1ant_PowerSaveState(pBtCoexist, BTC_PS_WIFI_NATIVE, 0x0, 0x0);
 
@@ -2178,6 +2220,7 @@ halbtc8192e1ant_ActionWifiNotConnectedScan(
 	IN	PBTC_COEXIST		pBtCoexist
 	)
 {
+	printk(KERN_DEBUG "HalBtc8192e1Ant.c - ");
 	PBTC_BT_LINK_INFO pBtLinkInfo=&pBtCoexist->btLinkInfo;
 	
 	halbtc8192e1ant_PowerSaveState(pBtCoexist, BTC_PS_WIFI_NATIVE, 0x0, 0x0);
@@ -2220,6 +2263,7 @@ halbtc8192e1ant_ActionWifiNotConnectedAssoAuth(
 	IN	PBTC_COEXIST		pBtCoexist
 	)
 {
+	printk(KERN_DEBUG "HalBtc8192e1Ant.c - ");
 	PBTC_BT_LINK_INFO pBtLinkInfo=&pBtCoexist->btLinkInfo;
 	
 	halbtc8192e1ant_PowerSaveState(pBtCoexist, BTC_PS_WIFI_NATIVE, 0x0, 0x0);
@@ -2247,6 +2291,7 @@ halbtc8192e1ant_ActionWifiConnectedScan(
 	IN	PBTC_COEXIST		pBtCoexist
 	)
 {
+	printk(KERN_DEBUG "HalBtc8192e1Ant.c - ");
 	PBTC_BT_LINK_INFO pBtLinkInfo=&pBtCoexist->btLinkInfo;
 	
 	halbtc8192e1ant_PowerSaveState(pBtCoexist, BTC_PS_WIFI_NATIVE, 0x0, 0x0);
@@ -2289,6 +2334,7 @@ halbtc8192e1ant_ActionWifiConnectedSpecialPacket(
 	IN	PBTC_COEXIST		pBtCoexist
 	)
 {
+	printk(KERN_DEBUG "HalBtc8192e1Ant.c - ");
 	PBTC_BT_LINK_INFO pBtLinkInfo=&pBtCoexist->btLinkInfo;
 
 	halbtc8192e1ant_PowerSaveState(pBtCoexist, BTC_PS_WIFI_NATIVE, 0x0, 0x0);
@@ -2316,6 +2362,7 @@ halbtc8192e1ant_ActionWifiConnected(
 	IN	PBTC_COEXIST		pBtCoexist
 	)
 {
+	printk(KERN_DEBUG "HalBtc8192e1Ant.c - ");
 	BOOLEAN 	bWifiBusy=FALSE;
 	BOOLEAN		bScan=FALSE, bLink=FALSE, bRoam=FALSE;
 	BOOLEAN		bUnder4way=FALSE, bApEnable=FALSE;
@@ -2428,6 +2475,7 @@ halbtc8192e1ant_RunSwCoexistMechanism(
 	IN	PBTC_COEXIST		pBtCoexist
 	)
 {
+	printk(KERN_DEBUG "HalBtc8192e1Ant.c - ");
 	u1Byte				algorithm=0;
 
 	algorithm = halbtc8192e1ant_ActionAlgorithm(pBtCoexist);
@@ -2495,6 +2543,7 @@ halbtc8192e1ant_RunCoexistMechanism(
 	IN	PBTC_COEXIST		pBtCoexist
 	)
 {
+	printk(KERN_DEBUG "HalBtc8192e1Ant.c - ");
 	PBTC_BT_LINK_INFO pBtLinkInfo=&pBtCoexist->btLinkInfo;
 	BOOLEAN	bWifiConnected=FALSE, bBtHsOn=FALSE;
 	BOOLEAN	bIncreaseScanDevNum=FALSE;
@@ -2638,6 +2687,7 @@ halbtc8192e1ant_InitCoexDm(
 	IN	PBTC_COEXIST		pBtCoexist
 	)
 {	
+	printk(KERN_DEBUG "HalBtc8192e1Ant.c - ");
 	// force to reset coex mechanism
 
 	// sw all off
@@ -2655,6 +2705,7 @@ halbtc8192e1ant_InitHwConfig(
 	IN	BOOLEAN				bWifiOnly
 	)
 {
+	printk(KERN_DEBUG "HalBtc8192e1Ant.c - ");
 	u4Byte	u4Tmp=0;
 	u2Byte	u2Tmp=0;
 	u1Byte	u1Tmp=0;
@@ -2725,6 +2776,7 @@ EXhalbtc8192e1ant_PowerOnSetting(
 	IN	PBTC_COEXIST		pBtCoexist
 	)
 {
+	printk(KERN_DEBUG "HalBtc8192e1Ant.c - ");
 #if 0
 	PBTC_BOARD_INFO 	pBoardInfo=&pBtCoexist->boardInfo;
 	u1Byte u1Tmp=0x0;
@@ -2802,6 +2854,7 @@ EXhalbtc8192e1ant_InitHwConfig(
 	IN	BOOLEAN				bWifiOnly
 	)
 {
+	printk(KERN_DEBUG "HalBtc8192e1Ant.c - ");
 	halbtc8192e1ant_InitHwConfig(pBtCoexist, bWifiOnly);
 	pBtCoexist->bStopCoexDm = FALSE;
 }
@@ -2811,6 +2864,7 @@ EXhalbtc8192e1ant_InitCoexDm(
 	IN	PBTC_COEXIST		pBtCoexist
 	)
 {
+	printk(KERN_DEBUG "HalBtc8192e1Ant.c - ");
 	RT_TRACE(COMP_COEX, DBG_LOUD, ("[BTCoex], Coex Mechanism Init!!\n"));
 
 	pBtCoexist->bStopCoexDm = FALSE;
@@ -2825,6 +2879,7 @@ EXhalbtc8192e1ant_DisplayCoexInfo(
 	IN	PBTC_COEXIST		pBtCoexist
 	)
 {
+	printk(KERN_DEBUG "HalBtc8192e1Ant.c - ");
 	PBTC_BOARD_INFO		pBoardInfo=&pBtCoexist->boardInfo;
 	PBTC_STACK_INFO		pStackInfo=&pBtCoexist->stackInfo;
 	PBTC_BT_LINK_INFO	pBtLinkInfo=&pBtCoexist->btLinkInfo;
@@ -3007,6 +3062,7 @@ EXhalbtc8192e1ant_IpsNotify(
 	IN	u1Byte			type
 	)
 {
+	printk(KERN_DEBUG "HalBtc8192e1Ant.c - ");
 	u4Byte	u4Tmp=0;
 
 	if(pBtCoexist->bManualControl ||	pBtCoexist->bStopCoexDm)
@@ -3038,6 +3094,7 @@ EXhalbtc8192e1ant_LpsNotify(
 	IN	u1Byte			type
 	)
 {
+	printk(KERN_DEBUG "HalBtc8192e1Ant.c - ");
 	if(pBtCoexist->bManualControl || pBtCoexist->bStopCoexDm)
 		return;
 
@@ -3059,6 +3116,7 @@ EXhalbtc8192e1ant_ScanNotify(
 	IN	u1Byte			type
 	)
 {
+	printk(KERN_DEBUG "HalBtc8192e1Ant.c - ");
 	BOOLEAN bWifiConnected=FALSE, bBtHsOn=FALSE;
 	u4Byte	wifiLinkStatus=0;
 	u4Byte	numOfWifiLink=0;
@@ -3155,6 +3213,7 @@ EXhalbtc8192e1ant_ConnectNotify(
 	IN	u1Byte			type
 	)
 {
+	printk(KERN_DEBUG "HalBtc8192e1Ant.c - ");
 	BOOLEAN	bWifiConnected=FALSE, bBtHsOn=FALSE;	
 	u4Byte	wifiLinkStatus=0;
 	u4Byte	numOfWifiLink=0;
@@ -3228,6 +3287,7 @@ EXhalbtc8192e1ant_MediaStatusNotify(
 	IN	u1Byte				type
 	)
 {
+	printk(KERN_DEBUG "HalBtc8192e1Ant.c - ");
 	u1Byte			H2C_Parameter[3] ={0};
 	u4Byte			wifiBw;
 	u1Byte			wifiCentralChnl;
@@ -3301,6 +3361,7 @@ EXhalbtc8192e1ant_SpecialPacketNotify(
 	IN	u1Byte				type
 	)
 {
+	printk(KERN_DEBUG "HalBtc8192e1Ant.c - ");
 	BOOLEAN	bBtHsOn=FALSE;
 	u4Byte	wifiLinkStatus=0;
 	u4Byte	numOfWifiLink=0;
@@ -3383,6 +3444,7 @@ EXhalbtc8192e1ant_BtInfoNotify(
 	IN	u1Byte			length
 	)
 {
+	printk(KERN_DEBUG "HalBtc8192e1Ant.c - ");
 	PBTC_BT_LINK_INFO	pBtLinkInfo=&pBtCoexist->btLinkInfo;
 	u1Byte				btInfo=0;
 	u1Byte				i, rspSource=0;
@@ -3567,6 +3629,7 @@ EXhalbtc8192e1ant_RfStatusNotify(
 	IN	u1Byte					type
 	)
 {
+	printk(KERN_DEBUG "HalBtc8192e1Ant.c - ");
 	u4Byte	u4Tmp;
 	u1Byte	u1Tmpa,u1Tmpb, u1Tmpc;
 	
@@ -3605,6 +3668,7 @@ EXhalbtc8192e1ant_HaltNotify(
 	IN	PBTC_COEXIST			pBtCoexist
 	)
 {
+	printk(KERN_DEBUG "HalBtc8192e1Ant.c - ");
 	u4Byte	u4Tmp;
 	
 	RT_TRACE(COMP_COEX, DBG_LOUD, ("[BTCoex], Halt notify\n"));
@@ -3626,6 +3690,7 @@ EXhalbtc8192e1ant_PnpNotify(
 	IN	u1Byte				pnpState
 	)
 {
+	printk(KERN_DEBUG "HalBtc8192e1Ant.c - ");
 	RT_TRACE(COMP_COEX, DBG_LOUD, ("[BTCoex], Pnp notify\n"));
 
 	if(BTC_WIFI_PNP_SLEEP == pnpState)
@@ -3654,6 +3719,7 @@ EXhalbtc8192e1ant_CoexDmReset(
 	IN	PBTC_COEXIST			pBtCoexist
 	)
 {
+	printk(KERN_DEBUG "HalBtc8192e1Ant.c - ");
 	RT_TRACE(COMP_COEX, DBG_LOUD, ("[BTCoex], *****************Coex DM Reset*****************\n"));
 
 	halbtc8192e1ant_InitHwConfig(pBtCoexist, FALSE);
@@ -3667,6 +3733,7 @@ EXhalbtc8192e1ant_Periodical(
 	IN	PBTC_COEXIST			pBtCoexist
 	)
 {
+	printk(KERN_DEBUG "HalBtc8192e1Ant.c - ");
 	static u1Byte		disVerInfoCnt=0;
 	u4Byte				fwVer=0, btPatchVer=0;
 	PBTC_BOARD_INFO		pBoardInfo=&pBtCoexist->boardInfo;
@@ -3716,6 +3783,7 @@ EXhalbtc8192e1ant_DbgControl(
 	IN	pu1Byte				pData
 	)
 {
+	printk(KERN_DEBUG "HalBtc8192e1Ant.c - ");
 	switch(opCode)
 	{
 		case BTC_DBG_SET_COEX_NORMAL:

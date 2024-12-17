@@ -19,6 +19,7 @@ HalTxbf8814A_setNDPArate(
 	IN u1Byte	Rate
 )
 {
+	printk(KERN_DEBUG "haltxbf8814a.c - ");
 	PDM_ODM_T	pDM_Odm = (PDM_ODM_T)pDM_VOID;
 	
 	ODM_Write1Byte(pDM_Odm, REG_NDPA_OPT_CTRL_8814A, BW);
@@ -37,6 +38,7 @@ phydm_DataRate_8814A(
 	IN	u1Byte				dataLen
 	)
 {
+	printk(KERN_DEBUG "haltxbf8814a.c - ");
 	u1Byte	i = 0;
 	u2Byte	XReadDataAddr = 0;
 
@@ -59,6 +61,7 @@ HalTxbf8814A_GetTxRate(
 	IN PVOID			pDM_VOID
 )
 {
+	printk(KERN_DEBUG "haltxbf8814a.c - ");
 	PDM_ODM_T	pDM_Odm = (PDM_ODM_T)pDM_VOID;
 	PRT_BEAMFORMING_INFO	pBeamInfo = &pDM_Odm->BeamformingInfo;
 	PRT_BEAMFORMEE_ENTRY	pEntry;
@@ -82,6 +85,7 @@ HalTxbf8814A_ResetTxPath(
 	IN	u1Byte				idx
 )
 {
+	printk(KERN_DEBUG "haltxbf8814a.c - ");
 	PDM_ODM_T	pDM_Odm = (PDM_ODM_T)pDM_VOID;
 #if DEV_BUS_TYPE == RT_USB_INTERFACE
 
@@ -157,6 +161,7 @@ halTxbf8814A_GetNtx(
 	IN PVOID			pDM_VOID
 )
 {
+	printk(KERN_DEBUG "haltxbf8814a.c - ");
 	PDM_ODM_T	pDM_Odm = (PDM_ODM_T)pDM_VOID;
 	u1Byte			Ntx = 0;
 
@@ -193,6 +198,7 @@ halTxbf8814A_GetNrx(
 	IN PVOID			pDM_VOID
 )
 {
+	printk(KERN_DEBUG "haltxbf8814a.c - ");
 	PDM_ODM_T	pDM_Odm = (PDM_ODM_T)pDM_VOID;
 	u1Byte			Nrx = 0;
 
@@ -224,6 +230,7 @@ halTxbf8814A_RfMode(
 	IN	u1Byte					idx
 )
 {
+	printk(KERN_DEBUG "haltxbf8814a.c - ");
 	PDM_ODM_T	pDM_Odm = (PDM_ODM_T)pDM_VOID;
 	u1Byte				i, Nr_index = 0;
 	RT_BEAMFORMEE_ENTRY	BeamformeeEntry;
@@ -444,6 +451,7 @@ HalTxbf8814A_Enter(
 	IN u1Byte				BFerBFeeIdx
 )
 {
+	printk(KERN_DEBUG "haltxbf8814a.c - ");
 	PDM_ODM_T	pDM_Odm = (PDM_ODM_T)pDM_VOID;
 	u1Byte					i = 0;
 	u1Byte					BFerIdx = (BFerBFeeIdx & 0xF0) >> 4;
@@ -535,6 +543,7 @@ HalTxbf8814A_Leave(
 	IN u1Byte				Idx
 )
 {
+	printk(KERN_DEBUG "haltxbf8814a.c - ");
 	PDM_ODM_T	pDM_Odm = (PDM_ODM_T)pDM_VOID;
 	PRT_BEAMFORMING_INFO	pBeamformingInfo = &pDM_Odm->BeamformingInfo;
 	RT_BEAMFORMER_ENTRY	BeamformerEntry;
@@ -583,6 +592,7 @@ HalTxbf8814A_Status(
 	IN u1Byte				Idx
 )
 {
+	printk(KERN_DEBUG "haltxbf8814a.c - ");
 	PDM_ODM_T	pDM_Odm = (PDM_ODM_T)pDM_VOID;
 	u2Byte					BeamCtrlVal, tmpVal;
 	u4Byte					BeamCtrlReg;
@@ -637,6 +647,7 @@ HalTxbf8814A_FwTxBF(
 	IN	u1Byte				Idx
 )
 {
+	printk(KERN_DEBUG "haltxbf8814a.c - ");
 #if 0
 	PRT_BEAMFORMING_INFO 	pBeamInfo = GET_BEAMFORM_INFO(Adapter);
 	PRT_BEAMFORMEE_ENTRY	pBeamEntry = pBeamInfo->BeamformeeEntry + Idx;

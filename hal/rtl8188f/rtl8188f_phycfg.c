@@ -63,6 +63,7 @@ phy_CalculateBitShift(
 	u32 BitMask
 )
 {
+	printk(KERN_DEBUG "rtl8188f_phycfg.c - ");
 	u32 i;
 
 	for (i = 0; i <= 31; i++) {
@@ -95,6 +96,7 @@ PHY_QueryBBReg_8188F(
 	IN	u32		BitMask
 )
 {
+	printk(KERN_DEBUG "rtl8188f_phycfg.c - ");
 	u32	ReturnValue = 0, OriginalValue, BitShift;
 	u16	BBWaitCounter = 0;
 
@@ -139,6 +141,7 @@ PHY_SetBBReg_8188F(
 	IN	u32		Data
 )
 {
+	printk(KERN_DEBUG "rtl8188f_phycfg.c - ");
 	HAL_DATA_TYPE	*pHalData		= GET_HAL_DATA(Adapter);
 	/*u16			BBWaitCounter	= 0; */
 	u32			OriginalValue, BitShift;
@@ -185,6 +188,7 @@ phy_FwRFSerialRead(
 	IN	RF_PATH			eRFPath,
 	IN	u32				Offset)
 {
+	printk(KERN_DEBUG "rtl8188f_phycfg.c - ");
 	u32		retValue = 0;
 	/*RT_ASSERT(FALSE,("deprecate!\n")); */
 	return	(retValue);
@@ -215,6 +219,7 @@ phy_FwRFSerialWrite(
 	IN	u32				Offset,
 	IN	u32				Data)
 {
+	printk(KERN_DEBUG "rtl8188f_phycfg.c - ");
 	/*RT_ASSERT(FALSE,("deprecate!\n")); */
 }
 
@@ -225,6 +230,7 @@ phy_RFSerialRead_8188F(
 	IN	u32				Offset
 )
 {
+	printk(KERN_DEBUG "rtl8188f_phycfg.c - ");
 	u32						retValue = 0;
 	HAL_DATA_TYPE				*pHalData = GET_HAL_DATA(Adapter);
 	BB_REGISTER_DEFINITION_T	*pPhyReg = &pHalData->PHYRegDef[eRFPath];
@@ -334,6 +340,7 @@ phy_RFSerialWrite_8188F(
 	IN	u32				Data
 )
 {
+	printk(KERN_DEBUG "rtl8188f_phycfg.c - ");
 	u32						DataAndAddr = 0;
 	HAL_DATA_TYPE				*pHalData = GET_HAL_DATA(Adapter);
 	BB_REGISTER_DEFINITION_T	*pPhyReg = &pHalData->PHYRegDef[eRFPath];
@@ -390,6 +397,7 @@ PHY_QueryRFReg_8188F(
 	IN	u32				BitMask
 )
 {
+	printk(KERN_DEBUG "rtl8188f_phycfg.c - ");
 	u32 Original_Value, Readback_Value, BitShift;
 
 #if (DISABLE_BB_RF == 1)
@@ -431,6 +439,7 @@ PHY_SetRFReg_8188F(
 	IN	u32				Data
 )
 {
+	printk(KERN_DEBUG "rtl8188f_phycfg.c - ");
 	u32		Original_Value, BitShift;
 
 #if (DISABLE_BB_RF == 1)
@@ -471,6 +480,7 @@ PHY_SetRFReg_8188F(
  *---------------------------------------------------------------------------*/
 s32 PHY_MACConfig8188F(PADAPTER Adapter)
 {
+	printk(KERN_DEBUG "rtl8188f_phycfg.c - ");
 	int		rtStatus = _SUCCESS;
 	HAL_DATA_TYPE	*pHalData = GET_HAL_DATA(Adapter);
 
@@ -508,6 +518,7 @@ phy_InitBBRFRegisterDefinition(
 	IN	PADAPTER		Adapter
 )
 {
+	printk(KERN_DEBUG "rtl8188f_phycfg.c - ");
 	HAL_DATA_TYPE		*pHalData = GET_HAL_DATA(Adapter);
 
 	/* RF Interface Sowrtware Control */
@@ -541,6 +552,7 @@ phy_BB8188f_Config_ParaFile(
 	IN	PADAPTER	Adapter
 )
 {
+	printk(KERN_DEBUG "rtl8188f_phycfg.c - ");
 	HAL_DATA_TYPE		*pHalData = GET_HAL_DATA(Adapter);
 	int			rtStatus = _SUCCESS;
 
@@ -613,6 +625,7 @@ PHY_BBConfig8188F(
 	IN	PADAPTER	Adapter
 )
 {
+	printk(KERN_DEBUG "rtl8188f_phycfg.c - ");
 	int	rtStatus = _SUCCESS;
 	HAL_DATA_TYPE	*pHalData = GET_HAL_DATA(Adapter);
 	u32	RegVal;
@@ -699,6 +712,7 @@ PHY_RFConfig8188F(
 	IN	PADAPTER	Adapter
 )
 {
+	printk(KERN_DEBUG "rtl8188f_phycfg.c - ");
 	HAL_DATA_TYPE	*pHalData = GET_HAL_DATA(Adapter);
 	int		rtStatus = _SUCCESS;
 
@@ -734,6 +748,7 @@ PHY_ConfigRFWithParaFile_8188F(
 	RF_PATH				eRFPath
 )
 {
+	printk(KERN_DEBUG "rtl8188f_phycfg.c - ");
 	return _SUCCESS;
 }
 
@@ -762,6 +777,7 @@ void phy_PowerIndexCheck8188F(
 	IN OUT u8		*BW40PowerLevel
 )
 {
+	printk(KERN_DEBUG "rtl8188f_phycfg.c - ");
 
 	HAL_DATA_TYPE		*pHalData = GET_HAL_DATA(Adapter);
 
@@ -790,6 +806,7 @@ PHY_SetTxPowerIndex_8188F(
 	IN	u8					Rate
 )
 {
+	printk(KERN_DEBUG "rtl8188f_phycfg.c - ");
 	if (RFPath == ODM_RF_PATH_A || RFPath == ODM_RF_PATH_B) {
 		switch (Rate) {
 		case MGN_1M:
@@ -870,6 +887,7 @@ phy_GetCurrentTxNum_8188F(
 	IN	PADAPTER		pAdapter
 )
 {
+	printk(KERN_DEBUG "rtl8188f_phycfg.c - ");
 	return RF_TX_NUM_NONIMPLEMENT;
 }
 
@@ -882,6 +900,7 @@ PHY_GetTxPowerIndex_8188F(
 	IN	u8					Channel
 )
 {
+	printk(KERN_DEBUG "rtl8188f_phycfg.c - ");
 	PHAL_DATA_TYPE		pHalData = GET_HAL_DATA(pAdapter);
 	s8					txPower = 0, powerDiffByRate = 0, limit = 0;
 	BOOLEAN				bIn24G = _FALSE;
@@ -911,6 +930,7 @@ PHY_SetTxPowerLevel8188F(
 	IN	u8				Channel
 )
 {
+	printk(KERN_DEBUG "rtl8188f_phycfg.c - ");
 	PHAL_DATA_TYPE	pHalData = GET_HAL_DATA(Adapter);
 	u8				cur_antenna;
 	u8				RFPath = ODM_RF_PATH_A;
@@ -937,6 +957,7 @@ PHY_GetTxPowerLevel8188F(
 	OUT	s32				*powerlevel
 )
 {
+	printk(KERN_DEBUG "rtl8188f_phycfg.c - ");
 	HAL_DATA_TYPE	*pHalData = GET_HAL_DATA(Adapter);
 	s32				TxPwrDbm = 13;
 #if 0
@@ -958,6 +979,7 @@ phy_SpurCalibration_8188F(
 	IN	u1Byte						threshold
 )
 {
+	printk(KERN_DEBUG "rtl8188f_phycfg.c - ");
 	u4Byte		freq[7] = {0xFCCD, 0xFC4D, 0xFFCD, 0xFF4D, 0xFCCD, 0xFF9A, 0xFDCD}; /* {chnl 5, 6, 7, 8, 13, 14 , 11} */
 	u1Byte		idx = 0;
 	u1Byte		b_doNotch = FALSE;
@@ -1108,6 +1130,7 @@ phy_SetRegBW_8188F(
 	CHANNEL_WIDTH 	CurrentBW
 )
 {
+	printk(KERN_DEBUG "rtl8188f_phycfg.c - ");
 	u16	RegRfMod_BW, u2tmp = 0;
 	RegRfMod_BW = rtw_read16(Adapter, REG_TRXPTCL_CTL_8188F);
 
@@ -1137,6 +1160,7 @@ phy_GetSecondaryChnl_8188F(
 	IN	PADAPTER	Adapter
 )
 {
+	printk(KERN_DEBUG "rtl8188f_phycfg.c - ");
 	u8	SCSettingOf40 = 0, SCSettingOf20 = 0;
 	PHAL_DATA_TYPE	pHalData = GET_HAL_DATA(Adapter);
 
@@ -1180,6 +1204,7 @@ phy_PostSetBwMode8188F(
 	IN	PADAPTER	Adapter
 )
 {
+	printk(KERN_DEBUG "rtl8188f_phycfg.c - ");
 	u1Byte			SubChnlNum = 0;
 	HAL_DATA_TYPE	*pHalData = GET_HAL_DATA(Adapter);
 
@@ -1264,6 +1289,7 @@ phy_SwChnl8188F(
 	IN	PADAPTER					pAdapter
 )
 {
+	printk(KERN_DEBUG "rtl8188f_phycfg.c - ");
 	HAL_DATA_TYPE	*pHalData = GET_HAL_DATA(pAdapter);
 	u8				channelToSW = pHalData->CurrentChannel;
 #if (DM_ODM_SUPPORT_TYPE == ODM_WIN)
@@ -1291,6 +1317,7 @@ phy_SwChnlAndSetBwMode8188F(
 	IN  PADAPTER		Adapter
 )
 {
+	printk(KERN_DEBUG "rtl8188f_phycfg.c - ");
 	HAL_DATA_TYPE		*pHalData = GET_HAL_DATA(Adapter);
 
 	/*RT_TRACE(COMP_SCAN, DBG_LOUD, ("phy_SwChnlAndSetBwMode8188F(): bSwChnl %d, bSetChnlBW %d\n", pHalData->bSwChnl, pHalData->bSetChnlBW)); */
@@ -1331,6 +1358,7 @@ PHY_HandleSwChnlAndSetBW8188F(
 	IN	u8					CenterFrequencyIndex1
 )
 {
+	printk(KERN_DEBUG "rtl8188f_phycfg.c - ");
 	/*static BOOLEAN		bInitialzed = _FALSE; */
 	PHAL_DATA_TYPE		pHalData = GET_HAL_DATA(Adapter);
 	u8					tmpChannel = pHalData->CurrentChannel;
@@ -1439,6 +1467,7 @@ PHY_SetBWMode8188F(
 	IN	u8	Offset
 )
 {
+	printk(KERN_DEBUG "rtl8188f_phycfg.c - ");
 	PHAL_DATA_TYPE		pHalData = GET_HAL_DATA(Adapter);
 
 	PHY_HandleSwChnlAndSetBW8188F(Adapter, _FALSE, _TRUE, pHalData->CurrentChannel, Bandwidth, Offset, Offset, pHalData->CurrentChannel);
@@ -1451,6 +1480,7 @@ PHY_SwChnl8188F(
 	IN	u8		channel
 )
 {
+	printk(KERN_DEBUG "rtl8188f_phycfg.c - ");
 	PHY_HandleSwChnlAndSetBW8188F(Adapter, _TRUE, _FALSE, channel, 0, 0, 0, channel);
 }
 
@@ -1463,6 +1493,7 @@ PHY_SetSwChnlBWMode8188F(
 	IN	u8					Offset80
 )
 {
+	printk(KERN_DEBUG "rtl8188f_phycfg.c - ");
 	/*DBG_871X("%s()===>\n",__func__); */
 
 	PHY_HandleSwChnlAndSetBW8188F(Adapter, _TRUE, _TRUE, channel, Bandwidth, Offset40, Offset80, channel);
@@ -1473,6 +1504,7 @@ PHY_SetSwChnlBWMode8188F(
 static VOID
 _PHY_DumpRFReg_8188F(IN	PADAPTER	pAdapter)
 {
+	printk(KERN_DEBUG "rtl8188f_phycfg.c - ");
 	u32 rfRegValue, rfRegOffset;
 
 	RT_TRACE(_module_hal_init_c_, _drv_info_, ("_PHY_DumpRFReg_8188F()====>\n"));

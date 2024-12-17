@@ -74,6 +74,7 @@ PHY_RF6052SetBandwidth8188F(
 	IN	PADAPTER				Adapter,
 	IN	CHANNEL_WIDTH		Bandwidth)	/*20M or 40M */
 {
+	printk(KERN_DEBUG "rtl8188f_rf6052.c - ");
 	HAL_DATA_TYPE	*pHalData = GET_HAL_DATA(Adapter);
 
 	switch (Bandwidth) {
@@ -139,6 +140,7 @@ phy_RF6052_Config_HardCode(
 	IN	PADAPTER		Adapter
 )
 {
+	printk(KERN_DEBUG "rtl8188f_rf6052.c - ");
 
 	/* Set Default Bandwidth to 20M */
 	/*Adapter->HalFunc	.SetBWModeHandler(Adapter, CHANNEL_WIDTH_20); */
@@ -152,6 +154,7 @@ phy_RF6052_Config_ParaFile(
 	IN	PADAPTER		Adapter
 )
 {
+	printk(KERN_DEBUG "rtl8188f_rf6052.c - ");
 	u32					u4RegValue = 0;
 	u8					eRFPath;
 	BB_REGISTER_DEFINITION_T	*pPhyReg;
@@ -268,6 +271,7 @@ int
 PHY_RF6052_Config8188F(
 	IN	PADAPTER		Adapter)
 {
+	printk(KERN_DEBUG "rtl8188f_rf6052.c - ");
 	HAL_DATA_TYPE				*pHalData = GET_HAL_DATA(Adapter);
 	int					rtStatus = _SUCCESS;
 

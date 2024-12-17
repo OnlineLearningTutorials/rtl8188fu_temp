@@ -67,6 +67,7 @@ void setIqkMatrix_8188F(
 	s4Byte IqkResult_Y
 )
 {
+	printk(KERN_DEBUG "halphyrf_8188f.c - ");
 	s4Byte ele_A = 0, ele_D, ele_C = 0, value32;
 
 	if (OFDM_index >= OFDM_TABLE_SIZE)
@@ -145,6 +146,7 @@ void DoIQK_8188F(
 	u1Byte Threshold
 )
 {
+	printk(KERN_DEBUG "halphyrf_8188f.c - ");
 #if !(DM_ODM_SUPPORT_TYPE & ODM_AP)
 	PDM_ODM_T pDM_Odm = (PDM_ODM_T)pDM_VOID;
 	PADAPTER Adapter = pDM_Odm->Adapter;
@@ -216,6 +218,7 @@ ODM_TxPwrTrackSetPwr_8188F(
 	u1Byte ChannelMappedIndex
 )
 {
+	printk(KERN_DEBUG "halphyrf_8188f.c - ");
 	PDM_ODM_T pDM_Odm = (PDM_ODM_T)pDM_VOID;
 	PADAPTER Adapter = pDM_Odm->Adapter;
 	PHAL_DATA_TYPE pHalData = GET_HAL_DATA(Adapter);
@@ -582,6 +585,7 @@ GetDeltaSwingTable_8188F(
 	OUT pu1Byte *TemperatureDOWN_B
 )
 {
+	printk(KERN_DEBUG "halphyrf_8188f.c - ");
 	PDM_ODM_T			pDM_Odm	= (PDM_ODM_T)pDM_VOID;
 	PADAPTER			Adapter		= pDM_Odm->Adapter;
 	PHAL_DATA_TYPE	pHalData	= GET_HAL_DATA(Adapter);
@@ -651,6 +655,7 @@ void ConfigureTxpowerTrack_8188F(
 	PTXPWRTRACK_CFG pConfig
 )
 {
+	printk(KERN_DEBUG "halphyrf_8188f.c - ");
 	RT_TRACE(COMP_CMD, DBG_LOUD, ("ConfigureTxpowerTrack_8188F ====> \n"));
 	pConfig->SwingTableSize_CCK = CCK_TABLE_SIZE_88F;
 	pConfig->SwingTableSize_OFDM = OFDM_TABLE_SIZE;
@@ -679,6 +684,7 @@ phy_PathA_IQK_8188F(
 	IN BOOLEAN configPathB
 )
 {
+	printk(KERN_DEBUG "halphyrf_8188f.c - ");
 	u4Byte regEAC, regE94, regE9C/*, regEA4*/;
 	u1Byte result = 0x00;
 #if !(DM_ODM_SUPPORT_TYPE & ODM_AP)
@@ -766,6 +772,7 @@ phy_PathA_RxIQK8188F(
 	IN BOOLEAN configPathB
 )
 {
+	printk(KERN_DEBUG "halphyrf_8188f.c - ");
 	u4Byte regEAC, regE94, regE9C, regEA4, u4tmp;
 	u1Byte result = 0x00;
 #if !(DM_ODM_SUPPORT_TYPE & ODM_AP)
@@ -924,6 +931,7 @@ phy_PathB_IQK_8188F(
 #endif
 )
 {
+	printk(KERN_DEBUG "halphyrf_8188f.c - ");
 	u4Byte regEAC, regE94, regE9C/*, regEC4, regECC*/;
 	u1Byte result = 0x00;
 #if !(DM_ODM_SUPPORT_TYPE & ODM_AP)
@@ -1021,6 +1029,7 @@ phy_PathB_RxIQK8188F(
 	IN BOOLEAN configPathB
 )
 {
+	printk(KERN_DEBUG "halphyrf_8188f.c - ");
 	u4Byte regEAC, regEB4, regEBC, regECC, regEC4, u4tmp;
 	u1Byte result = 0x00;
 #if !(DM_ODM_SUPPORT_TYPE & ODM_AP)
@@ -1182,6 +1191,7 @@ _PHY_PathAFillIQKMatrix8188F(
 	IN BOOLEAN bTxOnly
 )
 {
+	printk(KERN_DEBUG "halphyrf_8188f.c - ");
 	u4Byte Oldval_0, X, TX0_A, reg;
 	s4Byte Y, TX0_C;
 #if !(DM_ODM_SUPPORT_TYPE & ODM_AP)
@@ -1276,6 +1286,7 @@ _PHY_PathBFillIQKMatrix8188F(
 	IN BOOLEAN bTxOnly         //do Tx only
 )
 {
+	printk(KERN_DEBUG "halphyrf_8188f.c - ");
 	u4Byte Oldval_1, X, TX1_A, reg;
 	s4Byte Y, TX1_C;
 #if !(DM_ODM_SUPPORT_TYPE & ODM_AP)
@@ -1361,6 +1372,7 @@ BOOLEAN
 ODM_CheckPowerStatus(
 	IN PADAPTER Adapter)
 {
+	printk(KERN_DEBUG "halphyrf_8188f.c - ");
 	/*
 		HAL_DATA_TYPE		*pHalData = GET_HAL_DATA(Adapter);
 		PDM_ODM_T			pDM_Odm = &pHalData->DM_OutSrc;
@@ -1401,6 +1413,7 @@ _PHY_SaveADDARegisters8188F(
 	IN u4Byte RegisterNum
 )
 {
+	printk(KERN_DEBUG "halphyrf_8188f.c - ");
 	u4Byte i;
 #if !(DM_ODM_SUPPORT_TYPE & ODM_AP)
 	HAL_DATA_TYPE *pHalData = GET_HAL_DATA(pAdapter);
@@ -1432,6 +1445,7 @@ _PHY_SaveMACRegisters8188F(
 	IN pu4Byte MACBackup
 )
 {
+	printk(KERN_DEBUG "halphyrf_8188f.c - ");
 	u4Byte i;
 #if !(DM_ODM_SUPPORT_TYPE & ODM_AP)
 	HAL_DATA_TYPE *pHalData = GET_HAL_DATA(pAdapter);
@@ -1462,6 +1476,7 @@ _PHY_ReloadADDARegisters8188F(
 	IN u4Byte RegiesterNum
 )
 {
+	printk(KERN_DEBUG "halphyrf_8188f.c - ");
 	u4Byte i;
 #if !(DM_ODM_SUPPORT_TYPE & ODM_AP)
 	HAL_DATA_TYPE *pHalData = GET_HAL_DATA(pAdapter);
@@ -1489,6 +1504,7 @@ _PHY_ReloadMACRegisters8188F(
 	IN pu4Byte MACBackup
 )
 {
+	printk(KERN_DEBUG "halphyrf_8188f.c - ");
 	u4Byte i;
 #if !(DM_ODM_SUPPORT_TYPE & ODM_AP)
 	HAL_DATA_TYPE *pHalData = GET_HAL_DATA(pAdapter);
@@ -1518,6 +1534,7 @@ _PHY_PathADDAOn8188F(
 	IN BOOLEAN is2T
 )
 {
+	printk(KERN_DEBUG "halphyrf_8188f.c - ");
 	u4Byte pathOn;
 	u4Byte i;
 #if !(DM_ODM_SUPPORT_TYPE & ODM_AP)
@@ -1554,6 +1571,7 @@ _PHY_MACSettingCalibration8188F(
 	IN pu4Byte MACBackup
 )
 {
+	printk(KERN_DEBUG "halphyrf_8188f.c - ");
 	u4Byte i = 0;
 #if !(DM_ODM_SUPPORT_TYPE & ODM_AP)
 	HAL_DATA_TYPE *pHalData = GET_HAL_DATA(pAdapter);
@@ -1587,6 +1605,7 @@ _PHY_PathAStandBy8188F(
 #endif
 )
 {
+	printk(KERN_DEBUG "halphyrf_8188f.c - ");
 #if !(DM_ODM_SUPPORT_TYPE & ODM_AP)
 	HAL_DATA_TYPE *pHalData = GET_HAL_DATA(pAdapter);
 #if (DM_ODM_SUPPORT_TYPE == ODM_CE)
@@ -1616,6 +1635,7 @@ _PHY_PIModeSwitch8188F(
 	IN BOOLEAN PIMode
 )
 {
+	printk(KERN_DEBUG "halphyrf_8188f.c - ");
 	u4Byte mode;
 #if !(DM_ODM_SUPPORT_TYPE & ODM_AP)
 	HAL_DATA_TYPE *pHalData = GET_HAL_DATA(pAdapter);
@@ -1645,6 +1665,7 @@ phy_SimularityCompare_8188F(
 	IN u1Byte c2
 )
 {
+	printk(KERN_DEBUG "halphyrf_8188f.c - ");
 	u4Byte i, j, diff, SimularityBitMap, bound = 0;
 #if !(DM_ODM_SUPPORT_TYPE & ODM_AP)
 #if DBG
@@ -1757,6 +1778,7 @@ phy_IQCalibrate_8188F(
 	IN BOOLEAN is2T
 )
 {
+	printk(KERN_DEBUG "halphyrf_8188f.c - ");
 #if !(DM_ODM_SUPPORT_TYPE & ODM_AP)
 	HAL_DATA_TYPE *pHalData = GET_HAL_DATA(pAdapter);
 #if (DM_ODM_SUPPORT_TYPE == ODM_CE)
@@ -2085,6 +2107,7 @@ phy_LCCalibrate_8188F(
 	IN BOOLEAN is2T
 )
 {
+	printk(KERN_DEBUG "halphyrf_8188f.c - ");
 	u1Byte tmpReg;
 	u4Byte RF_Amode = 0, RF_Bmode = 0, LC_Cal, cnt;
 #if !(DM_ODM_SUPPORT_TYPE & ODM_AP)
@@ -2145,6 +2168,7 @@ phy_APCalibrate_8188F(
 	IN BOOLEAN is2T
 )
 {
+	printk(KERN_DEBUG "halphyrf_8188f.c - ");
 #if 0
 #if !(DM_ODM_SUPPORT_TYPE & ODM_AP) && (DBG != 0)
 	HAL_DATA_TYPE *pHalData = GET_HAL_DATA(pAdapter);
@@ -2618,6 +2642,7 @@ PHY_IQCalibrate_8188F(
 	IN BOOLEAN bRestore
 )
 {
+	printk(KERN_DEBUG "halphyrf_8188f.c - ");
 #if !(DM_ODM_SUPPORT_TYPE & ODM_AP)
 	HAL_DATA_TYPE *pHalData = GET_HAL_DATA(pAdapter);
 
@@ -2937,6 +2962,7 @@ PHY_LCCalibrate_8188F(
 	PVOID pDM_VOID
 )
 {
+	printk(KERN_DEBUG "halphyrf_8188f.c - ");
 #if MP_DRIVER == 1
 	BOOLEAN bStartContTx = FALSE;
 #endif
@@ -3002,6 +3028,7 @@ PHY_APCalibrate_8188F(
 	IN s1Byte delta
 )
 {
+	printk(KERN_DEBUG "halphyrf_8188f.c - ");
 #if !(DM_ODM_SUPPORT_TYPE & ODM_AP)
 #if DBG
 	HAL_DATA_TYPE *pHalData = GET_HAL_DATA(pAdapter);
@@ -3055,6 +3082,7 @@ VOID phy_SetRFPathSwitch_8188F(
 	IN BOOLEAN is2T
 )
 {
+	printk(KERN_DEBUG "halphyrf_8188f.c - ");
 
 	HAL_DATA_TYPE *pHalData = GET_HAL_DATA(pAdapter);
 #if (DM_ODM_SUPPORT_TYPE == ODM_CE)
@@ -3079,6 +3107,7 @@ VOID PHY_SetRFPathSwitch_8188F(
 	IN BOOLEAN bMain
 )
 {
+	printk(KERN_DEBUG "halphyrf_8188f.c - ");
 
 #if DISABLE_BB_RF
 	return;
@@ -3102,6 +3131,7 @@ phy_DigitalPredistortion8188F(
 	IN BOOLEAN is2T
 )
 {
+	printk(KERN_DEBUG "halphyrf_8188f.c - ");
 #if (RT_PLATFORM == PLATFORM_WINDOWS)
 #if !(DM_ODM_SUPPORT_TYPE & ODM_AP)
 	HAL_DATA_TYPE *pHalData = GET_HAL_DATA(pAdapter);
@@ -3502,6 +3532,7 @@ PHY_DigitalPredistortion_8188F(
 #endif
 )
 {
+	printk(KERN_DEBUG "halphyrf_8188f.c - ");
 #if !(DM_ODM_SUPPORT_TYPE & ODM_AP)
 	HAL_DATA_TYPE *pHalData = GET_HAL_DATA(pAdapter);
 #if (DM_ODM_SUPPORT_TYPE == ODM_CE)
@@ -3544,6 +3575,7 @@ BOOLEAN phy_QueryRFPathSwitch_8188F(
 	IN BOOLEAN is2T
 )
 {
+	printk(KERN_DEBUG "halphyrf_8188f.c - ");
 #if !(DM_ODM_SUPPORT_TYPE & ODM_AP)
 	HAL_DATA_TYPE *pHalData = GET_HAL_DATA(pAdapter);
 #if (DM_ODM_SUPPORT_TYPE == ODM_CE)
@@ -3573,6 +3605,7 @@ BOOLEAN PHY_QueryRFPathSwitch_8188F(
 #endif
 )
 {
+	printk(KERN_DEBUG "halphyrf_8188f.c - ");
 	HAL_DATA_TYPE *pHalData = GET_HAL_DATA(pAdapter);
 
 #if DISABLE_BB_RF

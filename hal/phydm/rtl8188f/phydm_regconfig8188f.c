@@ -32,6 +32,7 @@ odm_ConfigRFReg_8188F(
 	IN	u4Byte				    RegAddr
 	)
 {
+	printk(KERN_DEBUG "phydm_regconfig8188f.c - ");
     if(Addr == 0xfe || Addr == 0xffe)
 	{ 					  
 		#ifdef CONFIG_LONG_DELAY_ISSUE
@@ -100,6 +101,7 @@ odm_ConfigRF_RadioA_8188F(
 	IN 	u4Byte 					Data
 	)
 {
+	printk(KERN_DEBUG "phydm_regconfig8188f.c - ");
 	u4Byte  content = 0x1000; // RF_Content: radioa_txt
 	u4Byte	maskforPhySet= (u4Byte)(content&0xE000);
 
@@ -115,6 +117,7 @@ odm_ConfigRF_RadioB_8188F(
 	IN 	u4Byte 					Data
 	)
 {
+	printk(KERN_DEBUG "phydm_regconfig8188f.c - ");
 	u4Byte  content = 0x1001; // RF_Content: radiob_txt
 	u4Byte	maskforPhySet= (u4Byte)(content&0xE000);
 
@@ -131,6 +134,7 @@ odm_ConfigMAC_8188F(
  	IN 	u1Byte 		Data
  	)
 {
+	printk(KERN_DEBUG "phydm_regconfig8188f.c - ");
 	ODM_Write1Byte(pDM_Odm, Addr, Data);
     ODM_RT_TRACE(pDM_Odm,ODM_COMP_INIT, ODM_DBG_TRACE, ("===> ODM_ConfigMACWithHeaderFile: [MAC_REG] %08X %08X\n", Addr, Data));
 }
@@ -143,6 +147,7 @@ odm_ConfigBB_AGC_8188F(
     IN 	u4Byte 		Data
     )
 {
+	printk(KERN_DEBUG "phydm_regconfig8188f.c - ");
 	ODM_SetBBReg(pDM_Odm, Addr, Bitmask, Data);		
 	// Add 1us delay between BB/RF register setting.
 	ODM_delay_us(1);
@@ -162,6 +167,7 @@ odm_ConfigBB_PHY_REG_PG_8188F(
     )
 
 {    
+	printk(KERN_DEBUG "phydm_regconfig8188f.c - ");
 	if (Addr == 0xfe || Addr == 0xffe)
 		#ifdef CONFIG_LONG_DELAY_ISSUE
 		ODM_sleep_ms(50);
@@ -185,6 +191,7 @@ odm_ConfigBB_PHY_8188F(
     IN 	u4Byte 		Data
     )
 {    
+	printk(KERN_DEBUG "phydm_regconfig8188f.c - ");
 	if (Addr == 0xfe)
 		#ifdef CONFIG_LONG_DELAY_ISSUE
 		ODM_sleep_ms(50);
@@ -223,6 +230,7 @@ odm_ConfigBB_TXPWR_LMT_8188F(
 	IN	pu1Byte		PowerLimit
 	)
 {	
+	printk(KERN_DEBUG "phydm_regconfig8188f.c - ");
 #if (DM_ODM_SUPPORT_TYPE & (ODM_WIN | ODM_CE))
 		PHY_SetTxPowerLimit(pDM_Odm, Regulation, Band,
 			Bandwidth, RateSection, RfPath, Channel, PowerLimit);

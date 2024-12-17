@@ -33,6 +33,7 @@ odm_CCKRSSI_8188F(
 	IN		u1Byte	VGA_idx
 	)
 {
+	printk(KERN_DEBUG "phydm_rtl8188f.c - ");
 	s1Byte	rx_pwr_all=0x00;
 	switch(LNA_idx)
 	{

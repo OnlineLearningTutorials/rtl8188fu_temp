@@ -18,6 +18,7 @@ HalTxbf8192E_setNDPArate(
 	IN u1Byte	Rate
 )
 {
+	printk(KERN_DEBUG "haltxbf8192e.c - ");
 	PDM_ODM_T	pDM_Odm = (PDM_ODM_T)pDM_VOID;
 	
 	ODM_Write1Byte(pDM_Odm, REG_NDPA_OPT_CTRL_8192E,  (Rate << 2 | BW));	
@@ -30,6 +31,7 @@ halTxbf8192E_RfMode(
 	IN PRT_BEAMFORMING_INFO	pBeamInfo
 )
 {
+	printk(KERN_DEBUG "haltxbf8192e.c - ");
 	PDM_ODM_T	pDM_Odm = (PDM_ODM_T)pDM_VOID;
 	BOOLEAN				bSelfBeamformer = FALSE;
 	BOOLEAN				bSelfBeamformee = FALSE;
@@ -80,6 +82,7 @@ halTxbf8192E_FwTxBFCmd(
 	IN PVOID			pDM_VOID
 )
 {
+	printk(KERN_DEBUG "haltxbf8192e.c - ");
 	PDM_ODM_T	pDM_Odm = (PDM_ODM_T)pDM_VOID;
 	u1Byte	Idx, Period0 = 0, Period1 = 0;
 	u1Byte	PageNum0 = 0xFF, PageNum1 = 0xFF;
@@ -120,6 +123,7 @@ halTxbf8192E_DownloadNDPA(
 	IN	u1Byte				Idx
 )
 {
+	printk(KERN_DEBUG "haltxbf8192e.c - ");
 	PDM_ODM_T	pDM_Odm = (PDM_ODM_T)pDM_VOID;
 	u1Byte			u1bTmp = 0, tmpReg422 = 0, Head_Page;
 	u1Byte			BcnValidReg = 0, count = 0, DLBcnCount = 0;
@@ -219,6 +223,7 @@ HalTxbf8192E_Enter(
 	IN u1Byte				BFerBFeeIdx
 )
 {
+	printk(KERN_DEBUG "haltxbf8192e.c - ");
 	PDM_ODM_T	pDM_Odm = (PDM_ODM_T)pDM_VOID;
 	u1Byte					i = 0;
 	u1Byte					BFerIdx = (BFerBFeeIdx & 0xF0) >> 4;
@@ -303,6 +308,7 @@ HalTxbf8192E_Leave(
 	IN u1Byte				Idx
 )
 {
+	printk(KERN_DEBUG "haltxbf8192e.c - ");
 	PDM_ODM_T	pDM_Odm = (PDM_ODM_T)pDM_VOID;
 	PRT_BEAMFORMING_INFO	pBeamInfo = &pDM_Odm->BeamformingInfo;
 
@@ -337,6 +343,7 @@ HalTxbf8192E_Status(
 	IN u1Byte				Idx
 )
 {
+	printk(KERN_DEBUG "haltxbf8192e.c - ");
 	PDM_ODM_T	pDM_Odm = (PDM_ODM_T)pDM_VOID;
 	u2Byte					BeamCtrlVal;
 	u4Byte					BeamCtrlReg;
@@ -375,6 +382,7 @@ HalTxbf8192E_FwTxBF(
 	IN	u1Byte				Idx
 )
 {
+	printk(KERN_DEBUG "haltxbf8192e.c - ");
 	PDM_ODM_T	pDM_Odm = (PDM_ODM_T)pDM_VOID;
 	PRT_BEAMFORMING_INFO	pBeamInfo = &pDM_Odm->BeamformingInfo;
 	PRT_BEAMFORMEE_ENTRY	pBeamEntry = pBeamInfo->BeamformeeEntry + Idx;

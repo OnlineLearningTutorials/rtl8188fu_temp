@@ -32,6 +32,7 @@ char	rtw_phy_para_file_path[PATH_LENGTH_MAX];
 
 void dump_chip_info(HAL_VERSION	ChipVersion)
 {
+	printk(KERN_DEBUG "hal_com.c - ");
 	int cnt = 0;
 	u8 buf[128]={0};
 	
@@ -97,6 +98,7 @@ void dump_chip_info(HAL_VERSION	ChipVersion)
 }
 void rtw_hal_config_rftype(PADAPTER  padapter)
 {
+	printk(KERN_DEBUG "hal_com.c - ");
 	HAL_DATA_TYPE *pHalData = GET_HAL_DATA(padapter);
 	
 	if (IS_1T1R(pHalData->VersionID)) {
@@ -159,6 +161,7 @@ u8 hal_com_config_channel_plan(
 	IN	BOOLEAN AutoLoadFail
 	)
 {
+	printk(KERN_DEBUG "hal_com.c - ");
 	PHAL_DATA_TYPE	pHalData;
 	u8 force_hw_chplan = _FALSE;
 	int chplan = -1;
@@ -244,6 +247,7 @@ HAL_IsLegalChannel(
 	IN	u32			Channel
 	)
 {
+	printk(KERN_DEBUG "hal_com.c - ");
 	BOOLEAN bLegalChannel = _TRUE;
 
 	if (Channel > 14) {
@@ -266,6 +270,7 @@ HAL_IsLegalChannel(
 
 u8	MRateToHwRate(u8 rate)
 {
+	printk(KERN_DEBUG "hal_com.c - ");
 	u8	ret = DESC_RATE1M;
 		
 	switch(rate)
@@ -364,6 +369,7 @@ u8	MRateToHwRate(u8 rate)
 
 u8	HwRateToMRate(u8 rate)
 {
+	printk(KERN_DEBUG "hal_com.c - ");
 	u8	ret_rate = MGN_1M;
 
 	switch(rate)
@@ -467,6 +473,7 @@ void	HalSetBrateCfg(
 	IN u8			*mBratesOS,
 	OUT u16			*pBrateCfg)
 {
+	printk(KERN_DEBUG "hal_com.c - ");
 	u8	i, is_brate, brate;
 
 	for(i=0;i<NDIS_802_11_LENGTH_RATES_EX;i++)
@@ -500,6 +507,7 @@ _OneOutPipeMapping(
 	IN	PADAPTER	pAdapter
 	)
 {
+	printk(KERN_DEBUG "hal_com.c - ");
 	struct dvobj_priv	*pdvobjpriv = adapter_to_dvobj(pAdapter);
 
 	pdvobjpriv->Queue2Pipe[0] = pdvobjpriv->RtOutPipe[0];//VO
@@ -519,6 +527,7 @@ _TwoOutPipeMapping(
 	IN	BOOLEAN	 	bWIFICfg
 	)
 {
+	printk(KERN_DEBUG "hal_com.c - ");
 	struct dvobj_priv	*pdvobjpriv = adapter_to_dvobj(pAdapter);
 
 	if(bWIFICfg){ //WMM
@@ -564,6 +573,7 @@ static VOID _ThreeOutPipeMapping(
 	IN	BOOLEAN	 	bWIFICfg
 	)
 {
+	printk(KERN_DEBUG "hal_com.c - ");
 	struct dvobj_priv	*pdvobjpriv = adapter_to_dvobj(pAdapter);
 
 	if(bWIFICfg){//for WMM
@@ -607,6 +617,7 @@ static VOID _FourOutPipeMapping(
 	IN	BOOLEAN	 	bWIFICfg
 	)
 {
+	printk(KERN_DEBUG "hal_com.c - ");
 	struct dvobj_priv	*pdvobjpriv = adapter_to_dvobj(pAdapter);
 
 	if(bWIFICfg){//for WMM
@@ -651,6 +662,7 @@ Hal_MappingOutPipe(
 	IN	u8		NumOutPipe
 	)
 {
+	printk(KERN_DEBUG "hal_com.c - ");
 	struct registry_priv *pregistrypriv = &pAdapter->registrypriv;
 
 	BOOLEAN	 bWIFICfg = (pregistrypriv->wifi_spec) ?_TRUE:_FALSE;
@@ -680,6 +692,7 @@ Hal_MappingOutPipe(
 
 void hal_init_macaddr(_adapter *adapter)
 {
+	printk(KERN_DEBUG "hal_com.c - ");
 	rtw_hal_set_hwreg(adapter, HW_VAR_MAC_ADDR, adapter_mac_addr(adapter));
 #ifdef  CONFIG_CONCURRENT_MODE
 	if (adapter->pbuddy_adapter)
@@ -689,6 +702,7 @@ void hal_init_macaddr(_adapter *adapter)
 
 void rtw_init_hal_com_default_value(PADAPTER Adapter)
 {
+	printk(KERN_DEBUG "hal_com.c - ");
 	PHAL_DATA_TYPE	pHalData = GET_HAL_DATA(Adapter);
 
 	pHalData->AntDetection = 1;
@@ -702,11 +716,13 @@ void rtw_init_hal_com_default_value(PADAPTER Adapter)
 
 void c2h_evt_clear(_adapter *adapter)
 {
+	printk(KERN_DEBUG "hal_com.c - ");
 	rtw_write8(adapter, REG_C2HEVT_CLEAR, C2H_EVT_HOST_CLOSE);
 }
 
 s32 c2h_evt_read(_adapter *adapter, u8 *buf)
 {
+	printk(KERN_DEBUG "hal_com.c - ");
 	s32 ret = _FAIL;
 	struct c2h_evt_hdr *c2h_evt;
 	int i;
@@ -767,6 +783,7 @@ exit:
 */
 s32 c2h_evt_read_88xx(_adapter *adapter, u8 *buf)
 {
+	printk(KERN_DEBUG "hal_com.c - ");
 	s32 ret = _FAIL;
 	struct c2h_evt_hdr_88xx *c2h_evt;
 	int i;
@@ -842,6 +859,7 @@ exit:
 
 int c2h_mac_hidden_rpt_hdl(_adapter *adapter, u8 *data, u8 len)
 {
+	printk(KERN_DEBUG "hal_com.c - ");
 	HAL_DATA_TYPE	*hal_data = GET_HAL_DATA(adapter);
 	struct hal_spec_t *hal_spec = GET_HAL_SPEC(adapter);
 	int ret = _FAIL;
@@ -929,6 +947,7 @@ exit:
 
 int c2h_mac_hidden_rpt_2_hdl(_adapter *adapter, u8 *data, u8 len)
 {
+	printk(KERN_DEBUG "hal_com.c - ");
 	HAL_DATA_TYPE	*hal_data = GET_HAL_DATA(adapter);
 	struct hal_spec_t *hal_spec = GET_HAL_SPEC(adapter);
 	int ret = _FAIL;
@@ -953,6 +972,7 @@ exit:
 
 int hal_read_mac_hidden_rpt(_adapter *adapter)
 {
+	printk(KERN_DEBUG "hal_com.c - ");
 	int ret = _FAIL;
 	int ret_fwdl;
 	u8 mac_hidden_rpt[MAC_HIDDEN_RPT_LEN + MAC_HIDDEN_RPT_2_LEN] = {0};
@@ -1021,6 +1041,7 @@ exit:
 
 int c2h_defeature_dbg_hdl(_adapter *adapter, u8 *data, u8 len)
 {
+	printk(KERN_DEBUG "hal_com.c - ");
 	HAL_DATA_TYPE	*hal_data = GET_HAL_DATA(adapter);
 	struct hal_spec_t *hal_spec = GET_HAL_SPEC(adapter);
 	int ret = _FAIL;
@@ -1049,6 +1070,7 @@ exit:
 #ifdef CONFIG_RTW_CUSTOMER_STR
 s32 rtw_hal_h2c_customer_str_req(_adapter *adapter)
 {
+	printk(KERN_DEBUG "hal_com.c - ");
 	u8 h2c_data[H2C_CUSTOMER_STR_REQ_LEN] = {0};
 
 	SET_H2CCMD_CUSTOMER_STR_REQ_EN(h2c_data, 1);
@@ -1060,6 +1082,7 @@ s32 rtw_hal_h2c_customer_str_req(_adapter *adapter)
 
 int c2h_customer_str_rpt_hdl(_adapter *adapter, u8 *data, u8 len)
 {
+	printk(KERN_DEBUG "hal_com.c - ");
 	struct dvobj_priv *dvobj = adapter_to_dvobj(adapter);
 	int ret = _FAIL;
 	int i;
@@ -1092,6 +1115,7 @@ exit:
 
 int c2h_customer_str_rpt_2_hdl(_adapter *adapter, u8 *data, u8 len)
 {
+	printk(KERN_DEBUG "hal_com.c - ");
 	struct dvobj_priv *dvobj = adapter_to_dvobj(adapter);
 	int ret = _FAIL;
 	int i;
@@ -1125,6 +1149,7 @@ exit:
 /* read customer str */
 s32 rtw_hal_customer_str_read(_adapter *adapter, u8 *cs)
 {
+	printk(KERN_DEBUG "hal_com.c - ");
 	struct dvobj_priv *dvobj = adapter_to_dvobj(adapter);
 	struct submit_ctx sctx;
 	s32 ret = _SUCCESS;
@@ -1169,6 +1194,7 @@ exit:
 
 s32 rtw_hal_h2c_customer_str_write(_adapter *adapter, const u8 *cs)
 {
+	printk(KERN_DEBUG "hal_com.c - ");
 	u8 h2c_data_w1[H2C_CUSTOMER_STR_W1_LEN] = {0};
 	u8 h2c_data_w2[H2C_CUSTOMER_STR_W2_LEN] = {0};
 	u8 h2c_data_w3[H2C_CUSTOMER_STR_W3_LEN] = {0};
@@ -1208,6 +1234,7 @@ exit:
 /* write customer str and check if value reported is the same as requested */
 s32 rtw_hal_customer_str_write(_adapter *adapter, const u8 *cs)
 {
+	printk(KERN_DEBUG "hal_com.c - ");
 	struct dvobj_priv *dvobj = adapter_to_dvobj(adapter);
 	struct submit_ctx sctx;
 	s32 ret = _SUCCESS;
@@ -1268,6 +1295,7 @@ exit:
 
 u8  rtw_hal_networktype_to_raid(_adapter *adapter, struct sta_info *psta)
 {
+	printk(KERN_DEBUG "hal_com.c - ");
 	if(IS_NEW_GENERATION_IC(adapter)){
 		return networktype_to_raid_ex(adapter,psta);
 	}
@@ -1278,6 +1306,7 @@ u8  rtw_hal_networktype_to_raid(_adapter *adapter, struct sta_info *psta)
 }
 u8 rtw_get_mgntframe_raid(_adapter *adapter,unsigned char network_type)
 {	
+	printk(KERN_DEBUG "hal_com.c - ");
 
 	u8 raid;
 	if(IS_NEW_GENERATION_IC(adapter)){
@@ -1294,6 +1323,7 @@ u8 rtw_get_mgntframe_raid(_adapter *adapter,unsigned char network_type)
 
 void rtw_hal_update_sta_rate_mask(PADAPTER padapter, struct sta_info *psta)
 {
+	printk(KERN_DEBUG "hal_com.c - ");
 	u8	i, rf_type, limit;
 	u64	tx_ra_bitmap;
 
@@ -1366,6 +1396,7 @@ void rtw_hal_update_sta_rate_mask(PADAPTER padapter, struct sta_info *psta)
 
 u32 rtw_sec_read_cam(_adapter *adapter, u8 addr)
 {
+	printk(KERN_DEBUG "hal_com.c - ");
 	_mutex *mutex = &adapter_to_dvobj(adapter)->cam_ctl.sec_cam_access_mutex;
 	u32 rdata;
 	u32 cnt = 0;
@@ -1409,6 +1440,7 @@ u32 rtw_sec_read_cam(_adapter *adapter, u8 addr)
 
 void rtw_sec_write_cam(_adapter *adapter, u8 addr, u32 wdata)
 {
+	printk(KERN_DEBUG "hal_com.c - ");
 	_mutex *mutex = &adapter_to_dvobj(adapter)->cam_ctl.sec_cam_access_mutex;
 	u32 cnt = 0;
 	u32 start = 0, end = 0;
@@ -1448,6 +1480,7 @@ void rtw_sec_write_cam(_adapter *adapter, u8 addr, u32 wdata)
 
 void rtw_sec_read_cam_ent(_adapter *adapter, u8 id, u8 *ctrl, u8 *mac, u8 *key)
 {
+	printk(KERN_DEBUG "hal_com.c - ");
 	unsigned int val, addr;
 	u8 i;
 	u32 rdata;
@@ -1497,6 +1530,7 @@ exit:
 
 void rtw_sec_write_cam_ent(_adapter *adapter, u8 id, u16 ctrl, u8 *mac, u8 *key)
 {
+	printk(KERN_DEBUG "hal_com.c - ");
 	unsigned int i;
 	int j;
 	u8 addr;
@@ -1541,6 +1575,7 @@ void rtw_sec_write_cam_ent(_adapter *adapter, u8 id, u16 ctrl, u8 *mac, u8 *key)
 
 bool rtw_sec_read_cam_is_gk(_adapter *adapter, u8 id)
 {
+	printk(KERN_DEBUG "hal_com.c - ");
 	bool res;
 	u16 ctrl;
 
@@ -1552,6 +1587,7 @@ bool rtw_sec_read_cam_is_gk(_adapter *adapter, u8 id)
 
 void hw_var_port_switch(_adapter *adapter)
 {
+	printk(KERN_DEBUG "hal_com.c - ");
 #ifdef CONFIG_CONCURRENT_MODE
 #ifdef CONFIG_RUNTIME_PORT_SWITCH
 /*
@@ -1774,6 +1810,7 @@ const char * const _h2c_msr_role_str[] = {
 */
 s32 rtw_hal_set_FwMediaStatusRpt_cmd(_adapter *adapter, bool opmode, bool miracast, bool miracast_sink, u8 role, u8 macid, bool macid_ind, u8 macid_end)
 {
+	printk(KERN_DEBUG "hal_com.c - ");
 	struct macid_ctl_t *macid_ctl = &adapter->dvobj->macid_ctl;
 	u8 parm[H2C_MEDIA_STATUS_RPT_LEN] = {0};
 	int i;
@@ -1838,16 +1875,19 @@ exit:
 
 inline s32 rtw_hal_set_FwMediaStatusRpt_single_cmd(_adapter *adapter, bool opmode, bool miracast, bool miracast_sink, u8 role, u8 macid)
 {
+	printk(KERN_DEBUG "hal_com.c - ");
 	return rtw_hal_set_FwMediaStatusRpt_cmd(adapter, opmode, miracast, miracast_sink, role, macid, 0, 0);
 }
 
 inline s32 rtw_hal_set_FwMediaStatusRpt_range_cmd(_adapter *adapter, bool opmode, bool miracast, bool miracast_sink, u8 role, u8 macid, u8 macid_end)
 {
+	printk(KERN_DEBUG "hal_com.c - ");
 	return rtw_hal_set_FwMediaStatusRpt_cmd(adapter, opmode, miracast, miracast_sink, role, macid, 1, macid_end);
 }
 
 void rtw_hal_set_FwRsvdPage_cmd(PADAPTER padapter, PRSVDPAGE_LOC rsvdpageloc)
 {
+	printk(KERN_DEBUG "hal_com.c - ");
 	struct	hal_ops *pHalFunc = &padapter->HalFunc;
 	u8	u1H2CRsvdPageParm[H2C_RSVDPAGE_LOC_LEN]={0};
 	u8	ret = 0;
@@ -1873,6 +1913,7 @@ void rtw_hal_set_FwRsvdPage_cmd(PADAPTER padapter, PRSVDPAGE_LOC rsvdpageloc)
 #ifdef CONFIG_GPIO_WAKEUP
 void rtw_hal_switch_gpio_wl_ctrl(_adapter *padapter, u8 index, u8 enable)
 {
+	printk(KERN_DEBUG "hal_com.c - ");
 	/*
 	* Switch GPIO_13, GPIO_14 to wlan control, or pull GPIO_13,14 MUST fail.
 	* It happended at 8723B/8192E/8821A. New IC will check multi function GPIO,
@@ -1885,6 +1926,7 @@ void rtw_hal_switch_gpio_wl_ctrl(_adapter *padapter, u8 index, u8 enable)
 
 void rtw_hal_set_output_gpio(_adapter *padapter, u8 index, u8 outputval)
 {
+	printk(KERN_DEBUG "hal_com.c - ");
 	if ( index <= 7 ) {
 		/* config GPIO mode */
 		rtw_write8(padapter, REG_GPIO_PIN_CTRL + 3,
@@ -1939,6 +1981,7 @@ void rtw_hal_set_output_gpio(_adapter *padapter, u8 index, u8 outputval)
 
 void rtw_hal_set_FwAoacRsvdPage_cmd(PADAPTER padapter, PRSVDPAGE_LOC rsvdpageloc)
 {
+	printk(KERN_DEBUG "hal_com.c - ");
 	struct	hal_ops *pHalFunc = &padapter->HalFunc;
 	struct	pwrctrl_priv *pwrpriv = adapter_to_pwrctl(padapter);
 	struct	mlme_priv *pmlmepriv = &padapter->mlmepriv;
@@ -1948,6 +1991,7 @@ void rtw_hal_set_FwAoacRsvdPage_cmd(PADAPTER padapter, PRSVDPAGE_LOC rsvdpageloc
 static void rtw_hal_construct_beacon(_adapter *padapter,
 		u8 *pframe, u32 *pLength)
 {
+	printk(KERN_DEBUG "hal_com.c - ");
 	struct rtw_ieee80211_hdr	*pwlanhdr;
 	u16					*fctrl;
 	u32					rate_len, pktlen;
@@ -2051,6 +2095,7 @@ _ConstructBeacon:
 static void rtw_hal_construct_PSPoll(_adapter *padapter,
 		u8 *pframe, u32 *pLength)
 {
+	printk(KERN_DEBUG "hal_com.c - ");
 	struct rtw_ieee80211_hdr	*pwlanhdr;
 	u16					*fctrl;
 	u32					pktlen;
@@ -2089,6 +2134,7 @@ static void rtw_hal_construct_NullFunctionData(
 	u8		bEosp,
 	u8		bForcePowerSave)
 {
+	printk(KERN_DEBUG "hal_com.c - ");
 	struct rtw_ieee80211_hdr	*pwlanhdr;
 	u16						*fctrl;
 	u32						pktlen;
@@ -2155,6 +2201,7 @@ static void rtw_hal_construct_NullFunctionData(
 void rtw_hal_construct_ProbeRsp(_adapter *padapter, u8 *pframe, u32 *pLength,
 		u8 *StaAddr, BOOLEAN bHideSSID)
 {
+	printk(KERN_DEBUG "hal_com.c - ");
 	struct rtw_ieee80211_hdr	*pwlanhdr;
 	u16					*fctrl;
 	u8					*mac, *bssid;
@@ -2210,6 +2257,7 @@ void rtw_hal_construct_ProbeRsp(_adapter *padapter, u8 *pframe, u32 *pLength,
 
 void rtw_hal_set_fw_rsvd_page(_adapter* adapter, bool finished)
 {
+	printk(KERN_DEBUG "hal_com.c - ");
 	PHAL_DATA_TYPE pHalData;
 	struct xmit_frame	*pcmdframe;
 	struct pkt_attrib	*pattrib;
@@ -2439,6 +2487,7 @@ error:
 #ifdef CONFIG_TDLS_CH_SW
 s32 rtw_hal_ch_sw_oper_offload(_adapter *padapter, u8 channel, u8 channel_offset, u16 bwmode)
 {
+	printk(KERN_DEBUG "hal_com.c - ");
 	PHAL_DATA_TYPE	pHalData =  GET_HAL_DATA(padapter);
 	u8 ch_sw_h2c_buf[4] = {0x00, 0x00, 0x00, 0x00};
 
@@ -2465,6 +2514,7 @@ s32 rtw_hal_ch_sw_oper_offload(_adapter *padapter, u8 channel, u8 channel_offset
 
 void SetHwReg(_adapter *adapter, u8 variable, u8 *val)
 {
+	printk(KERN_DEBUG "hal_com.c - ");
 	HAL_DATA_TYPE *hal_data = GET_HAL_DATA(adapter);
 _func_enter_;
 
@@ -2562,6 +2612,7 @@ _func_exit_;
 
 void GetHwReg(_adapter *adapter, u8 variable, u8 *val)
 {
+	printk(KERN_DEBUG "hal_com.c - ");
 	HAL_DATA_TYPE *hal_data = GET_HAL_DATA(adapter);
 
 _func_enter_;
@@ -2596,6 +2647,8 @@ _func_exit_;
 u8
 SetHalDefVar(_adapter *adapter, HAL_DEF_VARIABLE variable, void *value)
 {	
+
+	printk(KERN_DEBUG "hal_com.c - ");
 	HAL_DATA_TYPE *hal_data = GET_HAL_DATA(adapter);
 	u8 bResult = _SUCCESS;
 
@@ -2625,6 +2678,7 @@ SetHalDefVar(_adapter *adapter, HAL_DEF_VARIABLE variable, void *value)
 #ifdef CONFIG_BEAMFORMING
 u8 rtw_hal_query_txbfer_rf_num(_adapter *adapter)
 {
+	printk(KERN_DEBUG "hal_com.c - ");
 	struct registry_priv	*pregistrypriv = &adapter->registrypriv;
 	HAL_DATA_TYPE *hal_data = GET_HAL_DATA(adapter);
 	
@@ -2650,6 +2704,7 @@ u8 rtw_hal_query_txbfer_rf_num(_adapter *adapter)
 }
 u8 rtw_hal_query_txbfee_rf_num(_adapter *adapter)
 {
+	printk(KERN_DEBUG "hal_com.c - ");
 	struct registry_priv		*pregistrypriv = &adapter->registrypriv;
 	struct mlme_ext_priv	*pmlmeext = &adapter->mlmeextpriv;
 	struct mlme_ext_info	*pmlmeinfo = &(pmlmeext->mlmext_info);
@@ -2672,6 +2727,7 @@ u8 rtw_hal_query_txbfee_rf_num(_adapter *adapter)
 u8
 GetHalDefVar(_adapter *adapter, HAL_DEF_VARIABLE variable, void *value)
 {
+	printk(KERN_DEBUG "hal_com.c - ");
 	HAL_DATA_TYPE *hal_data = GET_HAL_DATA(adapter);
 	u8 bResult = _SUCCESS;
 
@@ -2732,6 +2788,7 @@ void SetHalODMVar(
 	PVOID					pValue1,
 	BOOLEAN					bSet)
 {
+	printk(KERN_DEBUG "hal_com.c - ");
 	HAL_DATA_TYPE	*pHalData = GET_HAL_DATA(Adapter);
 	PDM_ODM_T podmpriv = &pHalData->odmpriv;
 	//_irqL irqL;
@@ -2887,6 +2944,7 @@ void GetHalODMVar(
 	PVOID					pValue1,
 	PVOID					pValue2)
 {
+	printk(KERN_DEBUG "hal_com.c - ");
 	HAL_DATA_TYPE	*pHalData = GET_HAL_DATA(Adapter);
 	PDM_ODM_T podmpriv = &pHalData->odmpriv;
 	
@@ -2946,6 +3004,7 @@ void GetHalODMVar(
 
 u32 rtw_phydm_ability_ops(_adapter *adapter, HAL_PHYDM_OPS ops, u32 ability)
 {
+	printk(KERN_DEBUG "hal_com.c - ");
 	HAL_DATA_TYPE *pHalData = GET_HAL_DATA(adapter);
 	PDM_ODM_T podmpriv = &pHalData->odmpriv;
 	u32 result = 0;
@@ -2986,6 +3045,7 @@ eqNByte(
 	u32	num
 	)
 {
+	printk(KERN_DEBUG "hal_com.c - ");
 	if(num==0)
 		return _FALSE;
 	while(num>0)
@@ -3006,6 +3066,7 @@ MapCharToHexDigit(
 	IN		char		chTmp
 )
 {
+	printk(KERN_DEBUG "hal_com.c - ");
 	if(chTmp >= '0' && chTmp <= '9')
 		return (chTmp - '0');
 	else if(chTmp >= 'a' && chTmp <= 'f')
@@ -3029,6 +3090,7 @@ GetHexValueFromString(
 	IN OUT	u32*			pu4bMove
 )
 {
+	printk(KERN_DEBUG "hal_com.c - ");
 	char*		szScan = szStr;
 
 	// Check input parameter.
@@ -3085,6 +3147,7 @@ GetFractionValueFromString(
 	IN OUT	u32*			pu4bMove
 )
 {
+	printk(KERN_DEBUG "hal_com.c - ");
 	char	*szScan = szStr;
 
 	// Initialize output.
@@ -3134,6 +3197,7 @@ IsCommentString(
 	IN		char			*szStr
 )
 {
+	printk(KERN_DEBUG "hal_com.c - ");
 	if(*szStr == '/' && *(szStr+1) == '/')
 	{
 		return _TRUE;
@@ -3150,6 +3214,7 @@ GetU1ByteIntegerFromStringInDecimal(
 	IN OUT	u8*		pInt
 	)
 {
+	printk(KERN_DEBUG "hal_com.c - ");
 	u16 i = 0;
 	*pInt = 0;
 
@@ -3182,6 +3247,7 @@ ParseQualifiedString(
     IN		char		RightQualifier
     )
 {
+	printk(KERN_DEBUG "hal_com.c - ");
 	u32	i = 0, j = 0;
 	char	c = In[(*Start)++];
 
@@ -3203,6 +3269,7 @@ isAllSpaceOrTab(
 	u8	size
 	)
 {
+	printk(KERN_DEBUG "hal_com.c - ");
 	u8	cnt = 0, NumOfSpaceAndTab = 0;
 
 	while( size > cnt )
@@ -3219,6 +3286,7 @@ isAllSpaceOrTab(
 
 void rtw_hal_check_rxfifo_full(_adapter *adapter)
 {
+	printk(KERN_DEBUG "hal_com.c - ");
 	struct dvobj_priv *psdpriv = adapter->dvobj;
 	struct debug_priv *pdbgpriv = &psdpriv->drv_dbg;
 	HAL_DATA_TYPE		*pHalData = GET_HAL_DATA(adapter);
@@ -3252,6 +3320,7 @@ void rtw_hal_check_rxfifo_full(_adapter *adapter)
 
 void linked_info_dump(_adapter *padapter,u8 benable)
 {			
+	printk(KERN_DEBUG "hal_com.c - ");
 	struct pwrctrl_priv *pwrctrlpriv = adapter_to_pwrctl(padapter);
 
 	if(padapter->bLinkInfoDump == benable)
@@ -3285,6 +3354,7 @@ void linked_info_dump(_adapter *padapter,u8 benable)
 #ifdef DBG_RX_SIGNAL_DISPLAY_RAW_DATA
 void rtw_get_raw_rssi_info(void *sel, _adapter *padapter)
 {
+	printk(KERN_DEBUG "hal_com.c - ");
 	u8 isCCKrate,rf_path;
 	PHAL_DATA_TYPE	pHalData =  GET_HAL_DATA(padapter);
 	struct rx_raw_rssi *psample_pkt_rssi = &padapter->recvpriv.raw_rssi_info;
@@ -3310,6 +3380,7 @@ void rtw_get_raw_rssi_info(void *sel, _adapter *padapter)
 
 void rtw_dump_raw_rssi_info(_adapter *padapter, void *sel)
 {
+	printk(KERN_DEBUG "hal_com.c - ");
 	u8 isCCKrate,rf_path;
 	PHAL_DATA_TYPE	pHalData =  GET_HAL_DATA(padapter);
 	struct rx_raw_rssi *psample_pkt_rssi = &padapter->recvpriv.raw_rssi_info;
@@ -3336,6 +3407,7 @@ void rtw_dump_raw_rssi_info(_adapter *padapter, void *sel)
 
 void rtw_store_phy_info(_adapter *padapter, union recv_frame *prframe)	
 {
+	printk(KERN_DEBUG "hal_com.c - ");
 	u8 isCCKrate,rf_path;
 	PHAL_DATA_TYPE	pHalData =  GET_HAL_DATA(padapter);
 	struct rx_pkt_attrib *pattrib = &prframe->u.hdr.attrib;
@@ -3362,6 +3434,7 @@ void rtw_store_phy_info(_adapter *padapter, union recv_frame *prframe)
 #endif
 
 int check_phy_efuse_tx_power_info_valid(PADAPTER padapter) {
+	printk(KERN_DEBUG "hal_com.c - ");
 	PHAL_DATA_TYPE pHalData = GET_HAL_DATA(padapter);
 	u8* pContent = pHalData->efuse_eeprom_data;
 	int index = 0;
@@ -3407,6 +3480,7 @@ int check_phy_efuse_tx_power_info_valid(PADAPTER padapter) {
 
 int hal_efuse_macaddr_offset(_adapter *adapter)
 {
+	printk(KERN_DEBUG "hal_com.c - ");
 	u8 interface_type = 0;
 	int addr_offset = -1;
 
@@ -3497,6 +3571,7 @@ int hal_efuse_macaddr_offset(_adapter *adapter)
 
 int Hal_GetPhyEfuseMACAddr(PADAPTER padapter, u8 *mac_addr)
 {
+	printk(KERN_DEBUG "hal_com.c - ");
 	int ret = _FAIL;
 	int addr_offset;
 
@@ -3513,6 +3588,7 @@ exit:
 #ifdef CONFIG_EFUSE_CONFIG_FILE
 u32 Hal_readPGDataFromConfigFile(PADAPTER padapter)
 {
+	printk(KERN_DEBUG "hal_com.c - ");
 	HAL_DATA_TYPE *hal_data = GET_HAL_DATA(padapter);
 	u32 ret;
 
@@ -3524,6 +3600,7 @@ u32 Hal_readPGDataFromConfigFile(PADAPTER padapter)
 
 u32 Hal_ReadMACAddrFromFile(PADAPTER padapter, u8 *mac_addr)
 {
+	printk(KERN_DEBUG "hal_com.c - ");
 	HAL_DATA_TYPE *hal_data = GET_HAL_DATA(padapter);
 	u32 ret = _FAIL;
 
@@ -3542,6 +3619,7 @@ u32 Hal_ReadMACAddrFromFile(PADAPTER padapter, u8 *mac_addr)
 
 int hal_config_macaddr(_adapter *adapter, bool autoload_fail)
 {
+	printk(KERN_DEBUG "hal_com.c - ");
 	HAL_DATA_TYPE *hal_data = GET_HAL_DATA(adapter);
 	u8 addr[ETH_ALEN];
 	int addr_offset = hal_efuse_macaddr_offset(adapter);
@@ -3605,6 +3683,7 @@ u32 Array_kfreemap[] = {
 
 void rtw_bb_rf_gain_offset(_adapter *padapter)
 {
+	printk(KERN_DEBUG "hal_com.c - ");
 	HAL_DATA_TYPE	*pHalData = GET_HAL_DATA(padapter);
 	struct registry_priv  *registry_par = &padapter->registrypriv;
 	struct kfree_data_t *kfree_data = &pHalData->kfree_data;
@@ -3700,6 +3779,7 @@ void rtw_bb_rf_gain_offset(_adapter *padapter)
 
 bool kfree_data_is_bb_gain_empty(struct kfree_data_t *data)
 {
+	printk(KERN_DEBUG "hal_com.c - ");
 #ifdef CONFIG_RF_POWER_TRIM
 	int i, j;
 
@@ -3714,6 +3794,7 @@ bool kfree_data_is_bb_gain_empty(struct kfree_data_t *data)
 #ifdef CONFIG_USB_RX_AGGREGATION
 void rtw_set_usb_agg_by_mode_normal(_adapter *padapter, u8 cur_wireless_mode)
 {
+	printk(KERN_DEBUG "hal_com.c - ");
 	HAL_DATA_TYPE	*pHalData = GET_HAL_DATA(padapter);
 	if(cur_wireless_mode < WIRELESS_11_24N 
 		&& cur_wireless_mode > 0) //ABG mode
@@ -3789,6 +3870,7 @@ void rtw_set_usb_agg_by_mode_normal(_adapter *padapter, u8 cur_wireless_mode)
 
 void rtw_set_usb_agg_by_mode_customer(_adapter *padapter, u8 cur_wireless_mode, u8 UsbDmaSize, u8 Legacy_UsbDmaSize)
 {
+	printk(KERN_DEBUG "hal_com.c - ");
 	HAL_DATA_TYPE	*pHalData = GET_HAL_DATA(padapter);
 
 	if (cur_wireless_mode < WIRELESS_11_24N
@@ -3816,6 +3898,7 @@ void rtw_set_usb_agg_by_mode_customer(_adapter *padapter, u8 cur_wireless_mode, 
 
 void rtw_set_usb_agg_by_mode(_adapter *padapter, u8 cur_wireless_mode)
 {
+	printk(KERN_DEBUG "hal_com.c - ");
 #ifdef CONFIG_PLATFORM_NOVATEK_NT72668
 	rtw_set_usb_agg_by_mode_customer(padapter, cur_wireless_mode, 0x3, 0x3);
 	return;
@@ -3828,6 +3911,7 @@ void rtw_set_usb_agg_by_mode(_adapter *padapter, u8 cur_wireless_mode)
 //To avoid RX affect TX throughput
 void dm_DynamicUsbTxAgg(_adapter *padapter, u8 from_timer)
 {
+	printk(KERN_DEBUG "hal_com.c - ");
 	struct dvobj_priv	*pdvobjpriv = adapter_to_dvobj(padapter);
 	struct mlme_priv		*pmlmepriv = &(padapter->mlmepriv);
 	struct mlme_ext_priv	*pmlmeextpriv = &(padapter->mlmeextpriv);
@@ -3883,6 +3967,7 @@ void dm_DynamicUsbTxAgg(_adapter *padapter, u8 from_timer)
 //bus-agg check for SoftAP mode
 inline u8 rtw_hal_busagg_qsel_check(_adapter *padapter,u8 pre_qsel,u8 next_qsel)
 {
+	printk(KERN_DEBUG "hal_com.c - ");
 	struct mlme_priv *pmlmepriv = &(padapter->mlmepriv);
 	u8 chk_rst = _SUCCESS;
 	
@@ -3912,6 +3997,7 @@ inline u8 rtw_hal_busagg_qsel_check(_adapter *padapter,u8 pre_qsel,u8 next_qsel)
  * page_size: page size of each page. eg. 128 bytes, 256 bytes, 512byte.
  */
 void dump_TX_FIFO(_adapter* padapter, u8 page_num, u16 page_size){
+	printk(KERN_DEBUG "hal_com.c - ");
 
 	int i;
 	u8 val = 0;
@@ -3948,6 +4034,7 @@ void dump_TX_FIFO(_adapter* padapter, u8 page_num, u16 page_size){
 #ifdef CONFIG_GPIO_API
 u8 rtw_hal_get_gpio(_adapter* adapter, u8 gpio_num)
 {
+	printk(KERN_DEBUG "hal_com.c - ");
 	u8 value;
 	u8 direction;	
 	struct pwrctrl_priv *pwrpriv = adapter_to_pwrctl(adapter);
@@ -3974,6 +4061,7 @@ u8 rtw_hal_get_gpio(_adapter* adapter, u8 gpio_num)
 
 int  rtw_hal_set_gpio_output_value(_adapter* adapter, u8 gpio_num, bool isHigh)
 {
+	printk(KERN_DEBUG "hal_com.c - ");
 	u8 direction = 0;
 	u8 res = -1;
 	if (IS_HARDWARE_TYPE_8188E(adapter)){
@@ -4015,6 +4103,7 @@ int  rtw_hal_set_gpio_output_value(_adapter* adapter, u8 gpio_num, bool isHigh)
 
 int rtw_hal_config_gpio(_adapter* adapter, u8 gpio_num, bool isOutput)
 {
+	printk(KERN_DEBUG "hal_com.c - ");
 	if (IS_HARDWARE_TYPE_8188E(adapter)){
 		if( gpio_num > 7 || gpio_num < 4)
 		{
@@ -4044,6 +4133,7 @@ int rtw_hal_config_gpio(_adapter* adapter, u8 gpio_num, bool isOutput)
 }
 int rtw_hal_register_gpio_interrupt(_adapter* adapter, int gpio_num, void(*callback)(u8 level))
 {
+	printk(KERN_DEBUG "hal_com.c - ");
 	u8 value;
 	u8 direction;
 	PHAL_DATA_TYPE phal = GET_HAL_DATA(adapter);
@@ -4090,6 +4180,7 @@ int rtw_hal_register_gpio_interrupt(_adapter* adapter, int gpio_num, void(*callb
 }
 int rtw_hal_disable_gpio_interrupt(_adapter* adapter, int gpio_num)
 {
+	printk(KERN_DEBUG "hal_com.c - ");
 	u8 value;
 	u8 direction;
 	PHAL_DATA_TYPE phal = GET_HAL_DATA(adapter);
@@ -4130,6 +4221,7 @@ int rtw_hal_disable_gpio_interrupt(_adapter* adapter, int gpio_num)
 #endif
 
 s8 rtw_hal_ch_sw_iqk_info_search(_adapter* padapter, u8 central_chnl, u8 bw_mode) {
+	printk(KERN_DEBUG "hal_com.c - ");
 	HAL_DATA_TYPE *pHalData = GET_HAL_DATA(padapter);
 	u8 i;
 
@@ -4146,6 +4238,7 @@ s8 rtw_hal_ch_sw_iqk_info_search(_adapter* padapter, u8 central_chnl, u8 bw_mode
 }
 
 void rtw_hal_ch_sw_iqk_info_backup(_adapter* padapter) {
+	printk(KERN_DEBUG "hal_com.c - ");
 	HAL_DATA_TYPE *pHalData = GET_HAL_DATA(padapter);
 	s8 res;
 	u8 i;
@@ -4173,11 +4266,13 @@ void rtw_hal_ch_sw_iqk_info_backup(_adapter* padapter) {
 }
 
 void rtw_hal_ch_sw_iqk_info_restore(_adapter* padapter, u8 ch_sw_use_case) {
+	printk(KERN_DEBUG "hal_com.c - ");
 	rtw_hal_set_hwreg(padapter, HW_VAR_CH_SW_IQK_INFO_RESTORE, &ch_sw_use_case);
 }
 
 void rtw_dump_mac_rx_counters(_adapter* padapter,struct dbg_rx_counter *rx_counter)
 {
+	printk(KERN_DEBUG "hal_com.c - ");
 	u32	mac_cck_ok=0, mac_ofdm_ok=0, mac_ht_ok=0, mac_vht_ok=0;
 	u32	mac_cck_err=0, mac_ofdm_err=0, mac_ht_err=0, mac_vht_err=0;
 	u32	mac_cck_fa=0, mac_ofdm_fa=0, mac_ht_fa=0;
@@ -4234,6 +4329,7 @@ void rtw_dump_mac_rx_counters(_adapter* padapter,struct dbg_rx_counter *rx_count
 }
 void rtw_reset_mac_rx_counters(_adapter* padapter)
 {
+	printk(KERN_DEBUG "hal_com.c - ");
 
 	if (IS_HARDWARE_TYPE_8703B(padapter) || IS_HARDWARE_TYPE_8188F(padapter))
 		PHY_SetMacReg(padapter, 0x608, BIT19, 0x1); /* If no packet rx, MaxRx clock be gating ,BIT_DISGCLK bit19 set 1 for fix*/	
@@ -4245,6 +4341,7 @@ void rtw_reset_mac_rx_counters(_adapter* padapter)
 
 void rtw_dump_phy_rx_counters(_adapter* padapter,struct dbg_rx_counter *rx_counter)
 {
+	printk(KERN_DEBUG "hal_com.c - ");
 	u32 cckok=0,cckcrc=0,ofdmok=0,ofdmcrc=0,htok=0,htcrc=0,OFDM_FA=0,CCK_FA=0,vht_ok=0,vht_err=0;
 	if(!rx_counter){
 		rtw_warn_on(1);
@@ -4288,6 +4385,7 @@ void rtw_dump_phy_rx_counters(_adapter* padapter,struct dbg_rx_counter *rx_count
 
 void rtw_reset_phy_trx_ok_counters(_adapter *padapter)
 {
+	printk(KERN_DEBUG "hal_com.c - ");
 	if (IS_HARDWARE_TYPE_JAGUAR(padapter) || IS_HARDWARE_TYPE_JAGUAR2(padapter)) {
 		PHY_SetBBReg(padapter, 0xB58, BIT0, 0x1);
 		PHY_SetBBReg(padapter, 0xB58, BIT0, 0x0);
@@ -4295,6 +4393,7 @@ void rtw_reset_phy_trx_ok_counters(_adapter *padapter)
 }
 void rtw_reset_phy_rx_counters(_adapter *padapter)
 {
+	printk(KERN_DEBUG "hal_com.c - ");
 	//reset phy counter
 	if (IS_HARDWARE_TYPE_JAGUAR(padapter) || IS_HARDWARE_TYPE_JAGUAR2(padapter))
 	{
@@ -4324,6 +4423,7 @@ void rtw_reset_phy_rx_counters(_adapter *padapter)
 #ifdef DBG_RX_COUNTER_DUMP
 void rtw_dump_drv_rx_counters(_adapter* padapter,struct dbg_rx_counter *rx_counter)
 {
+	printk(KERN_DEBUG "hal_com.c - ");
 	struct recv_priv *precvpriv = &padapter->recvpriv;
 	if(!rx_counter){
 		rtw_warn_on(1);
@@ -4335,6 +4435,7 @@ void rtw_dump_drv_rx_counters(_adapter* padapter,struct dbg_rx_counter *rx_count
 }
 void rtw_reset_drv_rx_counters(_adapter* padapter)
 {
+	printk(KERN_DEBUG "hal_com.c - ");
 	struct recv_priv *precvpriv = &padapter->recvpriv;
 	padapter->drv_rx_cnt_ok = 0;
 	padapter->drv_rx_cnt_crcerror = 0;
@@ -4342,6 +4443,7 @@ void rtw_reset_drv_rx_counters(_adapter* padapter)
 }
 void rtw_dump_phy_rxcnts_preprocess(_adapter* padapter,u8 rx_cnt_mode)
 {
+	printk(KERN_DEBUG "hal_com.c - ");
 	u8 initialgain;
 	HAL_DATA_TYPE *hal_data = GET_HAL_DATA(padapter);
 	
@@ -4367,6 +4469,7 @@ void rtw_dump_phy_rxcnts_preprocess(_adapter* padapter,u8 rx_cnt_mode)
 	
 void rtw_dump_rx_counters(_adapter* padapter)
 {
+	printk(KERN_DEBUG "hal_com.c - ");
 	struct dbg_rx_counter rx_counter;
 
 	if( padapter->dump_rx_cnt_mode & DUMP_DRV_RX_COUNTER ){
@@ -4400,6 +4503,7 @@ void rtw_dump_rx_counters(_adapter* padapter)
 #endif
 void rtw_get_noise(_adapter* padapter)
 {
+	printk(KERN_DEBUG "hal_com.c - ");
 #if defined(CONFIG_SIGNAL_DISPLAY_DBM) && defined(CONFIG_BACKGROUND_NOISE_MONITOR)
 	struct mlme_ext_priv	*pmlmeext = &padapter->mlmeextpriv;
 	struct noise_info info;
@@ -4425,6 +4529,7 @@ void rtw_get_noise(_adapter* padapter)
 
 u8 rtw_get_current_tx_rate(_adapter *padapter, u8 macid)
 {
+	printk(KERN_DEBUG "hal_com.c - ");
 	HAL_DATA_TYPE	*pHalData = GET_HAL_DATA(padapter);
 	PDM_ODM_T		pDM_Odm = &pHalData->odmpriv;
 	pRA_T			pRA_Table = &pDM_Odm->DM_RA_Table;
@@ -4456,6 +4561,7 @@ if enable CONFIG_FW_C2H_DEBUG, it should increase to 256.
 
 void Debug_FwC2H(PADAPTER padapter, u8 *pdata, u8 len)
 {
+	printk(KERN_DEBUG "hal_com.c - ");
 	int i = 0;
 	int cnt = 0, total_length = 0;
 	u8 buf[128] = {0};
@@ -4494,6 +4600,7 @@ void Debug_FwC2H(PADAPTER padapter, u8 *pdata, u8 len)
 #endif /*CONFIG_FW_C2H_DEBUG*/
 void update_IOT_info(_adapter *padapter)
 {
+	printk(KERN_DEBUG "hal_com.c - ");
 	struct mlme_ext_priv	*pmlmeext = &padapter->mlmeextpriv;
 	struct mlme_ext_info	*pmlmeinfo = &(pmlmeext->mlmext_info);
 	
@@ -4526,6 +4633,7 @@ void update_IOT_info(_adapter *padapter)
 #ifdef CONFIG_AUTO_CHNL_SEL_NHM
 void rtw_acs_start(_adapter *padapter, bool bStart)
 {	
+	printk(KERN_DEBUG "hal_com.c - ");
 	if (_TRUE == bStart) {
 		ACS_OP acs_op = ACS_INIT;
 		
@@ -4551,6 +4659,7 @@ void rtw_acs_start(_adapter *padapter, bool bStart)
 /* TODO: merge with phydm, see odm_SetCrystalCap() */
 void hal_set_crystal_cap(_adapter *adapter, u8 crystal_cap)
 {
+	printk(KERN_DEBUG "hal_com.c - ");
 	crystal_cap = crystal_cap & 0x3F;
 
 	switch (rtw_get_chip_type(adapter)) {
@@ -4598,6 +4707,7 @@ void hal_set_crystal_cap(_adapter *adapter, u8 crystal_cap)
 
 int hal_spec_init(_adapter *adapter)
 {
+	printk(KERN_DEBUG "hal_com.c - ");
 	u8 interface_type = 0;
 	int ret = _SUCCESS;
 
@@ -4685,6 +4795,7 @@ static const char * const _wl_func_str[] = {
 
 void dump_hal_spec(void *sel, _adapter *adapter)
 {
+	printk(KERN_DEBUG "hal_com.c - ");
 	struct hal_spec_t *hal_spec = GET_HAL_SPEC(adapter);
 	int i;
 
@@ -4754,6 +4865,7 @@ inline bool hal_is_bw_support(_adapter *adapter, u8 bw)
 
 inline bool hal_is_wireless_mode_support(_adapter *adapter, u8 mode)
 {
+	printk(KERN_DEBUG "hal_com.c - ");
 	u8 proto_cap = GET_HAL_SPEC(adapter)->proto_cap;
 
 	if (mode == WIRELESS_11B)
@@ -4792,6 +4904,7 @@ inline bool hal_is_wireless_mode_support(_adapter *adapter, u8 mode)
 */
 u8 hal_largest_bw(_adapter *adapter, u8 in_bw)
 {
+	printk(KERN_DEBUG "hal_com.c - ");
 	for (; in_bw > CHANNEL_WIDTH_20; in_bw--) {
 		if (hal_is_bw_support(adapter, in_bw))
 			break;
@@ -4806,6 +4919,7 @@ u8 hal_largest_bw(_adapter *adapter, u8 in_bw)
 #ifdef CONFIG_ANTENNA_DIVERSITY
 u8	rtw_hal_antdiv_before_linked(_adapter *padapter)
 {		
+	printk(KERN_DEBUG "hal_com.c - ");
 	HAL_DATA_TYPE *pHalData = GET_HAL_DATA(padapter);
 	u8 cur_ant, change_ant;
 
@@ -4827,6 +4941,7 @@ u8	rtw_hal_antdiv_before_linked(_adapter *padapter)
 
 void	rtw_hal_antdiv_rssi_compared(_adapter *padapter, WLAN_BSSID_EX *dst, WLAN_BSSID_EX *src)
 {
+	printk(KERN_DEBUG "hal_com.c - ");
 	HAL_DATA_TYPE *pHalData = GET_HAL_DATA(padapter);
 		
 	if (pHalData->AntDivCfg) {

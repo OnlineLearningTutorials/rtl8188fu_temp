@@ -45,6 +45,7 @@
 
 u8 MgntQuery_NssTxRate(u16 Rate)
 {
+	printk(KERN_DEBUG "hal_mp.c - ");
 	u8	NssNum = RF_TX_NUM_NONIMPLEMENT;
 	
 	if ((Rate >= MGN_MCS8 && Rate <= MGN_MCS15) || 
@@ -64,6 +65,7 @@ u8 MgntQuery_NssTxRate(u16 Rate)
 
 void hal_mpt_SwitchRfSetting(PADAPTER	pAdapter)
 {
+	printk(KERN_DEBUG "hal_mp.c - ");
 	HAL_DATA_TYPE		*pHalData = GET_HAL_DATA(pAdapter);
 	PMPT_CONTEXT		pMptCtx = &(pAdapter->mppriv.MptCtx);
 	u8				ChannelToSw = pMptCtx->MptChannelToSw;
@@ -101,6 +103,7 @@ void hal_mpt_SwitchRfSetting(PADAPTER	pAdapter)
 
 s32 hal_mpt_SetPowerTracking(PADAPTER padapter, u8 enable)
 {
+	printk(KERN_DEBUG "hal_mp.c - ");
 	HAL_DATA_TYPE	*pHalData = GET_HAL_DATA(padapter);
 	PDM_ODM_T		pDM_Odm = &(pHalData->odmpriv);
 
@@ -124,6 +127,7 @@ s32 hal_mpt_SetPowerTracking(PADAPTER padapter, u8 enable)
 
 void hal_mpt_GetPowerTracking(PADAPTER padapter, u8 *enable)
 {
+	printk(KERN_DEBUG "hal_mp.c - ");
 	HAL_DATA_TYPE	*pHalData = GET_HAL_DATA(padapter);
 	PDM_ODM_T		pDM_Odm = &(pHalData->odmpriv);
 
@@ -134,6 +138,7 @@ void hal_mpt_GetPowerTracking(PADAPTER padapter, u8 *enable)
 
 void hal_mpt_CCKTxPowerAdjust(PADAPTER Adapter, BOOLEAN bInCH14)
 {
+	printk(KERN_DEBUG "hal_mp.c - ");
 	u32		TempVal = 0, TempVal2 = 0, TempVal3 = 0;
 	u32		CurrCCKSwingVal = 0, CCKSwingIndex = 12;
 	u8		i;
@@ -242,6 +247,7 @@ void hal_mpt_CCKTxPowerAdjust(PADAPTER Adapter, BOOLEAN bInCH14)
 
 void hal_mpt_SetChannel(PADAPTER pAdapter)
 {
+	printk(KERN_DEBUG "hal_mp.c - ");
 	u8 eRFPath;
 	HAL_DATA_TYPE	*pHalData = GET_HAL_DATA(pAdapter);
 	PDM_ODM_T		pDM_Odm = &(pHalData->odmpriv);
@@ -267,6 +273,7 @@ void hal_mpt_SetChannel(PADAPTER pAdapter)
  */
 void hal_mpt_SetBandwidth(PADAPTER pAdapter)
 {
+	printk(KERN_DEBUG "hal_mp.c - ");
 	struct mp_priv *pmp = &pAdapter->mppriv;
 	HAL_DATA_TYPE	*pHalData = GET_HAL_DATA(pAdapter);
 	
@@ -283,6 +290,7 @@ void hal_mpt_SetBandwidth(PADAPTER pAdapter)
 
 void mpt_SetTxPower_Old(PADAPTER pAdapter, MPT_TXPWR_DEF Rate, u8 *pTxPower)
 {
+	printk(KERN_DEBUG "hal_mp.c - ");
 	RT_TRACE(_module_mp_, DBG_LOUD, ("===>mpt_SetTxPower_Old(): Case = %d\n", Rate));
 	switch (Rate) {
 	case MPT_CCK:
@@ -352,6 +360,7 @@ mpt_SetTxPower(
 		pu1Byte	pTxPower
 	)
 {
+	printk(KERN_DEBUG "hal_mp.c - ");
 	HAL_DATA_TYPE	*pHalData = GET_HAL_DATA(pAdapter);
 
 	u1Byte path = 0 , i = 0, MaxRate = MGN_6M;
@@ -451,6 +460,7 @@ mpt_SetTxPower(
 
 void hal_mpt_SetTxPower(PADAPTER pAdapter)
 {
+	printk(KERN_DEBUG "hal_mp.c - ");
 	HAL_DATA_TYPE *pHalData = GET_HAL_DATA(pAdapter);
 	PMPT_CONTEXT		pMptCtx = &(pAdapter->mppriv.MptCtx);
 	PDM_ODM_T		pDM_Odm = &pHalData->odmpriv;
@@ -487,6 +497,7 @@ void hal_mpt_SetTxPower(PADAPTER pAdapter)
 
 void hal_mpt_SetDataRate(PADAPTER pAdapter)
 {
+	printk(KERN_DEBUG "hal_mp.c - ");
 	HAL_DATA_TYPE	*pHalData = GET_HAL_DATA(pAdapter);
 	PMPT_CONTEXT		pMptCtx = &(pAdapter->mppriv.MptCtx);
 	u32 DataRate;
@@ -527,6 +538,7 @@ void hal_mpt_SetDataRate(PADAPTER pAdapter)
 #ifdef CONFIG_RTL8814A
 VOID mpt_ToggleIG_8814A(PADAPTER	pAdapter)
 {
+	printk(KERN_DEBUG "hal_mp.c - ");
 	u1Byte Path = 0;
 	u4Byte IGReg = rA_IGI_Jaguar, IGvalue = 0;
 
@@ -554,6 +566,7 @@ VOID mpt_ToggleIG_8814A(PADAPTER	pAdapter)
 
 VOID mpt_SetRFPath_8814A(PADAPTER	pAdapter)
 {
+	printk(KERN_DEBUG "hal_mp.c - ");
 
 	HAL_DATA_TYPE	*pHalData = GET_HAL_DATA(pAdapter);
 	PMPT_CONTEXT	pMptCtx = &pAdapter->mppriv.MptCtx;
@@ -782,6 +795,7 @@ mpt_SetSingleTone_8814A(
 	IN	BOOLEAN	bSingleTone,
 	IN	BOOLEAN	bEnPMacTx)
 {
+	printk(KERN_DEBUG "hal_mp.c - ");
 
 	PMPT_CONTEXT	pMptCtx = &(pAdapter->mppriv.MptCtx);
 	u1Byte StartPath = ODM_RF_PATH_A,  EndPath = ODM_RF_PATH_A;
@@ -885,6 +899,7 @@ mpt_SetSingleTone_8814A(
 #if	defined(CONFIG_RTL8812A) || defined(CONFIG_RTL8821A)
 void mpt_SetRFPath_8812A(PADAPTER pAdapter)
 {
+	printk(KERN_DEBUG "hal_mp.c - ");
 	HAL_DATA_TYPE	*pHalData = GET_HAL_DATA(pAdapter);
 	PMPT_CONTEXT	pMptCtx = &pAdapter->mppriv.MptCtx;
 	u32		ulAntennaTx, ulAntennaRx;
@@ -958,6 +973,7 @@ void mpt_SetRFPath_8812A(PADAPTER pAdapter)
 #ifdef CONFIG_RTL8723B
 void mpt_SetRFPath_8723B(PADAPTER pAdapter)
 {
+	printk(KERN_DEBUG "hal_mp.c - ");
 	HAL_DATA_TYPE	*pHalData = GET_HAL_DATA(pAdapter);
 	u32		ulAntennaTx, ulAntennaRx;
 	PMPT_CONTEXT	pMptCtx = &(pAdapter->mppriv.MptCtx);
@@ -1056,6 +1072,7 @@ void mpt_SetRFPath_8723B(PADAPTER pAdapter)
 #ifdef CONFIG_RTL8703B
 void mpt_SetRFPath_8703B(PADAPTER pAdapter)
 {
+	printk(KERN_DEBUG "hal_mp.c - ");
 	HAL_DATA_TYPE	*pHalData = GET_HAL_DATA(pAdapter);
 	u4Byte					ulAntennaTx, ulAntennaRx;
 	PMPT_CONTEXT		pMptCtx = &(pAdapter->mppriv.MptCtx);
@@ -1139,6 +1156,7 @@ void mpt_SetRFPath_8703B(PADAPTER pAdapter)
 
 VOID mpt_SetRFPath_819X(PADAPTER	pAdapter)
 {
+	printk(KERN_DEBUG "hal_mp.c - ");
 	HAL_DATA_TYPE			*pHalData	= GET_HAL_DATA(pAdapter);
 	PMPT_CONTEXT		pMptCtx = &(pAdapter->mppriv.MptCtx);
 	u4Byte			ulAntennaTx, ulAntennaRx;
@@ -1301,6 +1319,7 @@ VOID mpt_SetRFPath_819X(PADAPTER	pAdapter)
 void hal_mpt_SetAntenna(PADAPTER	pAdapter)
 
 {
+	printk(KERN_DEBUG "hal_mp.c - ");
 	DBG_871X("Do %s\n", __func__);
 #ifdef	CONFIG_RTL8814A
 	if (IS_HARDWARE_TYPE_8814A(pAdapter)) {
@@ -1341,6 +1360,7 @@ void hal_mpt_SetAntenna(PADAPTER	pAdapter)
 
 s32 hal_mpt_SetThermalMeter(PADAPTER pAdapter, u8 target_ther)
 {
+	printk(KERN_DEBUG "hal_mp.c - ");
 	HAL_DATA_TYPE *pHalData = GET_HAL_DATA(pAdapter);
 
 	if (!netif_running(pAdapter->pnetdev)) {
@@ -1369,6 +1389,7 @@ s32 hal_mpt_SetThermalMeter(PADAPTER pAdapter, u8 target_ther)
 
 void hal_mpt_TriggerRFThermalMeter(PADAPTER pAdapter)
 {
+	printk(KERN_DEBUG "hal_mp.c - ");
 	PHY_SetRFReg(pAdapter, ODM_RF_PATH_A, 0x42, BIT17 | BIT16, 0x03);
 
 }
@@ -1377,6 +1398,7 @@ void hal_mpt_TriggerRFThermalMeter(PADAPTER pAdapter)
 u8 hal_mpt_ReadRFThermalMeter(PADAPTER pAdapter)
 
 {
+	printk(KERN_DEBUG "hal_mp.c - ");
 	u32 ThermalValue = 0;
 
 	ThermalValue = (u1Byte)PHY_QueryRFReg(pAdapter, ODM_RF_PATH_A, 0x42, 0xfc00);	/*0x42: RF Reg[15:10]*/
@@ -1387,6 +1409,7 @@ u8 hal_mpt_ReadRFThermalMeter(PADAPTER pAdapter)
 
 void hal_mpt_GetThermalMeter(PADAPTER pAdapter, u8 *value)
 {
+	printk(KERN_DEBUG "hal_mp.c - ");
 #if 0
 	fw_cmd(pAdapter, IOCMD_GET_THERMAL_METER);
 	rtw_msleep_os(1000);
@@ -1403,6 +1426,7 @@ void hal_mpt_GetThermalMeter(PADAPTER pAdapter, u8 *value)
 
 void hal_mpt_SetSingleCarrierTx(PADAPTER pAdapter, u8 bStart)
 {
+	printk(KERN_DEBUG "hal_mp.c - ");
 	HAL_DATA_TYPE *pHalData = GET_HAL_DATA(pAdapter);
 	
 	pAdapter->mppriv.MptCtx.bSingleCarrier = bStart;
@@ -1450,6 +1474,7 @@ void hal_mpt_SetSingleCarrierTx(PADAPTER pAdapter, u8 bStart)
 
 void hal_mpt_SetSingleToneTx(PADAPTER pAdapter, u8 bStart)
 {
+	printk(KERN_DEBUG "hal_mp.c - ");
 	HAL_DATA_TYPE	*pHalData = GET_HAL_DATA(pAdapter);
 	PMPT_CONTEXT		pMptCtx = &(pAdapter->mppriv.MptCtx);
 	u4Byte			ulAntennaTx = pHalData->AntennaTxPath;
@@ -1622,6 +1647,7 @@ void hal_mpt_SetSingleToneTx(PADAPTER pAdapter, u8 bStart)
 
 void hal_mpt_SetCarrierSuppressionTx(PADAPTER pAdapter, u8 bStart)
 {
+	printk(KERN_DEBUG "hal_mp.c - ");
 	u8 Rate;
 	pAdapter->mppriv.MptCtx.bCarrierSuppression = bStart;
 
@@ -1670,6 +1696,7 @@ void hal_mpt_SetCarrierSuppressionTx(PADAPTER pAdapter, u8 bStart)
 
 void hal_mpt_SetCCKContinuousTx(PADAPTER pAdapter, u8 bStart)
 {
+	printk(KERN_DEBUG "hal_mp.c - ");
 	u32 cckrate;
 
 	if (bStart) {
@@ -1733,6 +1760,7 @@ void hal_mpt_SetCCKContinuousTx(PADAPTER pAdapter, u8 bStart)
 
 void hal_mpt_SetOFDMContinuousTx(PADAPTER pAdapter, u8 bStart)
 {
+	printk(KERN_DEBUG "hal_mp.c - ");
 	HAL_DATA_TYPE *pHalData = GET_HAL_DATA(pAdapter);
 
 	if (bStart) {
@@ -1788,6 +1816,7 @@ void hal_mpt_SetOFDMContinuousTx(PADAPTER pAdapter, u8 bStart)
 
 void hal_mpt_SetContinuousTx(PADAPTER pAdapter, u8 bStart)
 {
+	printk(KERN_DEBUG "hal_mp.c - ");
 	u8 Rate;
 	RT_TRACE(_module_mp_, _drv_info_,
 		 ("SetContinuousTx: rate:%d\n", pAdapter->mppriv.rateidx));
@@ -1803,6 +1832,7 @@ void hal_mpt_SetContinuousTx(PADAPTER pAdapter, u8 bStart)
 
 u32 hal_mpt_query_phytxok(PADAPTER	pAdapter)
 {
+	printk(KERN_DEBUG "hal_mp.c - ");
 	PMPT_CONTEXT pMptCtx = &(pAdapter->mppriv.MptCtx);
 	RT_PMAC_TX_INFO PMacTxInfo = pMptCtx->PMacTxInfo;
 	u16 count = 0;
@@ -1828,6 +1858,7 @@ static	VOID mpt_StopCckContTx(
 	PADAPTER	pAdapter
 	)
 {
+	printk(KERN_DEBUG "hal_mp.c - ");
 	HAL_DATA_TYPE	*pHalData	= GET_HAL_DATA(pAdapter);
 	PMPT_CONTEXT	pMptCtx = &(pAdapter->mppriv.MptCtx);
 	u1Byte			u1bReg;
@@ -1860,6 +1891,7 @@ static	VOID mpt_StopOfdmContTx(
 	PADAPTER	pAdapter
 	)
 {
+	printk(KERN_DEBUG "hal_mp.c - ");
 	HAL_DATA_TYPE	*pHalData	= GET_HAL_DATA(pAdapter);
 	PMPT_CONTEXT	pMptCtx = &(pAdapter->mppriv.MptCtx);
 	u1Byte			u1bReg;
@@ -1893,6 +1925,7 @@ static	VOID mpt_StartCckContTx(
 	PADAPTER		pAdapter
 	)
 {
+	printk(KERN_DEBUG "hal_mp.c - ");
 	HAL_DATA_TYPE	*pHalData	= GET_HAL_DATA(pAdapter);
 	PMPT_CONTEXT	pMptCtx = &(pAdapter->mppriv.MptCtx);
 	u4Byte			cckrate;
@@ -1934,6 +1967,7 @@ static	VOID mpt_StartOfdmContTx(
 	PADAPTER		pAdapter
 	)
 {
+	printk(KERN_DEBUG "hal_mp.c - ");
 	HAL_DATA_TYPE	*pHalData	= GET_HAL_DATA(pAdapter);
 	PMPT_CONTEXT	pMptCtx = &(pAdapter->mppriv.MptCtx);
 
@@ -1968,6 +2002,7 @@ static	VOID mpt_StartOfdmContTx(
 
 void mpt_ProSetPMacTx(PADAPTER	Adapter)
 {
+	printk(KERN_DEBUG "hal_mp.c - ");
 	PMPT_CONTEXT	pMptCtx		=	&(Adapter->mppriv.MptCtx);
 	RT_PMAC_TX_INFO	PMacTxInfo	=	pMptCtx->PMacTxInfo;
 	u32			u4bTmp;

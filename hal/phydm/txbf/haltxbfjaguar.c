@@ -17,6 +17,7 @@ HalTxbf8812A_setNDPArate(
 	IN u1Byte	Rate
 )
 {
+	printk(KERN_DEBUG "haltxbfjaguar.c - ");
 	PDM_ODM_T	pDM_Odm = (PDM_ODM_T)pDM_VOID;
 	
 	ODM_Write1Byte(pDM_Odm, REG_NDPA_OPT_CTRL_8812A,  (Rate << 2 | BW));	
@@ -29,6 +30,7 @@ halTxbfJaguar_RfMode(
 	IN PRT_BEAMFORMING_INFO	pBeamInfo
 )
 {
+	printk(KERN_DEBUG "haltxbfjaguar.c - ");
 	PDM_ODM_T	pDM_Odm = (PDM_ODM_T)pDM_VOID;
 	
 	if (pDM_Odm->RFType == ODM_1T1R)
@@ -75,6 +77,7 @@ halTxbfJaguar_DownloadNDPA(
 	IN	u1Byte				Idx
 )
 {
+	printk(KERN_DEBUG "haltxbfjaguar.c - ");
 	PDM_ODM_T	pDM_Odm = (PDM_ODM_T)pDM_VOID;
 	u1Byte			u1bTmp = 0, tmpReg422 = 0, Head_Page;
 	u1Byte			BcnValidReg = 0, count = 0, DLBcnCount = 0;
@@ -165,6 +168,7 @@ halTxbfJaguar_FwTxBFCmd(
 	IN PVOID			pDM_VOID
 )
 {
+	printk(KERN_DEBUG "haltxbfjaguar.c - ");
 	PDM_ODM_T	pDM_Odm = (PDM_ODM_T)pDM_VOID;
 	u1Byte	Idx, Period0 = 0, Period1 = 0;
 	u1Byte	PageNum0 = 0xFF, PageNum1 = 0xFF;
@@ -206,6 +210,7 @@ HalTxbfJaguar_Enter(
 	IN u1Byte				BFerBFeeIdx
 )
 {
+	printk(KERN_DEBUG "haltxbfjaguar.c - ");
 	PDM_ODM_T	pDM_Odm = (PDM_ODM_T)pDM_VOID;
 	u1Byte					i = 0;
 	u1Byte					BFerIdx = (BFerBFeeIdx & 0xF0) >> 4;
@@ -303,6 +308,7 @@ HalTxbfJaguar_Leave(
 	IN u1Byte				Idx
 )
 {
+	printk(KERN_DEBUG "haltxbfjaguar.c - ");
 	PDM_ODM_T	pDM_Odm = (PDM_ODM_T)pDM_VOID;
 	PRT_BEAMFORMING_INFO	pBeamformingInfo = &pDM_Odm->BeamformingInfo;
 	RT_BEAMFORMER_ENTRY	BeamformerEntry;
@@ -357,6 +363,7 @@ HalTxbfJaguar_Status(
 	IN u1Byte				Idx
 )
 {
+	printk(KERN_DEBUG "haltxbfjaguar.c - ");
 	PDM_ODM_T	pDM_Odm = (PDM_ODM_T)pDM_VOID;
 	u2Byte					BeamCtrlVal;
 	u4Byte					BeamCtrlReg;
@@ -398,6 +405,7 @@ HalTxbfJaguar_FwTxBF(
 	IN	u1Byte				Idx
 )
 {
+	printk(KERN_DEBUG "haltxbfjaguar.c - ");
 	PDM_ODM_T	pDM_Odm = (PDM_ODM_T)pDM_VOID;
 	PRT_BEAMFORMING_INFO	pBeamInfo = &pDM_Odm->BeamformingInfo;
 	PRT_BEAMFORMEE_ENTRY	pBeamEntry = pBeamInfo->BeamformeeEntry + Idx;
@@ -417,6 +425,7 @@ HalTxbfJaguar_Patch(
 	IN	u1Byte				Operation
 )
 {
+	printk(KERN_DEBUG "haltxbfjaguar.c - ");
 	PDM_ODM_T	pDM_Odm = (PDM_ODM_T)pDM_VOID;
 	PRT_BEAMFORMING_INFO	pBeamInfo = &pDM_Odm->BeamformingInfo;
 
@@ -437,6 +446,7 @@ HalTxbfJaguar_Clk_8812A(
 	IN PVOID			pDM_VOID
 )
 {
+	printk(KERN_DEBUG "haltxbfjaguar.c - ");
 	PDM_ODM_T	pDM_Odm = (PDM_ODM_T)pDM_VOID;
 	u2Byte	u2btmp;
 	u1Byte	Count = 0, u1btmp;

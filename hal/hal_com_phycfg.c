@@ -34,6 +34,7 @@ s8 rtw_regsty_get_target_tx_power(
 	IN	RATE_SECTION	RateSection
 	)
 {
+	printk(KERN_DEBUG "hal_com_phycfg.c - ");
 	struct registry_priv *regsty = adapter_to_regsty(Adapter);
 	s8 value = 0;
 
@@ -73,6 +74,7 @@ s8 rtw_regsty_get_target_tx_power(
 
 bool rtw_regsty_chk_target_tx_power_valid(_adapter *adapter)
 {
+	printk(KERN_DEBUG "hal_com_phycfg.c - ");
 	struct hal_spec_t *hal_spec = GET_HAL_SPEC(adapter);
 	HAL_DATA_TYPE *hal_data = GET_HAL_DATA(adapter);
 	int path, tx_num, band, rs;
@@ -121,6 +123,7 @@ PHY_GetTxPowerByRateBase(
 	IN	RATE_SECTION	RateSection
 	)
 {
+	printk(KERN_DEBUG "hal_com_phycfg.c - ");
 	HAL_DATA_TYPE *pHalData = GET_HAL_DATA(Adapter);
 	u8 value = 0;
 
@@ -160,6 +163,7 @@ phy_SetTxPowerByRateBase(
 	IN	u8				Value
 	)
 {
+	printk(KERN_DEBUG "hal_com_phycfg.c - ");
 	HAL_DATA_TYPE *pHalData = GET_HAL_DATA(Adapter);
 	
 	if (RfPath > RF_PATH_D) {
@@ -198,6 +202,7 @@ u8 phy_get_target_tx_power(
 	IN	RATE_SECTION	RateSection
 	)
 {
+	printk(KERN_DEBUG "hal_com_phycfg.c - ");
 	struct registry_priv *regsty = adapter_to_regsty(Adapter);
 	s16 target_power;
 
@@ -215,6 +220,7 @@ phy_StoreTxPowerByRateBaseOld(
 	IN	PADAPTER	pAdapter
 	)
 {
+	printk(KERN_DEBUG "hal_com_phycfg.c - ");
 	HAL_DATA_TYPE	*pHalData = GET_HAL_DATA( pAdapter );
 	u16			rawValue = 0;
 	u8			base = 0;
@@ -259,6 +265,7 @@ phy_StoreTxPowerByRateBase(
 	IN	PADAPTER	pAdapter
 	)
 {
+	printk(KERN_DEBUG "hal_com_phycfg.c - ");
 	struct hal_spec_t *hal_spec = GET_HAL_SPEC(pAdapter);
 
 	u8 rate_sec_base[RATE_SECTION_NUM] = {
@@ -307,6 +314,7 @@ PHY_GetRateSectionIndexOfTxPowerByRate(
 	IN	u32			BitMask
 	)
 {
+	printk(KERN_DEBUG "hal_com_phycfg.c - ");
 	HAL_DATA_TYPE	*pHalData = GET_HAL_DATA( pAdapter );
 	PDM_ODM_T		pDM_Odm = &pHalData->odmpriv;
 	u8 			index = 0;
@@ -357,6 +365,7 @@ PHY_GetRateValuesOfTxPowerByRate(
 	OUT	u8 *RateNum
 	)
 {
+	printk(KERN_DEBUG "hal_com_phycfg.c - ");
 	HAL_DATA_TYPE	*pHalData = GET_HAL_DATA( pAdapter );
 	PDM_ODM_T		pDM_Odm = &pHalData->odmpriv;
 	u8	 			index = 0, i = 0;
@@ -776,6 +785,7 @@ PHY_StoreTxPowerByRateNew(
 	IN	u32			Data
 	)
 {
+	printk(KERN_DEBUG "hal_com_phycfg.c - ");
 	HAL_DATA_TYPE *pHalData = GET_HAL_DATA(pAdapter);
 	u8	i = 0, rates[4] = {0}, rateNum = 0;
 	s8	PwrByRateVal[4] = {0};
@@ -822,6 +832,7 @@ PHY_StoreTxPowerByRateOld(
 	IN	u32				Data
 	)
 {
+	printk(KERN_DEBUG "hal_com_phycfg.c - ");
 	HAL_DATA_TYPE	*pHalData = GET_HAL_DATA(pAdapter);
 	u8			index = PHY_GetRateSectionIndexOfTxPowerByRate( pAdapter, RegAddr, BitMask );
 
@@ -836,6 +847,7 @@ PHY_InitTxPowerByRate(
 	IN	PADAPTER	pAdapter
 	)
 {
+	printk(KERN_DEBUG "hal_com_phycfg.c - ");
 	HAL_DATA_TYPE	*pHalData = GET_HAL_DATA(pAdapter);
 	u8	band = 0, rfPath = 0, TxNum = 0, rate = 0, i = 0, j = 0;
 
@@ -866,6 +878,7 @@ PHY_StoreTxPowerByRate(
 	IN	u32			Data
 	)
 {
+	printk(KERN_DEBUG "hal_com_phycfg.c - ");
 	HAL_DATA_TYPE	*pHalData = GET_HAL_DATA(pAdapter);
 	PDM_ODM_T  		pDM_Odm = &pHalData->odmpriv;
 	
@@ -898,6 +911,7 @@ phy_ConvertTxPowerByRateByBase(
 	IN	u8			BaseValue
 	)
 {
+	printk(KERN_DEBUG "hal_com_phycfg.c - ");
 	s8	i = 0;
 	u8	TempValue = 0;
 	u32	TempData = 0;
@@ -931,6 +945,7 @@ PHY_ConvertTxPowerByRateInDbmToRelativeValuesOld(
 	IN	PADAPTER	pAdapter
 	)
 {
+	printk(KERN_DEBUG "hal_com_phycfg.c - ");
 	HAL_DATA_TYPE	*pHalData = GET_HAL_DATA( pAdapter );
 	u8			base = 0;
 	
@@ -1001,6 +1016,7 @@ phy_ConvertTxPowerByRateInDbmToRelativeValues(
 	IN	PADAPTER	pAdapter
 	)
 {
+	printk(KERN_DEBUG "hal_com_phycfg.c - ");
 	HAL_DATA_TYPE	*pHalData = GET_HAL_DATA( pAdapter );
 	u8 			base = 0, i = 0, value = 0,
 				band = 0, path = 0, txNum = 0, index = 0, 
@@ -1104,6 +1120,7 @@ PHY_TxPowerByRateConfiguration(
 	IN  PADAPTER			pAdapter
 	)
 {
+	printk(KERN_DEBUG "hal_com_phycfg.c - ");
 	HAL_DATA_TYPE	*pHalData = GET_HAL_DATA( pAdapter);
 
 	phy_StoreTxPowerByRateBase( pAdapter );
@@ -1118,6 +1135,7 @@ PHY_SetTxPowerIndexByRateSection(
 	IN	u8				RateSection
 	)
 {
+	printk(KERN_DEBUG "hal_com_phycfg.c - ");
 	PHAL_DATA_TYPE	pHalData = GET_HAL_DATA(pAdapter);
 
 	if ( RateSection == CCK )
@@ -1207,6 +1225,7 @@ phy_GetChnlIndex(
 	OUT u8*	ChannelIdx
 	)
 {
+	printk(KERN_DEBUG "hal_com_phycfg.c - ");
 	u8  i = 0;
 	BOOLEAN bIn24G=_TRUE;
 
@@ -1237,6 +1256,7 @@ PHY_GetTxPowerIndexBase(
 	OUT PBOOLEAN		bIn24G
 	)
 {
+	printk(KERN_DEBUG "hal_com_phycfg.c - ");
 	PHAL_DATA_TYPE		pHalData = GET_HAL_DATA(pAdapter);
 	PDM_ODM_T			pDM_Odm = &pHalData->odmpriv;
 	u8					i = 0;	//default set to 1S
@@ -1414,6 +1434,7 @@ PHY_GetTxPowerTrackingOffset(
 	u8			Rate
 	)
 {
+	printk(KERN_DEBUG "hal_com_phycfg.c - ");
 	PHAL_DATA_TYPE		pHalData = GET_HAL_DATA(pAdapter);
 	PDM_ODM_T			pDM_Odm = &pHalData->odmpriv;	
 	s8	offset = 0;
@@ -1441,6 +1462,7 @@ PHY_GetRateIndexOfTxPowerByRate(
 	IN	u8		Rate
 	)
 {
+	printk(KERN_DEBUG "hal_com_phycfg.c - ");
 	u8	index = 0;
 	switch ( Rate )
 	{
@@ -1545,6 +1567,7 @@ _PHY_GetTxPowerByRate(
 	IN	u8			Rate
 	)
 {
+	printk(KERN_DEBUG "hal_com_phycfg.c - ");
 	HAL_DATA_TYPE *pHalData = GET_HAL_DATA(pAdapter);
 	s8 value = 0;
 	u8 rateIndex = PHY_GetRateIndexOfTxPowerByRate(Rate);
@@ -1582,6 +1605,7 @@ PHY_GetTxPowerByRate(
 	IN	u8			Rate
 	)
 {
+	printk(KERN_DEBUG "hal_com_phycfg.c - ");
 	if (!phy_is_tx_power_by_rate_needed(pAdapter))
 		return 0;
 
@@ -1598,6 +1622,7 @@ PHY_SetTxPowerByRate(
 	IN	s8			Value
 	)
 {
+	printk(KERN_DEBUG "hal_com_phycfg.c - ");
 	HAL_DATA_TYPE	*pHalData = GET_HAL_DATA( pAdapter );
 	u8	rateIndex = PHY_GetRateIndexOfTxPowerByRate( Rate );
 	
@@ -1632,6 +1657,7 @@ PHY_SetTxPowerLevelByPath(
 	IN	u8			path
 	)
 {
+	printk(KERN_DEBUG "hal_com_phycfg.c - ");
 	PHAL_DATA_TYPE	pHalData = GET_HAL_DATA(Adapter);
 	BOOLEAN bIsIn24G = (pHalData->CurrentBandType == BAND_ON_2_4G );
 
@@ -1672,6 +1698,7 @@ PHY_SetTxPowerIndexByRateArray(
 	IN	u8					RateArraySize
 	)
 {
+	printk(KERN_DEBUG "hal_com_phycfg.c - ");
 	u32	powerIndex = 0;
 	int	i = 0;
 
@@ -1687,6 +1714,7 @@ phy_GetWorldWideLimit(
 	s8* LimitTable
 )
 {
+	printk(KERN_DEBUG "hal_com_phycfg.c - ");
 	s8	min = LimitTable[0];
 	u8	i = 0;
 	
@@ -1704,6 +1732,7 @@ phy_GetChannelIndexOfTxPowerLimit(
 	IN	u8			Channel
 	)
 {
+	printk(KERN_DEBUG "hal_com_phycfg.c - ");
 	s8	channelIndex = -1;
 	u8	i = 0;
 
@@ -1735,6 +1764,7 @@ PHY_GetTxPowerLimit(
 	IN	u8					Channel
 	)
 {
+	printk(KERN_DEBUG "hal_com_phycfg.c - ");
 	HAL_DATA_TYPE		*pHalData = GET_HAL_DATA(Adapter);
 	s16				band = -1, regulation = -1, bandwidth = -1,
 					rateSection = -1, channel = -1;
@@ -1926,6 +1956,7 @@ phy_CrossReferenceHTAndVHTTxPowerLimit(
 	IN	PADAPTER			pAdapter
 	)
 {
+	printk(KERN_DEBUG "hal_com_phycfg.c - ");
 	HAL_DATA_TYPE *pHalData = GET_HAL_DATA(pAdapter);
 	u8 regulation, bw, channel, rs, ref_rs;
 	int ht_ref_vht_5g_20_40 = 0;
@@ -2015,6 +2046,7 @@ PHY_ConvertTxPowerLimitToPowerIndex(
 	IN	PADAPTER			Adapter
 	)
 {
+	printk(KERN_DEBUG "hal_com_phycfg.c - ");
 	HAL_DATA_TYPE *pHalData = GET_HAL_DATA(Adapter);
 	u8 base;
 	u8 regulation, bw, channel, rateSection;
@@ -2117,6 +2149,7 @@ PHY_SetTxPowerLimit(
 	IN	u8				*PowerLimit
 	)
 {
+	printk(KERN_DEBUG "hal_com_phycfg.c - ");
 	PADAPTER Adapter = pDM_Odm->Adapter;
 	HAL_DATA_TYPE *pHalData = GET_HAL_DATA(Adapter);
 	u8 regulation = 0, bandwidth = 0, rateSection = 0, channel;
@@ -2245,6 +2278,7 @@ PHY_GetTxPowerIndex(
 	IN	u8					Channel
 	)
 {
+	printk(KERN_DEBUG "hal_com_phycfg.c - ");
 	u8	txPower = 0x3E;
 
 	if (IS_HARDWARE_TYPE_8814A(pAdapter)) {
@@ -2292,6 +2326,7 @@ PHY_SetTxPowerIndex(
 	IN	u8				Rate
 	)
 {
+	printk(KERN_DEBUG "hal_com_phycfg.c - ");
 	if (IS_HARDWARE_TYPE_8814A(pAdapter)) {
 #if (RTL8814A_SUPPORT == 1)
 		PHY_SetTxPowerIndex_8814A(pAdapter, PowerIndex, RFPath, Rate);
@@ -2330,6 +2365,7 @@ PHY_SetTxPowerIndex(
 
 bool phy_is_tx_power_limit_needed(_adapter *adapter)
 {
+	printk(KERN_DEBUG "hal_com_phycfg.c - ");
 	HAL_DATA_TYPE *hal_data = GET_HAL_DATA(adapter);
 	struct registry_priv *regsty = dvobj_to_regsty(adapter_to_dvobj(adapter));
 
@@ -2341,6 +2377,7 @@ bool phy_is_tx_power_limit_needed(_adapter *adapter)
 
 bool phy_is_tx_power_by_rate_needed(_adapter *adapter)
 {
+	printk(KERN_DEBUG "hal_com_phycfg.c - ");
 	HAL_DATA_TYPE *hal_data = GET_HAL_DATA(adapter);
 	struct registry_priv *regsty = dvobj_to_regsty(adapter_to_dvobj(adapter));
 
@@ -2352,6 +2389,7 @@ bool phy_is_tx_power_by_rate_needed(_adapter *adapter)
 
 int phy_load_tx_power_by_rate(_adapter *adapter, u8 chk_file)
 {
+	printk(KERN_DEBUG "hal_com_phycfg.c - ");
 	HAL_DATA_TYPE *hal_data = GET_HAL_DATA(adapter);
 	struct registry_priv *regsty = dvobj_to_regsty(adapter_to_dvobj(adapter));
 	int ret = _FAIL;
@@ -2399,6 +2437,7 @@ exit:
 
 int phy_load_tx_power_limit(_adapter *adapter, u8 chk_file)
 {
+	printk(KERN_DEBUG "hal_com_phycfg.c - ");
 	HAL_DATA_TYPE *hal_data = GET_HAL_DATA(adapter);
 	struct registry_priv *regsty = dvobj_to_regsty(adapter_to_dvobj(adapter));
 	int ret = _FAIL;
@@ -2442,6 +2481,7 @@ exit:
 
 void phy_load_tx_power_ext_info(_adapter *adapter, u8 chk_file)
 {
+	printk(KERN_DEBUG "hal_com_phycfg.c - ");
 	struct registry_priv *regsty = adapter_to_regsty(adapter);
 
 	/* check registy target tx power */
@@ -2458,16 +2498,19 @@ void phy_load_tx_power_ext_info(_adapter *adapter, u8 chk_file)
 
 inline void phy_reload_tx_power_ext_info(_adapter *adapter)
 {
+	printk(KERN_DEBUG "hal_com_phycfg.c - ");
 	phy_load_tx_power_ext_info(adapter, 1);
 }
 
 inline void phy_reload_default_tx_power_ext_info(_adapter *adapter)
 {
+	printk(KERN_DEBUG "hal_com_phycfg.c - ");
 	phy_load_tx_power_ext_info(adapter, 0);
 }
 
 void dump_tx_power_ext_info(void *sel, _adapter *adapter)
 {
+	printk(KERN_DEBUG "hal_com_phycfg.c - ");
 	struct registry_priv *regsty = adapter_to_regsty(adapter);
 	HAL_DATA_TYPE *hal_data = GET_HAL_DATA(adapter);
 
@@ -2495,6 +2538,7 @@ void dump_tx_power_ext_info(void *sel, _adapter *adapter)
 
 void dump_target_tx_power(void *sel, _adapter *adapter)
 {
+	printk(KERN_DEBUG "hal_com_phycfg.c - ");
 	struct hal_spec_t *hal_spec = GET_HAL_SPEC(adapter);
 	HAL_DATA_TYPE *hal_data = GET_HAL_DATA(adapter);
 	struct registry_priv *regsty = adapter_to_regsty(adapter);
@@ -2538,6 +2582,7 @@ exit:
 
 void dump_tx_power_by_rate(void *sel, _adapter *adapter)
 {
+	printk(KERN_DEBUG "hal_com_phycfg.c - ");
 	struct hal_spec_t *hal_spec = GET_HAL_SPEC(adapter);
 	HAL_DATA_TYPE *hal_data = GET_HAL_DATA(adapter);
 	int path, tx_num, band, n, rs;
@@ -2602,6 +2647,7 @@ void dump_tx_power_by_rate(void *sel, _adapter *adapter)
 
 void dump_tx_power_limit(void *sel, _adapter *adapter)
 {
+	printk(KERN_DEBUG "hal_com_phycfg.c - ");
 	struct hal_spec_t *hal_spec = GET_HAL_SPEC(adapter);
 	HAL_DATA_TYPE *hal_data = GET_HAL_DATA(adapter);
 	struct registry_priv *regsty = dvobj_to_regsty(adapter_to_dvobj(adapter));
@@ -2780,6 +2826,7 @@ void dump_tx_power_limit(void *sel, _adapter *adapter)
  */
 int rtw_get_phy_file_path(_adapter *adapter, const char *file_name)
 {
+	printk(KERN_DEBUG "hal_com_phycfg.c - ");
 #ifdef CONFIG_LOAD_PHY_PARA_FROM_FILE
 	struct hal_spec_t *hal_spec = GET_HAL_SPEC(adapter);
 	int len = 0;
@@ -2804,6 +2851,7 @@ phy_ConfigMACWithParaFile(
 	IN	char* 		pFileName
 )
 {
+	printk(KERN_DEBUG "hal_com_phycfg.c - ");
 	PHAL_DATA_TYPE	pHalData = GET_HAL_DATA(Adapter);
 	int	rlen = 0, rtStatus = _FAIL;
 	char	*szLine, *ptmp;
@@ -2885,6 +2933,7 @@ phy_ConfigBBWithParaFile(
 	IN	u32			ConfigType
 )
 {
+	printk(KERN_DEBUG "hal_com_phycfg.c - ");
 	HAL_DATA_TYPE	*pHalData = GET_HAL_DATA(Adapter);
 	int	rlen = 0, rtStatus = _FAIL;
 	char	*szLine, *ptmp;
@@ -3027,6 +3076,7 @@ phy_DecryptBBPgParaFile(
 	char*			buffer
 	)
 {
+	printk(KERN_DEBUG "hal_com_phycfg.c - ");
 	u32	i = 0, j = 0;
 	u8	map[95] = {0};
 	u8	currentChar;
@@ -3067,6 +3117,7 @@ phy_ParseBBPgParaFile(
 	char*			buffer
 	)
 {
+	printk(KERN_DEBUG "hal_com_phycfg.c - ");
 	int	rtStatus = _SUCCESS;
 	HAL_DATA_TYPE	*pHalData = GET_HAL_DATA(Adapter);
 	char	*szLine, *ptmp;
@@ -3356,6 +3407,7 @@ phy_ConfigBBWithPgParaFile(
 	IN	PADAPTER	Adapter,
 	IN	const char	*pFileName)
 {
+	printk(KERN_DEBUG "hal_com_phycfg.c - ");
 	HAL_DATA_TYPE	*pHalData = GET_HAL_DATA(Adapter);
 	int	rlen = 0, rtStatus = _FAIL;
 
@@ -3413,6 +3465,7 @@ phy_ConfigBBWithMpParaFile(
 	IN	char* 		pFileName
 )
 {
+	printk(KERN_DEBUG "hal_com_phycfg.c - ");
 	HAL_DATA_TYPE	*pHalData = GET_HAL_DATA(Adapter);
 	int	rlen = 0, rtStatus = _FAIL;
 	char	*szLine, *ptmp;
@@ -3530,6 +3583,7 @@ PHY_ConfigRFWithParaFile(
 	IN	u8			eRFPath
 )
 {
+	printk(KERN_DEBUG "hal_com_phycfg.c - ");
 	HAL_DATA_TYPE	*pHalData = GET_HAL_DATA(Adapter);
 	int	rlen = 0, rtStatus = _FAIL;
 	char	*szLine, *ptmp;
@@ -3687,6 +3741,7 @@ initDeltaSwingIndexTables(
 	char*		Data
 )
 {
+	printk(KERN_DEBUG "hal_com_phycfg.c - ");
 	#define STR_EQUAL_5G(_band, _path, _sign, _rate, _chnl) \
 		((strcmp(Band, _band) == 0) && (strcmp(Path, _path) == 0) && (strcmp(Sign, _sign) == 0) &&\
 		(strcmp(Rate, _rate) == 0) && (strcmp(Channel, _chnl) == 0)\
@@ -3822,6 +3877,7 @@ PHY_ConfigRFWithTxPwrTrackParaFile(
 	IN	char*	 		pFileName
 )
 {
+	printk(KERN_DEBUG "hal_com_phycfg.c - ");
 	HAL_DATA_TYPE		*pHalData = GET_HAL_DATA(Adapter);
 	PDM_ODM_T			pDM_Odm = &pHalData->odmpriv;
 	PODM_RF_CAL_T  		pRFCalibrateInfo = &(pDM_Odm->RFCalibrateInfo);
@@ -3937,6 +3993,7 @@ phy_ParsePowerLimitTableFile(
   char*			buffer
 )
 {
+	printk(KERN_DEBUG "hal_com_phycfg.c - ");
 	HAL_DATA_TYPE	*pHalData = GET_HAL_DATA(Adapter);
 	PDM_ODM_T	pDM_Odm = &(pHalData->odmpriv);
 	u32	i = 0, forCnt = 0;
@@ -4199,6 +4256,7 @@ PHY_ConfigRFWithPowerLimitTableParaFile(
 	IN	const char	*pFileName
 )
 {
+	printk(KERN_DEBUG "hal_com_phycfg.c - ");
 	HAL_DATA_TYPE		*pHalData = GET_HAL_DATA(Adapter);
 	int	rlen = 0, rtStatus = _FAIL;
 
@@ -4250,6 +4308,7 @@ PHY_ConfigRFWithPowerLimitTableParaFile(
 
 void phy_free_filebuf_mask(_adapter *padapter, u8 mask)
 {
+	printk(KERN_DEBUG "hal_com_phycfg.c - ");
 	HAL_DATA_TYPE *pHalData = GET_HAL_DATA(padapter);
 
 	if (pHalData->mac_reg && (mask & LOAD_MAC_PARA_FILE)) {
@@ -4296,6 +4355,7 @@ void phy_free_filebuf_mask(_adapter *padapter, u8 mask)
 
 inline void phy_free_filebuf(_adapter *padapter)
 {
+	printk(KERN_DEBUG "hal_com_phycfg.c - ");
 	phy_free_filebuf_mask(padapter, 0xFF);
 }
 

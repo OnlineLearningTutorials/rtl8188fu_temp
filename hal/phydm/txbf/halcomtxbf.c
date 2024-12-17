@@ -16,6 +16,7 @@ halComTxbf_beamformInit(
 	IN PVOID			pDM_VOID
 	)
 {
+	printk(KERN_DEBUG "halcomtxbf.c - ");
 	PDM_ODM_T	pDM_Odm = (PDM_ODM_T)pDM_VOID;
 
 	if (pDM_Odm->SupportICType & ODM_RTL8822B)
@@ -28,6 +29,7 @@ halComTxbf_ConfigGtab(
 	IN PVOID			pDM_VOID
 )
 {
+	printk(KERN_DEBUG "halcomtxbf.c - ");
 	PDM_ODM_T	pDM_Odm = (PDM_ODM_T)pDM_VOID;
 
 	if (pDM_Odm->SupportICType & ODM_RTL8822B)
@@ -39,6 +41,7 @@ phydm_beamformSetSoundingEnter(
 	IN PVOID			pDM_VOID
 	)
 {
+	printk(KERN_DEBUG "halcomtxbf.c - ");
 	PDM_ODM_T	pDM_Odm = (PDM_ODM_T)pDM_VOID;
 #if (DM_ODM_SUPPORT_TYPE == ODM_WIN)
 	PHAL_TXBF_INFO	pTxbfInfo = &pDM_Odm->BeamformingInfo.TxbfInfo;
@@ -55,6 +58,7 @@ phydm_beamformSetSoundingLeave(
 	IN PVOID			pDM_VOID
 	)
 {
+	printk(KERN_DEBUG "halcomtxbf.c - ");
 	PDM_ODM_T	pDM_Odm = (PDM_ODM_T)pDM_VOID;
 #if (DM_ODM_SUPPORT_TYPE == ODM_WIN)
 	PHAL_TXBF_INFO	pTxbfInfo = &pDM_Odm->BeamformingInfo.TxbfInfo;
@@ -71,6 +75,7 @@ phydm_beamformSetSoundingRate(
 	IN PVOID			pDM_VOID
 	)
 {
+	printk(KERN_DEBUG "halcomtxbf.c - ");
 	PDM_ODM_T	pDM_Odm = (PDM_ODM_T)pDM_VOID;
 #if (DM_ODM_SUPPORT_TYPE == ODM_WIN)
 	PHAL_TXBF_INFO	pTxbfInfo = &pDM_Odm->BeamformingInfo.TxbfInfo;
@@ -87,6 +92,7 @@ phydm_beamformSetSoundingStatus(
 	IN PVOID			pDM_VOID
 	)
 {
+	printk(KERN_DEBUG "halcomtxbf.c - ");
 	PDM_ODM_T	pDM_Odm = (PDM_ODM_T)pDM_VOID;
 #if (DM_ODM_SUPPORT_TYPE == ODM_WIN)
 	PHAL_TXBF_INFO	pTxbfInfo = &pDM_Odm->BeamformingInfo.TxbfInfo;
@@ -103,6 +109,7 @@ phydm_beamformSetSoundingFwNdpa(
 	IN PVOID			pDM_VOID
 	)
 {
+	printk(KERN_DEBUG "halcomtxbf.c - ");
 	PDM_ODM_T	pDM_Odm = (PDM_ODM_T)pDM_VOID;
 #if (DM_ODM_SUPPORT_TYPE == ODM_WIN)
 	PHAL_TXBF_INFO	pTxbfInfo = &pDM_Odm->BeamformingInfo.TxbfInfo;
@@ -121,6 +128,7 @@ phydm_beamformSetSoundingClk(
 	IN PVOID			pDM_VOID
 	)
 {
+	printk(KERN_DEBUG "halcomtxbf.c - ");
 	PDM_ODM_T	pDM_Odm = (PDM_ODM_T)pDM_VOID;
 #if (DM_ODM_SUPPORT_TYPE == ODM_WIN)
 	PHAL_TXBF_INFO	pTxbfInfo = &pDM_Odm->BeamformingInfo.TxbfInfo;
@@ -141,6 +149,7 @@ phydm_beamformSetResetTxPath(
 	IN PVOID			pDM_VOID
 	)
 {
+	printk(KERN_DEBUG "halcomtxbf.c - ");
 	PDM_ODM_T	pDM_Odm = (PDM_ODM_T)pDM_VOID;
 #if (DM_ODM_SUPPORT_TYPE == ODM_WIN)
 	PHAL_TXBF_INFO	pTxbfInfo = &pDM_Odm->BeamformingInfo.TxbfInfo;
@@ -157,6 +166,7 @@ phydm_beamformSetGetTxRate(
 	IN PVOID			pDM_VOID
 	)
 {
+	printk(KERN_DEBUG "halcomtxbf.c - ");
 	PDM_ODM_T	pDM_Odm = (PDM_ODM_T)pDM_VOID;
 #if (DM_ODM_SUPPORT_TYPE == ODM_WIN)
 	PHAL_TXBF_INFO	pTxbfInfo = &pDM_Odm->BeamformingInfo.TxbfInfo;
@@ -177,6 +187,7 @@ halComTxbf_EnterWorkItemCallback(
 #endif
 	)
 {
+	printk(KERN_DEBUG "halcomtxbf.c - ");
 #if (DM_ODM_SUPPORT_TYPE == ODM_WIN)
 	PHAL_DATA_TYPE	pHalData = GET_HAL_DATA(Adapter);
 	PDM_ODM_T		pDM_Odm = &pHalData->DM_OutSrc;
@@ -209,6 +220,7 @@ halComTxbf_LeaveWorkItemCallback(
 #endif
 	)
 {
+	printk(KERN_DEBUG "halcomtxbf.c - ");
 #if (DM_ODM_SUPPORT_TYPE == ODM_WIN)
 	PHAL_DATA_TYPE	pHalData = GET_HAL_DATA(Adapter);
 	PDM_ODM_T		pDM_Odm = &pHalData->DM_OutSrc;
@@ -243,6 +255,7 @@ halComTxbf_FwNdpaWorkItemCallback(
 #endif
 	)
 {
+	printk(KERN_DEBUG "halcomtxbf.c - ");
 #if (DM_ODM_SUPPORT_TYPE == ODM_WIN)
 	PHAL_DATA_TYPE	pHalData = GET_HAL_DATA(Adapter);
 	PDM_ODM_T		pDM_Odm = &pHalData->DM_OutSrc;
@@ -275,6 +288,7 @@ halComTxbf_ClkWorkItemCallback(
 #endif
 	)
 {
+	printk(KERN_DEBUG "halcomtxbf.c - ");
 #if (DM_ODM_SUPPORT_TYPE == ODM_WIN)
 	PHAL_DATA_TYPE	pHalData = GET_HAL_DATA(Adapter);
 	PDM_ODM_T		pDM_Odm = &pHalData->DM_OutSrc;
@@ -299,6 +313,7 @@ halComTxbf_RateWorkItemCallback(
 #endif
 	)
 {
+	printk(KERN_DEBUG "halcomtxbf.c - ");
 #if (DM_ODM_SUPPORT_TYPE == ODM_WIN)
 	PHAL_DATA_TYPE	pHalData = GET_HAL_DATA(Adapter);
 	PDM_ODM_T		pDM_Odm = &pHalData->DM_OutSrc;
@@ -327,6 +342,7 @@ halComTxbf_FwNdpaTimerCallback(
 	IN	PRT_TIMER		pTimer
 	)
 {
+	printk(KERN_DEBUG "halcomtxbf.c - ");
 
 	PADAPTER		Adapter = (PADAPTER)pTimer->Adapter;
 	PHAL_DATA_TYPE	pHalData = GET_HAL_DATA(Adapter);
@@ -354,6 +370,7 @@ halComTxbf_StatusWorkItemCallback(
 #endif
 	)
 {
+	printk(KERN_DEBUG "halcomtxbf.c - ");
 #if (DM_ODM_SUPPORT_TYPE == ODM_WIN)
 	PHAL_DATA_TYPE	pHalData = GET_HAL_DATA(Adapter);
 	PDM_ODM_T		pDM_Odm = &pHalData->DM_OutSrc;
@@ -387,6 +404,7 @@ halComTxbf_ResetTxPathWorkItemCallback(
 #endif
 	)
 {
+	printk(KERN_DEBUG "halcomtxbf.c - ");
 #if (DM_ODM_SUPPORT_TYPE == ODM_WIN)
 	PHAL_DATA_TYPE	pHalData = GET_HAL_DATA(Adapter);
 	PDM_ODM_T		pDM_Odm = &pHalData->DM_OutSrc;
@@ -411,6 +429,7 @@ halComTxbf_GetTxRateWorkItemCallback(
 #endif
 	)
 {
+	printk(KERN_DEBUG "halcomtxbf.c - ");
 #if (DM_ODM_SUPPORT_TYPE == ODM_WIN)
 	PHAL_DATA_TYPE	pHalData = GET_HAL_DATA(Adapter);
 	PDM_ODM_T		pDM_Odm = &pHalData->DM_OutSrc;
@@ -430,6 +449,7 @@ HalComTxbf_Set(
 	IN	PVOID			pInBuf
 	)
 {
+	printk(KERN_DEBUG "halcomtxbf.c - ");
 	PDM_ODM_T	pDM_Odm = (PDM_ODM_T)pDM_VOID;
 	PBOOLEAN		pBoolean=(PBOOLEAN)pInBuf;
 	pu1Byte			pU1Tmp=(pu1Byte)pInBuf;
@@ -491,6 +511,7 @@ HalComTxbf_Get(
 	OUT	PVOID			pOutBuf
 	)
 {
+	printk(KERN_DEBUG "halcomtxbf.c - ");
 	PHAL_DATA_TYPE		pHalData=GET_HAL_DATA(Adapter);
 	PDM_ODM_T			pDM_Odm = &pHalData->DM_OutSrc;
 	PBOOLEAN			pBoolean=(PBOOLEAN)pOutBuf;

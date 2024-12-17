@@ -165,6 +165,7 @@ halTxbf8822B_GetNtx(
 	IN PVOID			pDM_VOID
 	)
 {
+	printk(KERN_DEBUG "haltxbf8822b.c - ");
 	PDM_ODM_T	pDM_Odm = (PDM_ODM_T)pDM_VOID;
 	u1Byte			Ntx = 0;
 
@@ -201,6 +202,7 @@ halTxbf8822B_GetNrx(
 	IN PVOID			pDM_VOID
 	)
 {
+	printk(KERN_DEBUG "haltxbf8822b.c - ");
 	PDM_ODM_T	pDM_Odm = (PDM_ODM_T)pDM_VOID;
 	u1Byte			Nrx = 0;
 
@@ -233,6 +235,7 @@ halTxbf8822B_RfMode(
 	IN	u1Byte					idx
 	)
 {
+	printk(KERN_DEBUG "haltxbf8822b.c - ");
 	PDM_ODM_T	pDM_Odm = (PDM_ODM_T)pDM_VOID;
 	u1Byte				i, Nr_index = 0;
 	BOOLEAN				bSelfBeamformer = FALSE;
@@ -420,6 +423,7 @@ HalTxbf8822B_Init(
 	IN PVOID			pDM_VOID
 	)
 {
+	printk(KERN_DEBUG "haltxbf8822b.c - ");
 	PDM_ODM_T	pDM_Odm = (PDM_ODM_T)pDM_VOID;
 	u1Byte		u1bTmp;
 	PRT_BEAMFORMING_INFO		pBeamformingInfo = &pDM_Odm->BeamformingInfo;
@@ -448,6 +452,7 @@ HalTxbf8822B_Enter(
 	IN u1Byte				BFerBFeeIdx
 	)
 {
+	printk(KERN_DEBUG "haltxbf8822b.c - ");
 	PDM_ODM_T	pDM_Odm = (PDM_ODM_T)pDM_VOID;
 	u1Byte					i = 0;
 	u1Byte					BFerIdx = (BFerBFeeIdx & 0xF0)>>4;
@@ -737,6 +742,7 @@ HalTxbf8822B_Leave(
 	IN u1Byte				Idx
 	)
 {
+	printk(KERN_DEBUG "haltxbf8822b.c - ");
 	PDM_ODM_T	pDM_Odm = (PDM_ODM_T)pDM_VOID;
 	PRT_BEAMFORMING_INFO	pBeamformingInfo = &pDM_Odm->BeamformingInfo;
 	PRT_BEAMFORMER_ENTRY	pBeamformerEntry; 
@@ -816,6 +822,7 @@ HalTxbf8822B_Status(
 	IN u1Byte				Idx
 	)
 {
+	printk(KERN_DEBUG "haltxbf8822b.c - ");
 	PDM_ODM_T	pDM_Odm = (PDM_ODM_T)pDM_VOID;
 	u2Byte					BeamCtrlVal, tmpVal;
 	u4Byte					BeamCtrlReg;
@@ -946,6 +953,7 @@ HalTxbf8822B_ConfigGtab(
 	IN PVOID			pDM_VOID
 	)
 {
+	printk(KERN_DEBUG "haltxbf8822b.c - ");
 	PDM_ODM_T	pDM_Odm = (PDM_ODM_T)pDM_VOID;
 	PRT_BEAMFORMING_INFO	pBeamformingInfo = &pDM_Odm->BeamformingInfo;
 	PRT_BEAMFORMER_ENTRY	pBeamformerEntry = NULL;
@@ -1081,6 +1089,7 @@ HalTxbf8822B_FwTxBF(
 	IN	u1Byte				Idx
 	)
 {
+	printk(KERN_DEBUG "haltxbf8822b.c - ");
 #if 0
 	PRT_BEAMFORMING_INFO	pBeamInfo = GET_BEAMFORM_INFO(Adapter);
 	PRT_BEAMFORMEE_ENTRY	pBeamEntry = pBeamInfo->BeamformeeEntry+Idx;

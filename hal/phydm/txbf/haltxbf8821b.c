@@ -15,6 +15,7 @@ halTxbf8821B_RfMode(
 	IN PRT_BEAMFORMING_INFO	pBeamInfo
 )
 {
+	printk(KERN_DEBUG "haltxbf8821b.c - ");
 	PDM_ODM_T	pDM_Odm = (PDM_ODM_T)pDM_VOID;
 	
 	if (pDM_Odm->RFType == ODM_1T1R)
@@ -190,6 +191,7 @@ HalTxbf8821B_Enter(
 	IN u1Byte				BFerBFeeIdx
 )
 {
+	printk(KERN_DEBUG "haltxbf8821b.c - ");
 	PDM_ODM_T	pDM_Odm = (PDM_ODM_T)pDM_VOID;
 	u1Byte					i = 0;
 	u1Byte					BFerIdx = (BFerBFeeIdx & 0xF0) >> 4;
@@ -287,6 +289,7 @@ HalTxbf8821B_Leave(
 	IN u1Byte				Idx
 )
 {
+	printk(KERN_DEBUG "haltxbf8821b.c - ");
 	PDM_ODM_T	pDM_Odm = (PDM_ODM_T)pDM_VOID;
 	PRT_BEAMFORMING_INFO	pBeamformingInfo = &pDM_Odm->BeamformingInfo;
 	RT_BEAMFORMER_ENTRY	BeamformerEntry;
@@ -341,6 +344,7 @@ HalTxbf8821B_Status(
 	IN u1Byte				Idx
 )
 {
+	printk(KERN_DEBUG "haltxbf8821b.c - ");
 	PDM_ODM_T	pDM_Odm = (PDM_ODM_T)pDM_VOID;
 	u2Byte					BeamCtrlVal;
 	u4Byte					BeamCtrlReg;
@@ -382,6 +386,7 @@ HalTxbf8821B_FwTxBF(
 	IN	u1Byte				Idx
 )
 {
+	printk(KERN_DEBUG "haltxbf8821b.c - ");
 	PDM_ODM_T	pDM_Odm = (PDM_ODM_T)pDM_VOID;
 	PRT_BEAMFORMING_INFO	pBeamInfo = &pDM_Odm->BeamformingInfo;
 	PRT_BEAMFORMEE_ENTRY	pBeamEntry = pBeamInfo->BeamformeeEntry + Idx;

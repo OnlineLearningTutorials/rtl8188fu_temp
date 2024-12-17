@@ -32,6 +32,7 @@ CheckPositive(
 	IN	const u4Byte  Condition4
 )
 {
+	printk(KERN_DEBUG "halhwimg8188f_rf.c - ");
 	u1Byte    _BoardType = ((pDM_Odm->BoardType & BIT4) >> 4) << 0 | /* _GLNA*/
 				((pDM_Odm->BoardType & BIT3) >> 3) << 1 | /* _GPA*/ 
 				((pDM_Odm->BoardType & BIT7) >> 7) << 2 | /* _ALNA*/
@@ -112,6 +113,7 @@ CheckNegative(
 	IN  const u4Byte  Condition2
 )
 {
+	printk(KERN_DEBUG "halhwimg8188f_rf.c - ");
 	return TRUE;
 }
 
@@ -287,6 +289,7 @@ ODM_ReadAndConfig_MP_8188F_RadioA(
 	IN   PDM_ODM_T  pDM_Odm
 )
 {
+	printk(KERN_DEBUG "halhwimg8188f_rf.c - ");
 	u4Byte     i         = 0;
 	u1Byte     cCond;
 	BOOLEAN bMatched = TRUE, bSkipped = FALSE;
@@ -339,6 +342,7 @@ ODM_ReadAndConfig_MP_8188F_RadioA(
 u4Byte
 ODM_GetVersion_MP_8188F_RadioA(void)
 {
+	printk(KERN_DEBUG "halhwimg8188f_rf.c - ");
 	   return 31;
 }
 
@@ -382,6 +386,7 @@ ODM_ReadAndConfig_MP_8188F_TxPowerTrack_AP(
 	IN   PDM_ODM_T  pDM_Odm
 )
 {
+	printk(KERN_DEBUG "halhwimg8188f_rf.c - ");
 #if (DM_ODM_SUPPORT_TYPE & (ODM_AP))
 	PODM_RF_CAL_T  pRFCalibrateInfo = &(pDM_Odm->RFCalibrateInfo);
 
@@ -445,6 +450,7 @@ ODM_ReadAndConfig_MP_8188F_TxPowerTrack_SDIO(
 	IN   PDM_ODM_T  pDM_Odm
 )
 {
+	printk(KERN_DEBUG "halhwimg8188f_rf.c - ");
 #if DEV_BUS_TYPE == RT_SDIO_INTERFACE
 	PODM_RF_CAL_T  pRFCalibrateInfo = &(pDM_Odm->RFCalibrateInfo);
 
@@ -508,6 +514,7 @@ ODM_ReadAndConfig_MP_8188F_TxPowerTrack_USB(
 	IN   PDM_ODM_T  pDM_Odm
 )
 {
+	printk(KERN_DEBUG "halhwimg8188f_rf.c - ");
 #if DEV_BUS_TYPE == RT_USB_INTERFACE
 	PODM_RF_CAL_T  pRFCalibrateInfo = &(pDM_Odm->RFCalibrateInfo);
 
@@ -1107,6 +1114,7 @@ ODM_ReadAndConfig_MP_8188F_TXPWR_LMT(
 	IN   PDM_ODM_T  pDM_Odm
 )
 {
+	printk(KERN_DEBUG "halhwimg8188f_rf.c - ");
 	u4Byte     i           = 0;
 	u4Byte     ArrayLen    = sizeof(Array_MP_8188F_TXPWR_LMT)/sizeof(pu1Byte);
 	pu1Byte    *Array      = (pu1Byte *)Array_MP_8188F_TXPWR_LMT;

@@ -56,6 +56,7 @@ halbtc8821aCsr2ant_BtRssiState(
 	u1Byte			rssiThresh1
 	)
 {
+	printk(KERN_DEBUG "HalBtc8821aCsr22Ant.c - ");
 	s4Byte			btRssi=0;
 	u1Byte			btRssiState=pCoexSta->preBtRssiState;
 
@@ -150,6 +151,7 @@ halbtc8821aCsr2ant_WifiRssiState(
 	IN	u1Byte			rssiThresh1
 	)
 {
+	printk(KERN_DEBUG "HalBtc8821aCsr22Ant.c - ");
 	s4Byte			wifiRssi=0;
 	u1Byte			wifiRssiState=pCoexSta->preWifiRssiState[index];
 
@@ -240,6 +242,7 @@ halbtc8821aCsr2ant_MonitorBtEnableDisable(
 	IN 	PBTC_COEXIST		pBtCoexist
 	)
 {
+	printk(KERN_DEBUG "HalBtc8821aCsr22Ant.c - ");
 	static BOOLEAN	bPreBtDisabled=FALSE;
 	static u4Byte	btDisableCnt=0;
 	BOOLEAN			bBtActive=TRUE, bBtDisabled=FALSE;
@@ -299,6 +302,7 @@ halbtc8821aCsr2ant_MonitorBtCtr(
 	IN	PBTC_COEXIST		pBtCoexist
 	)
 {
+	printk(KERN_DEBUG "HalBtc8821aCsr22Ant.c - ");
 	u4Byte 			regHPTxRx, regLPTxRx, u4Tmp;
 	u4Byte			regHPTx=0, regHPRx=0, regLPTx=0, regLPRx=0;
 	u1Byte			u1Tmp;
@@ -335,6 +339,7 @@ halbtc8821aCsr2ant_UpdateRaMask(
 	IN	u4Byte				disRateMask
 	)
 {
+	printk(KERN_DEBUG "HalBtc8821aCsr22Ant.c - ");
 	pCoexDm->curRaMask = disRateMask;
 	
 	if( bForceExec || (pCoexDm->preRaMask != pCoexDm->curRaMask))
@@ -351,6 +356,7 @@ halbtc8821aCsr2ant_AutoRateFallbackRetry(
 	IN	u1Byte				type
 	)
 {
+	printk(KERN_DEBUG "HalBtc8821aCsr22Ant.c - ");
 	BOOLEAN	bWifiUnderBMode=FALSE;
 	
 	pCoexDm->curArfrType = type;
@@ -391,6 +397,7 @@ halbtc8821aCsr2ant_RetryLimit(
 	IN	u1Byte				type
 	)
 {
+	printk(KERN_DEBUG "HalBtc8821aCsr22Ant.c - ");
 	pCoexDm->curRetryLimitType = type;
 
 	if( bForceExec || (pCoexDm->preRetryLimitType != pCoexDm->curRetryLimitType))
@@ -418,6 +425,7 @@ halbtc8821aCsr2ant_AmpduMaxTime(
 	IN	u1Byte				type
 	)
 {
+	printk(KERN_DEBUG "HalBtc8821aCsr22Ant.c - ");
 	pCoexDm->curAmpduTimeType = type;
 
 	if( bForceExec || (pCoexDm->preAmpduTimeType != pCoexDm->curAmpduTimeType))
@@ -448,6 +456,7 @@ halbtc8821aCsr2Ant_AmpduMaxNum(
 	IN	u1Byte				type
 	)
 {
+	printk(KERN_DEBUG "HalBtc8821aCsr22Ant.c - ");
 	pCoexDm->curAmpduNumType = type;
 
 	if( bForceExec || (pCoexDm->preAmpduNumType != pCoexDm->curAmpduNumType))
@@ -483,6 +492,7 @@ halbtc8821aCsr2ant_LimitedTx(
 	IN	u1Byte				ampduNumType
 	)
 {
+	printk(KERN_DEBUG "HalBtc8821aCsr22Ant.c - ");
 	switch(raMaskType)
 	{
 		case 0:	// normal mode
@@ -515,6 +525,7 @@ halbtc8821aCsr2ant_LimitedRx(
 	IN	u1Byte				aggBufSize
 	)
 {
+	printk(KERN_DEBUG "HalBtc8821aCsr22Ant.c - ");
 	BOOLEAN	bRejectRxAgg=bRejApAggPkt;
 	BOOLEAN	bBtCtrlRxAggSize=bBtCtrlAggBufSize;
 	u1Byte	rxAggSize=aggBufSize;
@@ -536,6 +547,7 @@ halbtc8821aCsr2ant_QueryBtInfo(
 	IN	PBTC_COEXIST		pBtCoexist
 	)
 {
+	printk(KERN_DEBUG "HalBtc8821aCsr22Ant.c - ");
 	u1Byte			H2C_Parameter[1] ={0};
 
 	pCoexSta->bC2hBtInfoReqSent = TRUE;
@@ -554,6 +566,7 @@ halbtc8821aCsr2ant_ActionAlgorithm(
 	IN	PBTC_COEXIST		pBtCoexist
 	)
 {
+	printk(KERN_DEBUG "HalBtc8821aCsr22Ant.c - ");
 	PBTC_STACK_INFO		pStackInfo=&pBtCoexist->stackInfo;
 	BOOLEAN				bBtHsOn=FALSE;
 	u1Byte				algorithm=BT_8821A_CSR_2ANT_COEX_ALGO_UNDEFINED;
@@ -779,6 +792,7 @@ halbtc8821aCsr2ant_NeedToDecBtPwr(
 	IN	PBTC_COEXIST		pBtCoexist
 	)
 {
+	printk(KERN_DEBUG "HalBtc8821aCsr22Ant.c - ");
 	BOOLEAN		bRet=FALSE;
 	BOOLEAN		bBtHsOn=FALSE, bWifiConnected=FALSE;
 	s4Byte		btHsRssi=0;
@@ -824,6 +838,7 @@ halbtc8821aCsr2ant_SetFwDacSwingLevel(
 	IN	u1Byte			dacSwingLvl
 	)
 {
+	printk(KERN_DEBUG "HalBtc8821aCsr22Ant.c - ");
 	u1Byte			H2C_Parameter[1] ={0};
 
 	// There are several type of dacswing
@@ -842,6 +857,7 @@ halbtc8821aCsr2ant_SetFwDecBtPwr(
 	IN	BOOLEAN			bDecBtPwr
 	)
 {
+	printk(KERN_DEBUG "HalBtc8821aCsr22Ant.c - ");
 	u1Byte			H2C_Parameter[1] ={0};
 	
 	H2C_Parameter[0] = 0;
@@ -865,6 +881,7 @@ halbtc8821aCsr2ant_DecBtPwr(
 	IN	BOOLEAN			bDecBtPwr
 	)
 {
+	printk(KERN_DEBUG "HalBtc8821aCsr22Ant.c - ");
 	RT_TRACE(COMP_COEX, DBG_TRACE, ("[BTCoex], %s Dec BT power = %s\n",  
 		(bForceExec? "force to":""), ((bDecBtPwr)? "ON":"OFF")));
 	pCoexDm->bCurDecBtPwr = bDecBtPwr;
@@ -887,6 +904,7 @@ halbtc8821aCsr2ant_SetBtAutoReport(
 	IN	BOOLEAN			bEnableAutoReport
 	)
 {
+	printk(KERN_DEBUG "HalBtc8821aCsr22Ant.c - ");
 	u1Byte			H2C_Parameter[1] ={0};
 	
 	H2C_Parameter[0] = 0;
@@ -910,6 +928,7 @@ halbtc8821aCsr2ant_BtAutoReport(
 	IN	BOOLEAN			bEnableAutoReport
 	)
 {
+	printk(KERN_DEBUG "HalBtc8821aCsr22Ant.c - ");
 	RT_TRACE(COMP_COEX, DBG_TRACE, ("[BTCoex], %s BT Auto report = %s\n",  
 		(bForceExec? "force to":""), ((bEnableAutoReport)? "Enabled":"Disabled")));
 	pCoexDm->bCurBtAutoReport = bEnableAutoReport;
@@ -931,6 +950,7 @@ halbtc8821aCsr2ant_FwDacSwingLvl(
 	IN	u1Byte			fwDacSwingLvl
 	)
 {
+	printk(KERN_DEBUG "HalBtc8821aCsr22Ant.c - ");
 	RT_TRACE(COMP_COEX, DBG_TRACE, ("[BTCoex], %s set FW Dac Swing level = %d\n",  
 		(bForceExec? "force to":""), fwDacSwingLvl));
 	pCoexDm->curFwDacSwingLvl = fwDacSwingLvl;
@@ -952,6 +972,7 @@ halbtc8821aCsr2ant_SetSwRfRxLpfCorner(
 	IN	BOOLEAN			bRxRfShrinkOn
 	)
 {
+	printk(KERN_DEBUG "HalBtc8821aCsr22Ant.c - ");
 	if(bRxRfShrinkOn)
 	{
 		//Shrink RF Rx LPF corner
@@ -977,6 +998,7 @@ halbtc8821aCsr2ant_RfShrink(
 	IN	BOOLEAN			bRxRfShrinkOn
 	)
 {
+	printk(KERN_DEBUG "HalBtc8821aCsr22Ant.c - ");
 	RT_TRACE(COMP_COEX, DBG_TRACE, ("[BTCoex], %s turn Rx RF Shrink = %s\n",  
 		(bForceExec? "force to":""), ((bRxRfShrinkOn)? "ON":"OFF")));
 	pCoexDm->bCurRfRxLpfShrink = bRxRfShrinkOn;
@@ -997,6 +1019,7 @@ halbtc8821aCsr2ant_SetSwPenaltyTxRateAdaptive(
 	IN	BOOLEAN			bLowPenaltyRa
 	)
 {
+	printk(KERN_DEBUG "HalBtc8821aCsr22Ant.c - ");
 	u1Byte			H2C_Parameter[6] ={0};
 	
 	H2C_Parameter[0] = 0x6;	// opCode, 0x6= Retry_Penalty
@@ -1023,6 +1046,7 @@ halbtc8821aCsr2ant_LowPenaltyRa(
 	IN	BOOLEAN			bLowPenaltyRa
 	)
 {
+	printk(KERN_DEBUG "HalBtc8821aCsr22Ant.c - ");
 	RT_TRACE(COMP_COEX, DBG_TRACE, ("[BTCoex], %s turn LowPenaltyRA = %s\n",  
 		(bForceExec? "force to":""), ((bLowPenaltyRa)? "ON":"OFF")));
 	pCoexDm->bCurLowPenaltyRa = bLowPenaltyRa;
@@ -1043,6 +1067,7 @@ halbtc8821aCsr2ant_SetDacSwingReg(
 	IN	u4Byte			level
 	)
 {
+	printk(KERN_DEBUG "HalBtc8821aCsr22Ant.c - ");
 	u1Byte	val=(u1Byte)level;
 
 	RT_TRACE(COMP_COEX, DBG_LOUD, ("[BTCoex], Write SwDacSwing = 0x%x\n", level));
@@ -1056,6 +1081,7 @@ halbtc8821aCsr2ant_SetSwFullTimeDacSwing(
 	IN	u4Byte			swDacSwingLvl
 	)
 {
+	printk(KERN_DEBUG "HalBtc8821aCsr22Ant.c - ");
 	if(bSwDacSwingOn)
 	{
 		halbtc8821aCsr2ant_SetDacSwingReg(pBtCoexist, swDacSwingLvl);
@@ -1075,6 +1101,7 @@ halbtc8821aCsr2ant_DacSwing(
 	IN	u4Byte			dacSwingLvl
 	)
 {
+	printk(KERN_DEBUG "HalBtc8821aCsr22Ant.c - ");
 	RT_TRACE(COMP_COEX, DBG_TRACE, ("[BTCoex], %s turn DacSwing=%s, dacSwingLvl=0x%x\n",  
 		(bForceExec? "force to":""), ((bDacSwingOn)? "ON":"OFF"), dacSwingLvl));
 	pCoexDm->bCurDacSwingOn = bDacSwingOn;
@@ -1099,6 +1126,7 @@ halbtc8821aCsr2ant_SetAdcBackOff(
 	IN	BOOLEAN			bAdcBackOff
 	)
 {
+	printk(KERN_DEBUG "HalBtc8821aCsr22Ant.c - ");
 	if(bAdcBackOff)
 	{
 		RT_TRACE(COMP_COEX, DBG_LOUD, ("[BTCoex], BB BackOff Level On!\n"));
@@ -1118,6 +1146,7 @@ halbtc8821aCsr2ant_AdcBackOff(
 	IN	BOOLEAN			bAdcBackOff
 	)
 {
+	printk(KERN_DEBUG "HalBtc8821aCsr22Ant.c - ");
 	RT_TRACE(COMP_COEX, DBG_TRACE, ("[BTCoex], %s turn AdcBackOff = %s\n",  
 		(bForceExec? "force to":""), ((bAdcBackOff)? "ON":"OFF")));
 	pCoexDm->bCurAdcBackOff = bAdcBackOff;
@@ -1138,6 +1167,7 @@ halbtc8821aCsr2ant_SetAgcTable(
 	IN	BOOLEAN			bAgcTableEn
 	)
 {
+	printk(KERN_DEBUG "HalBtc8821aCsr22Ant.c - ");
 	u1Byte		rssiAdjustVal=0;
 
 	pBtCoexist->fBtcSetRfReg(pBtCoexist, BTC_RF_A, 0xef, 0xfffff, 0x02000);
@@ -1167,6 +1197,7 @@ halbtc8821aCsr2ant_AgcTable(
 	IN	BOOLEAN			bAgcTableEn
 	)
 {
+	printk(KERN_DEBUG "HalBtc8821aCsr22Ant.c - ");
 	RT_TRACE(COMP_COEX, DBG_TRACE, ("[BTCoex], %s %s Agc Table\n",  
 		(bForceExec? "force to":""), ((bAgcTableEn)? "Enable":"Disable")));
 	pCoexDm->bCurAgcTableEn = bAgcTableEn;
@@ -1190,6 +1221,7 @@ halbtc8821aCsr2ant_SetCoexTable(
 	IN	u1Byte		val0x6cc
 	)
 {
+	printk(KERN_DEBUG "HalBtc8821aCsr22Ant.c - ");
 	RT_TRACE(COMP_COEX, DBG_TRACE, ("[BTCoex], set coex table, set 0x6c0=0x%x\n", val0x6c0));
 	pBtCoexist->fBtcWrite4Byte(pBtCoexist, 0x6c0, val0x6c0);
 
@@ -1213,6 +1245,7 @@ halbtc8821aCsr2ant_CoexTable(
 	IN	u1Byte			val0x6cc
 	)
 {
+	printk(KERN_DEBUG "HalBtc8821aCsr22Ant.c - ");
 	RT_TRACE(COMP_COEX, DBG_TRACE, ("[BTCoex], %s write Coex Table 0x6c0=0x%x, 0x6c4=0x%x, 0x6c8=0x%x, 0x6cc=0x%x\n", 
 		(bForceExec? "force to":""), val0x6c0, val0x6c4, val0x6c8, val0x6cc));
 	pCoexDm->curVal0x6c0 = val0x6c0;
@@ -1242,6 +1275,7 @@ halbtc8821aCsr2ant_SetFwIgnoreWlanAct(
 	IN	BOOLEAN			bEnable
 	)
 {
+	printk(KERN_DEBUG "HalBtc8821aCsr22Ant.c - ");
 	u1Byte			H2C_Parameter[1] ={0};
 		
 	if(bEnable)
@@ -1263,6 +1297,7 @@ halbtc8821aCsr2ant_IgnoreWlanAct(
 	IN	BOOLEAN			bEnable
 	)
 {
+	printk(KERN_DEBUG "HalBtc8821aCsr22Ant.c - ");
 	RT_TRACE(COMP_COEX, DBG_TRACE, ("[BTCoex], %s turn Ignore WlanAct %s\n", 
 		(bForceExec? "force to":""), (bEnable? "ON":"OFF")));
 	pCoexDm->bCurIgnoreWlanAct = bEnable;
@@ -1287,6 +1322,7 @@ halbtc8821aCsr2ant_SetFwPstdma(
 	IN	u1Byte			byte5
 	)
 {
+	printk(KERN_DEBUG "HalBtc8821aCsr22Ant.c - ");
 	u1Byte			H2C_Parameter[6] ={0};
 
 	H2C_Parameter[0] = byte1;	
@@ -1319,6 +1355,7 @@ halbtc8821aCsr2ant_SwMechanism1(
 	IN	BOOLEAN		bBTLNAConstrain
 	) 
 {
+	printk(KERN_DEBUG "HalBtc8821aCsr22Ant.c - ");
 	u4Byte	wifiBw;
 	
 	pBtCoexist->fBtcGet(pBtCoexist, BTC_GET_U4_WIFI_BW, &wifiBw);
@@ -1345,6 +1382,7 @@ halbtc8821aCsr2ant_SwMechanism2(
 	IN	u4Byte		dacSwingLvl
 	) 
 {
+	printk(KERN_DEBUG "HalBtc8821aCsr22Ant.c - ");
 	//halbtc8821aCsr2ant_AgcTable(pBtCoexist, NORMAL_EXEC, bAGCTableShift);
 	halbtc8821aCsr2ant_AdcBackOff(pBtCoexist, NORMAL_EXEC, bADCBackOff);
 	halbtc8821aCsr2ant_DacSwing(pBtCoexist, NORMAL_EXEC, bSWDACSwing, dacSwingLvl);
@@ -1358,6 +1396,7 @@ halbtc8821aCsr2ant_SetAntPath(
 	IN	BOOLEAN				bWifiOff
 	)
 {
+	printk(KERN_DEBUG "HalBtc8821aCsr22Ant.c - ");
 	PBTC_BOARD_INFO 	pBoardInfo=&pBtCoexist->boardInfo;
 	u4Byte				u4Tmp=0;
 	u1Byte				H2C_Parameter[2] ={0};
@@ -1409,6 +1448,7 @@ halbtc8821aCsr2ant_PsTdma(
 	IN	u1Byte			type
 	)
 {
+	printk(KERN_DEBUG "HalBtc8821aCsr22Ant.c - ");
 	BOOLEAN			bTurnOnByCnt=FALSE;
 	u1Byte			psTdmaTypeByCnt=0;
 
@@ -1529,6 +1569,7 @@ halbtc8821aCsr2ant_CoexAllOff(
 	IN	PBTC_COEXIST		pBtCoexist
 	)
 {
+	printk(KERN_DEBUG "HalBtc8821aCsr22Ant.c - ");
 	// fw all off
 	halbtc8821aCsr2ant_PsTdma(pBtCoexist, NORMAL_EXEC, FALSE, 1);
 	halbtc8821aCsr2ant_FwDacSwingLvl(pBtCoexist, NORMAL_EXEC, 6);
@@ -1547,6 +1588,7 @@ halbtc8821aCsr2ant_CoexUnder5G(
 	IN	PBTC_COEXIST		pBtCoexist
 	)
 {
+	printk(KERN_DEBUG "HalBtc8821aCsr22Ant.c - ");
 	halbtc8821aCsr2ant_CoexAllOff(pBtCoexist);
 
 	halbtc8821aCsr2ant_IgnoreWlanAct(pBtCoexist, NORMAL_EXEC, TRUE);
@@ -1557,6 +1599,7 @@ halbtc8821aCsr2ant_InitCoexDm(
 	IN	PBTC_COEXIST		pBtCoexist
 	)
 {	
+	printk(KERN_DEBUG "HalBtc8821aCsr22Ant.c - ");
 	// force to reset coex mechanism
 	halbtc8821aCsr2ant_CoexTable(pBtCoexist, FORCE_EXEC, 0x55555555, 0x55555555, 0xffff, 0x3);
 
@@ -1573,6 +1616,7 @@ halbtc8821aCsr2ant_BtInquiryPage(
 	IN	PBTC_COEXIST		pBtCoexist
 	)
 {
+	printk(KERN_DEBUG "HalBtc8821aCsr22Ant.c - ");
 	BOOLEAN	bLowPwrDisable=TRUE;
 	
 	pBtCoexist->fBtcSet(pBtCoexist, BTC_SET_ACT_DISABLE_LOW_POWER, &bLowPwrDisable);
@@ -1585,6 +1629,7 @@ halbtc8821aCsr2ant_IsCommonAction(
 	IN	PBTC_COEXIST		pBtCoexist
 	)
 {
+	printk(KERN_DEBUG "HalBtc8821aCsr22Ant.c - ");
 	BOOLEAN			bCommon=FALSE, bWifiConnected=FALSE, bWifiBusy=FALSE;
 	BOOLEAN			bLowPwrDisable=FALSE;
 
@@ -1743,6 +1788,7 @@ halbtc8821aCsr2ant_TdmaDurationAdjust(
 	IN	u1Byte			maxInterval
 	)
 {
+	printk(KERN_DEBUG "HalBtc8821aCsr22Ant.c - ");
 	static s4Byte		up,dn,m,n,WaitCount;
 	s4Byte			result;   //0: no change, +1: increase WiFi duration, -1: decrease WiFi duration
 	u1Byte			retryCount=0;
@@ -2658,6 +2704,7 @@ halbtc8821aCsr2ant_ActionSco(
 	IN	PBTC_COEXIST		pBtCoexist
 	)
 {
+	printk(KERN_DEBUG "HalBtc8821aCsr22Ant.c - ");
 	u1Byte	wifiRssiState,btRssiState;
 	u4Byte	wifiBw;
 
@@ -2761,6 +2808,7 @@ halbtc8821aCsr2ant_ActionHid(
 	IN	PBTC_COEXIST		pBtCoexist
 	)
 {
+	printk(KERN_DEBUG "HalBtc8821aCsr22Ant.c - ");
 	u1Byte	wifiRssiState, btRssiState;	
 	u4Byte	wifiBw;
 
@@ -2845,6 +2893,7 @@ halbtc8821aCsr2ant_ActionA2dp(
 	IN	PBTC_COEXIST		pBtCoexist
 	)
 {
+	printk(KERN_DEBUG "HalBtc8821aCsr22Ant.c - ");
 	u1Byte		wifiRssiState, btRssiState;
 	u4Byte		wifiBw;
 
@@ -2940,6 +2989,7 @@ halbtc8821aCsr2ant_ActionA2dpPanHs(
 	IN	PBTC_COEXIST		pBtCoexist
 	)
 {
+	printk(KERN_DEBUG "HalBtc8821aCsr22Ant.c - ");
 	u1Byte		wifiRssiState, btRssiState, btInfoExt;
 	u4Byte		wifiBw;
 
@@ -3015,6 +3065,7 @@ halbtc8821aCsr2ant_ActionPanEdr(
 	IN	PBTC_COEXIST		pBtCoexist
 	)
 {
+	printk(KERN_DEBUG "HalBtc8821aCsr22Ant.c - ");
 	u1Byte		wifiRssiState, btRssiState;
 	u4Byte		wifiBw;
 
@@ -3100,6 +3151,7 @@ halbtc8821aCsr2ant_ActionPanHs(
 	IN	PBTC_COEXIST		pBtCoexist
 	)
 {
+	printk(KERN_DEBUG "HalBtc8821aCsr22Ant.c - ");
 	u1Byte		wifiRssiState, btRssiState;
 	u4Byte		wifiBw;
 
@@ -3181,6 +3233,7 @@ halbtc8821aCsr2ant_ActionPanEdrA2dp(
 	IN	PBTC_COEXIST		pBtCoexist
 	)
 {
+	printk(KERN_DEBUG "HalBtc8821aCsr22Ant.c - ");
 	u1Byte		wifiRssiState, btRssiState, btInfoExt;
 	u4Byte		wifiBw;
 
@@ -3293,6 +3346,7 @@ halbtc8821aCsr2ant_ActionPanEdrHid(
 	IN	PBTC_COEXIST		pBtCoexist
 	)
 {
+	printk(KERN_DEBUG "HalBtc8821aCsr22Ant.c - ");
 	u1Byte		wifiRssiState, btRssiState;
 	u4Byte		wifiBw;
 
@@ -3379,6 +3433,7 @@ halbtc8821aCsr2ant_ActionHidA2dpPanEdr(
 	IN	PBTC_COEXIST		pBtCoexist
 	)
 {
+	printk(KERN_DEBUG "HalBtc8821aCsr22Ant.c - ");
 	u1Byte		wifiRssiState, btRssiState, btInfoExt;
 	u4Byte		wifiBw;
 
@@ -3491,6 +3546,7 @@ halbtc8821aCsr2ant_ActionHidA2dp(
 	IN	PBTC_COEXIST		pBtCoexist
 	)
 {
+	printk(KERN_DEBUG "HalBtc8821aCsr22Ant.c - ");
 	u1Byte		wifiRssiState, btRssiState, btInfoExt;
 	u4Byte		wifiBw;
 
@@ -3607,6 +3663,7 @@ halbtc8821aCsr2ant_RunCoexistMechanism(
 	IN	PBTC_COEXIST		pBtCoexist
 	)
 {
+	printk(KERN_DEBUG "HalBtc8821aCsr22Ant.c - ");
 	PBTC_STACK_INFO		pStackInfo=&pBtCoexist->stackInfo;
 	BOOLEAN				bWifiUnder5G=FALSE;
 	u1Byte				btInfoOriginal=0, btRetryCnt=0;
@@ -3726,6 +3783,7 @@ EXhalbtc8821aCsr2ant_InitHwConfig(
 	IN	BOOLEAN				bWifiOnly
 	)
 {
+	printk(KERN_DEBUG "HalBtc8821aCsr22Ant.c - ");
 	PBTC_BOARD_INFO		pBoardInfo=&pBtCoexist->boardInfo;
 	u4Byte	u4Tmp=0;
 	u2Byte				u2Tmp=0;
@@ -3777,6 +3835,7 @@ EXhalbtc8821aCsr2ant_InitCoexDm(
 	IN	PBTC_COEXIST		pBtCoexist
 	)
 {
+	printk(KERN_DEBUG "HalBtc8821aCsr22Ant.c - ");
 	RT_TRACE(COMP_COEX, DBG_LOUD, ("[BTCoex], Coex Mechanism Init!!\n"));
 	
 	halbtc8821aCsr2ant_InitCoexDm(pBtCoexist);
@@ -3787,6 +3846,7 @@ EXhalbtc8821aCsr2ant_DisplayCoexInfo(
 	IN	PBTC_COEXIST		pBtCoexist
 	)
 {
+	printk(KERN_DEBUG "HalBtc8821aCsr22Ant.c - ");
 	PBTC_BOARD_INFO		pBoardInfo=&pBtCoexist->boardInfo;
 	PBTC_STACK_INFO		pStackInfo=&pBtCoexist->stackInfo;
 	pu1Byte				cliBuf=pBtCoexist->cliBuf;
@@ -3965,6 +4025,7 @@ EXhalbtc8821aCsr2ant_IpsNotify(
 	IN	u1Byte			type
 	)
 {
+	printk(KERN_DEBUG "HalBtc8821aCsr22Ant.c - ");
 	if(BTC_IPS_ENTER == type)
 	{
 		RT_TRACE(COMP_COEX, DBG_LOUD, ("[BTCoex], IPS ENTER notify\n"));
@@ -3985,6 +4046,7 @@ EXhalbtc8821aCsr2ant_LpsNotify(
 	IN	u1Byte			type
 	)
 {
+	printk(KERN_DEBUG "HalBtc8821aCsr22Ant.c - ");
 	if(BTC_LPS_ENABLE == type)
 	{
 		RT_TRACE(COMP_COEX, DBG_LOUD, ("[BTCoex], LPS ENABLE notify\n"));
@@ -4003,6 +4065,7 @@ EXhalbtc8821aCsr2ant_ScanNotify(
 	IN	u1Byte			type
 	)
 {
+	printk(KERN_DEBUG "HalBtc8821aCsr22Ant.c - ");
 	if(BTC_SCAN_START == type)
 	{
 		RT_TRACE(COMP_COEX, DBG_LOUD, ("[BTCoex], SCAN START notify\n"));
@@ -4019,6 +4082,7 @@ EXhalbtc8821aCsr2ant_ConnectNotify(
 	IN	u1Byte			type
 	)
 {
+	printk(KERN_DEBUG "HalBtc8821aCsr22Ant.c - ");
 	if(BTC_ASSOCIATE_START == type)
 	{
 		RT_TRACE(COMP_COEX, DBG_LOUD, ("[BTCoex], CONNECT START notify\n"));
@@ -4035,6 +4099,7 @@ EXhalbtc8821aCsr2ant_MediaStatusNotify(
 	IN	u1Byte				type
 	)
 {
+	printk(KERN_DEBUG "HalBtc8821aCsr22Ant.c - ");
 	u1Byte			H2C_Parameter[3] ={0};
 	u4Byte			wifiBw;
 	u1Byte			wifiCentralChnl;
@@ -4081,6 +4146,7 @@ EXhalbtc8821aCsr2ant_SpecialPacketNotify(
 	IN	u1Byte				type
 	)
 {
+	printk(KERN_DEBUG "HalBtc8821aCsr22Ant.c - ");
 	if(type == BTC_PACKET_DHCP)
 	{
 		RT_TRACE(COMP_COEX, DBG_LOUD, ("[BTCoex], DHCP Packet notify\n"));
@@ -4094,6 +4160,7 @@ EXhalbtc8821aCsr2ant_BtInfoNotify(
 	IN	u1Byte			length
 	)
 {
+	printk(KERN_DEBUG "HalBtc8821aCsr22Ant.c - ");
 	u1Byte			btInfo=0;
 	u1Byte			i, rspSource=0;
 	BOOLEAN			bBtBusy=FALSE, bLimitedDig=FALSE;
@@ -4281,6 +4348,7 @@ EXhalbtc8821aCsr2ant_HaltNotify(
 	IN	PBTC_COEXIST			pBtCoexist
 	)
 {
+	printk(KERN_DEBUG "HalBtc8821aCsr22Ant.c - ");
 	RT_TRACE(COMP_COEX, DBG_LOUD, ("[BTCoex], Halt notify\n"));
 
 	halbtc8821aCsr2ant_IgnoreWlanAct(pBtCoexist, FORCE_EXEC, TRUE);
@@ -4293,6 +4361,7 @@ EXhalbtc8821aCsr2ant_PnpNotify(
 	IN	u1Byte				pnpState
 	)
 {
+	printk(KERN_DEBUG "HalBtc8821aCsr22Ant.c - ");
 	RT_TRACE(COMP_COEX, DBG_LOUD, ("[BTCoex], Pnp notify\n"));
 
 	if(BTC_WIFI_PNP_SLEEP == pnpState)
@@ -4311,6 +4380,7 @@ EXhalbtc8821aCsr2ant_Periodical(
 	IN	PBTC_COEXIST			pBtCoexist
 	)
 {
+	printk(KERN_DEBUG "HalBtc8821aCsr22Ant.c - ");
 	static u1Byte		disVerInfoCnt=0;
 	u4Byte				fwVer=0, btPatchVer=0;
 	PBTC_BOARD_INFO		pBoardInfo=&pBtCoexist->boardInfo;
