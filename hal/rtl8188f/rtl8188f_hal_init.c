@@ -33,7 +33,7 @@ _FWDownloadEnable(
 	IN	BOOLEAN			enable
 )
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - _FWDownloadEnable");
 	u8	tmp, count = 0;
 
 	if (enable) {
@@ -71,7 +71,7 @@ _BlockWrite(
 	IN		u32			buffSize
 )
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - _BlockWrite");
 	int ret = _SUCCESS;
 
 	u32			blockSize_p1 = 4;	/* (Default) Phase #1 : PCI muse use 4-byte write to download FW */
@@ -187,7 +187,7 @@ _PageWrite(
 	IN		u32			size
 )
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - _PageWrite");
 	u8 value8;
 	u8 u8Page = (u8)(page & 0x07);
 
@@ -203,7 +203,7 @@ _FillDummy(
 	u32	*pFwLen
 )
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - _FillDummy");
 	u32	FwLen = *pFwLen;
 	u8	remain = (u8)(FwLen % 4);
 
@@ -225,7 +225,7 @@ _WriteFW(
 	IN		u32			size
 )
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - _WriteFW");
 	/* Since we need dynamic decide method of dwonload fw, so we call this function to get chip version. */
 	int ret = _SUCCESS;
 	u32		pageNums, remainSize;
@@ -269,7 +269,7 @@ exit:
 
 void _8051Reset8188(PADAPTER padapter)
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - _8051Reset8188");
 	u8 cpu_rst;
 	u8 io_rst;
 
@@ -309,7 +309,7 @@ void _8051Reset8188(PADAPTER padapter)
 
 static s32 polling_fwdl_chksum(_adapter *adapter, u32 min_cnt, u32 timeout_ms)
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - polling_fwdl_chksum");
 	s32 ret = _FAIL;
 	u32 value32;
 	u32 start = rtw_get_current_time();
@@ -341,7 +341,7 @@ exit:
 
 static s32 _FWFreeToGo(_adapter *adapter, u32 min_cnt, u32 timeout_ms)
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - _FWFreeToGo");
 	s32 ret = _FAIL;
 	u32	value32;
 	u32 start = rtw_get_current_time();
@@ -385,7 +385,7 @@ exit:
 
 void rtl8188f_FirmwareSelfReset(PADAPTER padapter)
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - rtl8188f_FirmwareSelfReset");
 	HAL_DATA_TYPE	*pHalData = GET_HAL_DATA(padapter);
 	u8	u1bTmp;
 	u8	Delay = 100;
@@ -433,7 +433,7 @@ int _WriteBTFWtoTxPktBuf8188F(
 	IN		u1Byte			times
 )
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - _WriteBTFWtoTxPktBuf8188F");
 	int			rtStatus = _SUCCESS;
 	/*u4Byte				value32; */
 	/*u1Byte				numHQ, numLQ, numPubQ;//, txpktbuf_bndy; */
@@ -657,7 +657,7 @@ SetFwBTFwPatchCmd(
 	IN u16		FwSize
 )
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - SetFwBTFwPatchCmd");
 	u8 u1BTFwPatchParm[H2C_BT_FW_PATCH_LEN] = {0};
 	u8 addr0 = 0;
 	u8 addr1 = 0xa0;
@@ -683,7 +683,7 @@ SetFwBTPwrCmd(
 	IN u1Byte	PwrIdx
 )
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - SetFwBTPwrCmd");
 	u1Byte		u1BTPwrIdxParm[H2C_FORCE_BT_TXPWR_LEN] = {0};
 
 	RT_TRACE(_module_mp_, _drv_info_, ("SetFwBTPwrCmd(): idx = %d\n", PwrIdx));
@@ -705,7 +705,7 @@ _CheckWLANFwPatchBTFwReady(
 	IN	PADAPTER			Adapter
 )
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - _CheckWLANFwPatchBTFwReady");
 	HAL_DATA_TYPE	*pHalData = GET_HAL_DATA(Adapter);
 	u4Byte	count = 0;
 	u1Byte	u1bTmp;
@@ -771,7 +771,7 @@ _CheckWLANFwPatchBTFwReady(
 
 int ReservedPage_Compare(PADAPTER Adapter, PRT_MP_FIRMWARE pFirmware, u32 BTPatchSize)
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - ReservedPage_Compare");
 	u8 temp, ret, lastBTsz;
 	u32 u1bTmp = 0, address_start = 0, count = 0, i = 0;
 	u8	*myBTFwBuffer = NULL;
@@ -868,7 +868,7 @@ int ReservedPage_Compare(PADAPTER Adapter, PRT_MP_FIRMWARE pFirmware, u32 BTPatc
 */
 s32 FirmwareDownloadBT(PADAPTER padapter, PRT_MP_FIRMWARE pFirmware)
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - FirmwareDownloadBT");
 	s32 rtStatus;
 	u8 *pBTFirmwareBuf;
 	u32 BTFirmwareLen;
@@ -949,7 +949,7 @@ s32 FirmwareDownloadBT(PADAPTER padapter, PRT_MP_FIRMWARE pFirmware)
 #if defined(CONFIG_USB_HCI) || defined(CONFIG_SDIO_HCI) || defined(CONFIG_GSPI_HCI)
 void rtl8188f_cal_txdesc_chksum(struct tx_desc *ptxdesc)
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - rtl8188f_cal_txdesc_chksum");
 	u16	*usPtr = (u16 *)ptxdesc;
 	u32 count;
 	u32 index;
@@ -1096,7 +1096,7 @@ MODULE_FIRMWARE("rtlwifi/rtl8188fufw.bin");
 
 s32 rtl8188f_FirmwareDownload(PADAPTER padapter, BOOLEAN  bUsedqFw)
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - rtl8188f_FirmwareDownload");
 	s32	rtStatus = _SUCCESS;
 	u8 write_fw = 0;
 	u32 fwdl_start_time;
@@ -1323,7 +1323,7 @@ hal_EfuseSwitchToBank(
 	u8			bank,
 	u8			bPseudoTest)
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - hal_EfuseSwitchToBank");
 	u8 bRet = _FALSE;
 	u32 value32 = 0;
 #ifdef HAL_EFUSE_MEMORY
@@ -1375,7 +1375,7 @@ Hal_GetEfuseDefinition(
 	void		*pOut,
 	u8			bPseudoTest)
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - Hal_GetEfuseDefinition");
 	switch (type) {
 	case TYPE_EFUSE_MAX_SECTION: {
 		u8 *pMax_section;
@@ -1488,7 +1488,7 @@ static void Hal_BT_EfusePowerSwitch(
 	u8			bWrite,
 	u8			PwrState)
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - Hal_BT_EfusePowerSwitch");
 	u8 tempval;
 	if (PwrState == _TRUE) {
 		/* enable BT power cut */
@@ -1529,7 +1529,7 @@ Hal_EfusePowerSwitch(
 	u8			bWrite,
 	u8			PwrState)
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - Hal_EfusePowerSwitch");
 	u8	tempval;
 	u16	tmpV16;
 
@@ -1611,7 +1611,7 @@ hal_ReadEFuse_WiFi(
 	u8			*pbuf,
 	u8			bPseudoTest)
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - hal_ReadEFuse_WiFi");
 #ifdef HAL_EFUSE_MEMORY
 	PHAL_DATA_TYPE	pHalData = GET_HAL_DATA(padapter);
 	PEFUSE_HAL		pEfuseHal = &pHalData->EfuseHal;
@@ -1758,7 +1758,7 @@ hal_ReadEFuse_BT(
 	u8			bPseudoTest
 )
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - hal_ReadEFuse_BT");
 #ifdef HAL_EFUSE_MEMORY
 	PHAL_DATA_TYPE	pHalData = GET_HAL_DATA(padapter);
 	PEFUSE_HAL		pEfuseHal = &pHalData->EfuseHal;
@@ -1898,7 +1898,7 @@ Hal_ReadEFuse(
 	u8			*pbuf,
 	u8			bPseudoTest)
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - Hal_ReadEFuse");
 	if (efuseType == EFUSE_WIFI)
 		hal_ReadEFuse_WiFi(padapter, _offset, _size_byte, pbuf, bPseudoTest);
 	else
@@ -1910,7 +1910,7 @@ hal_EfuseGetCurrentSize_WiFi(
 	PADAPTER	padapter,
 	u8			bPseudoTest)
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - hal_EfuseGetCurrentSize_WiFi");
 #ifdef HAL_EFUSE_MEMORY
 	PHAL_DATA_TYPE	pHalData = GET_HAL_DATA(padapter);
 	PEFUSE_HAL		pEfuseHal = &pHalData->EfuseHal;
@@ -2021,7 +2021,7 @@ hal_EfuseGetCurrentSize_BT(
 	PADAPTER	padapter,
 	u8			bPseudoTest)
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - hal_EfuseGetCurrentSize_BT");
 #ifdef HAL_EFUSE_MEMORY
 	PHAL_DATA_TYPE	pHalData = GET_HAL_DATA(padapter);
 	PEFUSE_HAL		pEfuseHal = &pHalData->EfuseHal;
@@ -2166,7 +2166,7 @@ Hal_EfuseGetCurrentSize(
 	u8			efuseType,
 	u8			bPseudoTest)
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - Hal_EfuseGetCurrentSize");
 	u16	ret = 0;
 
 	if (efuseType == EFUSE_WIFI)
@@ -2185,7 +2185,7 @@ Hal_EfuseWordEnableDataWrite(
 	u8			*data,
 	u8			bPseudoTest)
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - Hal_EfuseWordEnableDataWrite");
 	u16	tmpaddr = 0;
 	u16	start_addr = efuse_addr;
 	u8	badworden = 0x0F;
@@ -2250,7 +2250,7 @@ Hal_EfusePgPacketRead(
 	u8			*data,
 	u8			bPseudoTest)
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - Hal_EfusePgPacketRead");
 	u8	bDataEmpty = _TRUE;
 	u8	efuse_data, word_cnts = 0;
 	u16	efuse_addr = 0;
@@ -2330,7 +2330,7 @@ hal_EfusePgCheckAvailableAddr(
 	u8			efuseType,
 	u8		bPseudoTest)
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - hal_EfusePgCheckAvailableAddr");
 	u16	max_available = 0;
 	u16 current_size;
 
@@ -2353,7 +2353,7 @@ hal_EfuseConstructPGPkt(
 	u8				*pData,
 	PPGPKT_STRUCT	pTargetPkt)
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - hal_EfuseConstructPGPkt");
 	_rtw_memset(pTargetPkt->data, 0xFF, PGPKT_DATA_SIZE);
 	pTargetPkt->offset = offset;
 	pTargetPkt->word_en = word_en;
@@ -2432,7 +2432,7 @@ hal_EfusePartialWriteCheck(
 	PPGPKT_STRUCT	pTargetPkt,
 	u8				bPseudoTest)
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - hal_EfusePartialWriteCheck");
 	PHAL_DATA_TYPE	pHalData = GET_HAL_DATA(padapter);
 	PEFUSE_HAL		pEfuseHal = &pHalData->EfuseHal;
 	u8	bRet = _FALSE;
@@ -2557,7 +2557,7 @@ hal_EfuseFixHeaderProcess(
 	IN		BOOLEAN				bPseudoTest
 )
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - hal_EfuseFixHeaderProcess");
 	u1Byte	originaldata[8], badworden=0;
 	u2Byte	efuse_addr=*pAddr;
 	u4Byte	PgWriteSuccess=0;
@@ -2593,7 +2593,7 @@ hal_EfusePgPacketWrite1ByteHeader(
 	PPGPKT_STRUCT	pTargetPkt,
 	u8				bPseudoTest)
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - hal_EfusePgPacketWrite1ByteHeader");
 	u8	bRet = _FALSE;
 	u8	pg_header = 0, tmp_header = 0;
 	u16	efuse_addr = *pAddr;
@@ -2651,7 +2651,7 @@ hal_EfusePgPacketWrite2ByteHeader(
 	PPGPKT_STRUCT	pTargetPkt,
 	u8				bPseudoTest)
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - hal_EfusePgPacketWrite2ByteHeader");
 	u16	efuse_addr, efuse_max_available_len = 0;
 	u8	pg_header = 0, tmp_header = 0, pg_header_temp = 0;
 	u8	repeatcnt = 0;
@@ -2743,7 +2743,7 @@ hal_EfusePgPacketWriteHeader(
 	PPGPKT_STRUCT	pTargetPkt,
 	u8				bPseudoTest)
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - hal_EfusePgPacketWriteHeader");
 	u8 bRet = _FALSE;
 
 	if (pTargetPkt->offset >= EFUSE_MAX_SECTION_BASE)
@@ -2762,7 +2762,7 @@ hal_EfusePgPacketWriteData(
 	PPGPKT_STRUCT	pTargetPkt,
 	u8				bPseudoTest)
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - hal_EfusePgPacketWriteData");
 	u16	efuse_addr;
 	u8	badworden;
 	u8	PgWriteSuccess = 0;
@@ -2794,7 +2794,7 @@ Hal_EfusePgPacketWrite(
 	u8			*pData,
 	u8			bPseudoTest)
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - Hal_EfusePgPacketWrite");
 	PGPKT_STRUCT targetPkt;
 	u16 startAddr = 0;
 	u8 efuseType = EFUSE_WIFI;
@@ -2824,7 +2824,7 @@ Hal_EfusePgPacketWrite_BT(
 	u8			*pData,
 	u8			bPseudoTest)
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - Hal_EfusePgPacketWrite_BT");
 	PGPKT_STRUCT targetPkt;
 	u16 startAddr = 0;
 	u8 efuseType = EFUSE_BT;
@@ -2849,7 +2849,7 @@ Hal_EfusePgPacketWrite_BT(
 
 static void rtl8188f_read_chip_version(PADAPTER padapter)
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - rtl8188f_read_chip_version");
 	u32 value32;
 	HAL_DATA_TYPE *pHalData;
 	u8	tmpvdr;
@@ -2909,7 +2909,7 @@ static void rtl8188f_read_chip_version(PADAPTER padapter)
 
 void rtl8188f_InitBeaconParameters(PADAPTER padapter)
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - rtl8188f_InitBeaconParameters");
 	PHAL_DATA_TYPE pHalData = GET_HAL_DATA(padapter);
 	u16 val16;
 	u8 val8;
@@ -2944,7 +2944,7 @@ void rtl8188f_InitBeaconParameters(PADAPTER padapter)
 
 void rtl8188f_InitBeaconMaxError(PADAPTER padapter, u8 InfraMode)
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - rtl8188f_InitBeaconMaxError");
 #ifdef CONFIG_ADHOC_WORKAROUND_SETTING
 	rtw_write8(padapter, REG_BCN_MAX_ERR, 0xFF);
 #else
@@ -2954,7 +2954,7 @@ void rtl8188f_InitBeaconMaxError(PADAPTER padapter, u8 InfraMode)
 
 void _InitBurstPktLen_8188FS(PADAPTER Adapter)
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - _InitBurstPktLen_8188FS");
 	HAL_DATA_TYPE		*pHalData = GET_HAL_DATA(Adapter);
 
 	rtw_write8(Adapter, 0x4c7, rtw_read8(Adapter, 0x4c7) | BIT(7)); /*enable single pkt ampdu */
@@ -2980,7 +2980,7 @@ void _InitBurstPktLen_8188FS(PADAPTER Adapter)
 
 static void ResumeTxBeacon(PADAPTER padapter)
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - ResumeTxBeacon");
 	PHAL_DATA_TYPE pHalData = GET_HAL_DATA(padapter);
 
 
@@ -2998,7 +2998,7 @@ static void ResumeTxBeacon(PADAPTER padapter)
 
 static void StopTxBeacon(PADAPTER padapter)
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - StopTxBeacon");
 	PHAL_DATA_TYPE pHalData = GET_HAL_DATA(padapter);
 
 
@@ -3018,14 +3018,14 @@ static void StopTxBeacon(PADAPTER padapter)
 
 static void _BeaconFunctionEnable(PADAPTER padapter, u8 Enable, u8 Linked)
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - _BeaconFunctionEnable");
 	rtw_write8(padapter, REG_BCN_CTRL, DIS_TSF_UDT | EN_BCN_FUNCTION | DIS_BCNQ_SUB);
 	rtw_write8(padapter, REG_RD_CTRL + 1, 0x6F);
 }
 
 static void rtl8188f_SetBeaconRelatedRegisters(PADAPTER padapter)
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - rtl8188f_SetBeaconRelatedRegisters");
 	u8 val8;
 	u32 value32;
 	PHAL_DATA_TYPE pHalData = GET_HAL_DATA(padapter);
@@ -3092,7 +3092,7 @@ static void rtl8188f_SetBeaconRelatedRegisters(PADAPTER padapter)
 
 void hal_notch_filter_8188f(_adapter *adapter, bool enable)
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - hal_notch_filter_8188f");
 	if (enable) {
 		DBG_871X("Enable notch filter\n");
 		rtw_write8(adapter, rOFDM0_RxDSP + 1, rtw_read8(adapter, rOFDM0_RxDSP + 1) | BIT1);
@@ -3104,7 +3104,7 @@ void hal_notch_filter_8188f(_adapter *adapter, bool enable)
 
 u8 rtl8188f_MRateIdxToARFRId(PADAPTER padapter, u8 rate_idx)
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - rtl8188f_MRateIdxToARFRId");
 	u8 ret = 0;
 	RT_RF_TYPE_DEF_E rftype = (RT_RF_TYPE_DEF_E)GET_RF_TYPE(padapter);
 	switch (rate_idx) {
@@ -3166,7 +3166,7 @@ u8 rtl8188f_MRateIdxToARFRId(PADAPTER padapter, u8 rate_idx)
 
 void UpdateHalRAMask8188F(PADAPTER padapter, u32 mac_id, u8 rssi_level)
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - UpdateHalRAMask8188F");
 	u32	mask, rate_bitmap;
 	u8	shortGIrate = _FALSE;
 	struct sta_info	*psta = NULL;
@@ -3235,7 +3235,7 @@ void rtl8188f_fill_fake_txdesc(
 	u8			IsBTQosNull,
 	u8			bDataFrame)
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - rtl8188f_fill_fake_txdesc");
 	/* Clear all status */
 	_rtw_memset(pDesc, 0, TXDESC_SIZE);
 
@@ -3301,7 +3301,7 @@ void rtl8188f_fill_fake_txdesc(
 
 void rtl8188f_set_hal_ops(struct hal_ops *pHalFunc)
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - rtl8188f_set_hal_ops");
 	pHalFunc->dm_init = &rtl8188f_init_dm_priv;
 	pHalFunc->dm_deinit = &rtl8188f_deinit_dm_priv;
 
@@ -3375,7 +3375,7 @@ void rtl8188f_set_hal_ops(struct hal_ops *pHalFunc)
 
 void rtl8188f_InitAntenna_Selection(PADAPTER padapter)
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - rtl8188f_InitAntenna_Selection");
 #ifdef CONFIG_ANTENNA_DIVERSITY
 	HAL_DATA_TYPE	*pHalData = GET_HAL_DATA(padapter);
 	
@@ -3389,7 +3389,7 @@ void rtl8188f_InitAntenna_Selection(PADAPTER padapter)
 
 void rtl8188f_CheckAntenna_Selection(PADAPTER padapter)
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - rtl8188f_CheckAntenna_Selection");
 	PHAL_DATA_TYPE pHalData;
 	u8 val;
 
@@ -3405,7 +3405,7 @@ void rtl8188f_CheckAntenna_Selection(PADAPTER padapter)
 }
 void rtl8188f_DeinitAntenna_Selection(PADAPTER padapter)
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - rtl8188f_DeinitAntenna_Selection");
 	PHAL_DATA_TYPE pHalData;
 	u8 val;
 
@@ -3420,7 +3420,7 @@ void rtl8188f_DeinitAntenna_Selection(PADAPTER padapter)
 
 void init_hal_spec_8188f(_adapter *adapter)
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - init_hal_spec_8188f");
 	struct hal_spec_t *hal_spec = GET_HAL_SPEC(adapter);
 
 	hal_spec->ic_name = "rtl8188f";
@@ -3441,7 +3441,7 @@ void init_hal_spec_8188f(_adapter *adapter)
 
 void rtl8188f_init_default_value(PADAPTER padapter)
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - rtl8188f_init_default_value");
 	PHAL_DATA_TYPE pHalData;
 	u8 i;
 	pHalData = GET_HAL_DATA(padapter);
@@ -3533,7 +3533,7 @@ void rtl8188f_init_default_value(PADAPTER padapter)
 
 u8 GetEEPROMSize8188F(PADAPTER padapter)
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - GetEEPROMSize8188F");
 	u8 size = 0;
 	u32	cr;
 
@@ -3553,7 +3553,7 @@ u8 GetEEPROMSize8188F(PADAPTER padapter)
 /*------------------------------------------------------------------------- */
 s32 rtl8188f_InitLLTTable(PADAPTER padapter)
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - rtl8188f_InitLLTTable");
 	u32 start, passing_time;
 	u32 val32;
 	s32 ret;
@@ -3590,7 +3590,7 @@ s32 rtl8188f_InitLLTTable(PADAPTER padapter)
 #if defined(CONFIG_USB_HCI) || defined(CONFIG_SDIO_HCI) || defined(CONFIG_GSPI_HCI)
 void _DisableGPIO(PADAPTER	padapter)
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - _DisableGPIO");
 	/*
 	 * j. GPIO_PIN_CTRL 0x44[31:0]=0x000
 	 * k.Value = GPIO_PIN_CTRL[7:0]
@@ -3628,7 +3628,7 @@ void _DisableGPIO(PADAPTER	padapter)
 
 void _DisableRFAFEAndResetBB8188F(PADAPTER padapter)
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - _DisableRFAFEAndResetBB8188F");
 	/*
 	 * a.	TXPAUSE 0x522[7:0] = 0xFF			Pause MAC TX queue
 	 * b.	RF path 0 offset 0x00 = 0x00		disable RF
@@ -3661,13 +3661,13 @@ void _DisableRFAFEAndResetBB8188F(PADAPTER padapter)
 
 void _DisableRFAFEAndResetBB(PADAPTER padapter)
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - _DisableRFAFEAndResetBB");
 	_DisableRFAFEAndResetBB8188F(padapter);
 }
 
 void _ResetDigitalProcedure1_8188F(PADAPTER padapter, BOOLEAN bWithoutHWSM)
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - _ResetDigitalProcedure1_8188F");
 	HAL_DATA_TYPE	*pHalData = GET_HAL_DATA(padapter);
 
 	if (IS_FW_81xxC(padapter) && (pHalData->FirmwareVersion <= 0x20)) {
@@ -3782,13 +3782,13 @@ void _ResetDigitalProcedure1_8188F(PADAPTER padapter, BOOLEAN bWithoutHWSM)
 
 void _ResetDigitalProcedure1(PADAPTER padapter, BOOLEAN bWithoutHWSM)
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - _ResetDigitalProcedure1");
 	_ResetDigitalProcedure1_8188F(padapter, bWithoutHWSM);
 }
 
 void _ResetDigitalProcedure2(PADAPTER padapter)
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - _ResetDigitalProcedure2");
 	/*HAL_DATA_TYPE		*pHalData	= GET_HAL_DATA(padapter); */
 	/*
 	 * k.	SYS_FUNC_EN 0x03[7:0] = 0x44			disable ELDR runction
@@ -3803,7 +3803,7 @@ void _ResetDigitalProcedure2(PADAPTER padapter)
 
 void _DisableAnalog(PADAPTER padapter, BOOLEAN bWithoutHWSM)
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - _DisableAnalog");
 	HAL_DATA_TYPE	*pHalData	= GET_HAL_DATA(padapter);
 	u16 value16 = 0;
 	u8 value8 = 0;
@@ -3857,7 +3857,7 @@ void _DisableAnalog(PADAPTER padapter, BOOLEAN bWithoutHWSM)
 /* HW Auto state machine */
 s32 CardDisableHWSM(PADAPTER padapter, u8 resetMCU)
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - CardDisableHWSM");
 	int rtStatus = _SUCCESS;
 
 
@@ -3883,7 +3883,7 @@ s32 CardDisableHWSM(PADAPTER padapter, u8 resetMCU)
 /* without HW Auto state machine */
 s32 CardDisableWithoutHWSM(PADAPTER padapter)
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - CardDisableWithoutHWSM");
 	s32 rtStatus = _SUCCESS;
 
 
@@ -3917,7 +3917,7 @@ Hal_GetChnlGroup8188F(
 	OUT u8 *pGroup
 )
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - Hal_GetChnlGroup8188F");
 	BOOLEAN bIn24G = TRUE;
 
 	if (Channel <= 14) {
@@ -3967,7 +3967,7 @@ Hal_InitPGData(
 	PADAPTER	padapter,
 	u8			*PROMContent)
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - Hal_InitPGData");
 
 	HAL_DATA_TYPE	*pHalData = GET_HAL_DATA(padapter);
 	u32			i;
@@ -4011,7 +4011,7 @@ Hal_EfuseParseIDCode(
 	IN	u8			*hwinfo
 )
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - Hal_EfuseParseIDCode");
 	HAL_DATA_TYPE	*pHalData = GET_HAL_DATA(padapter);
 	u16			EEPROMId;
 
@@ -4034,7 +4034,7 @@ Hal_EEValueCheck(
 	OUT		PVOID		pOutValue
 )
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - Hal_EEValueCheck");
 	switch (EEType) {
 	case EETYPE_TX_PWR: {
 		u8	*pIn, *pOut;
@@ -4061,7 +4061,7 @@ Hal_GetChnlGroup(
 	IN	u8 chnl
 )
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - Hal_GetChnlGroup");
 	u8	group = 0;
 
 	if (chnl < 3)			/* Cjanel 1-3 */
@@ -4082,7 +4082,7 @@ Hal_ReadPowerValueFromPROM_8188F(
 	IN	BOOLEAN			AutoLoadFail
 )
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - Hal_ReadPowerValueFromPROM_8188F");
 	HAL_DATA_TYPE	*pHalData = GET_HAL_DATA(Adapter);
 	u4Byte rfPath, eeAddr = EEPROM_TX_PWR_INX_8188F, group, TxCount = 0;
 
@@ -4180,7 +4180,7 @@ Hal_EfuseParseTxPowerInfo_8188F(
 	IN	BOOLEAN			AutoLoadFail
 )
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - Hal_EfuseParseTxPowerInfo_8188F");
 	HAL_DATA_TYPE	*pHalData = GET_HAL_DATA(padapter);
 	TxPowerInfo24G	pwrInfo24G;
 	u8			rfPath, ch, group, TxCount = 1;
@@ -4238,7 +4238,7 @@ Hal_EfuseParseEEPROMVer_8188F(
 	IN	BOOLEAN			AutoLoadFail
 )
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - Hal_EfuseParseEEPROMVer_8188F");
 	HAL_DATA_TYPE	*pHalData = GET_HAL_DATA(padapter);
 
 	/*RT_TRACE(_module_hci_hal_init_c_, _drv_notice_, ("%s(): AutoLoadFail = %d\n", __func__, AutoLoadFail)); */
@@ -4274,7 +4274,7 @@ Hal_EfuseParseChnlPlan_8188F(
 	IN	BOOLEAN			AutoLoadFail
 )
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - Hal_EfuseParseChnlPlan_8188F");
 	padapter->mlmepriv.ChannelPlan = hal_com_config_channel_plan(
 		padapter
 		, hwinfo ? &hwinfo[EEPROM_COUNTRY_CODE_8188F] : NULL
@@ -4293,7 +4293,7 @@ Hal_EfuseParseCustomerID_8188F(
 	IN	BOOLEAN			AutoLoadFail
 )
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - Hal_EfuseParseCustomerID_8188F");
 	HAL_DATA_TYPE	*pHalData = GET_HAL_DATA(padapter);
 
 	/*RT_TRACE(_module_hci_hal_init_c_, _drv_notice_, ("%s(): AutoLoadFail = %d\n", __func__, AutoLoadFail)); */
@@ -4311,7 +4311,7 @@ Hal_EfuseParsePowerSavingMode_8188F(
 	IN	BOOLEAN			AutoLoadFail
 )
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - Hal_EfuseParsePowerSavingMode_8188F");
 	HAL_DATA_TYPE *pHalData = GET_HAL_DATA(padapter);
 	struct pwrctrl_priv *pwrctl = adapter_to_pwrctl(padapter);
 	u8 tmpvalue;
@@ -4350,7 +4350,7 @@ Hal_EfuseParseAntennaDiversity_8188F(
 	IN	BOOLEAN			AutoLoadFail
 )
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - Hal_EfuseParseAntennaDiversity_8188F");
 #ifdef CONFIG_ANTENNA_DIVERSITY
 	PHAL_DATA_TYPE		pHalData = GET_HAL_DATA(pAdapter);
 	struct registry_priv	*registry_par = &pAdapter->registrypriv;
@@ -4397,7 +4397,7 @@ Hal_EfuseParseXtal_8188F(
 	IN	BOOLEAN		AutoLoadFail
 )
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - Hal_EfuseParseXtal_8188F");
 	HAL_DATA_TYPE	*pHalData = GET_HAL_DATA(pAdapter);
 
 	/*RT_TRACE(_module_hci_hal_init_c_, _drv_notice_, ("%s(): AutoLoadFail = %d\n", __func__, AutoLoadFail)); */
@@ -4418,7 +4418,7 @@ Hal_EfuseParseThermalMeter_8188F(
 	u8			AutoLoadFail
 )
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - Hal_EfuseParseThermalMeter_8188F");
 	PHAL_DATA_TYPE	pHalData = GET_HAL_DATA(padapter);
 
 	/*RT_TRACE(_module_hci_hal_init_c_, _drv_notice_, ("%s(): AutoLoadFail = %d\n", __func__, AutoLoadFail)); */
@@ -4444,7 +4444,7 @@ void Hal_EfuseParseKFreeData_8188F(
 	IN		u8				*PROMContent,
 	IN		BOOLEAN 		AutoloadFail)
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - Hal_EfuseParseKFreeData_8188F");
 #ifdef CONFIG_RF_POWER_TRIM
 #define THERMAL_K_MEAN_OFFSET_8188F 5 /* 8188F FT thermal K mean value has +5 offset, it's special case */
 
@@ -4486,7 +4486,7 @@ BWMapping_8188F(
 	IN	struct pkt_attrib	*pattrib
 )
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - BWMapping_8188F");
 	u8	BWSettingOfDesc = 0;
 	PHAL_DATA_TYPE	pHalData = GET_HAL_DATA(Adapter);
 
@@ -4515,7 +4515,7 @@ BWMapping_8188F(
 
 u8	SCMapping_8188F(PADAPTER Adapter, struct pkt_attrib *pattrib)
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - SCMapping_8188F");
 	u8	SCSettingOfDesc = 0;
 	PHAL_DATA_TYPE	pHalData = GET_HAL_DATA(Adapter);
 
@@ -4595,7 +4595,7 @@ static u8 fill_txdesc_sectype(struct pkt_attrib *pattrib)
 
 static void fill_txdesc_vcs_8188f(PADAPTER padapter, struct pkt_attrib *pattrib, u8 *ptxdesc)
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - fill_txdesc_vcs_8188f");
 	/*DBG_8192C("cvs_mode=%d\n", pattrib->vcs_mode); */
 
 	SET_TX_DESC_HW_RTS_ENABLE_8188F(ptxdesc, 0);
@@ -4631,7 +4631,7 @@ static void fill_txdesc_vcs_8188f(PADAPTER padapter, struct pkt_attrib *pattrib,
 
 static void fill_txdesc_phy_8188f(PADAPTER padapter, struct pkt_attrib *pattrib, u8 *ptxdesc)
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - fill_txdesc_phy_8188f");
 	/*DBG_8192C("bwmode=%d, ch_off=%d\n", pattrib->bwmode, pattrib->ch_offset); */
 
 	if (pattrib->ht_en) {
@@ -4644,7 +4644,7 @@ static void rtl8188f_fill_default_txdesc(
 	struct xmit_frame *pxmitframe,
 	u8 *pbuf)
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - rtl8188f_fill_default_txdesc");
 	PADAPTER padapter;
 	HAL_DATA_TYPE *pHalData;
 	struct mlme_ext_priv *pmlmeext;
@@ -4867,7 +4867,7 @@ static void rtl8188f_fill_default_txdesc(
  */
 void rtl8188f_update_txdesc(struct xmit_frame *pxmitframe, u8 *pbuf)
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - rtl8188f_update_txdesc");
 	PADAPTER padapter = pxmitframe->padapter;
 	rtl8188f_fill_default_txdesc(pxmitframe, pbuf);
 
@@ -4883,7 +4883,7 @@ void rtl8188f_update_txdesc(struct xmit_frame *pxmitframe, u8 *pbuf)
 #ifdef CONFIG_TSF_RESET_OFFLOAD
 int reset_tsf(PADAPTER Adapter, u8 reset_port)
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - reset_tsf");
 	u8 reset_cnt_before = 0, reset_cnt_after = 0, loop_cnt = 0;
 	u32 reg_reset_tsf_cnt = (IFACE_PORT0 == reset_port) ?
 							REG_FW_RESET_TSF_CNT_0 : REG_FW_RESET_TSF_CNT_1;
@@ -4904,7 +4904,7 @@ int reset_tsf(PADAPTER Adapter, u8 reset_port)
 
 static void hw_var_set_monitor(PADAPTER Adapter, u8 variable, u8 *val)
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - hw_var_set_monitor");
 	u32	value_rcr, rcr_bits;
 	u16	value_rxfltmap2;
 	PHAL_DATA_TYPE pHalData = GET_HAL_DATA(Adapter);
@@ -4950,7 +4950,7 @@ static void hw_var_set_monitor(PADAPTER Adapter, u8 variable, u8 *val)
 
 static void hw_var_set_opmode(PADAPTER padapter, u8 variable, u8 *val)
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - hw_var_set_opmode");
 	u8 val8;
 	u8 mode = *((u8 *)val);
 	static u8 isMonitor = _FALSE;
@@ -5208,7 +5208,7 @@ static void hw_var_set_opmode(PADAPTER padapter, u8 variable, u8 *val)
 
 static void hw_var_set_macaddr(PADAPTER padapter, u8 variable, u8 *val)
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - hw_var_set_macaddr");
 	u8 idx = 0;
 	u32 reg_macid;
 
@@ -5227,7 +5227,7 @@ static void hw_var_set_macaddr(PADAPTER padapter, u8 variable, u8 *val)
 
 static void hw_var_set_bssid(PADAPTER padapter, u8 variable, u8 *val)
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - hw_var_set_bssid");
 	u8	idx = 0;
 	u32 reg_bssid;
 
@@ -5246,7 +5246,7 @@ static void hw_var_set_bssid(PADAPTER padapter, u8 variable, u8 *val)
 
 static void hw_var_set_bcn_func(PADAPTER padapter, u8 variable, u8 *val)
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - hw_var_set_bcn_func");
 	u32 bcn_ctrl_reg;
 
 #ifdef CONFIG_CONCURRENT_MODE
@@ -5275,7 +5275,7 @@ static void hw_var_set_bcn_func(PADAPTER padapter, u8 variable, u8 *val)
 
 static void hw_var_set_correct_tsf(PADAPTER padapter, u8 variable, u8 *val)
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - hw_var_set_correct_tsf");
 	u8 val8;
 	u64	tsf;
 	struct mlme_ext_priv *pmlmeext;
@@ -5382,7 +5382,7 @@ static void hw_var_set_correct_tsf(PADAPTER padapter, u8 variable, u8 *val)
 
 static void hw_var_set_mlme_disconnect(PADAPTER padapter, u8 variable, u8 *val)
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - hw_var_set_mlme_disconnect");
 	u8 val8;
 
 #ifdef CONFIG_CONCURRENT_MODE
@@ -5424,7 +5424,7 @@ static void hw_var_set_mlme_disconnect(PADAPTER padapter, u8 variable, u8 *val)
 
 static void hw_var_set_mlme_sitesurvey(PADAPTER padapter, u8 variable, u8 *val)
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - hw_var_set_mlme_sitesurvey");
 	struct dvobj_priv *dvobj = adapter_to_dvobj(padapter);
 	u32	value_rcr, rcr_clear_bit, reg_bcn_ctl;
 	u16	value_rxfltmap2;
@@ -5580,7 +5580,7 @@ static void hw_var_set_mlme_sitesurvey(PADAPTER padapter, u8 variable, u8 *val)
 
 static void hw_var_set_mlme_join(PADAPTER padapter, u8 variable, u8 *val)
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - hw_var_set_mlme_join");
 	u8 val8;
 	u16 val16;
 	u32 val32;
@@ -5696,7 +5696,7 @@ static void hw_var_set_mlme_join(PADAPTER padapter, u8 variable, u8 *val)
 
 static void hw_var_set_hw_update_tsf(PADAPTER padapter)
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - hw_var_set_hw_update_tsf");
 
 	u16 reg_bcn_ctl;
 	struct mlme_ext_priv *pmlmeext = &padapter->mlmeextpriv;
@@ -5732,7 +5732,7 @@ static void hw_var_set_hw_update_tsf(PADAPTER padapter)
 
 void CCX_FwC2HTxRpt_8188f(PADAPTER padapter, u8 *pdata, u8 len)
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - CCX_FwC2HTxRpt_8188f");
 	u8 seq_no;
 
 #define	GET_8188F_C2H_TX_RPT_LIFE_TIME_OVER(_Header)	LE_BITS_TO_1BYTE((_Header + 0), 6, 1)
@@ -5775,7 +5775,7 @@ void CCX_FwC2HTxRpt_8188f(PADAPTER padapter, u8 *pdata, u8 len)
  */
 void Debug_FwC2H_8188f(PADAPTER padapter, u8 *pdata, u8 len)
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - Debug_FwC2H_8188f");
 	int i = 0;
 	int cnt = 0, total_length = 0;
 	u8 buf[128] = {0};
@@ -5823,7 +5823,7 @@ void Debug_FwC2H_8188f(PADAPTER padapter, u8 *pdata, u8 len)
 
 s32 c2h_id_filter_ccx_8188f(u8 *buf)
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - c2h_id_filter_ccx_8188f");
 	struct c2h_evt_hdr_88xx *c2h_evt = (struct c2h_evt_hdr_88xx *)buf;
 	s32 ret = _FALSE;
 	if (c2h_evt->id == C2H_CCX_TX_RPT)
@@ -5835,7 +5835,7 @@ s32 c2h_id_filter_ccx_8188f(u8 *buf)
 
 s32 c2h_handler_8188f(PADAPTER padapter, u8 *buf)
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - c2h_handler_8188f");
 	struct c2h_evt_hdr_88xx *pC2hEvent = (struct c2h_evt_hdr_88xx *)buf;
 	PHAL_DATA_TYPE	pHalData = GET_HAL_DATA(padapter);
 	struct mlme_ext_priv	*pmlmeext = &padapter->mlmeextpriv;
@@ -5897,7 +5897,7 @@ exit:
 
 static void process_c2h_event(PADAPTER padapter, PC2H_EVT_HDR pC2hEvent, u8 *c2hBuf)
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - process_c2h_event");
 	u8				index = 0;
 	PHAL_DATA_TYPE	pHalData = GET_HAL_DATA(padapter);
 	struct mlme_ext_priv	*pmlmeext = &padapter->mlmeextpriv;
@@ -5963,7 +5963,7 @@ static void process_c2h_event(PADAPTER padapter, PC2H_EVT_HDR pC2hEvent, u8 *c2h
 
 static void C2HPacketHandler_8188F(PADAPTER padapter, u8 *pbuffer, u16 length)
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - C2HPacketHandler_8188F");
 	C2H_EVT_HDR 	C2hEvent;
 	u8 *tmpBuf = NULL;
 	C2hEvent.CmdID = pbuffer[0];
@@ -5982,7 +5982,7 @@ static void C2HPacketHandler_8188F(PADAPTER padapter, u8 *pbuffer, u16 length)
 
 void rtl8188f_c2h_packet_handler(PADAPTER padapter, u8 *pbuf, u16 length)
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - rtl8188f_c2h_packet_handler");
 	C2H_EVT_HDR C2hEvent;
 	u8 *pdata;
 
@@ -6036,7 +6036,7 @@ void rtl8188f_c2h_packet_handler(PADAPTER padapter, u8 *pbuf, u16 length)
 /*2009.10.08. by tynli. */
 static void C2HCommandHandler(PADAPTER padapter)
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - C2HCommandHandler");
 	C2H_EVT_HDR 	C2hEvent;
 #if defined(CONFIG_SDIO_HCI) || defined(CONFIG_GSPI_HCI)
 
@@ -6109,7 +6109,7 @@ exit:
 
 void rtl8188f_set_pll_ref_clk_sel(_adapter *adapter, u8 sel)
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - rtl8188f_set_pll_ref_clk_sel");
 	u8 value8;
 
 	value8 = rtw_read8(adapter, REG_MAC_PLL_CTRL_EXT_8188F);
@@ -6138,7 +6138,7 @@ void rtl8188f_set_pll_ref_clk_sel(_adapter *adapter, u8 sel)
 
 void SetHwReg8188F(PADAPTER padapter, u8 variable, u8 *val)
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - SetHwReg8188F");
 	PHAL_DATA_TYPE	pHalData = GET_HAL_DATA(padapter);
 	u8 val8;
 	u16 val16;
@@ -6746,7 +6746,7 @@ struct bcn_qinfo_8188f {
 
 void dump_qinfo_8188f(void *sel, struct qinfo_8188f *info, const char *tag)
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - dump_qinfo_8188f");
 	/*if (info->pkt_num) */
 	DBG_871X_SEL_NL(sel, "%shead:0x%02x, tail:0x%02x, pkt_num:%u, macid:%u, ac:%u\n"
 					, tag ? tag : "", info->head, info->tail, info->pkt_num, info->macid, info->ac
@@ -6755,7 +6755,7 @@ void dump_qinfo_8188f(void *sel, struct qinfo_8188f *info, const char *tag)
 
 void dump_bcn_qinfo_8188f(void *sel, struct bcn_qinfo_8188f *info, const char *tag)
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - dump_bcn_qinfo_8188f");
 	/*if (info->pkt_num) */
 	DBG_871X_SEL_NL(sel, "%shead:0x%02x, pkt_num:%u\n"
 					, tag ? tag : "", info->head, info->pkt_num
@@ -6764,7 +6764,7 @@ void dump_bcn_qinfo_8188f(void *sel, struct bcn_qinfo_8188f *info, const char *t
 
 void dump_mac_qinfo_8188f(void *sel, _adapter *adapter)
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - dump_mac_qinfo_8188f");
 	u32 q0_info;
 	u32 q1_info;
 	u32 q2_info;
@@ -6804,7 +6804,7 @@ void dump_mac_qinfo_8188f(void *sel, _adapter *adapter)
 
 void GetHwReg8188F(PADAPTER padapter, u8 variable, u8 *val)
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - GetHwReg8188F");
 	PHAL_DATA_TYPE pHalData = GET_HAL_DATA(padapter);
 	u8 val8;
 	u16 val16;
@@ -6897,7 +6897,7 @@ void GetHwReg8188F(PADAPTER padapter, u8 variable, u8 *val)
  */
 u8 SetHalDefVar8188F(PADAPTER padapter, HAL_DEF_VARIABLE variable, void *pval)
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - SetHalDefVar8188F");
 	PHAL_DATA_TYPE pHalData;
 	u8 bResult;
 
@@ -6917,7 +6917,7 @@ u8 SetHalDefVar8188F(PADAPTER padapter, HAL_DEF_VARIABLE variable, void *pval)
 #ifdef CONFIG_C2H_PACKET_EN
 void SetHwRegWithBuf8188F(PADAPTER padapter, u8 variable, u8 *pbuf, int len)
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - SetHwRegWithBuf8188F");
 	PHAL_DATA_TYPE pHalData;
 
 	_func_enter_;
@@ -6938,7 +6938,7 @@ void SetHwRegWithBuf8188F(PADAPTER padapter, u8 variable, u8 *pbuf, int len)
 
 void hal_ra_info_dump(_adapter *padapter , void *sel)
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - hal_ra_info_dump");
 	int i;
 	u8 mac_id;
 	u32 cmd;
@@ -7028,7 +7028,7 @@ void hal_ra_info_dump(_adapter *padapter , void *sel)
  */
 u8 GetHalDefVar8188F(PADAPTER padapter, HAL_DEF_VARIABLE variable, void *pval)
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - GetHalDefVar8188F");
 	PHAL_DATA_TYPE pHalData;
 	u8 bResult;
 
@@ -7106,7 +7106,7 @@ u8 GetHalDefVar8188F(PADAPTER padapter, HAL_DEF_VARIABLE variable, void *pval)
 
 void rtl8188f_start_thread(_adapter *padapter)
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - rtl8188f_start_thread");
 #if (defined CONFIG_SDIO_HCI) || (defined CONFIG_GSPI_HCI)
 #ifndef CONFIG_SDIO_TX_TASKLET
 	struct xmit_priv *xmitpriv = &padapter->xmitpriv;
@@ -7120,7 +7120,7 @@ void rtl8188f_start_thread(_adapter *padapter)
 
 void rtl8188f_stop_thread(_adapter *padapter)
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - rtl8188f_stop_thread");
 #if (defined CONFIG_SDIO_HCI) || (defined CONFIG_GSPI_HCI)
 #ifndef CONFIG_SDIO_TX_TASKLET
 	struct xmit_priv *xmitpriv = &padapter->xmitpriv;
@@ -7139,7 +7139,7 @@ void rtl8188f_stop_thread(_adapter *padapter)
 extern void check_bt_status_work(void *data);
 void rtl8188fs_init_checkbthang_workqueue(_adapter *adapter)
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - rtl8188fs_init_checkbthang_workqueue");
 #if (LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,37))
 	adapter->priv_checkbt_wq = alloc_workqueue("sdio_wq", 0, 0);
 #else
@@ -7150,7 +7150,7 @@ void rtl8188fs_init_checkbthang_workqueue(_adapter *adapter)
 
 void rtl8188fs_free_checkbthang_workqueue(_adapter *adapter)
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - rtl8188fs_free_checkbthang_workqueue");
 	if (adapter->priv_checkbt_wq) {
 		cancel_delayed_work_sync(&adapter->checkbt_work);
 		flush_workqueue(adapter->priv_checkbt_wq);
@@ -7161,14 +7161,14 @@ void rtl8188fs_free_checkbthang_workqueue(_adapter *adapter)
 
 void rtl8188fs_cancle_checkbthang_workqueue(_adapter *adapter)
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - rtl8188fs_cancle_checkbthang_workqueue");
 	if (adapter->priv_checkbt_wq)
 		cancel_delayed_work_sync(&adapter->checkbt_work);
 }
 
 void rtl8188fs_hal_check_bt_hang(_adapter *adapter)
 {
-	printk(KERN_DEBUG "rtl8188f_hal_init.c - ");
+	printk(KERN_DEBUG "rtl8188f_hal_init.c - rtl8188fs_hal_check_bt_hang");
 	if (adapter->priv_checkbt_wq)
 		queue_delayed_work(adapter->priv_checkbt_wq, &(adapter->checkbt_work), 0);
 }
