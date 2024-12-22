@@ -1,3 +1,532 @@
+
+=======================================================
+==== Launching Wi-Fi driver! (Powered by Rockchip) ====
+=======================================================
+Realtek 8188FU USB WiFi driver (Powered by Rockchip) init.
+RTL871X: module init start
+RTL871X: rtl8188fu v4.3.23.6_20964.20170110
+videodev: Linux video capture interface: v2.00
+amdgpu 0000:05:00.0: vgaarb: deactivate vga console
+amdgpu 0000:05:00.0: amdgpu: Trusted Memory Zone (TMZ) feature enabled
+amdgpu 0000:05:00.0: amdgpu: MODE2 reset
+[drm] vm size is 262144 GB, 4 levels, block size is 9-bit, fragment size is 9-bit
+amdgpu 0000:05:00.0: amdgpu: VRAM: 512M 0x000000F400000000 - 0x000000F41FFFFFFF (512M used)
+amdgpu 0000:05:00.0: amdgpu: GART: 1024M 0x0000000000000000 - 0x000000003FFFFFFF
+[drm] Detected VRAM RAM=512M, BAR=512M
+[drm] RAM width 64bits DDR4
+[drm] amdgpu: 512M of VRAM memory ready
+[drm] amdgpu: 7624M of GTT memory ready.
+[drm] GART: num cpu pages 262144, num gpu pages 262144
+[drm] PCIE GART of 1024M enabled.
+[drm] PTB located at 0x000000F41FC00000
+[drm] Loading DMUB firmware via PSP: version=0x01010028
+[drm] Found VCN firmware Version ENC: 1.21 DEC: 7 VEP: 0 Revision: 2
+usbcore: registered new interface driver btusb
+usb 3-4: Found UVC 1.10 device Chicony USB2.0 Camera (04f2:b729)
+usbcore: registered new interface driver uvcvideo
+RTL871X: hal_com_config_channel_plan chplan:0x20
+usb 1-3: request firmware rtlwifi/rtl8188fufw.bin
+usb 1-3: request firmware rtlwifi/rtl8188fufw.bin loaded
+amdgpu 0000:05:00.0: amdgpu: reserve 0x400000 from 0xf41f800000 for PSP TMR
+RTL871X: rtw_ndev_init(wlan0) if1 mac_addr=8c:88:2b:60:09:b8
+usbcore: registered new interface driver rtl8188fu
+RTL871X: module init ret=0
+rtl8188fu 1-3:1.0 wlx8c882b6009b8: renamed from wlan0
+amdgpu 0000:05:00.0: amdgpu: RAS: optional ras ta ucode is not available
+amdgpu 0000:05:00.0: amdgpu: RAP: optional rap ta ucode is not available
+amdgpu 0000:05:00.0: amdgpu: psp gfx command LOAD_TA(0x1) failed and response status is (0x7)
+amdgpu 0000:05:00.0: amdgpu: psp gfx command INVOKE_CMD(0x3) failed and response status is (0x4)
+amdgpu 0000:05:00.0: amdgpu: Secure display: Generic Failure.
+amdgpu 0000:05:00.0: amdgpu: SECUREDISPLAY: query securedisplay TA failed. ret 0x0
+amdgpu 0000:05:00.0: amdgpu: SMU is initialized successfully!
+[drm] Display Core v3.2.301 initialized on DCN 2.1
+[drm] DP-HDMI FRL PCON supported
+[drm] DMUB hardware initialized: version=0x01010028
+snd_hda_intel 0000:05:00.1: bound 0000:05:00.0 (ops amdgpu_dm_audio_component_bind_ops [amdgpu])
+[drm] kiq ring mec 2 pipe 1 q 0
+kfd kfd: amdgpu: Allocated 3969056 bytes on gart
+kfd kfd: amdgpu: Total number of KFD nodes to be created: 1
+amdgpu: Virtual CRAT table created for GPU
+amdgpu: Topology: Add dGPU node [0x164c:0x1002]
+kfd kfd: amdgpu: added device 1002:164c
+amdgpu 0000:05:00.0: amdgpu: SE 1, SH per SE 1, CU per SH 8, active_cu_number 7
+amdgpu 0000:05:00.0: amdgpu: ring gfx uses VM inv eng 0 on hub 0
+amdgpu 0000:05:00.0: amdgpu: ring comp_1.0.0 uses VM inv eng 1 on hub 0
+amdgpu 0000:05:00.0: amdgpu: ring comp_1.1.0 uses VM inv eng 4 on hub 0
+amdgpu 0000:05:00.0: amdgpu: ring comp_1.2.0 uses VM inv eng 5 on hub 0
+amdgpu 0000:05:00.0: amdgpu: ring comp_1.3.0 uses VM inv eng 6 on hub 0
+amdgpu 0000:05:00.0: amdgpu: ring comp_1.0.1 uses VM inv eng 7 on hub 0
+amdgpu 0000:05:00.0: amdgpu: ring comp_1.1.1 uses VM inv eng 8 on hub 0
+amdgpu 0000:05:00.0: amdgpu: ring comp_1.2.1 uses VM inv eng 9 on hub 0
+amdgpu 0000:05:00.0: amdgpu: ring comp_1.3.1 uses VM inv eng 10 on hub 0
+amdgpu 0000:05:00.0: amdgpu: ring kiq_0.2.1.0 uses VM inv eng 11 on hub 0
+amdgpu 0000:05:00.0: amdgpu: ring sdma0 uses VM inv eng 0 on hub 8
+amdgpu 0000:05:00.0: amdgpu: ring vcn_dec uses VM inv eng 1 on hub 8
+amdgpu 0000:05:00.0: amdgpu: ring vcn_enc0 uses VM inv eng 4 on hub 8
+amdgpu 0000:05:00.0: amdgpu: ring vcn_enc1 uses VM inv eng 5 on hub 8
+amdgpu 0000:05:00.0: amdgpu: ring jpeg_dec uses VM inv eng 6 on hub 8
+amdgpu 0000:05:00.0: amdgpu: Runtime PM not available
+[drm] Initialized amdgpu 3.59.0 for 0000:05:00.0 on minor 1
+fbcon: amdgpudrmfb (fb0) is primary device
+fbcon: Deferring console take-over
+amdgpu 0000:05:00.0: [drm] fb0: amdgpudrmfb frame buffer device
+[drm] pre_validate_dsc:1578 MST_DSC dsc precompute is not needed
+audit: type=1400 audit(1734839005.316:2): apparmor="STATUS" operation="profile_load" profile="unconfined" name="busybox" pid=967 comm="apparmor_parser"
+audit: type=1400 audit(1734839005.316:3): apparmor="STATUS" operation="profile_load" profile="unconfined" name="buildah" pid=966 comm="apparmor_parser"
+audit: type=1400 audit(1734839005.316:4): apparmor="STATUS" operation="profile_load" profile="unconfined" name="brave" pid=965 comm="apparmor_parser"
+audit: type=1400 audit(1734839005.316:5): apparmor="STATUS" operation="profile_load" profile="unconfined" name="1password" pid=960 comm="apparmor_parser"
+audit: type=1400 audit(1734839005.316:6): apparmor="STATUS" operation="profile_load" profile="unconfined" name=4D6F6E676F444220436F6D70617373 pid=962 comm="apparmor_parser"
+audit: type=1400 audit(1734839005.316:7): apparmor="STATUS" operation="profile_load" profile="unconfined" name="QtWebEngineProcess" pid=963 comm="apparmor_parser"
+audit: type=1400 audit(1734839005.316:8): apparmor="STATUS" operation="profile_load" profile="unconfined" name="cam" pid=968 comm="apparmor_parser"
+audit: type=1400 audit(1734839005.316:9): apparmor="STATUS" operation="profile_load" profile="unconfined" name="chrome" pid=972 comm="apparmor_parser"
+audit: type=1400 audit(1734839005.317:10): apparmor="STATUS" operation="profile_load" profile="unconfined" name="Discord" pid=961 comm="apparmor_parser"
+audit: type=1400 audit(1734839005.317:11): apparmor="STATUS" operation="profile_load" profile="unconfined" name="balena-etcher" pid=964 comm="apparmor_parser"
+Bluetooth: BNEP (Ethernet Emulation) ver 1.3
+Bluetooth: BNEP filters: protocol multicast
+Bluetooth: BNEP socket layer initialized
+Process accounting resumed
+NET: Registered PF_QIPCRTR protocol family
+warning: `atop' uses wireless extensions which will stop working for Wi-Fi 7 hardware; use nl80211
+Bluetooth: hci0: Opcode 0x0c03 failed: -110
+Generic FE-GE Realtek PHY r8169-0-200:00: attached PHY driver (mii_bus:phy_addr=r8169-0-200:00, irq=MAC)
+r8169 0000:02:00.0 enp2s0: Link is Down
+usb 1-3: request firmware rtlwifi/rtl8188fufw.bin
+usb 1-3: request firmware rtlwifi/rtl8188fufw.bin loaded
+NET: Registered PF_ALG protocol family
+------------[ cut here ]------------
+UBSAN: shift-out-of-bounds in /var/lib/dkms/rtl8188fu/1.0/build/os_dep/linux/ioctl_cfg80211.c:5758:19
+shift exponent 131072 is too large for 32-bit type 'int'
+CPU: 0 UID: 0 PID: 1654 Comm: iwd Tainted: G           OE      6.12.0-061200-generic #202411220723
+Tainted: [O]=OOT_MODULE, [E]=UNSIGNED_MODULE
+Hardware name: Acer Aspire Lite AL15-41/Aspire Lite AL15-41, BIOS 1.07.22RAC1 12/12/2023
+Call Trace:
+ <TASK>
+ show_stack+0x49/0x60
+ dump_stack_lvl+0x5f/0x90
+ dump_stack+0x10/0x18
+ ubsan_epilogue+0x9/0x40
+ __ubsan_handle_shift_out_of_bounds.cold+0x61/0xe6
+ cfg80211_rtw_mgmt_frame_register+0x33/0x50 [rtl8188fu]
+ cfg80211_mgmt_registrations_update+0x12b/0x220 [cfg80211]
+ cfg80211_mlme_register_mgmt+0x1bd/0x310 [cfg80211]
+ ? srso_return_thunk+0x5/0x5f
+ nl80211_register_mgmt+0xb1/0x150 [cfg80211]
+ genl_family_rcv_msg_doit+0xfa/0x160
+ genl_family_rcv_msg+0x17f/0x240
+ ? __pfx_nl80211_pre_doit+0x10/0x10 [cfg80211]
+ ? __pfx_nl80211_register_mgmt+0x10/0x10 [cfg80211]
+ ? __pfx_nl80211_post_doit+0x10/0x10 [cfg80211]
+ genl_rcv_msg+0x4c/0xb0
+ ? __pfx_genl_rcv_msg+0x10/0x10
+ netlink_rcv_skb+0x55/0x100
+ genl_rcv+0x28/0x50
+ netlink_unicast+0x248/0x390
+ netlink_sendmsg+0x214/0x460
+ __sys_sendto+0x21e/0x230
+ __x64_sys_sendto+0x24/0x40
+ x64_sys_call+0x1784/0x22b0
+ do_syscall_64+0x7e/0x170
+ ? srso_return_thunk+0x5/0x5f
+ ? __sys_recvmsg+0x82/0xe0
+ ? srso_return_thunk+0x5/0x5f
+ ? arch_exit_to_user_mode_prepare.isra.0+0x22/0xd0
+ ? srso_return_thunk+0x5/0x5f
+ ? syscall_exit_to_user_mode+0x38/0x1d0
+ ? srso_return_thunk+0x5/0x5f
+ ? do_syscall_64+0x8a/0x170
+ ? srso_return_thunk+0x5/0x5f
+ ? __sys_recvmsg+0x82/0xe0
+ ? srso_return_thunk+0x5/0x5f
+ ? arch_exit_to_user_mode_prepare.isra.0+0x22/0xd0
+ ? srso_return_thunk+0x5/0x5f
+ ? syscall_exit_to_user_mode+0x38/0x1d0
+ ? srso_return_thunk+0x5/0x5f
+ ? do_syscall_64+0x8a/0x170
+ ? srso_return_thunk+0x5/0x5f
+ ? arch_exit_to_user_mode_prepare.isra.0+0x22/0xd0
+ ? srso_return_thunk+0x5/0x5f
+ ? syscall_exit_to_user_mode+0x38/0x1d0
+ ? srso_return_thunk+0x5/0x5f
+ ? do_syscall_64+0x8a/0x170
+ entry_SYSCALL_64_after_hwframe+0x76/0x7e
+RIP: 0033:0x76a65692bead
+Code: c3 ff ff ff ff 64 89 02 eb b9 0f 1f 00 f3 0f 1e fa 80 3d a5 f1 0d 00 00 41 89 ca 74 20 45 31 c9 45 31 c0 b8 2c 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 6b c3 66 2e 0f 1f 84 00 00 00 00 00 55 48 89
+RSP: 002b:00007ffd68d72718 EFLAGS: 00000246 ORIG_RAX: 000000000000002c
+RAX: ffffffffffffffda RBX: 000055e10159c9b0 RCX: 000076a65692bead
+RDX: 0000000000000030 RSI: 000055e1015ae510 RDI: 0000000000000004
+RBP: 00007ffd68d72730 R08: 0000000000000000 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000246 R12: 000055e1015b4ae0
+R13: 00007ffd68d72798 R14: 000055e1015a6590 R15: 000055e10159c7a0
+ </TASK>
+---[ end trace ]---
+RTL871X: rtw_set_802_11_connect(wlx8c882b6009b8)  fw_state=0x00000008
+RTL871X: start auth
+RTL871X: auth success, start assoc
+------------[ cut here ]------------
+UBSAN: array-index-out-of-bounds in /var/lib/dkms/rtl8188fu/1.0/build/core/rtw_wlan_util.c:1971:48
+index 1 is out of range for type 'u8 [1]'
+CPU: 2 UID: 0 PID: 0 Comm: swapper/2 Tainted: G           OE      6.12.0-061200-generic #202411220723
+Tainted: [O]=OOT_MODULE, [E]=UNSIGNED_MODULE
+Hardware name: Acer Aspire Lite AL15-41/Aspire Lite AL15-41, BIOS 1.07.22RAC1 12/12/2023
+Call Trace:
+ <IRQ>
+ show_stack+0x49/0x60
+ dump_stack_lvl+0x5f/0x90
+ dump_stack+0x10/0x18
+ ubsan_epilogue+0x9/0x40
+ __ubsan_handle_out_of_bounds.cold+0x44/0x49
+ HT_caps_handler+0x7b/0x2e0 [rtl8188fu]
+ OnAssocRsp+0x185/0x240 [rtl8188fu]
+ _mgt_dispatcher+0x72/0xc0 [rtl8188fu]
+ mgt_dispatcher+0x142/0x210 [rtl8188fu]
+ validate_recv_mgnt_frame+0x71/0x110 [rtl8188fu]
+ validate_recv_frame+0x12d/0x180 [rtl8188fu]
+ recv_func_prehandle+0x2b/0x70 [rtl8188fu]
+ recv_func+0x2c/0x100 [rtl8188fu]
+ rtw_recv_entry+0x19/0x50 [rtl8188fu]
+ recvbuf2recvframe+0xa2/0x210 [rtl8188fu]
+ usb_recv_tasklet+0x61/0xf0 [rtl8188fu]
+ tasklet_action_common+0xf9/0x1e0
+ tasklet_action+0x29/0x40
+ handle_softirqs+0xe7/0x340
+ __irq_exit_rcu+0xce/0xf0
+ irq_exit_rcu+0xe/0x20
+ common_interrupt+0xb6/0xe0
+ </IRQ>
+ <TASK>
+ asm_common_interrupt+0x27/0x40
+RIP: 0010:cpuidle_enter_state+0xd4/0x700
+Code: 00 e8 f0 3f ec fe e8 2b ef ff ff 49 89 c7 0f 1f 44 00 00 31 ff e8 5c 75 ea fe 80 7d d0 00 0f 85 25 02 00 00 fb 0f 1f 44 00 00 <45> 85 f6 0f 88 f5 01 00 00 4d 63 ee 49 83 fd 0a 0f 83 a8 04 00 00
+RSP: 0018:ffff9d30c01c7e00 EFLAGS: 00000246
+RAX: 0000000000000000 RBX: ffff89fe0a474c00 RCX: 0000000000000000
+RDX: 0000000000000000 RSI: 0000000000000000 RDI: 0000000000000000
+RBP: ffff9d30c01c7e50 R08: 0000000000000000 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000000 R12: ffffffff8bb1d700
+R13: 0000000000000003 R14: 0000000000000003 R15: 0000000311119edb
+ ? tick_nohz_stop_tick+0xeb/0x280
+ cpuidle_enter+0x2e/0x50
+ call_cpuidle+0x22/0x60
+ cpuidle_idle_call+0x117/0x190
+ do_idle+0x82/0xe0
+ cpu_startup_entry+0x29/0x30
+ start_secondary+0x129/0x160
+ common_startup_64+0x13e/0x141
+ </TASK>
+---[ end trace ]---
+------------[ cut here ]------------
+UBSAN: array-index-out-of-bounds in /var/lib/dkms/rtl8188fu/1.0/build/core/rtw_wlan_util.c:1978:75
+index 2 is out of range for type 'u8 [1]'
+CPU: 2 UID: 0 PID: 0 Comm: swapper/2 Tainted: G           OE      6.12.0-061200-generic #202411220723
+Tainted: [O]=OOT_MODULE, [E]=UNSIGNED_MODULE
+Hardware name: Acer Aspire Lite AL15-41/Aspire Lite AL15-41, BIOS 1.07.22RAC1 12/12/2023
+Call Trace:
+ <IRQ>
+ show_stack+0x49/0x60
+ dump_stack_lvl+0x5f/0x90
+ dump_stack+0x10/0x18
+ ubsan_epilogue+0x9/0x40
+ __ubsan_handle_out_of_bounds.cold+0x44/0x49
+ HT_caps_handler+0xf5/0x2e0 [rtl8188fu]
+ OnAssocRsp+0x185/0x240 [rtl8188fu]
+ _mgt_dispatcher+0x72/0xc0 [rtl8188fu]
+ mgt_dispatcher+0x142/0x210 [rtl8188fu]
+ validate_recv_mgnt_frame+0x71/0x110 [rtl8188fu]
+ validate_recv_frame+0x12d/0x180 [rtl8188fu]
+ recv_func_prehandle+0x2b/0x70 [rtl8188fu]
+ recv_func+0x2c/0x100 [rtl8188fu]
+ rtw_recv_entry+0x19/0x50 [rtl8188fu]
+ recvbuf2recvframe+0xa2/0x210 [rtl8188fu]
+ usb_recv_tasklet+0x61/0xf0 [rtl8188fu]
+ tasklet_action_common+0xf9/0x1e0
+ tasklet_action+0x29/0x40
+ handle_softirqs+0xe7/0x340
+ __irq_exit_rcu+0xce/0xf0
+ irq_exit_rcu+0xe/0x20
+ common_interrupt+0xb6/0xe0
+ </IRQ>
+ <TASK>
+ asm_common_interrupt+0x27/0x40
+RIP: 0010:cpuidle_enter_state+0xd4/0x700
+Code: 00 e8 f0 3f ec fe e8 2b ef ff ff 49 89 c7 0f 1f 44 00 00 31 ff e8 5c 75 ea fe 80 7d d0 00 0f 85 25 02 00 00 fb 0f 1f 44 00 00 <45> 85 f6 0f 88 f5 01 00 00 4d 63 ee 49 83 fd 0a 0f 83 a8 04 00 00
+RSP: 0018:ffff9d30c01c7e00 EFLAGS: 00000246
+RAX: 0000000000000000 RBX: ffff89fe0a474c00 RCX: 0000000000000000
+RDX: 0000000000000000 RSI: 0000000000000000 RDI: 0000000000000000
+RBP: ffff9d30c01c7e50 R08: 0000000000000000 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000000 R12: ffffffff8bb1d700
+R13: 0000000000000003 R14: 0000000000000003 R15: 0000000311119edb
+ ? tick_nohz_stop_tick+0xeb/0x280
+ cpuidle_enter+0x2e/0x50
+ call_cpuidle+0x22/0x60
+ cpuidle_idle_call+0x117/0x190
+ do_idle+0x82/0xe0
+ cpu_startup_entry+0x29/0x30
+ start_secondary+0x129/0x160
+ common_startup_64+0x13e/0x141
+ </TASK>
+---[ end trace ]---
+------------[ cut here ]------------
+UBSAN: array-index-out-of-bounds in /var/lib/dkms/rtl8188fu/1.0/build/core/rtw_wlan_util.c:1988:76
+index 2 is out of range for type 'u8 [1]'
+CPU: 2 UID: 0 PID: 0 Comm: swapper/2 Tainted: G           OE      6.12.0-061200-generic #202411220723
+Tainted: [O]=OOT_MODULE, [E]=UNSIGNED_MODULE
+Hardware name: Acer Aspire Lite AL15-41/Aspire Lite AL15-41, BIOS 1.07.22RAC1 12/12/2023
+Call Trace:
+ <IRQ>
+ show_stack+0x49/0x60
+ dump_stack_lvl+0x5f/0x90
+ dump_stack+0x10/0x18
+ ubsan_epilogue+0x9/0x40
+ __ubsan_handle_out_of_bounds.cold+0x44/0x49
+ HT_caps_handler+0x135/0x2e0 [rtl8188fu]
+ OnAssocRsp+0x185/0x240 [rtl8188fu]
+ _mgt_dispatcher+0x72/0xc0 [rtl8188fu]
+ mgt_dispatcher+0x142/0x210 [rtl8188fu]
+ validate_recv_mgnt_frame+0x71/0x110 [rtl8188fu]
+ validate_recv_frame+0x12d/0x180 [rtl8188fu]
+ recv_func_prehandle+0x2b/0x70 [rtl8188fu]
+ recv_func+0x2c/0x100 [rtl8188fu]
+ rtw_recv_entry+0x19/0x50 [rtl8188fu]
+ recvbuf2recvframe+0xa2/0x210 [rtl8188fu]
+ usb_recv_tasklet+0x61/0xf0 [rtl8188fu]
+ tasklet_action_common+0xf9/0x1e0
+ tasklet_action+0x29/0x40
+ handle_softirqs+0xe7/0x340
+ __irq_exit_rcu+0xce/0xf0
+ irq_exit_rcu+0xe/0x20
+ common_interrupt+0xb6/0xe0
+ </IRQ>
+ <TASK>
+ asm_common_interrupt+0x27/0x40
+RIP: 0010:cpuidle_enter_state+0xd4/0x700
+Code: 00 e8 f0 3f ec fe e8 2b ef ff ff 49 89 c7 0f 1f 44 00 00 31 ff e8 5c 75 ea fe 80 7d d0 00 0f 85 25 02 00 00 fb 0f 1f 44 00 00 <45> 85 f6 0f 88 f5 01 00 00 4d 63 ee 49 83 fd 0a 0f 83 a8 04 00 00
+RSP: 0018:ffff9d30c01c7e00 EFLAGS: 00000246
+RAX: 0000000000000000 RBX: ffff89fe0a474c00 RCX: 0000000000000000
+RDX: 0000000000000000 RSI: 0000000000000000 RDI: 0000000000000000
+RBP: ffff9d30c01c7e50 R08: 0000000000000000 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000000 R12: ffffffff8bb1d700
+R13: 0000000000000003 R14: 0000000000000003 R15: 0000000311119edb
+ ? tick_nohz_stop_tick+0xeb/0x280
+ cpuidle_enter+0x2e/0x50
+ call_cpuidle+0x22/0x60
+ cpuidle_idle_call+0x117/0x190
+ do_idle+0x82/0xe0
+ cpu_startup_entry+0x29/0x30
+ start_secondary+0x129/0x160
+ common_startup_64+0x13e/0x141
+ </TASK>
+---[ end trace ]---
+RTL871X: assoc success
+RTL871X: recv eapol packet
+RTL871X: send eapol packet
+RTL871X: recv eapol packet
+RTL871X: send eapol packet
+------------[ cut here ]------------
+UBSAN: array-index-out-of-bounds in /var/lib/dkms/rtl8188fu/1.0/build/os_dep/linux/ioctl_cfg80211.c:1409:109
+index 16 is out of range for type 'u8 [*]'
+CPU: 7 UID: 0 PID: 1654 Comm: iwd Tainted: G           OE      6.12.0-061200-generic #202411220723
+Tainted: [O]=OOT_MODULE, [E]=UNSIGNED_MODULE
+Hardware name: Acer Aspire Lite AL15-41/Aspire Lite AL15-41, BIOS 1.07.22RAC1 12/12/2023
+Call Trace:
+ <TASK>
+ show_stack+0x49/0x60
+ dump_stack_lvl+0x5f/0x90
+ dump_stack+0x10/0x18
+ ubsan_epilogue+0x9/0x40
+ __ubsan_handle_out_of_bounds.cold+0x44/0x49
+ rtw_cfg80211_set_encryption+0x290/0x4f0 [rtl8188fu]
+ cfg80211_rtw_add_key+0x1b3/0xa40 [rtl8188fu]
+ nl80211_new_key+0x165/0x380 [cfg80211]
+ genl_family_rcv_msg_doit+0xfa/0x160
+ genl_family_rcv_msg+0x17f/0x240
+ ? __pfx_nl80211_pre_doit+0x10/0x10 [cfg80211]
+ ? __pfx_nl80211_new_key+0x10/0x10 [cfg80211]
+ ? __pfx_nl80211_post_doit+0x10/0x10 [cfg80211]
+ genl_rcv_msg+0x4c/0xb0
+ ? _raw_spin_unlock_bh+0x1d/0x30
+ ? __pfx_genl_rcv_msg+0x10/0x10
+ netlink_rcv_skb+0x55/0x100
+ genl_rcv+0x28/0x50
+ netlink_unicast+0x248/0x390
+ netlink_sendmsg+0x214/0x460
+ __sys_sendto+0x21e/0x230
+ __x64_sys_sendto+0x24/0x40
+ x64_sys_call+0x1784/0x22b0
+ do_syscall_64+0x7e/0x170
+ ? srso_return_thunk+0x5/0x5f
+ ? rseq_ip_fixup+0x8d/0x1e0
+ ? task_mm_cid_work+0x1e1/0x2d0
+ ? srso_return_thunk+0x5/0x5f
+ ? srso_return_thunk+0x5/0x5f
+ ? srso_return_thunk+0x5/0x5f
+ ? arch_exit_to_user_mode_prepare.isra.0+0x22/0xd0
+ ? srso_return_thunk+0x5/0x5f
+ ? irqentry_exit_to_user_mode+0x2d/0x1d0
+ ? srso_return_thunk+0x5/0x5f
+ ? irqentry_exit+0x43/0x50
+ ? srso_return_thunk+0x5/0x5f
+ ? sysvec_apic_timer_interrupt+0x57/0xc0
+ entry_SYSCALL_64_after_hwframe+0x76/0x7e
+RIP: 0033:0x76a65692bead
+Code: c3 ff ff ff ff 64 89 02 eb b9 0f 1f 00 f3 0f 1e fa 80 3d a5 f1 0d 00 00 41 89 ca 74 20 45 31 c9 45 31 c0 b8 2c 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 6b c3 66 2e 0f 1f 84 00 00 00 00 00 55 48 89
+RSP: 002b:00007ffd68d72718 EFLAGS: 00000246 ORIG_RAX: 000000000000002c
+RAX: ffffffffffffffda RBX: 000055e10159c9b0 RCX: 000076a65692bead
+RDX: 0000000000000060 RSI: 000055e1015b6e00 RDI: 0000000000000004
+RBP: 00007ffd68d72730 R08: 0000000000000000 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000246 R12: 000055e1015a7a00
+R13: 00007ffd68d7278c R14: 000055e1015a6590 R15: 000055e10159c7a0
+ </TASK>
+---[ end trace ]---
+------------[ cut here ]------------
+UBSAN: array-index-out-of-bounds in /var/lib/dkms/rtl8188fu/1.0/build/os_dep/linux/ioctl_cfg80211.c:1410:109
+index 24 is out of range for type 'u8 [*]'
+CPU: 7 UID: 0 PID: 1654 Comm: iwd Tainted: G           OE      6.12.0-061200-generic #202411220723
+Tainted: [O]=OOT_MODULE, [E]=UNSIGNED_MODULE
+Hardware name: Acer Aspire Lite AL15-41/Aspire Lite AL15-41, BIOS 1.07.22RAC1 12/12/2023
+Call Trace:
+ <TASK>
+ show_stack+0x49/0x60
+ dump_stack_lvl+0x5f/0x90
+ dump_stack+0x10/0x18
+ ubsan_epilogue+0x9/0x40
+ __ubsan_handle_out_of_bounds.cold+0x44/0x49
+ rtw_cfg80211_set_encryption+0x2d7/0x4f0 [rtl8188fu]
+ cfg80211_rtw_add_key+0x1b3/0xa40 [rtl8188fu]
+ nl80211_new_key+0x165/0x380 [cfg80211]
+ genl_family_rcv_msg_doit+0xfa/0x160
+ genl_family_rcv_msg+0x17f/0x240
+ ? __pfx_nl80211_pre_doit+0x10/0x10 [cfg80211]
+ ? __pfx_nl80211_new_key+0x10/0x10 [cfg80211]
+ ? __pfx_nl80211_post_doit+0x10/0x10 [cfg80211]
+ genl_rcv_msg+0x4c/0xb0
+ ? _raw_spin_unlock_bh+0x1d/0x30
+ ? __pfx_genl_rcv_msg+0x10/0x10
+ netlink_rcv_skb+0x55/0x100
+ genl_rcv+0x28/0x50
+ netlink_unicast+0x248/0x390
+ netlink_sendmsg+0x214/0x460
+ __sys_sendto+0x21e/0x230
+ __x64_sys_sendto+0x24/0x40
+ x64_sys_call+0x1784/0x22b0
+ do_syscall_64+0x7e/0x170
+ ? srso_return_thunk+0x5/0x5f
+ ? rseq_ip_fixup+0x8d/0x1e0
+ ? task_mm_cid_work+0x1e1/0x2d0
+ ? srso_return_thunk+0x5/0x5f
+ ? srso_return_thunk+0x5/0x5f
+ ? srso_return_thunk+0x5/0x5f
+ ? arch_exit_to_user_mode_prepare.isra.0+0x22/0xd0
+ ? srso_return_thunk+0x5/0x5f
+ ? irqentry_exit_to_user_mode+0x2d/0x1d0
+ ? srso_return_thunk+0x5/0x5f
+ ? irqentry_exit+0x43/0x50
+ ? srso_return_thunk+0x5/0x5f
+ ? sysvec_apic_timer_interrupt+0x57/0xc0
+ entry_SYSCALL_64_after_hwframe+0x76/0x7e
+RIP: 0033:0x76a65692bead
+Code: c3 ff ff ff ff 64 89 02 eb b9 0f 1f 00 f3 0f 1e fa 80 3d a5 f1 0d 00 00 41 89 ca 74 20 45 31 c9 45 31 c0 b8 2c 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 6b c3 66 2e 0f 1f 84 00 00 00 00 00 55 48 89
+RSP: 002b:00007ffd68d72718 EFLAGS: 00000246 ORIG_RAX: 000000000000002c
+RAX: ffffffffffffffda RBX: 000055e10159c9b0 RCX: 000076a65692bead
+RDX: 0000000000000060 RSI: 000055e1015b6e00 RDI: 0000000000000004
+RBP: 00007ffd68d72730 R08: 0000000000000000 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000246 R12: 000055e1015a7a00
+R13: 00007ffd68d7278c R14: 000055e1015a6590 R15: 000055e10159c7a0
+ </TASK>
+---[ end trace ]---
+RTL871X: set group key camid:4, addr:fa:bb:c1:f8:fc:88, kid:1, type:AES
+RTL871X: set pairwise key camid:5, addr:fa:bb:c1:f8:fc:88, kid:0, type:AES
+systemd-journald[400]: /var/log/journal/4bbbdcd8846d438693fa8779cbd6e44d/user-1000.journal: Journal file uses a different sequence number ID, rotating.
+bridge: filtering via arp/ip/ip6tables is no longer available by default. Update your scripts to load br_netfilter if you need this.
+usb 3-1: new high-speed USB device number 4 using xhci_hcd
+usb 3-1: New USB device found, idVendor=04e8, idProduct=6864, bcdDevice= 5.04
+usb 3-1: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+usb 3-1: Product: SAMSUNG_Android
+usb 3-1: Manufacturer: SAMSUNG
+usb 3-1: SerialNumber: RZCWA1EFZMF
+usbcore: registered new interface driver cdc_ether
+rndis_host 3-1:1.0 eth0: register 'rndis_host' at usb-0000:05:00.4-1, RNDIS device, 3a:4e:09:ab:1a:fd
+usbcore: registered new interface driver rndis_host
+rndis_host 3-1:1.0 enx3a4e09ab1afd: renamed from eth0
+usb 3-1: USB disconnect, device number 4
+rndis_host 3-1:1.0 enx3a4e09ab1afd: unregister 'rndis_host' usb-0000:05:00.4-1, RNDIS device
+usb 3-1: new high-speed USB device number 5 using xhci_hcd
+usb 3-1: New USB device found, idVendor=04e8, idProduct=6860, bcdDevice= 5.04
+usb 3-1: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+usb 3-1: Product: SAMSUNG_Android
+usb 3-1: Manufacturer: SAMSUNG
+usb 3-1: SerialNumber: RZCWA1EFZMF
+usb 3-1: reset high-speed USB device number 5 using xhci_hcd
+usb 3-1: device firmware changed
+usb 3-1: USB disconnect, device number 5
+usb 3-1: new high-speed USB device number 6 using xhci_hcd
+usb 3-1: New USB device found, idVendor=04e8, idProduct=6860, bcdDevice= 5.04
+usb 3-1: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+usb 3-1: Product: SAMSUNG_Android
+usb 3-1: Manufacturer: SAMSUNG
+usb 3-1: SerialNumber: RZCWA1EFZMF
+cdc_acm 3-1:1.1: ttyACM0: USB ACM device
+usbcore: registered new interface driver cdc_acm
+cdc_acm: USB Abstract Control Model driver for USB modems and ISDN adapters
+usb 3-1: reset high-speed USB device number 6 using xhci_hcd
+usb 3-1: device firmware changed
+usb 3-1: USB disconnect, device number 6
+usb 3-1: new high-speed USB device number 7 using xhci_hcd
+usb 3-1: New USB device found, idVendor=04e8, idProduct=6860, bcdDevice= 5.04
+usb 3-1: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+usb 3-1: Product: SAMSUNG_Android
+usb 3-1: Manufacturer: SAMSUNG
+usb 3-1: SerialNumber: RZCWA1EFZMF
+usb 3-1: USB disconnect, device number 7
+usb 3-1: new high-speed USB device number 8 using xhci_hcd
+usb 3-1: New USB device found, idVendor=04e8, idProduct=6860, bcdDevice= 5.04
+usb 3-1: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+usb 3-1: Product: SAMSUNG_Android
+usb 3-1: Manufacturer: SAMSUNG
+usb 3-1: SerialNumber: RZCWA1EFZMF
+usb 3-1: USB disconnect, device number 8
+usb 3-1: new high-speed USB device number 9 using xhci_hcd
+usb 3-1: New USB device found, idVendor=04e8, idProduct=6864, bcdDevice= 5.04
+usb 3-1: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+usb 3-1: Product: SAMSUNG_Android
+usb 3-1: Manufacturer: SAMSUNG
+usb 3-1: SerialNumber: RZCWA1EFZMF
+rndis_host 3-1:1.0 eth0: register 'rndis_host' at usb-0000:05:00.4-1, RNDIS device, 36:c2:fe:98:c7:1b
+rndis_host 3-1:1.0 enx36c2fe98c71b: renamed from eth0
+RTL871X: linked_status_chk(wlx8c882b6009b8) disconnect or roaming
+r8169 0000:02:00.0 enp2s0: Link is Down
+r8169 0000:02:00.0 enp2s0: Link is Down
+r8169 0000:02:00.0 enp2s0: Link is Down
+ata1: SATA link down (SStatus 0 SControl 300)
+ata2: SATA link down (SStatus 0 SControl 300)
+r8169 0000:02:00.0 enp2s0: Link is Down
+RTL871X: OnDeAuth(wlx8c882b6009b8) reason=2, ta=fa:bb:c1:f8:fc:88, ignore=0
+workqueue: acpi_ec_event_processor hogged CPU for >10000us 4 times, consider switching to WQ_UNBOUND
+workqueue: acpi_ec_event_processor hogged CPU for >10000us 5 times, consider switching to WQ_UNBOUND
+workqueue: acpi_ec_event_processor hogged CPU for >10000us 7 times, consider switching to WQ_UNBOUND
+workqueue: acpi_ec_event_processor hogged CPU for >10000us 11 times, consider switching to WQ_UNBOUND
+workqueue: acpi_ec_event_processor hogged CPU for >10000us 19 times, consider switching to WQ_UNBOUND
+usb 3-1: USB disconnect, device number 9
+rndis_host 3-1:1.0 enx36c2fe98c71b: unregister 'rndis_host' usb-0000:05:00.4-1, RNDIS device
+r8169 0000:02:00.0 enp2s0: Link is Down
+r8169 0000:02:00.0 enp2s0: Link is Down
+r8169 0000:02:00.0 enp2s0: Link is Down
+ata1: SATA link down (SStatus 0 SControl 300)
+ata2: SATA link down (SStatus 0 SControl 300)
+r8169 0000:02:00.0 enp2s0: Link is Down
+RTL871X: OnDeAuth(wlx8c882b6009b8) reason=2, ta=fa:bb:c1:f8:fc:88, ignore=0
+
+=======================================================
+==== Dislaunching Wi-Fi driver! (Powered by Rockchip) ====
+=======================================================
+Realtek 8188FU USB WiFi driver (Powered by Rockchip) init.
+RTL871X: module exit start
+usbcore: deregistering interface driver rtl8188fu
+RTL871X: rtw_cmd_thread: DriverStopped(True) SurpriseRemoved(False) break at line 577
+RTL871X: rtw_ndev_uninit(wlx8c882b6009b8) if1
+RTL871X: rtw_dev_unload: driver not in IPS
+usb 1-3: reset high-speed USB device number 2 using xhci_hcd
+RTL871X: module exit success
+usb_intf.c - rockchip_wifi_init_module()
+
 ===========================================================================================================================================================================================================================================================================================================================
 ==== Launching Wi-Fi driver! (Powered by Rockchip) ====
 =======================================================
