@@ -306,7 +306,7 @@ static RT_CHANNEL_PLAN_MAP RTW_CHANNEL_PLAN_MAP_REALTEK_DEFINE = {
 
 bool rtw_chplan_is_empty(u8 id)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - rtw_chplan_is_empty");
 	RT_CHANNEL_PLAN_MAP *chplan_map;
 
 	if (id == RTW_CHPLAN_REALTEK_DEFINE)
@@ -324,7 +324,7 @@ bool rtw_chplan_is_empty(u8 id)
 #ifdef CONFIG_DFS_MASTER
 void rtw_rfctl_reset_cac(struct rf_ctl_t *rfctl)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - rtw_rfctl_reset_cac");
 	if (rtw_is_long_cac_ch(rfctl->radar_detect_ch, rfctl->radar_detect_bw, rfctl->radar_detect_offset))
 		rfctl->cac_end_time = rtw_get_current_time() + rtw_ms_to_systime(CAC_TIME_CE_MS);
 	else
@@ -337,7 +337,7 @@ void rtw_rfctl_reset_cac(struct rf_ctl_t *rfctl)
 */
 bool rtw_is_cac_reset_needed(_adapter *adapter)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - rtw_is_cac_reset_needed");
 	struct rf_ctl_t *rfctl = adapter_to_rfctl(adapter);
 	bool needed = _FALSE;
 	u32 pre_hi, pre_lo, hi, lo;
@@ -409,7 +409,7 @@ exit:
 
 bool _rtw_rfctl_overlap_radar_detect_ch(struct rf_ctl_t *rfctl, u8 ch, u8 bw, u8 offset)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - _rtw_rfctl_overlap_radar_detect_ch");
 	bool ret = _FALSE;
 	u32 hi = 0, lo = 0;
 	u32 r_hi = 0, r_lo = 0;
@@ -439,7 +439,7 @@ exit:
 
 bool rtw_rfctl_overlap_radar_detect_ch(struct rf_ctl_t *rfctl)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - rtw_rfctl_overlap_radar_detect_ch");
 	return _rtw_rfctl_overlap_radar_detect_ch(rfctl
 				, rfctl_to_dvobj(rfctl)->oper_channel
 				, rfctl_to_dvobj(rfctl)->oper_bwmode
@@ -448,13 +448,13 @@ bool rtw_rfctl_overlap_radar_detect_ch(struct rf_ctl_t *rfctl)
 
 bool rtw_rfctl_is_tx_blocked_by_cac(struct rf_ctl_t *rfctl)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - rtw_rfctl_is_tx_blocked_by_cac");
 	return (rtw_rfctl_overlap_radar_detect_ch(rfctl) && IS_UNDER_CAC(rfctl));
 }
 
 bool rtw_chset_is_ch_non_ocp(RT_CHANNEL_INFO *ch_set, u8 ch, u8 bw, u8 offset)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - rtw_chset_is_ch_non_ocp");
 	bool ret = _FALSE;
 	u32 hi = 0, lo = 0;
 	int i;
@@ -493,7 +493,7 @@ exit:
  */
 static void _rtw_chset_update_non_ocp(RT_CHANNEL_INFO *ch_set, u8 ch, u8 bw, u8 offset, int ms)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - _rtw_chset_update_non_ocp");
 	u32 hi = 0, lo = 0;
 	int i;
 
@@ -522,20 +522,20 @@ exit:
 
 inline void rtw_chset_update_non_ocp(RT_CHANNEL_INFO *ch_set, u8 ch, u8 bw, u8 offset)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - rtw_chset_update_non_ocp");
 	_rtw_chset_update_non_ocp(ch_set, ch, bw, offset, -1);
 }
 
 inline void rtw_chset_update_non_ocp_ms(RT_CHANNEL_INFO *ch_set, u8 ch, u8 bw, u8 offset, int ms)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - rtw_chset_update_non_ocp_ms");
 	_rtw_chset_update_non_ocp(ch_set, ch, bw, offset, ms);
 }
 #endif /* CONFIG_DFS_MASTER */
 
 bool rtw_choose_available_chbw(_adapter *adapter, u8 req_bw, u8 *dec_ch, u8 *dec_bw, u8 *dec_offset, u8 d_flags)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - rtw_choose_available_chbw");
 	struct mlme_ext_priv *mlmeext = &adapter->mlmeextpriv;
 	int i;
 
@@ -582,7 +582,7 @@ bool rtw_choose_available_chbw(_adapter *adapter, u8 req_bw, u8 *dec_ch, u8 *dec
 
 void dump_country_chplan(void *sel, const struct country_chplan *ent)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - dump_country_chplan");
 	DBG_871X_SEL(sel, "\"%c%c\", 0x%02X%s\n"
 		, ent->alpha2[0], ent->alpha2[1], ent->chplan
 		, COUNTRY_CHPLAN_EN_11AC(ent) ? " ac" : ""
@@ -591,7 +591,7 @@ void dump_country_chplan(void *sel, const struct country_chplan *ent)
 
 void dump_country_chplan_map(void *sel)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - dump_country_chplan_map");
 	const struct country_chplan *ent;
 	u8 code[2];
 
@@ -615,7 +615,7 @@ void dump_country_chplan_map(void *sel)
 
 void dump_chplan_id_list(void *sel)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - dump_chplan_id_list");
 	int i;
 
 	for (i = 0; i < RTW_CHPLAN_MAX; i++) {
@@ -630,7 +630,7 @@ void dump_chplan_id_list(void *sel)
 
 void dump_chplan_test(void *sel)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - dump_chplan_test");
 	int i, j;
 
 	/* check invalid channel */
@@ -651,7 +651,7 @@ void dump_chplan_test(void *sel)
 
 void dump_chset(void *sel, RT_CHANNEL_INFO *ch_set)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - dump_chset");
 	u8	i;
 
 	for (i = 0; ch_set[i].ChannelNum != 0; i++) {
@@ -680,7 +680,7 @@ void dump_chset(void *sel, RT_CHANNEL_INFO *ch_set)
 
 void dump_cur_chset(void *sel, _adapter *adapter)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - dump_cur_chset");
 	struct mlme_priv *mlme = &adapter->mlmepriv;
 	struct mlme_ext_priv *mlmeext = &adapter->mlmeextpriv;
 	HAL_DATA_TYPE *hal_data = GET_HAL_DATA(adapter);
@@ -704,7 +704,7 @@ void dump_cur_chset(void *sel, _adapter *adapter)
  */
 int rtw_ch_set_search_ch(RT_CHANNEL_INFO *ch_set, const u32 ch)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - rtw_ch_set_search_ch");
 	int i;
 	for(i=0;ch_set[i].ChannelNum!=0;i++){
 		if(ch == ch_set[i].ChannelNum)
@@ -725,7 +725,7 @@ int rtw_ch_set_search_ch(RT_CHANNEL_INFO *ch_set, const u32 ch)
  */
 bool rtw_mlme_band_check(_adapter *adapter, const u32 ch)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - rtw_mlme_band_check");
 	if (adapter->setband == WIFI_FREQUENCY_BAND_AUTO /* 2.4G and 5G */
 		|| (adapter->setband == WIFI_FREQUENCY_BAND_2GHZ && ch < 35) /* 2.4G only */
 		|| (adapter->setband == WIFI_FREQUENCY_BAND_5GHZ && ch > 35) /* 5G only */
@@ -743,7 +743,7 @@ Following are the initialization functions for WiFi MLME
 
 int init_hw_mlme_ext(_adapter *padapter)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - init_hw_mlme_ext");
 	struct	mlme_ext_priv *pmlmeext = &padapter->mlmeextpriv;
 
 	//set_opmode_cmd(padapter, infra_client_with_mlme);//removed
@@ -755,7 +755,7 @@ int init_hw_mlme_ext(_adapter *padapter)
 
 void init_mlme_default_rate_set(_adapter* padapter)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - init_mlme_default_rate_set");
 	struct mlme_ext_priv *pmlmeext = &padapter->mlmeextpriv;
 
 	unsigned char	mixed_datarate[NumRates] = {_1M_RATE_, _2M_RATE_, _5M_RATE_, _11M_RATE_, _6M_RATE_,_9M_RATE_, _12M_RATE_, _18M_RATE_, _24M_RATE_, _36M_RATE_, _48M_RATE_, _54M_RATE_, 0xff};
@@ -770,7 +770,7 @@ void init_mlme_default_rate_set(_adapter* padapter)
 
 static void init_mlme_ext_priv_value(_adapter* padapter)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - init_mlme_ext_priv_value");
 	struct mlme_ext_priv	*pmlmeext = &padapter->mlmeextpriv;
 	struct mlme_ext_info	*pmlmeinfo = &(pmlmeext->mlmext_info);
 
@@ -840,7 +840,7 @@ static void init_mlme_ext_priv_value(_adapter* padapter)
 static int has_channel(RT_CHANNEL_INFO *channel_set,
 					   u8 chanset_size,
 					   u8 chan) {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - has_channel");
 	int i;
 
 	for (i = 0; i < chanset_size; i++) {
@@ -855,7 +855,7 @@ static int has_channel(RT_CHANNEL_INFO *channel_set,
 static void init_channel_list(_adapter *padapter, RT_CHANNEL_INFO *channel_set,
 							  u8 chanset_size,
 							  struct p2p_channels *channel_list) {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - init_channel_list");
 	struct registry_priv *regsty = adapter_to_regsty(padapter);
 
 	struct p2p_oper_class_map op_class[] = {
@@ -912,7 +912,7 @@ static void init_channel_list(_adapter *padapter, RT_CHANNEL_INFO *channel_set,
 
 static u8 init_channel_set(_adapter* padapter, u8 ChannelPlan, RT_CHANNEL_INFO *channel_set)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - init_channel_set");
 	u8	index,chanset_size = 0;
 	u8	b5GBand = _FALSE, b2_4GBand = _FALSE;
 	u8	Index2G = 0, Index5G=0;
@@ -1019,7 +1019,7 @@ static u8 init_channel_set(_adapter* padapter, u8 ChannelPlan, RT_CHANNEL_INFO *
 
 int	init_mlme_ext_priv(_adapter* padapter)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - init_mlme_ext_priv");
 	int	res = _SUCCESS;
 	struct registry_priv* pregistrypriv = &padapter->registrypriv;
 	struct mlme_ext_priv *pmlmeext = &padapter->mlmeextpriv;
@@ -1064,7 +1064,7 @@ int	init_mlme_ext_priv(_adapter* padapter)
 
 void free_mlme_ext_priv (struct mlme_ext_priv *pmlmeext)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - free_mlme_ext_priv");
 	_adapter *padapter = pmlmeext->padapter;
 
 	if (!padapter)
@@ -1079,7 +1079,7 @@ void free_mlme_ext_priv (struct mlme_ext_priv *pmlmeext)
 
 static u8 cmp_pkt_chnl_diff(_adapter *padapter,u8* pframe,uint packet_len)
 {	// if the channel is same, return 0. else return channel differential	
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - cmp_pkt_chnl_diff");
 	uint len;
 	u8 channel;	
 	u8 *p;		
@@ -1104,7 +1104,7 @@ static u8 cmp_pkt_chnl_diff(_adapter *padapter,u8* pframe,uint packet_len)
 
 static void _mgt_dispatcher(_adapter *padapter, struct mlme_handler *ptable, union recv_frame *precv_frame)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - _mgt_dispatcher");
 	u8 bc_addr[ETH_ALEN] = {0xff,0xff,0xff,0xff,0xff,0xff};
 	u8 *pframe = precv_frame->u.hdr.rx_data; 
 
@@ -1124,7 +1124,7 @@ static void _mgt_dispatcher(_adapter *padapter, struct mlme_handler *ptable, uni
 
 void mgt_dispatcher(_adapter *padapter, union recv_frame *precv_frame)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - mgt_dispatcher");
 	int index;
 	struct mlme_handler *ptable;
 #ifdef CONFIG_AP_MODE
@@ -1265,7 +1265,7 @@ void mgt_dispatcher(_adapter *padapter, union recv_frame *precv_frame)
 #ifdef CONFIG_P2P
 u32 p2p_listen_state_process(_adapter *padapter, unsigned char *da)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - p2p_listen_state_process");
 	bool response = _TRUE;
 
 #ifdef CONFIG_IOCTL_CFG80211
@@ -1318,7 +1318,7 @@ Following are the callback functions for each subtype of the management frames
 
 unsigned int OnProbeReq(_adapter *padapter, union recv_frame *precv_frame)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - OnProbeReq");
 	unsigned int	ielen;
 	unsigned char	*p;
 	struct mlme_priv *pmlmepriv = &padapter->mlmepriv;
@@ -1599,7 +1599,7 @@ _issue_probersp:
 
 unsigned int OnProbeRsp(_adapter *padapter, union recv_frame *precv_frame)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - OnProbeRsp");
 	struct sta_info		*psta;
 	struct mlme_ext_priv	*pmlmeext = &padapter->mlmeextpriv;
 	struct mlme_ext_info	*pmlmeinfo = &(pmlmeext->mlmext_info);
@@ -1691,7 +1691,7 @@ unsigned int OnProbeRsp(_adapter *padapter, union recv_frame *precv_frame)
 
 unsigned int OnBeacon(_adapter *padapter, union recv_frame *precv_frame)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - OnBeacon");
 	struct sta_info	*psta;
 	struct mlme_ext_priv	*pmlmeext = &padapter->mlmeextpriv;
 	struct mlme_ext_info	*pmlmeinfo = &(pmlmeext->mlmext_info);
@@ -1914,7 +1914,7 @@ _END_ONBEACON_:
 
 unsigned int OnAuth(_adapter *padapter, union recv_frame *precv_frame)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - OnAuth");
 #ifdef CONFIG_AP_MODE
 	_irqL irqL;
 	unsigned int	auth_mode, seq, ie_len;
@@ -2210,7 +2210,7 @@ auth_fail:
 
 unsigned int OnAuthClient(_adapter *padapter, union recv_frame *precv_frame)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - OnAuthClient");
 	unsigned int	seq, len, status, algthm, offset;
 	unsigned char	*p;
 	unsigned int	go2asoc = 0;
@@ -2312,7 +2312,7 @@ authclnt_fail:
 
 unsigned int OnAssocReq(_adapter *padapter, union recv_frame *precv_frame)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - OnAssocReq");
 #ifdef CONFIG_AP_MODE
 	_irqL irqL;
 	u16 capab_info, listen_interval;
@@ -2940,7 +2940,7 @@ OnAssocReqFail:
 
 unsigned int OnAssocRsp(_adapter *padapter, union recv_frame *precv_frame)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - OnAssocRsp");
 	uint i;
 	int res;
 	unsigned short	status;
@@ -3073,7 +3073,7 @@ report_assoc_result:
 
 unsigned int OnDeAuth(_adapter *padapter, union recv_frame *precv_frame)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - OnDeAuth");
 	unsigned short	reason;
 	struct mlme_priv *pmlmepriv = &padapter->mlmepriv;
 	struct mlme_ext_priv	*pmlmeext = &padapter->mlmeextpriv;
@@ -3173,7 +3173,7 @@ unsigned int OnDeAuth(_adapter *padapter, union recv_frame *precv_frame)
 
 unsigned int OnDisassoc(_adapter *padapter, union recv_frame *precv_frame)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - OnDisassoc");
 	unsigned short	reason;
 	struct mlme_priv *pmlmepriv = &padapter->mlmepriv;
 	struct mlme_ext_priv	*pmlmeext = &padapter->mlmeextpriv;
@@ -3250,14 +3250,14 @@ unsigned int OnDisassoc(_adapter *padapter, union recv_frame *precv_frame)
 
 unsigned int OnAtim(_adapter *padapter, union recv_frame *precv_frame)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - OnAtim");
 	DBG_871X("%s\n", __FUNCTION__);
 	return _SUCCESS;
 }
 
 unsigned int on_action_spct_ch_switch(_adapter *padapter, struct sta_info *psta, u8 *ies, uint ies_len)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - on_action_spct_ch_switch");
 	unsigned int ret = _FAIL;
 	struct mlme_ext_priv *mlmeext = &padapter->mlmeextpriv;
 	struct mlme_ext_info	*pmlmeinfo = &(mlmeext->mlmext_info);
@@ -3316,7 +3316,7 @@ exit:
 
 unsigned int on_action_spct(_adapter *padapter, union recv_frame *precv_frame)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - on_action_spct");
 	unsigned int ret = _FAIL;
 	struct sta_info *psta = NULL;
 	struct sta_priv *pstapriv = &padapter->stapriv;
@@ -3360,13 +3360,13 @@ exit:
 
 unsigned int OnAction_qos(_adapter *padapter, union recv_frame *precv_frame)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - OnAction_qos");
 	return _SUCCESS;
 }
 
 unsigned int OnAction_dls(_adapter *padapter, union recv_frame *precv_frame)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - OnAction_dls");
 	return _SUCCESS;
 }
 
@@ -3378,7 +3378,7 @@ unsigned int OnAction_dls(_adapter *padapter, union recv_frame *precv_frame)
  */
 u8 rtw_rx_ampdu_size(_adapter *adapter)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - rtw_rx_ampdu_size");
 	u8 size;
 	HT_CAP_AMPDU_FACTOR max_rx_ampdu_factor;
 
@@ -3436,7 +3436,7 @@ exit:
  */
 bool rtw_rx_ampdu_is_accept(_adapter *adapter)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - rtw_rx_ampdu_is_accept");
 	bool accept;
 
 	if (adapter->fix_rx_ampdu_accept != RX_AMPDU_ACCEPT_INVALID) {
@@ -3477,7 +3477,7 @@ exit:
  */
 bool rtw_rx_ampdu_set_size(_adapter *adapter, u8 size, u8 reason)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - rtw_rx_ampdu_set_size");
 	bool is_adj = _FALSE;
 	struct mlme_ext_priv *mlmeext;
 	struct mlme_ext_info *mlmeinfo;
@@ -3514,7 +3514,7 @@ bool rtw_rx_ampdu_set_size(_adapter *adapter, u8 size, u8 reason)
  */
 bool rtw_rx_ampdu_set_accept(_adapter *adapter, u8 accept, u8 reason)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - rtw_rx_ampdu_set_accept");
 	bool is_adj = _FALSE;
 	struct mlme_ext_priv *mlmeext;
 	struct mlme_ext_info *mlmeinfo;
@@ -3557,7 +3557,7 @@ bool rtw_rx_ampdu_set_accept(_adapter *adapter, u8 accept, u8 reason)
  */
 u8 rx_ampdu_apply_sta_tid(_adapter *adapter, struct sta_info *sta, u8 tid, u8 accept, u8 size)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - rx_ampdu_apply_sta_tid");
 	u8 ret = 0;
 	struct recv_reorder_ctrl *reorder_ctl = &sta->recvreorder_ctrl[tid];
 
@@ -3594,7 +3594,7 @@ exit:
  */
 u8 rx_ampdu_apply_sta(_adapter *adapter, struct sta_info *sta, u8 accept, u8 size)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - rx_ampdu_apply_sta");
 	u8 change_cnt = 0;
 	int i;
 
@@ -3614,7 +3614,7 @@ u8 rx_ampdu_apply_sta(_adapter *adapter, struct sta_info *sta, u8 accept, u8 siz
  */
 u16 rtw_rx_ampdu_apply(_adapter *adapter)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - rtw_rx_ampdu_apply");
 	u16 adj_cnt = 0;
 	struct mlme_ext_priv *mlmeext;
 	struct sta_info *sta;
@@ -3666,7 +3666,7 @@ u16 rtw_rx_ampdu_apply(_adapter *adapter)
 
 unsigned int OnAction_back(_adapter *padapter, union recv_frame *precv_frame)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - OnAction_back");
 	u8 *addr;
 	struct sta_info *psta=NULL;
 	struct recv_reorder_ctrl *preorder_ctrl;
@@ -3793,7 +3793,7 @@ unsigned int OnAction_back(_adapter *padapter, union recv_frame *precv_frame)
 #ifdef CONFIG_P2P
 
 static int get_reg_classes_full_count(struct p2p_channels channel_list) {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - get_reg_classes_full_count");
 	int cnt = 0;
 	int i;
 
@@ -3806,7 +3806,7 @@ static int get_reg_classes_full_count(struct p2p_channels channel_list) {
 
 static void get_channel_cnt_24g_5gl_5gh(  struct mlme_ext_priv *pmlmeext, u8* p24g_cnt, u8* p5gl_cnt, u8* p5gh_cnt )
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - get_channel_cnt_24g_5gl_5gh");
 	int	i = 0;
 
 	*p24g_cnt = 0;
@@ -3834,7 +3834,7 @@ static void get_channel_cnt_24g_5gl_5gh(  struct mlme_ext_priv *pmlmeext, u8* p2
 
 void issue_p2p_GO_request(_adapter *padapter, u8* raddr)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - issue_p2p_GO_request");
 
 	unsigned char category = RTW_WLAN_CATEGORY_PUBLIC;
 	u8			action = P2P_PUB_ACTION_ACTION;
@@ -4282,7 +4282,7 @@ void issue_p2p_GO_request(_adapter *padapter, u8* raddr)
 
 void issue_p2p_GO_response(_adapter *padapter, u8* raddr, u8* frame_body,uint len, u8 result)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - issue_p2p_GO_response");
 
 	unsigned char category = RTW_WLAN_CATEGORY_PUBLIC;
 	u8			action = P2P_PUB_ACTION_ACTION;
@@ -4766,7 +4766,7 @@ void issue_p2p_GO_response(_adapter *padapter, u8* raddr, u8* frame_body,uint le
 
 void issue_p2p_GO_confirm(_adapter *padapter, u8* raddr, u8 result)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - issue_p2p_GO_confirm");
 
 	unsigned char category = RTW_WLAN_CATEGORY_PUBLIC;
 	u8			action = P2P_PUB_ACTION_ACTION;
@@ -5034,7 +5034,7 @@ void issue_p2p_GO_confirm(_adapter *padapter, u8* raddr, u8 result)
 
 void issue_p2p_invitation_request(_adapter *padapter, u8* raddr )
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - issue_p2p_invitation_request");
 
 	unsigned char category = RTW_WLAN_CATEGORY_PUBLIC;
 	u8			action = P2P_PUB_ACTION_ACTION;
@@ -5378,7 +5378,7 @@ void issue_p2p_invitation_request(_adapter *padapter, u8* raddr )
 
 void issue_p2p_invitation_response(_adapter *padapter, u8* raddr, u8 dialogToken, u8 status_code)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - issue_p2p_invitation_response");
 
 	unsigned char category = RTW_WLAN_CATEGORY_PUBLIC;
 	u8			action = P2P_PUB_ACTION_ACTION;
@@ -5660,7 +5660,7 @@ void issue_p2p_invitation_response(_adapter *padapter, u8* raddr, u8 dialogToken
 
 void issue_p2p_provision_request(_adapter *padapter, u8* pssid, u8 ussidlen, u8* pdev_raddr )
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - issue_p2p_provision_request");
 	unsigned char category = RTW_WLAN_CATEGORY_PUBLIC;
 	u8			action = P2P_PUB_ACTION_ACTION;
 	u8			dialogToken = 1;
@@ -5774,7 +5774,7 @@ void issue_p2p_provision_request(_adapter *padapter, u8* pssid, u8 ussidlen, u8*
 
 u8 is_matched_in_profilelist( u8* peermacaddr, struct profile_info* profileinfo )
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - is_matched_in_profilelist");
 	u8 i, match_result = 0;
 
 	DBG_871X( "[%s] peermac = %.2X %.2X %.2X %.2X %.2X %.2X\n", __FUNCTION__,
@@ -5797,7 +5797,7 @@ u8 is_matched_in_profilelist( u8* peermacaddr, struct profile_info* profileinfo 
 
 void issue_probersp_p2p(_adapter *padapter, unsigned char *da)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - issue_probersp_p2p");
 	struct xmit_frame			*pmgntframe;
 	struct pkt_attrib			*pattrib;
 	unsigned char					*pframe;
@@ -6127,7 +6127,7 @@ void issue_probersp_p2p(_adapter *padapter, unsigned char *da)
 
 int _issue_probereq_p2p(_adapter *padapter, u8 *da, int wait_ack)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - _issue_probereq_p2p");
 	int ret = _FAIL;
 	struct xmit_frame		*pmgntframe;
 	struct pkt_attrib		*pattrib;
@@ -6461,7 +6461,7 @@ exit:
 
 inline void issue_probereq_p2p(_adapter *adapter, u8 *da)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - issue_probereq_p2p");
 	_issue_probereq_p2p(adapter, da, _FALSE);
 }
 
@@ -6472,7 +6472,7 @@ inline void issue_probereq_p2p(_adapter *adapter, u8 *da)
  */
 int issue_probereq_p2p_ex(_adapter *adapter, u8 *da, int try_cnt, int wait_ms)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - issue_probereq_p2p_ex");
 	int ret;
 	int i = 0;
 	u32 start = rtw_get_current_time();
@@ -6516,7 +6516,7 @@ exit:
 
 s32 rtw_action_public_decache(union recv_frame *rframe, u8 token_offset)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - rtw_action_public_decache");
 	_adapter *adapter = rframe->u.hdr.adapter;
 	struct mlme_ext_priv *mlmeext = &(adapter->mlmeextpriv);
 	u8 *frame = rframe->u.hdr.rx_data;
@@ -6542,7 +6542,7 @@ s32 rtw_action_public_decache(union recv_frame *rframe, u8 token_offset)
 
 unsigned int on_action_public_p2p(union recv_frame *precv_frame)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - on_action_public_p2p");
 	_adapter *padapter = precv_frame->u.hdr.adapter;
 	u8 *pframe = precv_frame->u.hdr.rx_data;
 	uint len = precv_frame->u.hdr.len;
@@ -6983,7 +6983,7 @@ exit:
 
 unsigned int on_action_public_vendor(union recv_frame *precv_frame)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - on_action_public_vendor");
 	unsigned int ret = _FAIL;
 	u8 *pframe = precv_frame->u.hdr.rx_data;
 	uint frame_len = precv_frame->u.hdr.len;
@@ -7005,7 +7005,7 @@ exit:
 
 unsigned int on_action_public_default(union recv_frame *precv_frame, u8 action)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - on_action_public_default");
 	unsigned int ret = _FAIL;
 	u8 *pframe = precv_frame->u.hdr.rx_data;
 	uint frame_len = precv_frame->u.hdr.len;
@@ -7033,7 +7033,7 @@ exit:
 
 unsigned int on_action_public(_adapter *padapter, union recv_frame *precv_frame)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - on_action_public");
 	unsigned int ret = _FAIL;
 	u8 *pframe = precv_frame->u.hdr.rx_data;
 	uint frame_len = precv_frame->u.hdr.len;
@@ -7073,7 +7073,7 @@ exit:
 
 unsigned int OnAction_ht(_adapter *padapter, union recv_frame *precv_frame)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - OnAction_ht");
 	u8 *pframe = precv_frame->u.hdr.rx_data;
 	uint frame_len = precv_frame->u.hdr.len;
 	u8 *frame_body = pframe + sizeof(struct rtw_ieee80211_hdr_3addr);
@@ -7115,7 +7115,7 @@ exit:
 #ifdef CONFIG_IEEE80211W
 unsigned int OnAction_sa_query(_adapter *padapter, union recv_frame *precv_frame)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - OnAction_sa_query");
 	u8 *pframe = precv_frame->u.hdr.rx_data;
 	struct rx_pkt_attrib *pattrib = &precv_frame->u.hdr.attrib;
 	struct mlme_ext_priv	*pmlmeext = &(padapter->mlmeextpriv);
@@ -7162,13 +7162,13 @@ unsigned int OnAction_sa_query(_adapter *padapter, union recv_frame *precv_frame
 
 unsigned int OnAction_wmm(_adapter *padapter, union recv_frame *precv_frame)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - OnAction_wmm");
 	return _SUCCESS;
 }
 
 unsigned int OnAction_vht(_adapter *padapter, union recv_frame *precv_frame)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - OnAction_vht");
 #ifdef CONFIG_80211AC_VHT
 	struct rx_pkt_attrib *prxattrib = &precv_frame->u.hdr.attrib;
 	u8 *pframe = precv_frame->u.hdr.rx_data;
@@ -7213,7 +7213,7 @@ exit:
 
 unsigned int OnAction_p2p(_adapter *padapter, union recv_frame *precv_frame)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - OnAction_p2p");
 #ifdef CONFIG_P2P
 	u8 *frame_body;
 	u8 category, OUI_Subtype, dialogToken=0;
@@ -7281,7 +7281,7 @@ unsigned int OnAction_p2p(_adapter *padapter, union recv_frame *precv_frame)
 
 unsigned int OnAction(_adapter *padapter, union recv_frame *precv_frame)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - OnAction");
 	int i;
 	unsigned char	category;
 	struct action_handler *ptable;
@@ -7307,7 +7307,7 @@ unsigned int OnAction(_adapter *padapter, union recv_frame *precv_frame)
 
 unsigned int DoReserved(_adapter *padapter, union recv_frame *precv_frame)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - DoReserved");
 
 	//DBG_871X("rcvd mgt frame(%x, %x)\n", (GetFrameSubType(pframe) >> 4), *(unsigned int *)GetAddr1Ptr(pframe));
 	return _SUCCESS;
@@ -7315,7 +7315,7 @@ unsigned int DoReserved(_adapter *padapter, union recv_frame *precv_frame)
 
 struct xmit_frame *_alloc_mgtxmitframe(struct xmit_priv *pxmitpriv, bool once)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - _alloc_mgtxmitframe");
 	struct xmit_frame *pmgntframe;
 	struct xmit_buf *pxmitbuf;
 
@@ -7348,13 +7348,13 @@ exit:
 
 inline struct xmit_frame *alloc_mgtxmitframe(struct xmit_priv *pxmitpriv)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - alloc_mgtxmitframe");
 	return _alloc_mgtxmitframe(pxmitpriv, _FALSE);
 }
 
 inline struct xmit_frame *alloc_mgtxmitframe_once(struct xmit_priv *pxmitpriv)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - alloc_mgtxmitframe_once");
 	return _alloc_mgtxmitframe(pxmitpriv, _TRUE);
 }
 
@@ -7367,7 +7367,7 @@ Following are some TX fuctions for WiFi MLME
 
 void update_mgnt_tx_rate(_adapter *padapter, u8 rate)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - update_mgnt_tx_rate");
 	struct mlme_ext_priv	*pmlmeext = &(padapter->mlmeextpriv);
 
 	pmlmeext->tx_rate = rate;
@@ -7377,7 +7377,7 @@ void update_mgnt_tx_rate(_adapter *padapter, u8 rate)
 
 void update_monitor_frame_attrib(_adapter *padapter, struct pkt_attrib *pattrib)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - update_monitor_frame_attrib");
 	HAL_DATA_TYPE	*pHalData = GET_HAL_DATA(padapter);
 	u8	wireless_mode;
 	struct mlme_ext_priv	*pmlmeext = &(padapter->mlmeextpriv);
@@ -7447,7 +7447,7 @@ void update_monitor_frame_attrib(_adapter *padapter, struct pkt_attrib *pattrib)
 
 void update_mgntframe_attrib(_adapter *padapter, struct pkt_attrib *pattrib)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - update_mgntframe_attrib");
 	u8	wireless_mode;
 	struct mlme_ext_priv	*pmlmeext = &(padapter->mlmeextpriv);
 	struct xmit_priv 		*pxmitpriv = &padapter->xmitpriv;
@@ -7505,7 +7505,7 @@ void update_mgntframe_attrib(_adapter *padapter, struct pkt_attrib *pattrib)
 
 void update_mgntframe_attrib_addr(_adapter *padapter, struct xmit_frame *pmgntframe)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - update_mgntframe_attrib_addr");
 	u8	*pframe;
 	struct pkt_attrib	*pattrib = &pmgntframe->attrib;
 
@@ -7517,7 +7517,7 @@ void update_mgntframe_attrib_addr(_adapter *padapter, struct xmit_frame *pmgntfr
 
 void dump_mgntframe(_adapter *padapter, struct xmit_frame *pmgntframe)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - dump_mgntframe");
 	if (RTW_CANNOT_RUN(padapter)) {
 		rtw_free_xmitbuf(&padapter->xmitpriv, pmgntframe->pxmitbuf);
 		rtw_free_xmitframe(&padapter->xmitpriv, pmgntframe);
@@ -7529,7 +7529,7 @@ void dump_mgntframe(_adapter *padapter, struct xmit_frame *pmgntframe)
 
 s32 dump_mgntframe_and_wait(_adapter *padapter, struct xmit_frame *pmgntframe, int timeout_ms)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - dump_mgntframe_and_wait");
 	s32 ret = _FAIL;
 	_irqL irqL;
 	struct xmit_priv *pxmitpriv = &padapter->xmitpriv;	
@@ -7559,7 +7559,7 @@ s32 dump_mgntframe_and_wait(_adapter *padapter, struct xmit_frame *pmgntframe, i
 
 s32 dump_mgntframe_and_wait_ack(_adapter *padapter, struct xmit_frame *pmgntframe)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - dump_mgntframe_and_wait_ack");
 #ifdef CONFIG_XMIT_ACK
 	static u8 seq_no = 0;
 	s32 ret = _FAIL;
@@ -7602,7 +7602,7 @@ s32 dump_mgntframe_and_wait_ack(_adapter *padapter, struct xmit_frame *pmgntfram
 
 s32 dump_mgntframe_and_wait_ack_timeout(_adapter *padapter, struct xmit_frame *pmgntframe, int timeout_ms)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - dump_mgntframe_and_wait_ack_timeout");
 #ifdef CONFIG_XMIT_ACK
 	static u8 seq_no = 0;
 	s32 ret = _FAIL;
@@ -7644,7 +7644,7 @@ s32 dump_mgntframe_and_wait_ack_timeout(_adapter *padapter, struct xmit_frame *p
 
 int update_hidden_ssid(u8 *ies, u32 ies_len, u8 hidden_ssid_mode)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - update_hidden_ssid");
 	u8 *ssid_ie;
 	sint ssid_len_ori;
 	int len_diff = 0;
@@ -7683,7 +7683,7 @@ int update_hidden_ssid(u8 *ies, u32 ies_len, u8 hidden_ssid_mode)
 
 void issue_beacon(_adapter *padapter, int timeout_ms)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - issue_beacon");
 	struct xmit_frame	*pmgntframe;
 	struct pkt_attrib	*pattrib;
 	unsigned char	*pframe;
@@ -7992,7 +7992,7 @@ _issue_bcn:
 
 void issue_probersp(_adapter *padapter, unsigned char *da, u8 is_valid_p2p_probereq)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - issue_probersp");
 	struct xmit_frame			*pmgntframe;
 	struct pkt_attrib			*pattrib;
 	unsigned char					*pframe;
@@ -8271,7 +8271,7 @@ void issue_probersp(_adapter *padapter, unsigned char *da, u8 is_valid_p2p_probe
 
 int _issue_probereq(_adapter *padapter, NDIS_802_11_SSID *pssid, u8 *da, u8 ch, bool append_wps, int wait_ack)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - _issue_probereq");
 	int ret = _FAIL;
 	struct xmit_frame		*pmgntframe;
 	struct pkt_attrib		*pattrib;
@@ -8380,7 +8380,7 @@ exit:
 
 inline void issue_probereq(_adapter *padapter, NDIS_802_11_SSID *pssid, u8 *da)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - issue_probereq");
 	_issue_probereq(padapter, pssid, da, 0, 1, _FALSE);
 }
 
@@ -8392,7 +8392,7 @@ inline void issue_probereq(_adapter *padapter, NDIS_802_11_SSID *pssid, u8 *da)
 int issue_probereq_ex(_adapter *padapter, NDIS_802_11_SSID *pssid, u8 *da, u8 ch, bool append_wps,
 	int try_cnt, int wait_ms)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - issue_probereq_ex");
 	int ret = _FAIL;
 	int i = 0;
 	u32 start = rtw_get_current_time();
@@ -8438,7 +8438,7 @@ exit:
 // if psta == NULL, indiate we are station(client) now...
 void issue_auth(_adapter *padapter, struct sta_info *psta, unsigned short status)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - issue_auth");
 	struct xmit_frame			*pmgntframe;
 	struct pkt_attrib			*pattrib;
 	unsigned char					*pframe;
@@ -8587,7 +8587,7 @@ void issue_auth(_adapter *padapter, struct sta_info *psta, unsigned short status
 
 void issue_asocrsp(_adapter *padapter, unsigned short status, struct sta_info *pstat, int pkt_type)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - issue_asocrsp");
 #ifdef CONFIG_AP_MODE
 	struct xmit_frame	*pmgntframe;
 	struct rtw_ieee80211_hdr	*pwlanhdr;
@@ -8825,7 +8825,7 @@ void issue_asocrsp(_adapter *padapter, unsigned short status, struct sta_info *p
 
 void issue_assocreq(_adapter *padapter)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - issue_assocreq");
 	int ret = _FAIL;
 	struct xmit_frame				*pmgntframe;
 	struct pkt_attrib				*pattrib;
@@ -9276,7 +9276,7 @@ exit:
 //when wait_ack is ture, this function shoule be called at process context
 static int _issue_nulldata(_adapter *padapter, unsigned char *da, unsigned int power_mode, int wait_ack)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - _issue_nulldata");
 	int ret = _FAIL;
 	struct xmit_frame			*pmgntframe;
 	struct pkt_attrib			*pattrib;
@@ -9369,7 +9369,7 @@ exit:
  */
 int issue_nulldata(_adapter *padapter, unsigned char *da, unsigned int power_mode, int try_cnt, int wait_ms)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - issue_nulldata");
 	int ret = _FAIL;
 	int i = 0;
 	u32 start = rtw_get_current_time();
@@ -9438,7 +9438,7 @@ exit:
  */
 s32 issue_nulldata_in_interrupt(PADAPTER padapter, u8 *da, unsigned int power_mode)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - issue_nulldata_in_interrupt");
 	int ret;
 	struct mlme_ext_priv *pmlmeext;
 	struct mlme_ext_info *pmlmeinfo;
@@ -9459,7 +9459,7 @@ s32 issue_nulldata_in_interrupt(PADAPTER padapter, u8 *da, unsigned int power_mo
 //when wait_ack is ture, this function shoule be called at process context
 static int _issue_qos_nulldata(_adapter *padapter, unsigned char *da, u16 tid, int wait_ack)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - _issue_qos_nulldata");
 	int ret = _FAIL;
 	struct xmit_frame			*pmgntframe;
 	struct pkt_attrib			*pattrib;
@@ -9554,7 +9554,7 @@ exit:
  */
 int issue_qos_nulldata(_adapter *padapter, unsigned char *da, u16 tid, int try_cnt, int wait_ms)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - issue_qos_nulldata");
 	int ret = _FAIL;
 	int i = 0;
 	u32 start = rtw_get_current_time();
@@ -9605,7 +9605,7 @@ exit:
 
 static int _issue_deauth(_adapter *padapter, unsigned char *da, unsigned short reason, u8 wait_ack, u8 key_type)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - _issue_deauth");
 	struct xmit_frame			*pmgntframe;
 	struct pkt_attrib			*pattrib;
 	unsigned char					*pframe;
@@ -9683,7 +9683,7 @@ exit:
 
 int issue_deauth(_adapter *padapter, unsigned char *da, unsigned short reason)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - issue_deauth");
 	DBG_871X("%s to "MAC_FMT"\n", __func__, MAC_ARG(da));
 	return _issue_deauth(padapter, da, reason, _FALSE, IEEE80211W_RIGHT_KEY);
 }
@@ -9691,7 +9691,7 @@ int issue_deauth(_adapter *padapter, unsigned char *da, unsigned short reason)
 #ifdef CONFIG_IEEE80211W
 int issue_deauth_11w(_adapter *padapter, unsigned char *da, unsigned short reason, u8 key_type)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - issue_deauth_11w");
 	DBG_871X("%s to "MAC_FMT"\n", __func__, MAC_ARG(da));
 	return _issue_deauth(padapter, da, reason, _FALSE, key_type);
 }
@@ -9705,7 +9705,7 @@ int issue_deauth_11w(_adapter *padapter, unsigned char *da, unsigned short reaso
 int issue_deauth_ex(_adapter *padapter, u8 *da, unsigned short reason, int try_cnt,
 	int wait_ms)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - issue_deauth_ex");
 	int ret = _FAIL;
 	int i = 0;
 	u32 start = rtw_get_current_time();
@@ -9750,7 +9750,7 @@ exit:
 
 void issue_action_spct_ch_switch(_adapter *padapter, u8 *ra, u8 new_ch, u8 ch_offset)
 {	
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - issue_action_spct_ch_switch");
 	_irqL	irqL;
 	_list		*plist, *phead;
 	struct xmit_frame			*pmgntframe;
@@ -9818,7 +9818,7 @@ void issue_action_spct_ch_switch(_adapter *padapter, u8 *ra, u8 new_ch, u8 ch_of
 #ifdef CONFIG_IEEE80211W
 void issue_action_SA_Query(_adapter *padapter, unsigned char *raddr, unsigned char action, unsigned short tid, u8 key_type)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - issue_action_SA_Query");
 	u8	category = RTW_WLAN_CATEGORY_SA_QUERY;
 	u16	reason_code;
 	struct xmit_frame		*pmgntframe;
@@ -9922,7 +9922,7 @@ void issue_action_SA_Query(_adapter *padapter, unsigned char *raddr, unsigned ch
 static int issue_action_ba(_adapter *padapter, unsigned char *raddr, unsigned char action
 	, u8 tid, u8 size, u16 status, u8 initiator, int wait_ack)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - issue_action_ba");
 	int ret = _FAIL;
 	u8	category = RTW_WLAN_CATEGORY_BACK;
 	u16	start_seq;
@@ -10079,7 +10079,7 @@ exit:
  */
 inline void issue_addba_req(_adapter *adapter, unsigned char *ra, u8 tid)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - issue_addba_req");
 	issue_action_ba(adapter, ra, RTW_WLAN_ACTION_ADDBA_REQ
 		, tid
 		, 0 /* unused */
@@ -10102,7 +10102,7 @@ inline void issue_addba_req(_adapter *adapter, unsigned char *ra, u8 tid)
  */
 inline void issue_addba_rsp(_adapter *adapter, unsigned char *ra, u8 tid, u16 status, u8 size)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - issue_addba_rsp");
 	issue_action_ba(adapter, ra, RTW_WLAN_ACTION_ADDBA_RESP
 		, tid
 		, size
@@ -10127,7 +10127,7 @@ inline void issue_addba_rsp(_adapter *adapter, unsigned char *ra, u8 tid, u16 st
  */
 inline u8 issue_addba_rsp_wait_ack(_adapter *adapter, unsigned char *ra, u8 tid, u16 status, u8 size, int try_cnt, int wait_ms)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - issue_addba_rsp_wait_ack");
 	int ret = _FAIL;
 	int i = 0;
 	u32 start = rtw_get_current_time();
@@ -10181,7 +10181,7 @@ exit:
  */
 inline void issue_del_ba(_adapter *adapter, unsigned char *ra, u8 tid, u16 reason, u8 initiator)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - issue_del_ba");
 	issue_action_ba(adapter, ra, RTW_WLAN_ACTION_DELBA
 		, tid
 		, 0 /* unused */
@@ -10207,7 +10207,7 @@ inline void issue_del_ba(_adapter *adapter, unsigned char *ra, u8 tid, u16 reaso
 int issue_del_ba_ex(_adapter *adapter, unsigned char *ra, u8 tid, u16 reason, u8 initiator
 	, int try_cnt, int wait_ms)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - issue_del_ba_ex");
 	int ret = _FAIL;
 	int i = 0;
 	u32 start = rtw_get_current_time();
@@ -10252,7 +10252,7 @@ exit:
 
 static void issue_action_BSSCoexistPacket(_adapter *padapter)
 {	
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - issue_action_BSSCoexistPacket");
 	_irqL	irqL;
 	_list		*plist, *phead;
 	unsigned char category, action;
@@ -10414,7 +10414,7 @@ static void issue_action_BSSCoexistPacket(_adapter *padapter)
 // Spatial Multiplexing Powersave (SMPS) action frame
 int _issue_action_SM_PS(_adapter *padapter ,  unsigned char *raddr , u8 NewMimoPsMode ,  u8 wait_ack)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - _issue_action_SM_PS");
 
 	int ret = _FAIL;
 	unsigned char category = RTW_WLAN_CATEGORY_HT;
@@ -10509,7 +10509,7 @@ int _issue_action_SM_PS(_adapter *padapter ,  unsigned char *raddr , u8 NewMimoP
  */
 int issue_action_SM_PS_wait_ack(_adapter *padapter, unsigned char *raddr, u8 NewMimoPsMode, int try_cnt, int wait_ms)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - issue_action_SM_PS_wait_ack");
 	int ret = _FAIL;
 	int i = 0;
 	u32 start = rtw_get_current_time();
@@ -10554,7 +10554,7 @@ exit:
 
 int issue_action_SM_PS(_adapter *padapter ,  unsigned char *raddr , u8 NewMimoPsMode )
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - issue_action_SM_PS");
 	DBG_871X("%s to "MAC_FMT"\n", __func__, MAC_ARG(raddr));
 	return _issue_action_SM_PS(padapter, raddr, NewMimoPsMode , _FALSE );
 }
@@ -10576,7 +10576,7 @@ int issue_action_SM_PS(_adapter *padapter ,  unsigned char *raddr , u8 NewMimoPs
 static unsigned int _send_delba_sta_tid(_adapter *adapter, u8 initiator, struct sta_info *sta, u8 tid
 	, u8 force, int wait_ack)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - _send_delba_sta_tid");
 	int ret = _SUCCESS;
 
 	if (sta == NULL) {
@@ -10620,20 +10620,20 @@ exit:
 inline unsigned int send_delba_sta_tid(_adapter *adapter, u8 initiator, struct sta_info *sta, u8 tid
 	, u8 force)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - send_delba_sta_tid");
 	return _send_delba_sta_tid(adapter, initiator, sta, tid, force, 0);
 }
 
 inline unsigned int send_delba_sta_tid_wait_ack(_adapter *adapter, u8 initiator, struct sta_info *sta, u8 tid
 	, u8 force)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - send_delba_sta_tid_wait_ack");
 	return _send_delba_sta_tid(adapter, initiator, sta, tid, force, 1);
 }
 
 unsigned int send_delba(_adapter *padapter, u8 initiator, u8 *addr)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - send_delba");
 	struct sta_priv *pstapriv = &padapter->stapriv;
 	struct sta_info *psta = NULL;
 	struct mlme_ext_priv	*pmlmeext = &padapter->mlmeextpriv;
@@ -10662,7 +10662,7 @@ unsigned int send_delba(_adapter *padapter, u8 initiator, u8 *addr)
 
 unsigned int send_beacon(_adapter *padapter)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - send_beacon");
 	u8	bxmitok = _FALSE;
 	int	issue=0;
 	int poll = 0;
@@ -10748,7 +10748,7 @@ BOOLEAN IsLegal5GChannel(
 	IN PADAPTER			Adapter,
 	IN u8			channel)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - IsLegal5GChannel");
 	
 	int i=0;
 	u8 Channel_5G[45] = {36,38,40,42,44,46,48,50,52,54,56,58,
@@ -10764,7 +10764,7 @@ BOOLEAN IsLegal5GChannel(
 //collect bss info from Beacon and Probe request/response frames.
 u8 collect_bss_info(_adapter *padapter, union recv_frame *precv_frame, WLAN_BSSID_EX *bssid)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - collect_bss_info");
 	int	i;
 	u32	len;
 	u8	*p;
@@ -11014,7 +11014,7 @@ u8 collect_bss_info(_adapter *padapter, union recv_frame *precv_frame, WLAN_BSSI
 
 void start_create_ibss(_adapter* padapter)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - start_create_ibss");
 	unsigned short	caps;
 	u8	val8;
 	u8	join_type;
@@ -11085,7 +11085,7 @@ void start_create_ibss(_adapter* padapter)
 
 void start_clnt_join(_adapter* padapter)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - start_clnt_join");
 	unsigned short	caps;
 	u8	val8;
 	struct mlme_ext_priv	*pmlmeext = &padapter->mlmeextpriv;
@@ -11196,7 +11196,7 @@ void start_clnt_join(_adapter* padapter)
 
 void start_clnt_auth(_adapter* padapter)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - start_clnt_auth");
 	struct mlme_ext_priv	*pmlmeext = &padapter->mlmeextpriv;
 	struct mlme_ext_info	*pmlmeinfo = &(pmlmeext->mlmext_info);
 
@@ -11222,7 +11222,7 @@ void start_clnt_auth(_adapter* padapter)
 
 void start_clnt_assoc(_adapter* padapter)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - start_clnt_assoc");
 	struct mlme_ext_priv	*pmlmeext = &padapter->mlmeextpriv;
 	struct mlme_ext_info	*pmlmeinfo = &(pmlmeext->mlmext_info);
 
@@ -11238,7 +11238,7 @@ void start_clnt_assoc(_adapter* padapter)
 
 unsigned int receive_disconnect(_adapter *padapter, unsigned char *MacAddr, unsigned short reason, u8 locally_generated)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - receive_disconnect");
 	struct mlme_ext_priv	*pmlmeext = &padapter->mlmeextpriv;
 	struct mlme_ext_info	*pmlmeinfo = &(pmlmeext->mlmext_info);
 
@@ -11265,7 +11265,7 @@ unsigned int receive_disconnect(_adapter *padapter, unsigned char *MacAddr, unsi
 #ifdef CONFIG_80211D
 static void process_80211d(PADAPTER padapter, WLAN_BSSID_EX *bssid)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - process_80211d");
 	struct registry_priv *pregistrypriv;
 	struct mlme_ext_priv *pmlmeext;
 	RT_CHANNEL_INFO *chplan_new;
@@ -11555,7 +11555,7 @@ Following are the functions to report events
 
 void report_survey_event(_adapter *padapter, union recv_frame *precv_frame)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - report_survey_event");
 	struct cmd_obj *pcmd_obj;
 	u8	*pevtcmd;
 	u32 cmdsz;
@@ -11622,7 +11622,7 @@ void report_survey_event(_adapter *padapter, union recv_frame *precv_frame)
 
 void report_surveydone_event(_adapter *padapter)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - report_surveydone_event");
 	struct cmd_obj *pcmd_obj;
 	u8	*pevtcmd;
 	u32 cmdsz;
@@ -11670,7 +11670,7 @@ void report_surveydone_event(_adapter *padapter)
 
 u32 report_join_res(_adapter *padapter, int res)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - report_join_res");
 	struct cmd_obj *pcmd_obj;
 	u8	*pevtcmd;
 	u32 cmdsz;
@@ -11723,7 +11723,7 @@ exit:
 
 void report_wmm_edca_update(_adapter *padapter)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - report_wmm_edca_update");
 	struct cmd_obj *pcmd_obj;
 	u8	*pevtcmd;
 	u32 cmdsz;
@@ -11770,7 +11770,7 @@ void report_wmm_edca_update(_adapter *padapter)
 
 u32 report_del_sta_event(_adapter *padapter, unsigned char *MacAddr, unsigned short reason, bool enqueue, u8 locally_generated)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - report_del_sta_event");
 	struct cmd_obj *pcmd_obj;
 	u8	*pevtcmd;
 	u32 cmdsz;
@@ -11839,7 +11839,7 @@ exit:
 
 void report_add_sta_event(_adapter *padapter, unsigned char *MacAddr)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - report_add_sta_event");
 	struct cmd_obj *pcmd_obj;
 	u8	*pevtcmd;
 	u32 cmdsz;
@@ -11887,7 +11887,7 @@ void report_add_sta_event(_adapter *padapter, unsigned char *MacAddr)
 
 bool rtw_port_switch_chk(_adapter *adapter)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - rtw_port_switch_chk");
 	bool switch_needed = _FALSE;
 #ifdef CONFIG_CONCURRENT_MODE
 #ifdef CONFIG_RUNTIME_PORT_SWITCH
@@ -11976,7 +11976,7 @@ Following are the event callback functions
 //for sta/adhoc mode
 void update_sta_info(_adapter *padapter, struct sta_info *psta)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - update_sta_info");
 	_irqL	irqL;
 	struct mlme_priv *pmlmepriv = &(padapter->mlmepriv);
 	struct mlme_ext_priv	*pmlmeext = &padapter->mlmeextpriv;
@@ -12051,7 +12051,7 @@ void update_sta_info(_adapter *padapter, struct sta_info *psta)
 
 static void rtw_mlmeext_disconnect(_adapter *padapter)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - rtw_mlmeext_disconnect");
 	struct mlme_priv		*pmlmepriv = &padapter->mlmepriv;
 	struct mlme_ext_priv	*pmlmeext = &padapter->mlmeextpriv;
 	struct mlme_ext_info	*pmlmeinfo = &(pmlmeext->mlmext_info);
@@ -12133,7 +12133,7 @@ static void rtw_mlmeext_disconnect(_adapter *padapter)
 
 void mlmeext_joinbss_event_callback(_adapter *padapter, int join_res)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - mlmeext_joinbss_event_callback");
 	struct sta_info		*psta, *psta_bmc;
 	struct mlme_ext_priv	*pmlmeext = &padapter->mlmeextpriv;
 	struct mlme_ext_info	*pmlmeinfo = &(pmlmeext->mlmext_info);
@@ -12245,7 +12245,7 @@ exit_mlmeext_joinbss_event_callback:
 //currently only adhoc mode will go here
 void mlmeext_sta_add_event_callback(_adapter *padapter, struct sta_info *psta)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - mlmeext_sta_add_event_callback");
 	struct mlme_ext_priv	*pmlmeext = &(padapter->mlmeextpriv);
 	struct mlme_ext_info	*pmlmeinfo = &(pmlmeext->mlmext_info);
 	u8	join_type;
@@ -12292,7 +12292,7 @@ void mlmeext_sta_add_event_callback(_adapter *padapter, struct sta_info *psta)
 
 void mlmeext_sta_del_event_callback(_adapter *padapter)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - mlmeext_sta_del_event_callback");
 	struct mlme_ext_priv	*pmlmeext = &padapter->mlmeextpriv;
 	struct mlme_ext_info	*pmlmeinfo = &(pmlmeext->mlmext_info);
 
@@ -12310,7 +12310,7 @@ Following are the functions for the timer handlers
 *****************************************************************************/
 void _linked_info_dump(_adapter *padapter)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - _linked_info_dump");
 	int i;
 	struct mlme_ext_priv    *pmlmeext = &padapter->mlmeextpriv;
 	struct mlme_ext_info    *pmlmeinfo = &(pmlmeext->mlmext_info);
@@ -12362,7 +12362,7 @@ void _linked_info_dump(_adapter *padapter)
 }
 void rtw_delba_check(_adapter *padapter, struct sta_info *psta, u8 from_timer)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - rtw_delba_check");
 	int	i = 0;
 	int ret = _SUCCESS;
 	struct mlme_ext_priv	*pmlmeext = &padapter->mlmeextpriv;
@@ -12403,7 +12403,7 @@ void rtw_delba_check(_adapter *padapter, struct sta_info *psta, u8 from_timer)
 
 u8 chk_ap_is_alive(_adapter *padapter, struct sta_info *psta)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - chk_ap_is_alive");
 	u8 ret = _FALSE;
 	int i = 0;
 	struct mlme_ext_priv	*pmlmeext = &padapter->mlmeextpriv;
@@ -12455,7 +12455,7 @@ u8 chk_ap_is_alive(_adapter *padapter, struct sta_info *psta)
 
 u8 chk_adhoc_peer_is_alive(struct sta_info *psta)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - chk_adhoc_peer_is_alive");
 	u8 ret = _TRUE;
 
 	#ifdef DBG_EXPIRATION_CHK
@@ -12488,7 +12488,7 @@ u8 chk_adhoc_peer_is_alive(struct sta_info *psta)
 #ifdef CONFIG_TDLS
 u8 chk_tdls_peer_sta_is_alive(_adapter *padapter, struct sta_info *psta)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - chk_tdls_peer_sta_is_alive");
 	if ((psta->sta_stats.rx_data_pkts == psta->sta_stats.last_rx_data_pkts)
 		&& (psta->sta_stats.rx_tdls_disc_rsp_pkts == psta->sta_stats.last_rx_tdls_disc_rsp_pkts))
 		return _FALSE;
@@ -12498,7 +12498,7 @@ u8 chk_tdls_peer_sta_is_alive(_adapter *padapter, struct sta_info *psta)
 
 void linked_status_chk_tdls(_adapter *padapter)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - linked_status_chk_tdls");
 	struct candidate_pool {
 		struct sta_info *psta;
 		u8 addr[ETH_ALEN];
@@ -12598,7 +12598,7 @@ void linked_status_chk_tdls(_adapter *padapter)
 //from_timer == 1 means driver is in LPS
 void linked_status_chk(_adapter *padapter, u8 from_timer)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - linked_status_chk");
 	u32	i;
 	struct sta_info		*psta;
 	struct xmit_priv		*pxmitpriv = &(padapter->xmitpriv);
@@ -12797,7 +12797,7 @@ void linked_status_chk(_adapter *padapter, u8 from_timer)
 
 void survey_timer_hdl(_adapter *padapter)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - survey_timer_hdl");
 	struct cmd_obj *cmd;
 	struct sitesurvey_parm *psurveyPara;
 	struct cmd_priv *pcmdpriv = &padapter->cmdpriv;
@@ -12830,7 +12830,7 @@ exit:
 
 void link_timer_hdl(_adapter *padapter)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - link_timer_hdl");
 	//static unsigned int		rx_pkt = 0;
 	//static u64				tx_cnt = 0;
 	//struct xmit_priv		*pxmitpriv = &(padapter->xmitpriv);
@@ -12888,7 +12888,7 @@ void link_timer_hdl(_adapter *padapter)
 
 void addba_timer_hdl(struct sta_info *psta)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - addba_timer_hdl");
 #ifdef CONFIG_80211N_HT
 	struct ht_priv	*phtpriv;
 
@@ -12909,7 +12909,7 @@ void addba_timer_hdl(struct sta_info *psta)
 #ifdef CONFIG_IEEE80211W
 void report_sta_timeout_event(_adapter *padapter, u8 *MacAddr, unsigned short reason)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - report_sta_timeout_event");
 	struct cmd_obj *pcmd_obj;
 	u8	*pevtcmd;
 	u32 cmdsz;
@@ -12967,7 +12967,7 @@ void report_sta_timeout_event(_adapter *padapter, u8 *MacAddr, unsigned short re
 
 void clnt_sa_query_timeout(_adapter *padapter)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - clnt_sa_query_timeout");
 
 	rtw_disassoc_cmd(padapter, 0, _TRUE);
 	rtw_indicate_disconnect(padapter, 0,  _FALSE);
@@ -12978,7 +12978,7 @@ void clnt_sa_query_timeout(_adapter *padapter)
 
 void sa_query_timer_hdl(struct sta_info *psta)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - sa_query_timer_hdl");
 	_adapter *padapter = psta->padapter;
 	_irqL irqL;
 	struct sta_priv *pstapriv = &padapter->stapriv;
@@ -12995,14 +12995,14 @@ void sa_query_timer_hdl(struct sta_info *psta)
 
 u8 NULL_hdl(_adapter *padapter, u8 *pbuf)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - NULL_hdl");
 	return H2C_SUCCESS;
 }
 
 #ifdef CONFIG_AUTO_AP_MODE
 void rtw_start_auto_ap(_adapter *adapter)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - rtw_start_auto_ap");
 	DBG_871X("%s\n", __FUNCTION__);
 
 	rtw_set_802_11_infrastructure_mode(adapter, Ndis802_11APMode);
@@ -13012,7 +13012,7 @@ void rtw_start_auto_ap(_adapter *adapter)
 
 static int rtw_auto_ap_start_beacon(_adapter *adapter)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - rtw_auto_ap_start_beacon");
 	int ret=0;
 	u8 *pbuf = NULL;
 	uint len;
@@ -13115,7 +13115,7 @@ static int rtw_auto_ap_start_beacon(_adapter *adapter)
 
 u8 setopmode_hdl(_adapter *padapter, u8 *pbuf)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - setopmode_hdl");
 	u8	type;
 	struct mlme_ext_priv	*pmlmeext = &padapter->mlmeextpriv;
 	struct mlme_ext_info	*pmlmeinfo = &(pmlmeext->mlmext_info);
@@ -13185,7 +13185,7 @@ u8 setopmode_hdl(_adapter *padapter, u8 *pbuf)
 
 u8 createbss_hdl(_adapter *padapter, u8 *pbuf)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - createbss_hdl");
 	struct mlme_ext_priv	*pmlmeext = &padapter->mlmeextpriv;
 	struct mlme_ext_info	*pmlmeinfo = &(pmlmeext->mlmext_info);
 	WLAN_BSSID_EX	*pnetwork = (WLAN_BSSID_EX*)(&(pmlmeinfo->network));
@@ -13255,7 +13255,7 @@ exit:
 
 u8 join_cmd_hdl(_adapter *padapter, u8 *pbuf)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - join_cmd_hdl");
 	u8	join_type;
 	PNDIS_802_11_VARIABLE_IEs	pIE;
 	struct registry_priv	*pregpriv = &padapter->registrypriv;
@@ -13439,7 +13439,7 @@ u8 join_cmd_hdl(_adapter *padapter, u8 *pbuf)
 
 u8 disconnect_hdl(_adapter *padapter, unsigned char *pbuf)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - disconnect_hdl");
 	struct disconnect_parm *param = (struct disconnect_parm *)pbuf;
 	struct mlme_ext_priv	*pmlmeext = &padapter->mlmeextpriv;
 	struct mlme_ext_info	*pmlmeinfo = &(pmlmeext->mlmext_info);
@@ -13497,14 +13497,14 @@ static const char * const _scan_state_str[] = {
 
 const char *scan_state_str(u8 state)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - scan_state_str");
 	state = (state >= SCAN_STATE_MAX) ? SCAN_STATE_MAX : state;
 	return _scan_state_str[state];
 }
 
 static bool scan_abort_hdl(_adapter *adapter)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - scan_abort_hdl");
 	struct mlme_ext_priv *pmlmeext = &adapter->mlmeextpriv;
 	struct mlme_ext_info *pmlmeinfo = &(pmlmeext->mlmext_info);
 	struct ss_res *ss = &pmlmeext->sitesurvey_res;
@@ -13638,7 +13638,7 @@ exit:
 static int rtw_scan_ch_decision(_adapter *padapter, struct rtw_ieee80211_channel *out,
 	u32 out_num, struct rtw_ieee80211_channel *in, u32 in_num)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - rtw_scan_ch_decision");
 	int i, j;
 	int scan_ch_num = 0;
 	int set_idx;
@@ -13709,7 +13709,7 @@ static int rtw_scan_ch_decision(_adapter *padapter, struct rtw_ieee80211_channel
 
 static void sitesurvey_res_reset(_adapter *adapter, struct sitesurvey_parm *parm)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - sitesurvey_res_reset");
 	struct ss_res *ss = &adapter->mlmeextpriv.sitesurvey_res;
 	int i;
 
@@ -13882,7 +13882,7 @@ static u8 sitesurvey_pick_ch_behavior(_adapter *padapter, u8 *ch, RT_SCAN_TYPE *
 
 void site_survey(_adapter *padapter, u8 survey_channel, RT_SCAN_TYPE ScanType)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - site_survey");
 	struct mlme_ext_priv *pmlmeext = &padapter->mlmeextpriv;
 	struct mlme_ext_info *pmlmeinfo = &(pmlmeext->mlmext_info);
 
@@ -13950,7 +13950,7 @@ void site_survey(_adapter *padapter, u8 survey_channel, RT_SCAN_TYPE ScanType)
 
 void survey_done_set_ch_bw(_adapter *padapter)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - survey_done_set_ch_bw");
 	struct mlme_ext_priv *pmlmeext = &padapter->mlmeextpriv;
 	u8 cur_channel = 0;
 	u8 cur_bwmode;
@@ -14010,7 +14010,7 @@ void survey_done_set_ch_bw(_adapter *padapter)
  */
 u8 sitesurvey_ps_annc(struct dvobj_priv *dvobj, bool ps)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - sitesurvey_ps_annc");
 	_adapter *adapter;
 	int i;
 	u8 ps_anc = 0;
@@ -14040,7 +14040,7 @@ u8 sitesurvey_ps_annc(struct dvobj_priv *dvobj, bool ps)
 
 void sitesurvey_set_igi(_adapter *adapter)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - sitesurvey_set_igi");
 	struct mlme_ext_priv *mlmeext = &adapter->mlmeextpriv;
 	struct ss_res *ss = &mlmeext->sitesurvey_res;
 	u8 igi;
@@ -14094,7 +14094,7 @@ void sitesurvey_set_igi(_adapter *adapter)
 
 u8 sitesurvey_cmd_hdl(_adapter *padapter, u8 *pbuf)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - sitesurvey_cmd_hdl");
 	struct sitesurvey_parm	*pparm = (struct sitesurvey_parm *)pbuf;
 	struct dvobj_priv *dvobj = padapter->dvobj;
 	struct debug_priv *pdbgpriv = &dvobj->drv_dbg;
@@ -14455,7 +14455,7 @@ operation_by_state:
 
 u8 setauth_hdl(_adapter *padapter, unsigned char *pbuf)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - setauth_hdl");
 	struct setauth_parm		*pparm = (struct setauth_parm *)pbuf;
 	struct mlme_ext_priv	*pmlmeext = &padapter->mlmeextpriv;
 	struct mlme_ext_info	*pmlmeinfo = &(pmlmeext->mlmext_info);
@@ -14470,7 +14470,7 @@ u8 setauth_hdl(_adapter *padapter, unsigned char *pbuf)
 
 u8 setkey_hdl(_adapter *padapter, u8 *pbuf)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - setkey_hdl");
 	u16	ctrl = 0;
 	s16 cam_id = 0;
 	struct setkey_parm		*pparm = (struct setkey_parm *)pbuf;
@@ -14548,7 +14548,7 @@ enable_mc:
 
 u8 set_stakey_hdl(_adapter *padapter, u8 *pbuf)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - set_stakey_hdl");
 	u16 ctrl = 0;
 	s16 cam_id = 0;
 	bool used;
@@ -14616,7 +14616,7 @@ exit:
 
 u8 add_ba_hdl(_adapter *padapter, unsigned char *pbuf)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - add_ba_hdl");
 	struct addBaReq_parm 	*pparm = (struct addBaReq_parm *)pbuf;
 	struct mlme_ext_priv	*pmlmeext = &padapter->mlmeextpriv;
 	struct mlme_ext_info	*pmlmeinfo = &(pmlmeext->mlmext_info);
@@ -14657,7 +14657,7 @@ u8 add_ba_hdl(_adapter *padapter, unsigned char *pbuf)
 
 u8 add_ba_rsp_hdl(_adapter *padapter, unsigned char *pbuf)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - add_ba_rsp_hdl");
 	struct addBaRsp_parm *pparm = (struct addBaRsp_parm *)pbuf;
 	u8 ret = _TRUE, i = 0, try_cnt = 3, wait_ms = 50;
 	struct recv_reorder_ctrl *preorder_ctrl;
@@ -14700,7 +14700,7 @@ exit:
 
 u8 chk_bmc_sleepq_cmd(_adapter* padapter)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - chk_bmc_sleepq_cmd");
 	struct cmd_obj *ph2c;
 	struct cmd_priv *pcmdpriv = &(padapter->cmdpriv);
 	u8 res = _SUCCESS;
@@ -14726,7 +14726,7 @@ _func_exit_;
 
 u8 set_tx_beacon_cmd(_adapter* padapter)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - set_tx_beacon_cmd");
 	struct cmd_obj	*ph2c;
 	struct Tx_Beacon_param 	*ptxBeacon_parm;	
 	struct cmd_priv	*pcmdpriv = &(padapter->cmdpriv);
@@ -14774,7 +14774,7 @@ _func_exit_;
 
 u8 mlme_evt_hdl(_adapter *padapter, unsigned char *pbuf)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - mlme_evt_hdl");
 	u8 evt_code, evt_seq;
 	u16 evt_sz;
 	uint 	*peventbuf;
@@ -14842,7 +14842,7 @@ _abort_event_:
 
 u8 h2c_msg_hdl(_adapter *padapter, unsigned char *pbuf)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - h2c_msg_hdl");
 	if(!pbuf)
 		return H2C_PARAMETERS_ERROR;
 
@@ -14851,7 +14851,7 @@ u8 h2c_msg_hdl(_adapter *padapter, unsigned char *pbuf)
 
 u8 chk_bmc_sleepq_hdl(_adapter *padapter, unsigned char *pbuf)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - chk_bmc_sleepq_hdl");
 #ifdef CONFIG_AP_MODE
 	_irqL irqL;
 	struct sta_info *psta_bmc;
@@ -14921,7 +14921,7 @@ u8 chk_bmc_sleepq_hdl(_adapter *padapter, unsigned char *pbuf)
 
 u8 tx_beacon_hdl(_adapter *padapter, unsigned char *pbuf)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - tx_beacon_hdl");
 	if(send_beacon(padapter)==_FAIL)
 	{
 		DBG_871X("issue_beacon, fail!\n");
@@ -14946,7 +14946,7 @@ u8 tx_beacon_hdl(_adapter *padapter, unsigned char *pbuf)
 */
 void change_band_update_ie(_adapter *padapter, WLAN_BSSID_EX *pnetwork, u8 ch)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - change_band_update_ie");
 	u8	network_type,rate_len, total_rate_len,remainder_rate_len;
 	struct mlme_ext_priv *pmlmeext = &(padapter->mlmeextpriv);
 	struct mlme_ext_info *pmlmeinfo = &(pmlmeext->mlmext_info);
@@ -14994,7 +14994,7 @@ void change_band_update_ie(_adapter *padapter, WLAN_BSSID_EX *pnetwork, u8 ch)
 #ifdef CONFIG_CONCURRENT_MODE
 sint check_buddy_mlmeinfo_state(_adapter *padapter, u32 state)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - check_buddy_mlmeinfo_state");
 	PADAPTER pbuddy_adapter;
 	struct mlme_ext_priv *pbuddy_mlmeext;
 	struct mlme_ext_info *pbuddy_mlmeinfo;
@@ -15021,7 +15021,7 @@ sint check_buddy_mlmeinfo_state(_adapter *padapter, u32 state)
 
 void rtw_join_done_chk_ch(_adapter *adapter, int join_res)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - rtw_join_done_chk_ch");
 #define DUMP_ADAPTERS_STATUS 0
 
 	struct dvobj_priv *dvobj;
@@ -15118,7 +15118,7 @@ void rtw_join_done_chk_ch(_adapter *adapter, int join_res)
 
 int rtw_chk_start_clnt_join(_adapter *adapter, u8 *ch, u8 *bw, u8 *offset)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - rtw_chk_start_clnt_join");
 	bool chbw_allow = _TRUE;
 	bool connect_allow = _TRUE;
 	struct mlme_ext_priv	*pmlmeext = &adapter->mlmeextpriv;
@@ -15273,7 +15273,7 @@ exit:
 /* Find union about ch, bw, ch_offset of all linked/linking interfaces */
 int _rtw_get_ch_setting_union(_adapter *adapter, u8 *ch, u8 *bw, u8 *offset, bool include_self)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - _rtw_get_ch_setting_union");
 	struct dvobj_priv *dvobj = adapter_to_dvobj(adapter);
 	_adapter *iface;
 	struct mlme_ext_priv *mlmeext;
@@ -15335,20 +15335,20 @@ int _rtw_get_ch_setting_union(_adapter *adapter, u8 *ch, u8 *bw, u8 *offset, boo
 
 inline int rtw_get_ch_setting_union(_adapter *adapter, u8 *ch, u8 *bw, u8 *offset)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - rtw_get_ch_setting_union");
 	return _rtw_get_ch_setting_union(adapter, ch, bw, offset, 1);
 }
 
 inline int rtw_get_ch_setting_union_no_self(_adapter *adapter, u8 *ch, u8 *bw, u8 *offset)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - rtw_get_ch_setting_union_no_self");
 	return _rtw_get_ch_setting_union(adapter, ch, bw, offset, 0);
 }
 
 void _rtw_dev_iface_status(_adapter *adapter, u8 *sta_num, u8 *ld_sta_num, u8 *lg_sta_num
 	, u8 *ap_num, u8 *ld_ap_num, bool include_self)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - _rtw_dev_iface_status");
 	struct dvobj_priv *dvobj = adapter_to_dvobj(adapter);
 	_adapter *iface;
 	struct mlme_ext_priv *mlmeext;
@@ -15411,20 +15411,20 @@ void _rtw_dev_iface_status(_adapter *adapter, u8 *sta_num, u8 *ld_sta_num, u8 *l
 inline void rtw_dev_iface_status(_adapter *adapter, u8 *sta_num, u8 *ld_sta_num, u8 *lg_sta_num
 	, u8 *ap_num, u8 *ld_ap_num)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - rtw_dev_iface_status");
 	return _rtw_dev_iface_status(adapter, sta_num, ld_sta_num, lg_sta_num, ap_num, ld_ap_num, 1);
 }
 
 inline void rtw_dev_iface_status_no_self(_adapter *adapter, u8 *sta_num, u8 *ld_sta_num, u8 *lg_sta_num
 	, u8 *ap_num, u8 *ld_ap_num)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - rtw_dev_iface_status_no_self");
 	return _rtw_dev_iface_status(adapter, sta_num, ld_sta_num, lg_sta_num, ap_num, ld_ap_num, 0);
 }
 
 u8 set_ch_hdl(_adapter *padapter, u8 *pbuf)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - set_ch_hdl");
 	struct set_ch_parm *set_ch_parm;
 	struct mlme_priv		*pmlmepriv = &padapter->mlmepriv;
 	struct mlme_ext_priv	*pmlmeext = &padapter->mlmeextpriv;
@@ -15449,7 +15449,7 @@ u8 set_ch_hdl(_adapter *padapter, u8 *pbuf)
 
 u8 set_chplan_hdl(_adapter *padapter, unsigned char *pbuf)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - set_chplan_hdl");
 	struct SetChannelPlan_param *setChannelPlan_param;
 	struct mlme_priv *mlme = &padapter->mlmepriv;
 	struct mlme_ext_priv *pmlmeext = &padapter->mlmeextpriv;
@@ -15481,7 +15481,7 @@ u8 set_chplan_hdl(_adapter *padapter, unsigned char *pbuf)
 
 u8 led_blink_hdl(_adapter *padapter, unsigned char *pbuf)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - led_blink_hdl");
 	struct LedBlink_param *ledBlink_param;
 
 	if(!pbuf)
@@ -15498,7 +15498,7 @@ u8 led_blink_hdl(_adapter *padapter, unsigned char *pbuf)
 
 u8 set_csa_hdl(_adapter *padapter, unsigned char *pbuf)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - set_csa_hdl");
 #ifdef CONFIG_DFS
 	struct SetChannelSwitch_param *setChannelSwitch_param;
 	u8 new_ch_no;
@@ -15537,7 +15537,7 @@ u8 set_csa_hdl(_adapter *padapter, unsigned char *pbuf)
 
 u8 tdls_hdl(_adapter *padapter, unsigned char *pbuf)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - tdls_hdl");
 #ifdef CONFIG_TDLS
 	_irqL irqL;
 	HAL_DATA_TYPE	*pHalData = GET_HAL_DATA(padapter);
@@ -15771,7 +15771,7 @@ u8 tdls_hdl(_adapter *padapter, unsigned char *pbuf)
 
 u8 run_in_thread_hdl(_adapter *padapter, u8 *pbuf)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - run_in_thread_hdl");
 	struct RunInThread_param *p;
 
 
@@ -15787,7 +15787,7 @@ u8 run_in_thread_hdl(_adapter *padapter, u8 *pbuf)
 
 u8 rtw_getmacreg_hdl(_adapter *padapter, u8 *pbuf)
 {
-	printk(KERN_DEBUG "rtw_mime_ext.c - ");
+	printk(KERN_DEBUG "rtw_mime_ext.c - rtw_getmacreg_hdl");
 
 	struct readMAC_parm *preadmacparm = NULL;
 	u8 sz = 0;

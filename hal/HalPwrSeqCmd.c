@@ -52,7 +52,7 @@ u8 HalPwrSeqCmdParsing(
 	u8				InterfaceType,
 	WLAN_PWR_CFG	PwrSeqCmd[])
 {
-	printk(KERN_DEBUG "HalPwrSeqCmd.c - ");
+	printk(KERN_DEBUG "HalPwrSeqCmd.c - HalPwrSeqCmdParsing");
 	WLAN_PWR_CFG 	PwrCfgCmd = {0};
 	u8				bPollingBit = _FALSE;
 	u32				AryIdx = 0;

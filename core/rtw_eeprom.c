@@ -25,7 +25,7 @@
 
 void up_clk(_adapter*	padapter,	 u16 *x)
 {
-	printk(KERN_DEBUG "rtw_eeprom.c - ");
+	printk(KERN_DEBUG "rtw_eeprom.c - up_clk");
 _func_enter_;
 	*x = *x | _EESK;
 	rtw_write8(padapter, EE_9346CR, (u8)*x);
@@ -37,7 +37,7 @@ _func_exit_;
 
 void down_clk(_adapter *	padapter, u16 *x	)
 {
-	printk(KERN_DEBUG "rtw_eeprom.c - ");
+	printk(KERN_DEBUG "rtw_eeprom.c - down_clk");
 _func_enter_;
 	*x = *x & ~_EESK;
 	rtw_write8(padapter, EE_9346CR, (u8)*x);
@@ -47,7 +47,7 @@ _func_exit_;
 
 void shift_out_bits(_adapter * padapter, u16 data, u16 count)
 {
-	printk(KERN_DEBUG "rtw_eeprom.c - ");
+	printk(KERN_DEBUG "rtw_eeprom.c - shift_out_bits");
 	u16 x,mask;
 _func_enter_;
 
@@ -87,7 +87,7 @@ _func_exit_;
 
 u16 shift_in_bits (_adapter * padapter)
 {
-	printk(KERN_DEBUG "rtw_eeprom.c - ");
+	printk(KERN_DEBUG "rtw_eeprom.c - shift_in_bits");
 	u16 x,d=0,i;
 _func_enter_;	
 	if (rtw_is_surprise_removed(padapter)) {
@@ -123,7 +123,7 @@ _func_exit_;
 
 void standby(_adapter *	padapter	)
 {
-	printk(KERN_DEBUG "rtw_eeprom.c - ");
+	printk(KERN_DEBUG "rtw_eeprom.c - standby");
 	u8   x;
 _func_enter_;	
 	x = rtw_read8(padapter, EE_9346CR);
@@ -140,7 +140,7 @@ _func_exit_;
 
 u16 wait_eeprom_cmd_done(_adapter* padapter)
 {
-	printk(KERN_DEBUG "rtw_eeprom.c - ");
+	printk(KERN_DEBUG "rtw_eeprom.c - wait_eeprom_cmd_done");
 	u8 	x;
 	u16	i,res=_FALSE;
 _func_enter_;	
@@ -161,7 +161,7 @@ _func_exit_;
 
 void eeprom_clean(_adapter * padapter)
 {
-	printk(KERN_DEBUG "rtw_eeprom.c - ");
+	printk(KERN_DEBUG "rtw_eeprom.c - eeprom_clean");
 	u16 x;
 _func_enter_;		
 	if (rtw_is_surprise_removed(padapter)) {
@@ -191,7 +191,7 @@ _func_exit_;
 
 void eeprom_write16(_adapter * padapter, u16 reg, u16 data)
 {
-	printk(KERN_DEBUG "rtw_eeprom.c - ");
+	printk(KERN_DEBUG "rtw_eeprom.c - eeprom_write16");
 	u8 x;
 #ifdef CONFIG_RTL8712
 	u8	tmp8_ori,tmp8_new,tmp8_clk_ori,tmp8_clk_new;
@@ -276,7 +276,7 @@ _func_exit_;
 
 u16 eeprom_read16(_adapter * padapter, u16 reg) //ReadEEprom
 {
-	printk(KERN_DEBUG "rtw_eeprom.c - ");
+	printk(KERN_DEBUG "rtw_eeprom.c - eeprom_read16");
 
 	u16 x;
 	u16 data=0;
@@ -342,7 +342,7 @@ _func_exit_;
 //From even offset
 void eeprom_read_sz(_adapter * padapter, u16 reg, u8* data, u32 sz) 
 {
-	printk(KERN_DEBUG "rtw_eeprom.c - ");
+	printk(KERN_DEBUG "rtw_eeprom.c - eeprom_read_sz");
 
 	u16 x, data16;
 	u32 i;
@@ -388,7 +388,7 @@ _func_exit_;
 //addr_off : address offset of the entry in eeprom (not the tuple number of eeprom (reg); that is addr_off !=reg)
 u8 eeprom_read(_adapter * padapter, u32 addr_off, u8 sz, u8* rbuf)
 {
-	printk(KERN_DEBUG "rtw_eeprom.c - ");
+	printk(KERN_DEBUG "rtw_eeprom.c - eeprom_read");
 	u8 quotient, remainder, addr_2align_odd;
 	u16 reg, stmp , i=0, idx = 0;
 _func_enter_;		

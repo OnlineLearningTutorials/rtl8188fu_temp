@@ -23,7 +23,7 @@
 
 void rtl8188f_query_rx_desc_status(union recv_frame *precvframe, u8 *pdesc)
 {
-	printk(KERN_DEBUG "rtl8188f_rxdesc.c - ");
+	printk(KERN_DEBUG "rtl8188f_rxdesc.c - rtl8188f_query_rx_desc_status");
 	struct rx_pkt_attrib *pattrib;
 
 

@@ -24,7 +24,7 @@
 
 int	usb_init_recv_priv(_adapter *padapter, u16 ini_in_buf_sz)
 {
-	printk(KERN_DEBUG "hal_usb.c - ");
+	printk(KERN_DEBUG "hal_usb.c - usb_init_recv_priv");
 	struct recv_priv	*precvpriv = &padapter->recvpriv;
 	int	i, res = _SUCCESS;
 	struct recv_buf *precvbuf;
@@ -163,7 +163,7 @@ exit:
 
 void usb_free_recv_priv (_adapter *padapter, u16 ini_in_buf_sz)
 {
-	printk(KERN_DEBUG "hal_usb.c - ");
+	printk(KERN_DEBUG "hal_usb.c - usb_free_recv_priv");
 	int i;
 	struct recv_buf *precvbuf;
 	struct recv_priv	*precvpriv = &padapter->recvpriv;
@@ -248,7 +248,7 @@ void usb_free_recv_priv (_adapter *padapter, u16 ini_in_buf_sz)
 #ifdef CONFIG_USB_SUPPORT_ASYNC_VDN_REQ
 int usb_write_async(struct usb_device *udev, u32 addr, void *pdata, u16 len)
 {
-	printk(KERN_DEBUG "hal_usb.c - ");
+	printk(KERN_DEBUG "hal_usb.c - usb_write_async");
 	u8 request;
 	u8 requesttype;
 	u16 wvalue;
@@ -268,7 +268,7 @@ int usb_write_async(struct usb_device *udev, u32 addr, void *pdata, u16 len)
 
 int usb_async_write8(struct intf_hdl *pintfhdl, u32 addr, u8 val)
 {
-	printk(KERN_DEBUG "hal_usb.c - ");
+	printk(KERN_DEBUG "hal_usb.c - usb_async_write8");
 	u8 data;
 	int ret;
 	struct dvobj_priv  *pdvobjpriv = (struct dvobj_priv  *)pintfhdl->pintf_dev;
@@ -284,7 +284,7 @@ int usb_async_write8(struct intf_hdl *pintfhdl, u32 addr, u8 val)
 
 int usb_async_write16(struct intf_hdl *pintfhdl, u32 addr, u16 val)
 {
-	printk(KERN_DEBUG "hal_usb.c - ");
+	printk(KERN_DEBUG "hal_usb.c - usb_async_write16");
 	u16 data;
 	int ret;
 	struct dvobj_priv  *pdvobjpriv = (struct dvobj_priv  *)pintfhdl->pintf_dev;
@@ -300,7 +300,7 @@ int usb_async_write16(struct intf_hdl *pintfhdl, u32 addr, u16 val)
 
 int usb_async_write32(struct intf_hdl *pintfhdl, u32 addr, u32 val)
 {
-	printk(KERN_DEBUG "hal_usb.c - ");
+	printk(KERN_DEBUG "hal_usb.c - usb_async_write32");
 	u32 data;
 	int ret;
 	struct dvobj_priv  *pdvobjpriv = (struct dvobj_priv  *)pintfhdl->pintf_dev;
@@ -317,7 +317,7 @@ int usb_async_write32(struct intf_hdl *pintfhdl, u32 addr, u32 val)
 
 u8 usb_read8(struct intf_hdl *pintfhdl, u32 addr)
 {
-	printk(KERN_DEBUG "hal_usb.c - ");
+	printk(KERN_DEBUG "hal_usb.c - usb_read8");
 	u8 request;
 	u8 requesttype;
 	u16 wvalue;
@@ -343,7 +343,7 @@ u8 usb_read8(struct intf_hdl *pintfhdl, u32 addr)
 
 u16 usb_read16(struct intf_hdl *pintfhdl, u32 addr)
 {       
-	printk(KERN_DEBUG "hal_usb.c - ");
+	printk(KERN_DEBUG "hal_usb.c - usb_read16");
 	u8 request;
 	u8 requesttype;
 	u16 wvalue;
@@ -370,7 +370,7 @@ u16 usb_read16(struct intf_hdl *pintfhdl, u32 addr)
 
 u32 usb_read32(struct intf_hdl *pintfhdl, u32 addr)
 {
-	printk(KERN_DEBUG "hal_usb.c - ");
+	printk(KERN_DEBUG "hal_usb.c - usb_read32");
 	u8 request;
 	u8 requesttype;
 	u16 wvalue;
@@ -396,7 +396,7 @@ u32 usb_read32(struct intf_hdl *pintfhdl, u32 addr)
 
 int usb_write8(struct intf_hdl *pintfhdl, u32 addr, u8 val)
 {
-	printk(KERN_DEBUG "hal_usb.c - ");
+	printk(KERN_DEBUG "hal_usb.c - usb_write8");
 	u8 request;
 	u8 requesttype;
 	u16 wvalue;
@@ -425,7 +425,7 @@ int usb_write8(struct intf_hdl *pintfhdl, u32 addr, u8 val)
 
 int usb_write16(struct intf_hdl *pintfhdl, u32 addr, u16 val)
 {	
-	printk(KERN_DEBUG "hal_usb.c - ");
+	printk(KERN_DEBUG "hal_usb.c - usb_write16");
 	u8 request;
 	u8 requesttype;
 	u16 wvalue;
@@ -455,7 +455,7 @@ int usb_write16(struct intf_hdl *pintfhdl, u32 addr, u16 val)
 
 int usb_write32(struct intf_hdl *pintfhdl, u32 addr, u32 val)
 {
-	printk(KERN_DEBUG "hal_usb.c - ");
+	printk(KERN_DEBUG "hal_usb.c - usb_write32");
 	u8 request;
 	u8 requesttype;
 	u16 wvalue;
@@ -484,7 +484,7 @@ int usb_write32(struct intf_hdl *pintfhdl, u32 addr, u32 val)
 
 int usb_writeN(struct intf_hdl *pintfhdl, u32 addr, u32 length, u8 *pdata)
 {
-	printk(KERN_DEBUG "hal_usb.c - ");
+	printk(KERN_DEBUG "hal_usb.c - usb_writeN");
 	u8 request;
 	u8 requesttype;
 	u16 wvalue;

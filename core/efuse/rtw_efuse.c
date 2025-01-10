@@ -60,7 +60,7 @@ Efuse_Read1ByteFromFakeContent(
 	IN		u16		Offset,
 	IN OUT	u8		*Value	)
 {
-	printk(KERN_DEBUG "rtw_efuse.c - ");
+	printk(KERN_DEBUG "rtw_efuse.c - Efuse_Read1ByteFromFakeContent");
 	if(Offset >= EFUSE_MAX_HW_SIZE)
 	{
 		return _FALSE;
@@ -84,7 +84,7 @@ Efuse_Write1ByteToFakeContent(
 	IN		u16		Offset,
 	IN 		u8		Value	)
 {
-	printk(KERN_DEBUG "rtw_efuse.c - ");
+	printk(KERN_DEBUG "rtw_efuse.c - Efuse_Write1ByteToFakeContent");
 	if(Offset >= EFUSE_MAX_HW_SIZE)
 	{
 		return _FALSE;
@@ -122,7 +122,7 @@ Efuse_PowerSwitch(
 	IN	u8		bWrite,
 	IN	u8		PwrState)
 {
-	printk(KERN_DEBUG "rtw_efuse.c - ");
+	printk(KERN_DEBUG "rtw_efuse.c - Efuse_PowerSwitch");
 	pAdapter->HalFunc.EfusePowerSwitch(pAdapter, bWrite, PwrState);
 }
 
@@ -132,7 +132,7 @@ BTEfuse_PowerSwitch(
 	IN	u8		bWrite,
 	IN	u8		PwrState)
 {
-	printk(KERN_DEBUG "rtw_efuse.c - ");
+	printk(KERN_DEBUG "rtw_efuse.c - BTEfuse_PowerSwitch");
 	if(pAdapter->HalFunc.BTEfusePowerSwitch)
 		pAdapter->HalFunc.BTEfusePowerSwitch(pAdapter, bWrite, PwrState);
 }
@@ -159,7 +159,7 @@ Efuse_GetCurrentSize(
 	IN u8			efuseType,
 	IN BOOLEAN		bPseudoTest)
 {
-	printk(KERN_DEBUG "rtw_efuse.c - ");
+	printk(KERN_DEBUG "rtw_efuse.c - Efuse_GetCurrentSize");
 	u16 ret=0;
 
 	ret = pAdapter->HalFunc.EfuseGetCurrentSize(pAdapter, efuseType, bPseudoTest);
@@ -171,7 +171,7 @@ Efuse_GetCurrentSize(
 u8
 Efuse_CalculateWordCnts(IN u8	word_en)
 {
-	printk(KERN_DEBUG "rtw_efuse.c - ");
+	printk(KERN_DEBUG "rtw_efuse.c - Efuse_CalculateWordCnts");
 	u8 word_cnts = 0;
 	if(!(word_en & BIT(0)))	word_cnts++; // 0 : write enable
 	if(!(word_en & BIT(1)))	word_cnts++;
@@ -198,7 +198,7 @@ ReadEFuseByte(
 		u8 			*pbuf, 
 		IN BOOLEAN	bPseudoTest) 
 {
-	printk(KERN_DEBUG "rtw_efuse.c - ");
+	printk(KERN_DEBUG "rtw_efuse.c - ReadEFuseByte");
 	u32	value32;
 	u8	readbyte;
 	u16	retry;
@@ -283,7 +283,7 @@ efuse_ReadEFuse(
 	IN	BOOLEAN	bPseudoTest
 	)
 {
-	printk(KERN_DEBUG "rtw_efuse.c - ");
+	printk(KERN_DEBUG "rtw_efuse.c - efuse_ReadEFuse");
 	Adapter->HalFunc.ReadEFuse(Adapter, efuseType, _offset, _size_byte, pbuf, bPseudoTest);
 }
 
@@ -296,7 +296,7 @@ EFUSE_GetEfuseDefinition(
 	IN		BOOLEAN		bPseudoTest
 	)
 {
-	printk(KERN_DEBUG "rtw_efuse.c - ");
+	printk(KERN_DEBUG "rtw_efuse.c - EFUSE_GetEfuseDefinition");
 	pAdapter->HalFunc.EFUSEGetEfuseDefinition(pAdapter, efuseType, type, pOut, bPseudoTest);
 }
 
@@ -321,7 +321,7 @@ EFUSE_Read1Byte(
 	IN	PADAPTER	Adapter, 
 	IN	u16		Address)
 {
-	printk(KERN_DEBUG "rtw_efuse.c - ");
+	printk(KERN_DEBUG "rtw_efuse.c - EFUSE_Read1Byte");
 	u8	data;
 	u8	Bytetemp = {0x00};
 	u8	temp = {0x00};
@@ -393,7 +393,7 @@ EFUSE_Write1Byte(
 	IN	u16		Address,
 	IN	u8		Value)
 {
-	printk(KERN_DEBUG "rtw_efuse.c - ");
+	printk(KERN_DEBUG "rtw_efuse.c - EFUSE_Write1Byte");
 	u8	Bytetemp = {0x00};
 	u8	temp = {0x00};
 	u32	k=0;
@@ -444,7 +444,7 @@ efuse_OneByteRead(
 	IN	u8			*data,
 	IN	BOOLEAN		bPseudoTest)
 {
-	printk(KERN_DEBUG "rtw_efuse.c - ");
+	printk(KERN_DEBUG "rtw_efuse.c - efuse_OneByteRead");
 	u32	tmpidx = 0;
 	u8	bResult;
 	u8	readbyte;
@@ -510,7 +510,7 @@ efuse_OneByteWrite(
 	IN	u8			data,
 	IN	BOOLEAN		bPseudoTest)
 {
-	printk(KERN_DEBUG "rtw_efuse.c - ");
+	printk(KERN_DEBUG "rtw_efuse.c - efuse_OneByteWrite");
 	u8	tmpidx = 0;
 	u8	bResult=_FALSE;
 	u32 efuseValue = 0;
@@ -588,7 +588,7 @@ Efuse_PgPacketRead(	IN	PADAPTER	pAdapter,
 					IN	u8			*data,
 					IN	BOOLEAN		bPseudoTest)
 {
-	printk(KERN_DEBUG "rtw_efuse.c - ");
+	printk(KERN_DEBUG "rtw_efuse.c - Efuse_PgPacketRead");
 	int	ret=0;
 
 	ret =  pAdapter->HalFunc.Efuse_PgPacketRead(pAdapter, offset, data, bPseudoTest);
@@ -603,7 +603,7 @@ Efuse_PgPacketWrite(IN	PADAPTER	pAdapter,
 					IN	u8			*data,
 					IN	BOOLEAN		bPseudoTest)
 {
-	printk(KERN_DEBUG "rtw_efuse.c - ");
+	printk(KERN_DEBUG "rtw_efuse.c - Efuse_PgPacketWrite");
 	int ret;
 
 	ret =  pAdapter->HalFunc.Efuse_PgPacketWrite(pAdapter, offset, word_en, data, bPseudoTest);
@@ -619,7 +619,7 @@ Efuse_PgPacketWrite_BT(IN	PADAPTER	pAdapter,
 					IN	u8			*data,
 					IN	BOOLEAN		bPseudoTest)
 {
-	printk(KERN_DEBUG "rtw_efuse.c - ");
+	printk(KERN_DEBUG "rtw_efuse.c - Efuse_PgPacketWrite_BT");
 	int ret;
 
 	ret =  pAdapter->HalFunc.Efuse_PgPacketWrite_BT(pAdapter, offset, word_en, data, bPseudoTest);
@@ -649,7 +649,7 @@ efuse_WordEnableDataRead(IN	u8	word_en,
 							IN	u8	*sourdata,
 							IN	u8	*targetdata)
 {	
-	printk(KERN_DEBUG "rtw_efuse.c - ");
+	printk(KERN_DEBUG "rtw_efuse.c - efuse_WordEnableDataRead");
 	if (!(word_en&BIT(0)))
 	{
 		targetdata[0] = sourdata[0];
@@ -680,7 +680,7 @@ Efuse_WordEnableDataWrite(	IN	PADAPTER	pAdapter,
 							IN	u8		*data,
 							IN	BOOLEAN		bPseudoTest)
 {
-	printk(KERN_DEBUG "rtw_efuse.c - ");
+	printk(KERN_DEBUG "rtw_efuse.c - Efuse_WordEnableDataWrite");
 	u8	ret=0;
 
 	ret =  pAdapter->HalFunc.Efuse_WordEnableDataWrite(pAdapter, efuse_addr, word_en, data, bPseudoTest);
@@ -690,13 +690,13 @@ Efuse_WordEnableDataWrite(	IN	PADAPTER	pAdapter,
 
 static u8 efuse_read8(PADAPTER padapter, u16 address, u8 *value)
 {
-	printk(KERN_DEBUG "rtw_efuse.c - ");
+	printk(KERN_DEBUG "rtw_efuse.c - efuse_read8");
 	return efuse_OneByteRead(padapter,address, value, _FALSE);
 }
 
 static u8 efuse_write8(PADAPTER padapter, u16 address, u8 *value)
 {
-	printk(KERN_DEBUG "rtw_efuse.c - ");
+	printk(KERN_DEBUG "rtw_efuse.c - efuse_write8");
 	return efuse_OneByteWrite(padapter,address, *value, _FALSE);
 }
 
@@ -705,7 +705,7 @@ static u8 efuse_write8(PADAPTER padapter, u16 address, u8 *value)
  */
 u8 rtw_efuse_access(PADAPTER padapter, u8 bWrite, u16 start_addr, u16 cnts, u8 *data)
 {
-	printk(KERN_DEBUG "rtw_efuse.c - ");
+	printk(KERN_DEBUG "rtw_efuse.c - rtw_efuse_access");
 	int i = 0;
 	u16	real_content_len = 0, max_available_size = 0;
 	u8 res = _FAIL ;
@@ -744,7 +744,7 @@ u8 rtw_efuse_access(PADAPTER padapter, u8 bWrite, u16 start_addr, u16 cnts, u8 *
 //------------------------------------------------------------------------------
 u16 efuse_GetMaxSize(PADAPTER padapter)
 {
-	printk(KERN_DEBUG "rtw_efuse.c - ");
+	printk(KERN_DEBUG "rtw_efuse.c - efuse_GetMaxSize");
 	u16	max_size;
 
 	max_size = 0;
@@ -754,7 +754,7 @@ u16 efuse_GetMaxSize(PADAPTER padapter)
 //------------------------------------------------------------------------------
 u8 efuse_GetCurrentSize(PADAPTER padapter, u16 *size)
 {
-	printk(KERN_DEBUG "rtw_efuse.c - ");
+	printk(KERN_DEBUG "rtw_efuse.c - efuse_GetCurrentSize");
 	Efuse_PowerSwitch(padapter, _FALSE, _TRUE);
 	*size = Efuse_GetCurrentSize(padapter, EFUSE_WIFI, _FALSE);
 	Efuse_PowerSwitch(padapter, _FALSE, _FALSE);
@@ -764,7 +764,7 @@ u8 efuse_GetCurrentSize(PADAPTER padapter, u16 *size)
 //------------------------------------------------------------------------------
 u16 efuse_bt_GetMaxSize(PADAPTER padapter)
 {
-	printk(KERN_DEBUG "rtw_efuse.c - ");
+	printk(KERN_DEBUG "rtw_efuse.c - efuse_bt_GetMaxSize");
 	u16	max_size;
 
 	max_size = 0;
@@ -774,7 +774,7 @@ u16 efuse_bt_GetMaxSize(PADAPTER padapter)
 
 u8 efuse_bt_GetCurrentSize(PADAPTER padapter, u16 *size)
 {
-	printk(KERN_DEBUG "rtw_efuse.c - ");
+	printk(KERN_DEBUG "rtw_efuse.c - efuse_bt_GetCurrentSize");
 	Efuse_PowerSwitch(padapter, _FALSE, _TRUE);
 	*size = Efuse_GetCurrentSize(padapter, EFUSE_BT, _FALSE);
 	Efuse_PowerSwitch(padapter, _FALSE, _FALSE);
@@ -784,7 +784,7 @@ u8 efuse_bt_GetCurrentSize(PADAPTER padapter, u16 *size)
 
 u8 rtw_efuse_map_read(PADAPTER padapter, u16 addr, u16 cnts, u8 *data)
 {
-	printk(KERN_DEBUG "rtw_efuse.c - ");
+	printk(KERN_DEBUG "rtw_efuse.c - rtw_efuse_map_read");
 	u16	mapLen=0;
 
 	EFUSE_GetEfuseDefinition(padapter, EFUSE_WIFI, TYPE_EFUSE_MAP_LEN, (PVOID)&mapLen, _FALSE);
@@ -803,7 +803,7 @@ u8 rtw_efuse_map_read(PADAPTER padapter, u16 addr, u16 cnts, u8 *data)
 
 u8 rtw_BT_efuse_map_read(PADAPTER padapter, u16 addr, u16 cnts, u8 *data)
 {
-	printk(KERN_DEBUG "rtw_efuse.c - ");
+	printk(KERN_DEBUG "rtw_efuse.c - rtw_BT_efuse_map_read");
 	u16	mapLen=0;
 
 	EFUSE_GetEfuseDefinition(padapter, EFUSE_BT, TYPE_EFUSE_MAP_LEN, (PVOID)&mapLen, _FALSE);
@@ -825,7 +825,7 @@ BOOLEAN rtw_file_efuse_IsMasked(
 	u16		Offset
 	)
 {
-	printk(KERN_DEBUG "rtw_efuse.c - ");
+	printk(KERN_DEBUG "rtw_efuse.c - rtw_file_efuse_IsMasked");
 	int r = Offset/16;
 	int c = (Offset%16) / 2;
 	int result = 0;
@@ -846,7 +846,7 @@ BOOLEAN rtw_file_efuse_IsMasked(
 
 u8 rtw_efuse_file_read(PADAPTER padapter,u8 *filepatch,u8 *buf,u32 len)
 {
-	printk(KERN_DEBUG "rtw_efuse.c - ");
+	printk(KERN_DEBUG "rtw_efuse.c - rtw_efuse_file_read");
 	char *ptmp;
 	char *ptmpbuf=NULL;
 	u32 rtStatus;
@@ -896,7 +896,7 @@ efuse_IsMasked(
 	u16		Offset
 	)
 {
-	printk(KERN_DEBUG "rtw_efuse.c - ");
+	printk(KERN_DEBUG "rtw_efuse.c - efuse_IsMasked");
 	HAL_DATA_TYPE	*pHalData = GET_HAL_DATA(pAdapter);
 	
 
@@ -992,7 +992,7 @@ efuse_IsMasked(
 //------------------------------------------------------------------------------
 u8 rtw_efuse_map_write(PADAPTER padapter, u16 addr, u16 cnts, u8 *data)
 {
-	printk(KERN_DEBUG "rtw_efuse.c - ");
+	printk(KERN_DEBUG "rtw_efuse.c - rtw_efuse_map_write");
 	u8	offset, word_en;
 	u8	*map;
 	u8	newdata[PGPKT_DATA_SIZE];
@@ -1124,7 +1124,7 @@ exit:
 
 u8 rtw_efuse_mask_map_read(PADAPTER padapter, u16 addr, u16 cnts, u8 *data)
 {
-	printk(KERN_DEBUG "rtw_efuse.c - ");
+	printk(KERN_DEBUG "rtw_efuse.c - rtw_efuse_mask_map_read");
 	u8	ret = _SUCCESS;
 	u16	mapLen = 0, i = 0;
 	
@@ -1154,7 +1154,7 @@ u8 rtw_efuse_mask_map_read(PADAPTER padapter, u16 addr, u16 cnts, u8 *data)
 
 u8 rtw_BT_efuse_map_write(PADAPTER padapter, u16 addr, u16 cnts, u8 *data)
 {
-	printk(KERN_DEBUG "rtw_efuse.c - ");
+	printk(KERN_DEBUG "rtw_efuse.c - rtw_BT_efuse_map_write");
 	u8	offset, word_en;
 	u8	*map;
 	u8	newdata[PGPKT_DATA_SIZE];
@@ -1263,7 +1263,7 @@ Efuse_ReadAllMap(
 	IN OUT	u8		*Efuse,
 	IN		BOOLEAN		bPseudoTest)
 {
-	printk(KERN_DEBUG "rtw_efuse.c - ");
+	printk(KERN_DEBUG "rtw_efuse.c - Efuse_ReadAllMap");
 	u16	mapLen=0;
 
 	Efuse_PowerSwitch(pAdapter,_FALSE, _TRUE);
@@ -1299,7 +1299,7 @@ efuse_ShadowRead1Byte(
 	IN	u16		Offset,
 	IN OUT	u8		*Value)
 {
-	printk(KERN_DEBUG "rtw_efuse.c - ");
+	printk(KERN_DEBUG "rtw_efuse.c - efuse_ShadowRead1Byte");
 	PHAL_DATA_TYPE pHalData = GET_HAL_DATA(pAdapter);
 
 	*Value = pHalData->efuse_eeprom_data[Offset];
@@ -1313,7 +1313,7 @@ efuse_ShadowRead2Byte(
 	IN	u16		Offset,
 	IN OUT	u16		*Value)
 {
-	printk(KERN_DEBUG "rtw_efuse.c - ");
+	printk(KERN_DEBUG "rtw_efuse.c - efuse_ShadowRead2Byte");
 	PHAL_DATA_TYPE pHalData = GET_HAL_DATA(pAdapter);
 
 	*Value = pHalData->efuse_eeprom_data[Offset];
@@ -1328,7 +1328,7 @@ efuse_ShadowRead4Byte(
 	IN	u16		Offset,
 	IN OUT	u32		*Value)
 {
-	printk(KERN_DEBUG "rtw_efuse.c - ");
+	printk(KERN_DEBUG "rtw_efuse.c - efuse_ShadowRead4Byte");
 	PHAL_DATA_TYPE pHalData = GET_HAL_DATA(pAdapter);
 
 	*Value = pHalData->efuse_eeprom_data[Offset];
@@ -1370,7 +1370,7 @@ efuse_ShadowWrite1Byte(
 	IN	u16		Offset,
 	IN 	u8		Value)
 {
-	printk(KERN_DEBUG "rtw_efuse.c - ");
+	printk(KERN_DEBUG "rtw_efuse.c - efuse_ShadowWrite1Byte");
 	PHAL_DATA_TYPE pHalData = GET_HAL_DATA(pAdapter);
 
 	pHalData->efuse_eeprom_data[Offset] = Value;
@@ -1384,7 +1384,7 @@ efuse_ShadowWrite2Byte(
 	IN	u16		Offset,
 	IN 	u16		Value)
 {
-	printk(KERN_DEBUG "rtw_efuse.c - ");
+	printk(KERN_DEBUG "rtw_efuse.c - efuse_ShadowWrite2Byte");
 	
 	PHAL_DATA_TYPE pHalData = GET_HAL_DATA(pAdapter);
 	
@@ -1401,7 +1401,7 @@ efuse_ShadowWrite4Byte(
 	IN	u16		Offset,
 	IN	u32		Value)
 {
-	printk(KERN_DEBUG "rtw_efuse.c - ");
+	printk(KERN_DEBUG "rtw_efuse.c - efuse_ShadowWrite4Byte");
 	PHAL_DATA_TYPE pHalData = GET_HAL_DATA(pAdapter);
 
 	pHalData->efuse_eeprom_data[Offset] = (u8)(Value&0x000000FF);
@@ -1432,7 +1432,7 @@ void EFUSE_ShadowMapUpdate(
 	IN u8		efuseType,
 	IN BOOLEAN	bPseudoTest)
 {
-	printk(KERN_DEBUG "rtw_efuse.c - ");
+	printk(KERN_DEBUG "rtw_efuse.c - EFUSE_ShadowMapUpdate");
 	PHAL_DATA_TYPE pHalData = GET_HAL_DATA(pAdapter);
 	u16	mapLen=0;
 
@@ -1484,7 +1484,7 @@ EFUSE_ShadowRead(
 	IN		u16		Offset,
 	IN OUT	u32		*Value	)
 {
-	printk(KERN_DEBUG "rtw_efuse.c - ");
+	printk(KERN_DEBUG "rtw_efuse.c - EFUSE_ShadowRead");
 	if (Type == 1)
 		efuse_ShadowRead1Byte(pAdapter, Offset, (u8 *)Value);
 	else if (Type == 2)
@@ -1523,7 +1523,7 @@ EFUSE_ShadowWrite(
 	IN	u16		Offset,
 	IN OUT	u32		Value)
 {
-	printk(KERN_DEBUG "rtw_efuse.c - ");
+	printk(KERN_DEBUG "rtw_efuse.c - EFUSE_ShadowWrite");
 #if (MP_DRIVER == 0)
 	return;
 #endif
@@ -1549,7 +1549,7 @@ Efuse_InitSomeVar(
 	IN		PADAPTER	pAdapter
 	)
 {
-	printk(KERN_DEBUG "rtw_efuse.c - ");
+	printk(KERN_DEBUG "rtw_efuse.c - Efuse_InitSomeVar");
 	u8 i;
 	
 	_rtw_memset((PVOID)&fakeEfuseContent[0], 0xff, EFUSE_MAX_HW_SIZE);
@@ -1591,7 +1591,7 @@ const u8 _mac_hidden_proto_to_hal_proto_cap[MAC_HIDDEN_PROTOCOL_NUM] = {
 
 u8 mac_hidden_wl_func_to_hal_wl_func(u8 func)
 {
-	printk(KERN_DEBUG "rtw_efuse.c - ");
+	printk(KERN_DEBUG "rtw_efuse.c - mac_hidden_wl_func_to_hal_wl_func");
 	u8 wl_func = 0;
 
 	if (func & BIT0)
@@ -1617,7 +1617,7 @@ u8 mac_hidden_wl_func_to_hal_wl_func(u8 func)
 
 int storeAdaptorInfoFile(char *path, u8* efuse_data)
 {
-	printk(KERN_DEBUG "rtw_efuse.c - ");
+	printk(KERN_DEBUG "rtw_efuse.c - storeAdaptorInfoFile");
 	int ret =_SUCCESS;
 
 	if(path && efuse_data) {
@@ -1635,7 +1635,7 @@ int storeAdaptorInfoFile(char *path, u8* efuse_data)
 
 int retriveAdaptorInfoFile(char *path, u8* efuse_data)
 {
-	printk(KERN_DEBUG "rtw_efuse.c - ");
+	printk(KERN_DEBUG "rtw_efuse.c - retriveAdaptorInfoFile");
 	int ret = _SUCCESS;
 #ifdef set_fs
 	mm_segment_t oldfs;
@@ -1670,7 +1670,7 @@ int retriveAdaptorInfoFile(char *path, u8* efuse_data)
 #ifdef CONFIG_EFUSE_CONFIG_FILE
 u32 rtw_read_efuse_from_file(const char *path, u8 *buf)
 {
-	printk(KERN_DEBUG "rtw_efuse.c - ");
+	printk(KERN_DEBUG "rtw_efuse.c - rtw_read_efuse_from_file");
 	u32 i;
 	u8 temp[3];
 	u32 ret = _FAIL;
@@ -1743,7 +1743,7 @@ exit:
 
 u32 rtw_read_macaddr_from_file(const char *path, u8 *buf)
 {
-	printk(KERN_DEBUG "rtw_efuse.c - ");
+	printk(KERN_DEBUG "rtw_efuse.c - rtw_read_macaddr_from_file");
 	struct file *fp;
 #ifdef set_fs
 	mm_segment_t fs;

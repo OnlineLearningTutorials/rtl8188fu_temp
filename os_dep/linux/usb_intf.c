@@ -255,7 +255,7 @@ static void rtw_decide_chip_type_by_usb_info(struct dvobj_priv *pdvobjpriv, cons
 {
 	printk(KERN_DEBUG "usb_intf.c - rtw_decide_chip_type_by_usb_info");
 	pdvobjpriv->chip_type = pdid->driver_info;
-
+	printk(KERN_DEBUG "usb_intf.c - rtw_decide_chip_type_by_usb_info - chip_type : %s", pdvobjpriv->chip_type);
 	#ifdef CONFIG_RTL8188E
 	if (pdvobjpriv->chip_type == RTL8188E)
 		rtl8188eu_set_hw_type(pdvobjpriv);

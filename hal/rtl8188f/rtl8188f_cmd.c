@@ -30,7 +30,7 @@
 
 static u8 _is_fw_read_cmd_down(_adapter *padapter, u8 msgbox_num)
 {
-	printk(KERN_DEBUG "rtl8188f_cmd.c - ");
+	printk(KERN_DEBUG "rtl8188f_cmd.c - _is_fw_read_cmd_down");
 	u8	read_down = _FALSE;
 	int 	retry_cnts = 100;
 
@@ -61,7 +61,7 @@ static u8 _is_fw_read_cmd_down(_adapter *padapter, u8 msgbox_num)
 ******************************************/
 s32 FillH2CCmd8188F(PADAPTER padapter, u8 ElementID, u32 CmdLen, u8 *pCmdBuffer)
 {
-	printk(KERN_DEBUG "rtl8188f_cmd.c - ");
+	printk(KERN_DEBUG "rtl8188f_cmd.c - FillH2CCmd8188F");
 	u8 h2c_box_num;
 	u32	msgbox_addr;
 	u32 msgbox_ex_addr = 0;
@@ -148,7 +148,7 @@ exit:
 
 static void ConstructBeacon(_adapter *padapter, u8 *pframe, u32 *pLength)
 {
-	printk(KERN_DEBUG "rtl8188f_cmd.c - ");
+	printk(KERN_DEBUG "rtl8188f_cmd.c - ConstructBeacon");
 	struct rtw_ieee80211_hdr	*pwlanhdr;
 	u16					*fctrl;
 	u32					rate_len, pktlen;
@@ -246,7 +246,7 @@ _ConstructBeacon:
 
 static void ConstructPSPoll(_adapter *padapter, u8 *pframe, u32 *pLength)
 {
-	printk(KERN_DEBUG "rtl8188f_cmd.c - ");
+	printk(KERN_DEBUG "rtl8188f_cmd.c - ConstructPSPoll");
 	struct rtw_ieee80211_hdr	*pwlanhdr;
 	u16					*fctrl;
 	u32					pktlen;
@@ -285,7 +285,7 @@ static void ConstructNullFunctionData(
 	u8		bEosp,
 	u8		bForcePowerSave)
 {
-	printk(KERN_DEBUG "rtl8188f_cmd.c - ");
+	printk(KERN_DEBUG "rtl8188f_cmd.c - ConstructNullFunctionData");
 	struct rtw_ieee80211_hdr	*pwlanhdr;
 	u16						*fctrl;
 	u32						pktlen;
@@ -353,7 +353,7 @@ CheckFwRsvdPageContent(
 	IN	PADAPTER		Adapter
 )
 {
-	printk(KERN_DEBUG "rtl8188f_cmd.c - ");
+	printk(KERN_DEBUG "rtl8188f_cmd.c - CheckFwRsvdPageContent");
 	HAL_DATA_TYPE	*pHalData = GET_HAL_DATA(Adapter);
 	u32	MaxBcnPageNum;
 
@@ -373,7 +373,7 @@ CheckFwRsvdPageContent(
 /* */
 u8 GetTxBufferRsvdPageNum8188F(_adapter *padapter, bool wowlan)
 {
-	printk(KERN_DEBUG "rtl8188f_cmd.c - ");
+	printk(KERN_DEBUG "rtl8188f_cmd.c - GetTxBufferRsvdPageNum8188F");
 	HAL_DATA_TYPE	*pHalData = GET_HAL_DATA(padapter);
 	u8	RsvdPageNum = 0;
 	/* default reseved 1 page for the IC type which is undefined. */
@@ -389,7 +389,7 @@ u8 GetTxBufferRsvdPageNum8188F(_adapter *padapter, bool wowlan)
 static void rtl8188f_set_FwRsvdPage_cmd(PADAPTER padapter, PRSVDPAGE_LOC rsvdpageloc)
 {
 
-	printk(KERN_DEBUG "rtl8188f_cmd.c - ");
+	printk(KERN_DEBUG "rtl8188f_cmd.c - rtl8188f_set_FwRsvdPage_cmd");
 	u8 u1H2CRsvdPageParm[H2C_RSVDPAGE_LOC_LEN] = {0};
 
 	DBG_871X("8188FRsvdPageLoc: ProbeRsp=%d PsPoll=%d Null=%d QoSNull=%d BTNull=%d\n",
@@ -409,7 +409,7 @@ static void rtl8188f_set_FwRsvdPage_cmd(PADAPTER padapter, PRSVDPAGE_LOC rsvdpag
 
 static void rtl8188f_set_FwAoacRsvdPage_cmd(PADAPTER padapter, PRSVDPAGE_LOC rsvdpageloc)
 {
-	printk(KERN_DEBUG "rtl8188f_cmd.c - ");
+	printk(KERN_DEBUG "rtl8188f_cmd.c - rtl8188f_set_FwAoacRsvdPage_cmd");
 	struct pwrctrl_priv *pwrpriv = adapter_to_pwrctl(padapter);
 	struct mlme_priv *pmlmepriv = &padapter->mlmepriv;
 	u8	res = 0, count = 0;
@@ -417,7 +417,7 @@ static void rtl8188f_set_FwAoacRsvdPage_cmd(PADAPTER padapter, PRSVDPAGE_LOC rsv
 
 static void rtl8188f_set_FwKeepAlive_cmd(PADAPTER padapter, u8 benable, u8 pkt_type)
 {
-	printk(KERN_DEBUG "rtl8188f_cmd.c - ");
+	printk(KERN_DEBUG "rtl8188f_cmd.c - rtl8188f_set_FwKeepAlive_cmd");
 	u8 u1H2CKeepAliveParm[H2C_KEEP_ALIVE_CTRL_LEN] = {0};
 	u8 adopt = 1;
 #ifdef CONFIG_PLATFORM_INTEL_BYT
@@ -439,7 +439,7 @@ static void rtl8188f_set_FwKeepAlive_cmd(PADAPTER padapter, u8 benable, u8 pkt_t
 
 static void rtl8188f_set_FwDisconDecision_cmd(PADAPTER padapter, u8 benable)
 {
-	printk(KERN_DEBUG "rtl8188f_cmd.c - ");
+	printk(KERN_DEBUG "rtl8188f_cmd.c - rtl8188f_set_FwDisconDecision_cmd");
 	u8 u1H2CDisconDecisionParm[H2C_DISCON_DECISION_LEN] = {0};
 	u8 adopt = 1, check_period = 10, trypkt_num = 0;
 
@@ -456,7 +456,7 @@ static void rtl8188f_set_FwDisconDecision_cmd(PADAPTER padapter, u8 benable)
 
 void rtl8188f_set_FwMacIdConfig_cmd(_adapter *padapter, u8 mac_id, u8 raid, u8 bw, u8 sgi, u32 mask)
 {
-	printk(KERN_DEBUG "rtl8188f_cmd.c - ");
+	printk(KERN_DEBUG "rtl8188f_cmd.c - rtl8188f_set_FwMacIdConfig_cmd");
 	HAL_DATA_TYPE	*pHalData = GET_HAL_DATA(padapter);
 	u8 u1H2CMacIdConfigParm[H2C_MACID_CFG_LEN] = {0};
 
@@ -495,7 +495,7 @@ void rtl8188f_set_FwMacIdConfig_cmd(_adapter *padapter, u8 mac_id, u8 raid, u8 b
 
 void rtl8188f_set_FwRssiSetting_cmd(_adapter *padapter, u8 *param)
 {
-	printk(KERN_DEBUG "rtl8188f_cmd.c - ");
+	printk(KERN_DEBUG "rtl8188f_cmd.c - rtl8188f_set_FwRssiSetting_cmd");
 	u8 u1H2CRssiSettingParm[H2C_RSSI_SETTING_LEN] = {0};
 	u8 mac_id = *param;
 	u8 rssi = *(param + 2);
@@ -517,7 +517,7 @@ void rtl8188f_set_FwRssiSetting_cmd(_adapter *padapter, u8 *param)
 
 void rtl8188f_set_FwAPReqRPT_cmd(PADAPTER padapter, u32 need_ack)
 {
-	printk(KERN_DEBUG "rtl8188f_cmd.c - ");
+	printk(KERN_DEBUG "rtl8188f_cmd.c - rtl8188f_set_FwAPReqRPT_cmd");
 	u8 u1H2CApReqRptParm[H2C_AP_REQ_TXRPT_LEN] = {0};
 	u8 macid1 = 1, macid2 = 0;
 
@@ -532,7 +532,7 @@ void rtl8188f_set_FwAPReqRPT_cmd(PADAPTER padapter, u32 need_ack)
 
 void rtl8188f_set_FwPwrMode_cmd(PADAPTER padapter, u8 psmode)
 {
-	printk(KERN_DEBUG "rtl8188f_cmd.c - ");
+	printk(KERN_DEBUG "rtl8188f_cmd.c - rtl8188f_set_FwPwrMode_cmd");
 	int i;
 	u8 smart_ps = 0;
 	struct pwrctrl_priv *pwrpriv = adapter_to_pwrctl(padapter);
@@ -694,7 +694,7 @@ void rtl8188f_set_FwPwrMode_cmd(PADAPTER padapter, u8 psmode)
 #ifdef CONFIG_TDLS_CH_SW
 void rtl8188f_set_BcnEarly_C2H_Rpt_cmd(PADAPTER padapter, u8 enable)
 {
-	printk(KERN_DEBUG "rtl8188f_cmd.c - ");
+	printk(KERN_DEBUG "rtl8188f_cmd.c - rtl8188f_set_BcnEarly_C2H_Rpt_cmd");
 	u8	u1H2CSetPwrMode[H2C_PWRMODE_LEN] = {0};
 
 	SET_8188F_H2CCMD_PWRMODE_PARM_MODE(u1H2CSetPwrMode, 1);
@@ -712,7 +712,7 @@ void rtl8188f_set_BcnEarly_C2H_Rpt_cmd(PADAPTER padapter, u8 enable)
 
 void rtl8188f_set_FwPsTuneParam_cmd(PADAPTER padapter)
 {
-	printk(KERN_DEBUG "rtl8188f_cmd.c - ");
+	printk(KERN_DEBUG "rtl8188f_cmd.c - rtl8188f_set_FwPsTuneParam_cmd");
 	struct pwrctrl_priv *pwrpriv = adapter_to_pwrctl(padapter);
 	u8 u1H2CPsTuneParm[H2C_PSTUNEPARAM_LEN] = {0};
 	u8 bcn_to_limit = 10; /*10 * 100 * awakeinterval (ms) */
@@ -737,7 +737,7 @@ void rtl8188f_set_FwPsTuneParam_cmd(PADAPTER padapter)
 
 void rtl8188f_set_FwBtMpOper_cmd(PADAPTER padapter, u8 idx, u8 ver, u8 reqnum, u8 *param)
 {
-	printk(KERN_DEBUG "rtl8188f_cmd.c - ");
+	printk(KERN_DEBUG "rtl8188f_cmd.c - rtl8188f_set_FwBtMpOper_cmd");
 	u8 u1H2CBtMpOperParm[H2C_BTMP_OPER_LEN] = {0};
 
 	_func_enter_;
@@ -759,7 +759,7 @@ void rtl8188f_set_FwBtMpOper_cmd(PADAPTER padapter, u8 idx, u8 ver, u8 reqnum, u
 
 void rtl8188f_set_FwPwrModeInIPS_cmd(PADAPTER padapter, u8 cmd_param)
 {
-	printk(KERN_DEBUG "rtl8188f_cmd.c - ");
+	printk(KERN_DEBUG "rtl8188f_cmd.c - rtl8188f_set_FwPwrModeInIPS_cmd");
 	/*u8 cmd_param; //BIT0:enable, BIT1:NoConnect32k */
 
 	DBG_871X("%s()\n", __func__);
@@ -780,7 +780,7 @@ static s32 rtl8188f_set_FwLowPwrLps_cmd(PADAPTER padapter, u8 enable)
 
 void rtl8188f_download_rsvd_page(PADAPTER padapter, u8 mstatus)
 {
-	printk(KERN_DEBUG "rtl8188f_cmd.c - ");
+	printk(KERN_DEBUG "rtl8188f_cmd.c - rtl8188f_download_rsvd_page");
 	HAL_DATA_TYPE	*pHalData = GET_HAL_DATA(padapter);
 	struct mlme_ext_priv	*pmlmeext = &(padapter->mlmeextpriv);
 	struct mlme_ext_info	*pmlmeinfo = &(pmlmeext->mlmext_info);
@@ -883,13 +883,13 @@ void rtl8188f_download_rsvd_page(PADAPTER padapter, u8 mstatus)
 
 void rtl8188f_set_rssi_cmd(_adapter *padapter, u8 *param)
 {
-	printk(KERN_DEBUG "rtl8188f_cmd.c - ");
+	printk(KERN_DEBUG "rtl8188f_cmd.c - rtl8188f_set_rssi_cmd");
 	rtl8188f_set_FwRssiSetting_cmd(padapter, param);
 }
 
 void rtl8188f_set_FwJoinBssRpt_cmd(PADAPTER padapter, u8 mstatus)
 {
-	printk(KERN_DEBUG "rtl8188f_cmd.c - ");
+	printk(KERN_DEBUG "rtl8188f_cmd.c - rtl8188f_set_FwJoinBssRpt_cmd");
 	struct sta_info *psta = NULL;
 	struct pwrctrl_priv *ppwrpriv = adapter_to_pwrctl(padapter);
 	struct mlme_priv	*pmlmepriv = &padapter->mlmepriv;
@@ -904,7 +904,7 @@ void rtl8188f_set_FwJoinBssRpt_cmd(PADAPTER padapter, u8 mstatus)
 /*arg[3] = init_rate */
 void rtl8188f_Add_RateATid(PADAPTER pAdapter, u64 rate_bitmap, u8 *arg, u8 rssi_level)
 {
-	printk(KERN_DEBUG "rtl8188f_cmd.c - ");
+	printk(KERN_DEBUG "rtl8188f_cmd.c - rtl8188f_Add_RateATid");
 	HAL_DATA_TYPE	*pHalData = GET_HAL_DATA(pAdapter);
 	struct macid_ctl_t *macid_ctl = &pAdapter->dvobj->macid_ctl;
 	struct sta_info	*psta = NULL;
@@ -950,7 +950,7 @@ static void ConstructBtNullFunctionData(
 	u8 bEosp,
 	u8 bForcePowerSave)
 {
-	printk(KERN_DEBUG "rtl8188f_cmd.c - ");
+	printk(KERN_DEBUG "rtl8188f_cmd.c - ConstructBtNullFunctionData");
 	struct rtw_ieee80211_hdr *pwlanhdr;
 	u16 *fctrl;
 	u32 pktlen;
@@ -1005,7 +1005,7 @@ static void ConstructBtNullFunctionData(
 
 static void SetFwRsvdPagePkt_BTCoex(PADAPTER padapter)
 {
-	printk(KERN_DEBUG "rtl8188f_cmd.c - ");
+	printk(KERN_DEBUG "rtl8188f_cmd.c - SetFwRsvdPagePkt_BTCoex");
 	PHAL_DATA_TYPE pHalData;
 	struct xmit_frame *pcmdframe;
 	struct pkt_attrib *pattrib;
@@ -1109,7 +1109,7 @@ error:
 
 void rtl8188f_download_BTCoex_AP_mode_rsvd_page(PADAPTER padapter)
 {
-	printk(KERN_DEBUG "rtl8188f_cmd.c - ");
+	printk(KERN_DEBUG "rtl8188f_cmd.c - rtl8188f_download_BTCoex_AP_mode_rsvd_page");
 	PHAL_DATA_TYPE pHalData;
 	struct mlme_ext_priv *pmlmeext;
 	struct mlme_ext_info *pmlmeinfo;
@@ -1217,7 +1217,7 @@ void rtl8188f_download_BTCoex_AP_mode_rsvd_page(PADAPTER padapter)
 #ifdef CONFIG_P2P
 void rtl8188f_set_p2p_ps_offload_cmd(_adapter *padapter, u8 p2p_ps_state)
 {
-	printk(KERN_DEBUG "rtl8188f_cmd.c - ");
+	printk(KERN_DEBUG "rtl8188f_cmd.c - rtl8188f_set_p2p_ps_offload_cmd");
 	HAL_DATA_TYPE	*pHalData = GET_HAL_DATA(padapter);
 	struct pwrctrl_priv		*pwrpriv = adapter_to_pwrctl(padapter);
 	struct wifidirect_info	*pwdinfo = &(padapter->wdinfo);
@@ -1306,7 +1306,7 @@ void rtl8188f_set_p2p_ps_offload_cmd(_adapter *padapter, u8 p2p_ps_state)
 */
 u8 rtl8188f_reset_tsf(_adapter *padapter, u8 reset_port)
 {
-	printk(KERN_DEBUG "rtl8188f_cmd.c - ");
+	printk(KERN_DEBUG "rtl8188f_cmd.c - rtl8188f_reset_tsf");
 	u8	buf[2];
 	u8	res = _SUCCESS;
 

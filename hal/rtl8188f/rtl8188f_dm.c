@@ -41,7 +41,7 @@ dm_CheckProtection(
 	IN	PADAPTER	Adapter
 )
 {
-	printk(KERN_DEBUG "rtl8188f_dm.c - ");
+	printk(KERN_DEBUG "rtl8188f_dm.c - dm_CheckProtection");
 #if 0
 	PMGNT_INFO		pMgntInfo = &(Adapter->MgntInfo);
 	u1Byte			CurRate, RateThreshold;
@@ -66,7 +66,7 @@ dm_CheckStatistics(
 	IN	PADAPTER	Adapter
 )
 {
-	printk(KERN_DEBUG "rtl8188f_dm.c - ");
+	printk(KERN_DEBUG "rtl8188f_dm.c - dm_CheckStatistics");
 #if 0
 	if (!Adapter->MgntInfo.bMediaConnect)
 		return;
@@ -85,7 +85,7 @@ dm_CheckStatistics(
 #ifdef CONFIG_SUPPORT_HW_WPS_PBC
 static void dm_CheckPbcGPIO(_adapter *padapter)
 {
-	printk(KERN_DEBUG "rtl8188f_dm.c - ");
+	printk(KERN_DEBUG "rtl8188f_dm.c - dm_CheckPbcGPIO");
 	u8	tmp1byte;
 	u8	bPbcPressed = _FALSE;
 
@@ -147,7 +147,7 @@ dm_InterruptMigration(
 	IN	PADAPTER	Adapter
 )
 {
-	printk(KERN_DEBUG "rtl8188f_dm.c - ");
+	printk(KERN_DEBUG "rtl8188f_dm.c - dm_InterruptMigration");
 	HAL_DATA_TYPE	*pHalData = GET_HAL_DATA(Adapter);
 	struct mlme_priv	*pmlmepriv = &(Adapter->mlmepriv);
 	BOOLEAN			bCurrentIntMt, bCurrentACIntDisable;
@@ -221,7 +221,7 @@ dm_InitGPIOSetting(
 	IN	PADAPTER	Adapter
 )
 {
-	printk(KERN_DEBUG "rtl8188f_dm.c - ");
+	printk(KERN_DEBUG "rtl8188f_dm.c - dm_InitGPIOSetting");
 	PHAL_DATA_TYPE		pHalData = GET_HAL_DATA(Adapter);
 
 	u8	tmp1byte;
@@ -236,7 +236,7 @@ dm_InitGPIOSetting(
 /*============================================================ */
 static void Init_ODM_ComInfo_8188f(PADAPTER	Adapter)
 {
-	printk(KERN_DEBUG "rtl8188f_dm.c - ");
+	printk(KERN_DEBUG "rtl8188f_dm.c - Init_ODM_ComInfo_8188f");
 	PHAL_DATA_TYPE	pHalData = GET_HAL_DATA(Adapter);
 	PDM_ODM_T		pDM_Odm = &(pHalData->odmpriv);
 	u32 SupportAbility = 0;
@@ -266,7 +266,7 @@ static void Init_ODM_ComInfo_8188f(PADAPTER	Adapter)
 
 static void Update_ODM_ComInfo_8188f(PADAPTER	Adapter)
 {
-	printk(KERN_DEBUG "rtl8188f_dm.c - ");
+	printk(KERN_DEBUG "rtl8188f_dm.c - Update_ODM_ComInfo_8188f");
 	PHAL_DATA_TYPE	pHalData = GET_HAL_DATA(Adapter);
 	PDM_ODM_T		pDM_Odm = &(pHalData->odmpriv);
 	u32 SupportAbility = 0;
@@ -318,7 +318,7 @@ rtl8188f_InitHalDm(
 	IN	PADAPTER	Adapter
 )
 {
-	printk(KERN_DEBUG "rtl8188f_dm.c - ");
+	printk(KERN_DEBUG "rtl8188f_dm.c - rtl8188f_InitHalDm");
 	PHAL_DATA_TYPE	pHalData = GET_HAL_DATA(Adapter);
 	PDM_ODM_T		pDM_Odm = &(pHalData->odmpriv);
 
@@ -415,7 +415,7 @@ rtl8188f_HalDmWatchDog(
 	IN	PADAPTER	Adapter
 )
 {
-	printk(KERN_DEBUG "rtl8188f_dm.c - ");
+	printk(KERN_DEBUG "rtl8188f_dm.c - rtl8188f_HalDmWatchDog");
 	BOOLEAN		bFwCurrentInPSMode = _FALSE;
 	BOOLEAN		bFwPSAwake = _TRUE;
 	PHAL_DATA_TYPE	pHalData = GET_HAL_DATA(Adapter);
@@ -516,7 +516,7 @@ skip_dm:
 
 void rtl8188f_hal_dm_in_lps(PADAPTER padapter)
 {
-	printk(KERN_DEBUG "rtl8188f_dm.c - ");
+	printk(KERN_DEBUG "rtl8188f_dm.c - rtl8188f_hal_dm_in_lps");
 	u32	PWDB_rssi = 0;
 	struct mlme_priv 	*pmlmepriv = &padapter->mlmepriv;
 	PHAL_DATA_TYPE	pHalData = GET_HAL_DATA(padapter);
@@ -543,7 +543,7 @@ void rtl8188f_hal_dm_in_lps(PADAPTER padapter)
 
 void rtl8188f_HalDmWatchDog_in_LPS(IN	PADAPTER	Adapter)
 {
-	printk(KERN_DEBUG "rtl8188f_dm.c - ");
+	printk(KERN_DEBUG "rtl8188f_dm.c - rtl8188f_HalDmWatchDog_in_LPS");
 	u8	bLinked = _FALSE;
 	PHAL_DATA_TYPE	pHalData = GET_HAL_DATA(Adapter);
 	struct mlme_priv 	*pmlmepriv = &Adapter->mlmepriv;
@@ -614,7 +614,7 @@ skip_lps_dm:
 
 void rtl8188f_init_dm_priv(IN PADAPTER Adapter)
 {
-	printk(KERN_DEBUG "rtl8188f_dm.c - ");
+	printk(KERN_DEBUG "rtl8188f_dm.c - rtl8188f_init_dm_priv");
 	PHAL_DATA_TYPE	pHalData = GET_HAL_DATA(Adapter);
 	PDM_ODM_T 		podmpriv = &pHalData->odmpriv;
 	Init_ODM_ComInfo_8188f(Adapter);
@@ -623,7 +623,7 @@ void rtl8188f_init_dm_priv(IN PADAPTER Adapter)
 
 void rtl8188f_deinit_dm_priv(IN PADAPTER Adapter)
 {
-	printk(KERN_DEBUG "rtl8188f_dm.c - ");
+	printk(KERN_DEBUG "rtl8188f_dm.c - rtl8188f_deinit_dm_priv");
 	PHAL_DATA_TYPE	pHalData = GET_HAL_DATA(Adapter);
 	PDM_ODM_T 		podmpriv = &pHalData->odmpriv;
 	ODM_CancelAllTimers(podmpriv);

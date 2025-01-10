@@ -25,7 +25,7 @@
 #ifdef DBG_CONFIG_ERROR_DETECT
 void rtl8188f_sreset_xmit_status_check(_adapter *padapter)
 {
-	printk(KERN_DEBUG "rtl8188f_sreset.c - ");
+	printk(KERN_DEBUG "rtl8188f_sreset.c - rtl8188f_sreset_xmit_status_check");
 	HAL_DATA_TYPE	*pHalData = GET_HAL_DATA(padapter);
 	struct sreset_priv *psrtpriv = &pHalData->srestpriv;
 
@@ -80,7 +80,7 @@ void rtl8188f_sreset_xmit_status_check(_adapter *padapter)
 
 void rtl8188f_sreset_linked_status_check(_adapter *padapter)
 {
-	printk(KERN_DEBUG "rtl8188f_sreset.c - ");
+	printk(KERN_DEBUG "rtl8188f_sreset.c - rtl8188f_sreset_linked_status_check");
 	HAL_DATA_TYPE	*pHalData = GET_HAL_DATA(padapter);
 	struct sreset_priv *psrtpriv = &pHalData->srestpriv;
 #if 0

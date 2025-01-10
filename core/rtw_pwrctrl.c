@@ -25,7 +25,7 @@
 
 int rtw_fw_ps_state(PADAPTER padapter)
 {
-	printk(KERN_DEBUG "rtw_pwrctrl.c - ");
+	printk(KERN_DEBUG "rtw_pwrctrl.c - rtw_fw_ps_state");
 	struct dvobj_priv *psdpriv = padapter->dvobj;
 	struct debug_priv *pdbgpriv = &psdpriv->drv_dbg;
 	int ret=_FAIL, dont_care=0;
@@ -75,7 +75,7 @@ exit_fw_ps_state:
 #ifdef CONFIG_IPS
 void _ips_enter(_adapter * padapter)
 {
-	printk(KERN_DEBUG "rtw_pwrctrl.c - ");
+	printk(KERN_DEBUG "rtw_pwrctrl.c - _ips_enter");
 	struct pwrctrl_priv *pwrpriv = adapter_to_pwrctl(padapter);
 
 	pwrpriv->bips_processing = _TRUE;	
@@ -103,7 +103,7 @@ void _ips_enter(_adapter * padapter)
 
 void ips_enter(_adapter * padapter)
 {
-	printk(KERN_DEBUG "rtw_pwrctrl.c - ");
+	printk(KERN_DEBUG "rtw_pwrctrl.c - ips_enter");
 	struct pwrctrl_priv *pwrpriv = adapter_to_pwrctl(padapter);
 
 
@@ -118,7 +118,7 @@ void ips_enter(_adapter * padapter)
 
 int _ips_leave(_adapter * padapter)
 {
-	printk(KERN_DEBUG "rtw_pwrctrl.c - ");
+	printk(KERN_DEBUG "rtw_pwrctrl.c - _ips_leave");
 	struct pwrctrl_priv *pwrpriv = adapter_to_pwrctl(padapter);
 	int result = _SUCCESS;
 
@@ -146,7 +146,7 @@ int _ips_leave(_adapter * padapter)
 
 int ips_leave(_adapter * padapter)
 {
-	printk(KERN_DEBUG "rtw_pwrctrl.c - ");
+	printk(KERN_DEBUG "rtw_pwrctrl.c - ips_leave");
 	struct pwrctrl_priv *pwrpriv = adapter_to_pwrctl(padapter);
 	struct dvobj_priv *psdpriv = padapter->dvobj;
 	struct debug_priv *pdbgpriv = &psdpriv->drv_dbg;
@@ -190,7 +190,7 @@ int rtw_hw_resume(_adapter *padapter);
 
 bool rtw_pwr_unassociated_idle(_adapter *adapter)
 {
-	printk(KERN_DEBUG "rtw_pwrctrl.c - ");
+	printk(KERN_DEBUG "rtw_pwrctrl.c - rtw_pwr_unassociated_idle");
 	_adapter *buddy = adapter->pbuddy_adapter;
 	struct mlme_priv *pmlmepriv = &(adapter->mlmepriv);
 	struct xmit_priv *pxmit_priv = &adapter->xmitpriv;
@@ -290,7 +290,7 @@ exit:
  */
 void rtw_ps_processor(_adapter*padapter)
 {
-	printk(KERN_DEBUG "rtw_pwrctrl.c - ");
+	printk(KERN_DEBUG "rtw_pwrctrl.c - rtw_ps_processor");
 #ifdef CONFIG_P2P
 	struct wifidirect_info	*pwdinfo = &( padapter->wdinfo );
 #endif //CONFIG_P2P
@@ -438,7 +438,7 @@ exit:
 void pwr_state_check_handler(RTW_TIMER_HDL_ARGS);
 void pwr_state_check_handler(RTW_TIMER_HDL_ARGS)
 {
-	printk(KERN_DEBUG "rtw_pwrctrl.c - ");
+	printk(KERN_DEBUG "rtw_pwrctrl.c - pwr_state_check_handler");
 	_adapter *padapter = (_adapter *)FunctionContext;
 	rtw_ps_cmd(padapter);
 }
@@ -446,7 +446,7 @@ void pwr_state_check_handler(RTW_TIMER_HDL_ARGS)
 #ifdef CONFIG_LPS
 void	traffic_check_for_leave_lps(PADAPTER padapter, u8 tx, u32 tx_packets)
 {
-	printk(KERN_DEBUG "rtw_pwrctrl.c - ");
+	printk(KERN_DEBUG "rtw_pwrctrl.c - traffic_check_for_leave_lps");
 #ifdef CONFIG_CHECK_LEAVE_LPS
 	static u32 start_time = 0;
 	static u32 xmit_cnt = 0;
@@ -520,7 +520,7 @@ void	traffic_check_for_leave_lps(PADAPTER padapter, u8 tx, u32 tx_packets)
  */
 void rtw_set_rpwm(PADAPTER padapter, u8 pslv)
 {
-	printk(KERN_DEBUG "rtw_pwrctrl.c - ");
+	printk(KERN_DEBUG "rtw_pwrctrl.c - rtw_set_rpwm");
 	u8	rpwm;
 	struct pwrctrl_priv *pwrpriv = adapter_to_pwrctl(padapter);
 #ifdef CONFIG_DETECT_CPWM_BY_POLLING
@@ -666,7 +666,7 @@ _func_exit_;
 
 u8 PS_RDY_CHECK(_adapter * padapter)
 {
-	printk(KERN_DEBUG "rtw_pwrctrl.c - ");
+	printk(KERN_DEBUG "rtw_pwrctrl.c - PS_RDY_CHECK");
 	u32 curr_time, delta_time;
 	struct pwrctrl_priv	*pwrpriv = adapter_to_pwrctl(padapter);
 	struct mlme_priv	*pmlmepriv = &(padapter->mlmepriv);
@@ -721,7 +721,7 @@ u8 PS_RDY_CHECK(_adapter * padapter)
 #if defined(CONFIG_FWLPS_IN_IPS)
 void rtw_set_fw_in_ips_mode(PADAPTER padapter, u8 enable)
 {
-	printk(KERN_DEBUG "rtw_pwrctrl.c - ");
+	printk(KERN_DEBUG "rtw_pwrctrl.c - rtw_set_fw_in_ips_mode");
 	struct pwrctrl_priv *pwrpriv = adapter_to_pwrctl(padapter);
 	int cnt=0;
 	u32 start_time;
@@ -838,7 +838,7 @@ void rtw_set_fw_in_ips_mode(PADAPTER padapter, u8 enable)
 
 void rtw_set_ps_mode(PADAPTER padapter, u8 ps_mode, u8 smart_ps, u8 bcn_ant_mode, const char *msg)
 {
-	printk(KERN_DEBUG "rtw_pwrctrl.c - ");
+	printk(KERN_DEBUG "rtw_pwrctrl.c - rtw_set_ps_mode");
 	struct pwrctrl_priv *pwrpriv = adapter_to_pwrctl(padapter);
 	struct dvobj_priv *psdpriv = padapter->dvobj;
 	struct debug_priv *pdbgpriv = &psdpriv->drv_dbg;
@@ -1025,7 +1025,7 @@ _func_exit_;
  */
 s32 LPS_RF_ON_check(PADAPTER padapter, u32 delay_ms)
 {
-	printk(KERN_DEBUG "rtw_pwrctrl.c - ");
+	printk(KERN_DEBUG "rtw_pwrctrl.c - LPS_RF_ON_check");
 	u32 start_time;
 	u8 bAwake = _FALSE;
 	s32 err = 0;
@@ -1062,7 +1062,7 @@ s32 LPS_RF_ON_check(PADAPTER padapter, u32 delay_ms)
 //
 void LPS_Enter(PADAPTER padapter, const char *msg)
 {
-	printk(KERN_DEBUG "rtw_pwrctrl.c - ");
+	printk(KERN_DEBUG "rtw_pwrctrl.c - LPS_Enter");
 	struct dvobj_priv *dvobj = adapter_to_dvobj(padapter);
 	struct pwrctrl_priv	*pwrpriv = dvobj_to_pwrctl(dvobj);
 	struct mlme_priv	*pmlmepriv = &(padapter->mlmepriv);
@@ -1131,7 +1131,7 @@ _func_exit_;
 //
 void LPS_Leave(PADAPTER padapter, const char *msg)
 {
-	printk(KERN_DEBUG "rtw_pwrctrl.c - ");
+	printk(KERN_DEBUG "rtw_pwrctrl.c - LPS_Leave");
 #define LPS_LEAVE_TIMEOUT_MS 100
 
 	struct dvobj_priv *dvobj = adapter_to_dvobj(padapter);
@@ -1178,7 +1178,7 @@ _func_exit_;
 
 void LeaveAllPowerSaveModeDirect(PADAPTER Adapter)
 {
-	printk(KERN_DEBUG "rtw_pwrctrl.c - ");
+	printk(KERN_DEBUG "rtw_pwrctrl.c - LeaveAllPowerSaveModeDirect");
 	PADAPTER pri_padapter = GET_PRIMARY_ADAPTER(Adapter);
 	struct mlme_priv	*pmlmepriv = &(Adapter->mlmepriv);
 	struct pwrctrl_priv *pwrpriv = adapter_to_pwrctl(Adapter);
@@ -1307,7 +1307,7 @@ _func_exit_;
 //
 void LeaveAllPowerSaveMode(IN PADAPTER Adapter)
 {
-	printk(KERN_DEBUG "rtw_pwrctrl.c - ");
+	printk(KERN_DEBUG "rtw_pwrctrl.c - LeaveAllPowerSaveMode");
 	struct dvobj_priv *dvobj = adapter_to_dvobj(Adapter);
 	struct mlme_priv	*pmlmepriv = &(Adapter->mlmepriv);
 	u8	enqueue = 0;
@@ -1388,7 +1388,7 @@ _func_exit_;
 void LPS_Leave_check(
 	PADAPTER padapter)
 {
-	printk(KERN_DEBUG "rtw_pwrctrl.c - ");
+	printk(KERN_DEBUG "rtw_pwrctrl.c - LPS_Leave_check");
 	struct pwrctrl_priv *pwrpriv;
 	u32	start_time;
 	u8	bReady;
@@ -1444,7 +1444,7 @@ void cpwm_int_hdl(
 	PADAPTER padapter,
 	struct reportpwrstate_parm *preportpwrstate)
 {
-	printk(KERN_DEBUG "rtw_pwrctrl.c - ");
+	printk(KERN_DEBUG "rtw_pwrctrl.c - cpwm_int_hdl");
 	struct pwrctrl_priv *pwrpriv;
 
 _func_enter_;
@@ -1493,7 +1493,7 @@ _func_exit_;
 
 static void cpwm_event_callback(struct work_struct *work)
 {
-	printk(KERN_DEBUG "rtw_pwrctrl.c - ");
+	printk(KERN_DEBUG "rtw_pwrctrl.c - cpwm_event_callback");
 	struct pwrctrl_priv *pwrpriv = container_of(work, struct pwrctrl_priv, cpwm_event);
 	struct dvobj_priv *dvobj = pwrctl_to_dvobj(pwrpriv);
 	_adapter *adapter = dvobj->padapters[IFACE_ID0];
@@ -1508,7 +1508,7 @@ static void cpwm_event_callback(struct work_struct *work)
 #ifdef CONFIG_LPS_RPWM_TIMER
 static void rpwmtimeout_workitem_callback(struct work_struct *work)
 {
-	printk(KERN_DEBUG "rtw_pwrctrl.c - ");
+	printk(KERN_DEBUG "rtw_pwrctrl.c - rpwmtimeout_workitem_callback");
 	PADAPTER padapter;
 	struct dvobj_priv *dvobj;
 	struct pwrctrl_priv *pwrpriv;
@@ -1562,7 +1562,7 @@ exit:
  */
 static void pwr_rpwm_timeout_handler(void *FunctionContext)
 {
-	printk(KERN_DEBUG "rtw_pwrctrl.c - ");
+	printk(KERN_DEBUG "rtw_pwrctrl.c - pwr_rpwm_timeout_handler");
 	PADAPTER padapter;
 	struct pwrctrl_priv *pwrpriv;
 
@@ -1583,13 +1583,13 @@ static void pwr_rpwm_timeout_handler(void *FunctionContext)
 
 __inline static void register_task_alive(struct pwrctrl_priv *pwrctrl, u32 tag)
 {
-	printk(KERN_DEBUG "rtw_pwrctrl.c - ");
+	printk(KERN_DEBUG "rtw_pwrctrl.c - register_task_alive");
 	pwrctrl->alives |= tag;
 }
 
 __inline static void unregister_task_alive(struct pwrctrl_priv *pwrctrl, u32 tag)
 {
-	printk(KERN_DEBUG "rtw_pwrctrl.c - ");
+	printk(KERN_DEBUG "rtw_pwrctrl.c - unregister_task_alive");
 	pwrctrl->alives &= ~tag;
 }
 
@@ -1611,7 +1611,7 @@ __inline static void unregister_task_alive(struct pwrctrl_priv *pwrctrl, u32 tag
  */
 s32 rtw_register_task_alive(PADAPTER padapter, u32 task)
 {
-	printk(KERN_DEBUG "rtw_pwrctrl.c - ");
+	printk(KERN_DEBUG "rtw_pwrctrl.c - rtw_register_task_alive");
 	s32 res;
 	struct pwrctrl_priv *pwrctrl;
 	u8 pslv;
@@ -1668,7 +1668,7 @@ _func_exit_;
  */
 void rtw_unregister_task_alive(PADAPTER padapter, u32 task)
 {
-	printk(KERN_DEBUG "rtw_pwrctrl.c - ");
+	printk(KERN_DEBUG "rtw_pwrctrl.c - rtw_unregister_task_alive");
 	struct pwrctrl_priv *pwrctrl;
 	u8 pslv;
 
@@ -1728,7 +1728,7 @@ _func_exit_;
  */
 s32 rtw_register_tx_alive(PADAPTER padapter)
 {
-	printk(KERN_DEBUG "rtw_pwrctrl.c - ");
+	printk(KERN_DEBUG "rtw_pwrctrl.c - rtw_register_tx_alive");
 	s32 res;
 	struct pwrctrl_priv *pwrctrl;
 	u8 pslv;
@@ -1788,7 +1788,7 @@ _func_exit_;
  */
 s32 rtw_register_cmd_alive(PADAPTER padapter)
 {
-	printk(KERN_DEBUG "rtw_pwrctrl.c - ");
+	printk(KERN_DEBUG "rtw_pwrctrl.c - rtw_register_cmd_alive");
 	s32 res;
 	struct pwrctrl_priv *pwrctrl;
 	u8 pslv;
@@ -1844,7 +1844,7 @@ _func_exit_;
  */
 s32 rtw_register_rx_alive(PADAPTER padapter)
 {
-	printk(KERN_DEBUG "rtw_pwrctrl.c - ");
+	printk(KERN_DEBUG "rtw_pwrctrl.c - rtw_register_rx_alive");
 	struct pwrctrl_priv *pwrctrl;
 
 _func_enter_;
@@ -1876,7 +1876,7 @@ _func_exit_;
  */
 s32 rtw_register_evt_alive(PADAPTER padapter)
 {
-	printk(KERN_DEBUG "rtw_pwrctrl.c - ");
+	printk(KERN_DEBUG "rtw_pwrctrl.c - rtw_register_evt_alive");
 	struct pwrctrl_priv *pwrctrl;
 
 _func_enter_;
@@ -1906,7 +1906,7 @@ _func_exit_;
  */
 void rtw_unregister_tx_alive(PADAPTER padapter)
 {
-	printk(KERN_DEBUG "rtw_pwrctrl.c - ");
+	printk(KERN_DEBUG "rtw_pwrctrl.c - rtw_unregister_tx_alive");
 	struct pwrctrl_priv *pwrctrl;
 	u8 pslv;
 
@@ -1974,7 +1974,7 @@ _func_exit_;
  */
 void rtw_unregister_cmd_alive(PADAPTER padapter)
 {
-	printk(KERN_DEBUG "rtw_pwrctrl.c - ");
+	printk(KERN_DEBUG "rtw_pwrctrl.c - rtw_unregister_cmd_alive");
 	struct pwrctrl_priv *pwrctrl;
 	u8 pslv;
 
@@ -2038,7 +2038,7 @@ _func_exit_;
  */
 void rtw_unregister_rx_alive(PADAPTER padapter)
 {
-	printk(KERN_DEBUG "rtw_pwrctrl.c - ");
+	printk(KERN_DEBUG "rtw_pwrctrl.c - rtw_unregister_rx_alive");
 	struct pwrctrl_priv *pwrctrl;
 
 _func_enter_;
@@ -2060,7 +2060,7 @@ _func_exit_;
 
 void rtw_unregister_evt_alive(PADAPTER padapter)
 {
-	printk(KERN_DEBUG "rtw_pwrctrl.c - ");
+	printk(KERN_DEBUG "rtw_pwrctrl.c - rtw_unregister_evt_alive");
 	struct pwrctrl_priv *pwrctrl;
 
 _func_enter_;
@@ -2085,7 +2085,7 @@ static void resume_workitem_callback(struct work_struct *work);
 
 void rtw_init_pwrctrl_priv(PADAPTER padapter)
 {
-	printk(KERN_DEBUG "rtw_pwrctrl.c - ");
+	printk(KERN_DEBUG "rtw_pwrctrl.c - rtw_init_pwrctrl_priv");
 	struct pwrctrl_priv *pwrctrlpriv = adapter_to_pwrctl(padapter);
 	int i = 0;
 	u8 val8 = 0;
@@ -2190,7 +2190,7 @@ _func_exit_;
 
 void rtw_free_pwrctrl_priv(PADAPTER adapter)
 {
-	printk(KERN_DEBUG "rtw_pwrctrl.c - ");
+	printk(KERN_DEBUG "rtw_pwrctrl.c - rtw_free_pwrctrl_priv");
 	struct pwrctrl_priv *pwrctrlpriv = adapter_to_pwrctl(adapter);
 
 #if defined(CONFIG_CONCURRENT_MODE)
@@ -2225,7 +2225,7 @@ extern int rtw_resume_process(_adapter *padapter);
 
 static void resume_workitem_callback(struct work_struct *work)
 {
-	printk(KERN_DEBUG "rtw_pwrctrl.c - ");
+	printk(KERN_DEBUG "rtw_pwrctrl.c - resume_workitem_callback");
 	struct pwrctrl_priv *pwrpriv = container_of(work, struct pwrctrl_priv, resume_work);
 	struct dvobj_priv *dvobj = pwrctl_to_dvobj(pwrpriv);
 	_adapter *adapter = dvobj->padapters[IFACE_ID0];
@@ -2239,7 +2239,7 @@ static void resume_workitem_callback(struct work_struct *work)
 
 void rtw_resume_in_workqueue(struct pwrctrl_priv *pwrpriv)
 {
-	printk(KERN_DEBUG "rtw_pwrctrl.c - ");
+	printk(KERN_DEBUG "rtw_pwrctrl.c - rtw_resume_in_workqueue");
 	// accquire system's suspend lock preventing from falliing asleep while resume in workqueue
 	//rtw_lock_suspend();
 
@@ -2256,19 +2256,19 @@ void rtw_resume_in_workqueue(struct pwrctrl_priv *pwrpriv)
 #if defined(CONFIG_HAS_EARLYSUSPEND) || defined(CONFIG_ANDROID_POWER)
 inline bool rtw_is_earlysuspend_registered(struct pwrctrl_priv *pwrpriv)
 {
-	printk(KERN_DEBUG "rtw_pwrctrl.c - ");
+	printk(KERN_DEBUG "rtw_pwrctrl.c - rtw_is_earlysuspend_registered");
 	return (pwrpriv->early_suspend.suspend) ? _TRUE : _FALSE;
 }
 
 inline bool rtw_is_do_late_resume(struct pwrctrl_priv *pwrpriv)
 {
-	printk(KERN_DEBUG "rtw_pwrctrl.c - ");
+	printk(KERN_DEBUG "rtw_pwrctrl.c - rtw_is_do_late_resume");
 	return (pwrpriv->do_late_resume) ? _TRUE : _FALSE;
 }
 
 inline void rtw_set_do_late_resume(struct pwrctrl_priv *pwrpriv, bool enable)
 {
-	printk(KERN_DEBUG "rtw_pwrctrl.c - ");
+	printk(KERN_DEBUG "rtw_pwrctrl.c - rtw_set_do_late_resume");
 	pwrpriv->do_late_resume = enable;
 }
 #endif
@@ -2277,7 +2277,7 @@ inline void rtw_set_do_late_resume(struct pwrctrl_priv *pwrpriv, bool enable)
 extern int rtw_resume_process(_adapter *padapter);
 static void rtw_early_suspend(struct early_suspend *h)
 {
-	printk(KERN_DEBUG "rtw_pwrctrl.c - ");
+	printk(KERN_DEBUG "rtw_pwrctrl.c - rtw_early_suspend");
 	struct pwrctrl_priv *pwrpriv = container_of(h, struct pwrctrl_priv, early_suspend);
 	DBG_871X("%s\n",__FUNCTION__);
 
@@ -2286,7 +2286,7 @@ static void rtw_early_suspend(struct early_suspend *h)
 
 static void rtw_late_resume(struct early_suspend *h)
 {
-	printk(KERN_DEBUG "rtw_pwrctrl.c - ");
+	printk(KERN_DEBUG "rtw_pwrctrl.c - rtw_late_resume");
 	struct pwrctrl_priv *pwrpriv = container_of(h, struct pwrctrl_priv, early_suspend);
 	struct dvobj_priv *dvobj = pwrctl_to_dvobj(pwrpriv);
 	_adapter *adapter = dvobj->padapters[IFACE_ID0];
@@ -2301,7 +2301,7 @@ static void rtw_late_resume(struct early_suspend *h)
 
 void rtw_register_early_suspend(struct pwrctrl_priv *pwrpriv)
 {
-	printk(KERN_DEBUG "rtw_pwrctrl.c - ");
+	printk(KERN_DEBUG "rtw_pwrctrl.c - rtw_register_early_suspend");
 	DBG_871X("%s\n", __FUNCTION__);
 
 	//jeff: set the early suspend level before blank screen, so we wll do late resume after scree is lit
@@ -2315,7 +2315,7 @@ void rtw_register_early_suspend(struct pwrctrl_priv *pwrpriv)
 
 void rtw_unregister_early_suspend(struct pwrctrl_priv *pwrpriv)
 {
-	printk(KERN_DEBUG "rtw_pwrctrl.c - ");
+	printk(KERN_DEBUG "rtw_pwrctrl.c - rtw_unregister_early_suspend");
 	DBG_871X("%s\n", __FUNCTION__);
 
 	rtw_set_do_late_resume(pwrpriv, _FALSE);
@@ -2334,7 +2334,7 @@ extern int rtw_resume_process(PADAPTER padapter);
 #endif
 static void rtw_early_suspend(android_early_suspend_t *h)
 {
-	printk(KERN_DEBUG "rtw_pwrctrl.c - ");
+	printk(KERN_DEBUG "rtw_pwrctrl.c - rtw_early_suspend");
 	struct pwrctrl_priv *pwrpriv = container_of(h, struct pwrctrl_priv, early_suspend);
 	DBG_871X("%s\n",__FUNCTION__);
 
@@ -2343,7 +2343,7 @@ static void rtw_early_suspend(android_early_suspend_t *h)
 
 static void rtw_late_resume(android_early_suspend_t *h)
 {
-	printk(KERN_DEBUG "rtw_pwrctrl.c - ");
+	printk(KERN_DEBUG "rtw_pwrctrl.c - rtw_late_resume");
 	struct pwrctrl_priv *pwrpriv = container_of(h, struct pwrctrl_priv, early_suspend);
 	struct dvobj_priv *dvobj = pwrctl_to_dvobj(pwrpriv);
 	_adapter *adapter = dvobj->padapters[IFACE_ID0];
@@ -2359,7 +2359,7 @@ static void rtw_late_resume(android_early_suspend_t *h)
 
 void rtw_register_early_suspend(struct pwrctrl_priv *pwrpriv)
 {
-	printk(KERN_DEBUG "rtw_pwrctrl.c - ");
+	printk(KERN_DEBUG "rtw_pwrctrl.c - rtw_register_early_suspend");
 	DBG_871X("%s\n", __FUNCTION__);
 
 	//jeff: set the early suspend level before blank screen, so we wll do late resume after scree is lit
@@ -2371,7 +2371,7 @@ void rtw_register_early_suspend(struct pwrctrl_priv *pwrpriv)
 
 void rtw_unregister_early_suspend(struct pwrctrl_priv *pwrpriv)
 {
-	printk(KERN_DEBUG "rtw_pwrctrl.c - ");
+	printk(KERN_DEBUG "rtw_pwrctrl.c - rtw_unregister_early_suspend");
 	DBG_871X("%s\n", __FUNCTION__);
 
 	rtw_set_do_late_resume(pwrpriv, _FALSE);
@@ -2386,7 +2386,7 @@ void rtw_unregister_early_suspend(struct pwrctrl_priv *pwrpriv)
 
 u8 rtw_interface_ps_func(_adapter *padapter,HAL_INTF_PS_FUNC efunc_id,u8* val)
 {
-	printk(KERN_DEBUG "rtw_pwrctrl.c - ");
+	printk(KERN_DEBUG "rtw_pwrctrl.c - rtw_interface_ps_func");
 	u8 bResult = _TRUE;
 	rtw_hal_intf_ps_func(padapter,efunc_id,val);
 	
@@ -2396,7 +2396,7 @@ u8 rtw_interface_ps_func(_adapter *padapter,HAL_INTF_PS_FUNC efunc_id,u8* val)
 
 inline void rtw_set_ips_deny(_adapter *padapter, u32 ms)
 {
-	printk(KERN_DEBUG "rtw_pwrctrl.c - ");
+	printk(KERN_DEBUG "rtw_pwrctrl.c - rtw_set_ips_deny");
 	struct pwrctrl_priv *pwrpriv = adapter_to_pwrctl(padapter);
 	pwrpriv->ips_deny_time = rtw_get_current_time() + rtw_ms_to_systime(ms);
 }
@@ -2410,7 +2410,7 @@ inline void rtw_set_ips_deny(_adapter *padapter, u32 ms)
 
 int _rtw_pwr_wakeup(_adapter *padapter, u32 ips_deffer_ms, const char *caller)
 {
-	printk(KERN_DEBUG "rtw_pwrctrl.c - ");
+	printk(KERN_DEBUG "rtw_pwrctrl.c - _rtw_pwr_wakeup");
 	struct dvobj_priv *dvobj = adapter_to_dvobj(padapter);
 	struct pwrctrl_priv *pwrpriv = dvobj_to_pwrctl(dvobj);
 	struct mlme_priv *pmlmepriv;
@@ -2562,7 +2562,7 @@ exit:
 
 int rtw_pm_set_lps(_adapter *padapter, u8 mode)
 {
-	printk(KERN_DEBUG "rtw_pwrctrl.c - ");
+	printk(KERN_DEBUG "rtw_pwrctrl.c - rtw_pm_set_lps");
 	int	ret = 0;	
 	struct pwrctrl_priv *pwrctrlpriv = adapter_to_pwrctl(padapter);
 	
@@ -2592,7 +2592,7 @@ int rtw_pm_set_lps(_adapter *padapter, u8 mode)
 
 int rtw_pm_set_ips(_adapter *padapter, u8 mode)
 {
-	printk(KERN_DEBUG "rtw_pwrctrl.c - ");
+	printk(KERN_DEBUG "rtw_pwrctrl.c - rtw_pm_set_ips");
 	struct pwrctrl_priv *pwrctrlpriv = adapter_to_pwrctl(padapter);
 
 	if( mode == IPS_NORMAL || mode == IPS_LEVEL_2 ) {
@@ -2618,7 +2618,7 @@ int rtw_pm_set_ips(_adapter *padapter, u8 mode)
  */
 void rtw_ps_deny(PADAPTER padapter, PS_DENY_REASON reason)
 {
-	printk(KERN_DEBUG "rtw_pwrctrl.c - ");
+	printk(KERN_DEBUG "rtw_pwrctrl.c - rtw_ps_deny");
 	struct pwrctrl_priv *pwrpriv;
 	s32 ret;
 
@@ -2647,7 +2647,7 @@ void rtw_ps_deny(PADAPTER padapter, PS_DENY_REASON reason)
  */
 void rtw_ps_deny_cancel(PADAPTER padapter, PS_DENY_REASON reason)
 {
-	printk(KERN_DEBUG "rtw_pwrctrl.c - ");
+	printk(KERN_DEBUG "rtw_pwrctrl.c - rtw_ps_deny_cancel");
 	struct pwrctrl_priv *pwrpriv;
 
 
@@ -2676,7 +2676,7 @@ void rtw_ps_deny_cancel(PADAPTER padapter, PS_DENY_REASON reason)
  */
 u32 rtw_ps_deny_get(PADAPTER padapter)
 {
-	printk(KERN_DEBUG "rtw_pwrctrl.c - ");
+	printk(KERN_DEBUG "rtw_pwrctrl.c - rtw_ps_deny_get");
 	u32 deny;
 
 

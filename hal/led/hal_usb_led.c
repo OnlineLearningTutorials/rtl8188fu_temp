@@ -31,7 +31,7 @@ SwLedBlink(
 	PLED_USB			pLed
 	)
 {
-	printk(KERN_DEBUG "hal_usb_led.c - ");
+	printk(KERN_DEBUG "hal_usb_led.c - SwLedBlink");
 	_adapter			*padapter = pLed->padapter;
 	struct mlme_priv	*pmlmepriv = &(padapter->mlmepriv);
 	u8				bStopBlinking = _FALSE;
@@ -149,7 +149,7 @@ SwLedBlink1(
 	PLED_USB			pLed
 	)
 {
-	printk(KERN_DEBUG "hal_usb_led.c - ");
+	printk(KERN_DEBUG "hal_usb_led.c - SwLedBlink1");
 	_adapter				*padapter = pLed->padapter;
 	PHAL_DATA_TYPE		pHalData = GET_HAL_DATA(padapter);
 	struct led_priv		*ledpriv = &(padapter->ledpriv);
@@ -382,7 +382,7 @@ SwLedBlink2(
 	PLED_USB			pLed
 	)
 {
-	printk(KERN_DEBUG "hal_usb_led.c - ");
+	printk(KERN_DEBUG "hal_usb_led.c - SwLedBlink2");
 	_adapter				*padapter = pLed->padapter;
 	struct mlme_priv		*pmlmepriv = &(padapter->mlmepriv);
 	u8					bStopBlinking = _FALSE;
@@ -505,7 +505,7 @@ SwLedBlink3(
 	PLED_USB			pLed
 	)
 {
-	printk(KERN_DEBUG "hal_usb_led.c - ");
+	printk(KERN_DEBUG "hal_usb_led.c - SwLedBlink3");
 	_adapter			*padapter = pLed->padapter;
 	struct mlme_priv	*pmlmepriv = &(padapter->mlmepriv);
 	u8				bStopBlinking = _FALSE;
@@ -677,7 +677,7 @@ SwLedBlink4(
 	PLED_USB			pLed
 	)
 {
-	printk(KERN_DEBUG "hal_usb_led.c - ");
+	printk(KERN_DEBUG "hal_usb_led.c - SwLedBlink4");
 	_adapter			*padapter = pLed->padapter;
 	struct led_priv	*ledpriv = &(padapter->ledpriv);
 	struct mlme_priv	*pmlmepriv = &(padapter->mlmepriv);
@@ -922,7 +922,7 @@ SwLedBlink5(
 	PLED_USB			pLed
 	)
 {
-	printk(KERN_DEBUG "hal_usb_led.c - ");
+	printk(KERN_DEBUG "hal_usb_led.c - SwLedBlink5");
 	_adapter			*padapter = pLed->padapter;
 	struct mlme_priv	*pmlmepriv = &(padapter->mlmepriv);
 	u8				bStopBlinking = _FALSE;
@@ -1041,7 +1041,7 @@ SwLedBlink6(
 	PLED_USB			pLed
 	)
 {
-	printk(KERN_DEBUG "hal_usb_led.c - ");
+	printk(KERN_DEBUG "hal_usb_led.c - SwLedBlink6");
 	_adapter			*padapter = pLed->padapter;
 	struct mlme_priv	*pmlmepriv = &(padapter->mlmepriv);
 	u8				bStopBlinking = _FALSE;
@@ -1066,7 +1066,7 @@ SwLedBlink7(
 	PLED_USB			pLed
 	)
 {
-	printk(KERN_DEBUG "hal_usb_led.c - ");
+	printk(KERN_DEBUG "hal_usb_led.c - SwLedBlink7");
 	PADAPTER Adapter = pLed->padapter;
 	struct mlme_priv	*pmlmepriv = &(Adapter->mlmepriv);
 	BOOLEAN bStopBlinking = _FALSE;
@@ -1187,7 +1187,7 @@ SwLedBlink8(
 	PLED_USB			pLed
 	)
 {
-	printk(KERN_DEBUG "hal_usb_led.c - ");
+	printk(KERN_DEBUG "hal_usb_led.c - SwLedBlink8");
 	PADAPTER Adapter = pLed->padapter;
 
 	// Change LED according to BlinkingLedState specified.
@@ -1212,7 +1212,7 @@ SwLedBlink9(
 	PLED_USB			pLed
 	)
 {
-	printk(KERN_DEBUG "hal_usb_led.c - ");
+	printk(KERN_DEBUG "hal_usb_led.c - SwLedBlink9");
 	PADAPTER Adapter = pLed->padapter; 
 	struct mlme_priv	*pmlmepriv = &(Adapter->mlmepriv);
 	BOOLEAN bStopBlinking = _FALSE;

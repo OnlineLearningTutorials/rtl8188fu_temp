@@ -30,7 +30,7 @@
 
 bool test_st_match_rule(_adapter *adapter, u8 *local_naddr, u8 *local_port, u8 *remote_naddr, u8 *remote_port)
 {
-	printk(KERN_DEBUG "rtw_sta_mgt.c - ");
+	printk(KERN_DEBUG "rtw_sta_mgt.c - test_st_match_rule");
 	if (ntohs(*((u16 *)local_port)) == 5001 || ntohs(*((u16 *)remote_port)) == 5001)
 		return _TRUE;
 	return _FALSE;
@@ -43,14 +43,14 @@ struct st_register test_st_reg = {
 
 inline void rtw_st_ctl_init(struct st_ctl_t *st_ctl)
 {
-	printk(KERN_DEBUG "rtw_sta_mgt.c - ");
+	printk(KERN_DEBUG "rtw_sta_mgt.c - rtw_st_ctl_init");
 	_rtw_memset(st_ctl->reg, 0 , sizeof(struct st_register) * SESSION_TRACKER_REG_ID_NUM);
 	_rtw_init_queue(&st_ctl->tracker_q);
 }
 
 inline void rtw_st_ctl_clear_tracker_q(struct st_ctl_t *st_ctl)
 {
-	printk(KERN_DEBUG "rtw_sta_mgt.c - ");
+	printk(KERN_DEBUG "rtw_sta_mgt.c - rtw_st_ctl_clear_tracker_q");
 	_irqL irqL;
 	_list *plist, *phead;
 	struct session_tracker *st;
@@ -69,14 +69,14 @@ inline void rtw_st_ctl_clear_tracker_q(struct st_ctl_t *st_ctl)
 
 inline void rtw_st_ctl_deinit(struct st_ctl_t *st_ctl)
 {
-	printk(KERN_DEBUG "rtw_sta_mgt.c - ");
+	printk(KERN_DEBUG "rtw_sta_mgt.c - rtw_st_ctl_deinit");
 	rtw_st_ctl_clear_tracker_q(st_ctl);
 	_rtw_deinit_queue(&st_ctl->tracker_q);
 }
 
 inline void rtw_st_ctl_register(struct st_ctl_t *st_ctl, u8 st_reg_id, struct st_register *reg)
 {
-	printk(KERN_DEBUG "rtw_sta_mgt.c - ");
+	printk(KERN_DEBUG "rtw_sta_mgt.c - rtw_st_ctl_register");
 	if (st_reg_id >= SESSION_TRACKER_REG_ID_NUM) {
 		rtw_warn_on(1);
 		return;
@@ -88,7 +88,7 @@ inline void rtw_st_ctl_register(struct st_ctl_t *st_ctl, u8 st_reg_id, struct st
 
 inline void rtw_st_ctl_unregister(struct st_ctl_t *st_ctl, u8 st_reg_id)
 {
-	printk(KERN_DEBUG "rtw_sta_mgt.c - ");
+	printk(KERN_DEBUG "rtw_sta_mgt.c - rtw_st_ctl_unregister");
 	int i;
 
 	if (st_reg_id >= SESSION_TRACKER_REG_ID_NUM) {
@@ -109,7 +109,7 @@ inline void rtw_st_ctl_unregister(struct st_ctl_t *st_ctl, u8 st_reg_id)
 
 inline bool rtw_st_ctl_chk_reg_s_proto(struct st_ctl_t *st_ctl, u8 s_proto)
 {
-	printk(KERN_DEBUG "rtw_sta_mgt.c - ");
+	printk(KERN_DEBUG "rtw_sta_mgt.c - rtw_st_ctl_chk_reg_s_proto");
 	bool ret = _FALSE;
 	int i;
 
@@ -125,7 +125,7 @@ inline bool rtw_st_ctl_chk_reg_s_proto(struct st_ctl_t *st_ctl, u8 s_proto)
 
 inline bool rtw_st_ctl_chk_reg_rule(struct st_ctl_t *st_ctl, _adapter *adapter, u8 *local_naddr, u8 *local_port, u8 *remote_naddr, u8 *remote_port)
 {
-	printk(KERN_DEBUG "rtw_sta_mgt.c - ");
+	printk(KERN_DEBUG "rtw_sta_mgt.c - rtw_st_ctl_chk_reg_rule");
 	bool ret = _FALSE;
 	int i;
 	st_match_rule rule;
@@ -146,7 +146,7 @@ inline bool rtw_st_ctl_chk_reg_rule(struct st_ctl_t *st_ctl, _adapter *adapter, 
 
 void dump_st_ctl(void *sel, struct st_ctl_t *st_ctl)
 {
-	printk(KERN_DEBUG "rtw_sta_mgt.c - ");
+	printk(KERN_DEBUG "rtw_sta_mgt.c - dump_st_ctl");
 	int i;
 	_irqL irqL;
 	_list *plist, *phead;
@@ -174,7 +174,7 @@ void dump_st_ctl(void *sel, struct st_ctl_t *st_ctl)
 void _rtw_init_stainfo(struct sta_info *psta);
 void _rtw_init_stainfo(struct sta_info *psta)
 {
-	printk(KERN_DEBUG "rtw_sta_mgt.c - ");
+	printk(KERN_DEBUG "rtw_sta_mgt.c - _rtw_init_stainfo");
 
 _func_enter_;
 
@@ -234,7 +234,7 @@ _func_exit_;
 
 u32	_rtw_init_sta_priv(struct	sta_priv *pstapriv)
 {
-	printk(KERN_DEBUG "rtw_sta_mgt.c - ");
+	printk(KERN_DEBUG "rtw_sta_mgt.c - _rtw_init_sta_priv");
 	struct sta_info *psta;
 	s32 i;
 
@@ -309,7 +309,7 @@ _func_exit_;
 
 inline int rtw_stainfo_offset(struct sta_priv *stapriv, struct sta_info *sta)
 {
-	printk(KERN_DEBUG "rtw_sta_mgt.c - ");
+	printk(KERN_DEBUG "rtw_sta_mgt.c - rtw_stainfo_offset");
 	int offset = (((u8 *)sta) - stapriv->pstainfo_buf)/sizeof(struct sta_info);
 
 	if (!stainfo_offset_valid(offset))
@@ -320,7 +320,7 @@ inline int rtw_stainfo_offset(struct sta_priv *stapriv, struct sta_info *sta)
 
 inline struct sta_info *rtw_get_stainfo_by_offset(struct sta_priv *stapriv, int offset)
 {
-	printk(KERN_DEBUG "rtw_sta_mgt.c - ");
+	printk(KERN_DEBUG "rtw_sta_mgt.c - rtw_get_stainfo_by_offset");
 	if (!stainfo_offset_valid(offset))
 		DBG_871X("%s invalid offset(%d), out of range!!!", __func__, offset);
 
@@ -343,7 +343,7 @@ _func_exit_;
 
 static void	_rtw_free_sta_recv_priv_lock(struct sta_recv_priv *psta_recvpriv)
 {
-	printk(KERN_DEBUG "rtw_sta_mgt.c - ");
+	printk(KERN_DEBUG "rtw_sta_mgt.c - _rtw_free_sta_recv_priv_lock");
 _func_enter_;	
 
 	_rtw_spinlock_free(&psta_recvpriv->lock);
@@ -357,7 +357,7 @@ _func_exit_;
 void rtw_mfree_stainfo(struct sta_info *psta);
 void rtw_mfree_stainfo(struct sta_info *psta)
 {
-	printk(KERN_DEBUG "rtw_sta_mgt.c - ");
+	printk(KERN_DEBUG "rtw_sta_mgt.c - rtw_mfree_stainfo");
 _func_enter_;
 
 	if(&psta->lock != NULL)
@@ -374,7 +374,7 @@ _func_exit_;
 void rtw_mfree_all_stainfo(struct sta_priv *pstapriv );
 void rtw_mfree_all_stainfo(struct sta_priv *pstapriv )
 {
-	printk(KERN_DEBUG "rtw_sta_mgt.c - ");
+	printk(KERN_DEBUG "rtw_sta_mgt.c - rtw_mfree_all_stainfo");
 	_irqL	 irqL;
 	_list	*plist, *phead;
 	struct sta_info *psta = NULL;
@@ -403,7 +403,7 @@ _func_exit_;
 void rtw_mfree_sta_priv_lock(struct	sta_priv *pstapriv);
 void rtw_mfree_sta_priv_lock(struct	sta_priv *pstapriv)
 {
-	printk(KERN_DEBUG "rtw_sta_mgt.c - ");
+	printk(KERN_DEBUG "rtw_sta_mgt.c - rtw_mfree_sta_priv_lock");
 #ifdef CONFIG_AP_MODE
 	struct wlan_acl_pool *pacl_list = &pstapriv->acl_list;
 #endif
@@ -426,7 +426,7 @@ void rtw_mfree_sta_priv_lock(struct	sta_priv *pstapriv)
 
 u32	_rtw_free_sta_priv(struct	sta_priv *pstapriv)
 {
-	printk(KERN_DEBUG "rtw_sta_mgt.c - ");
+	printk(KERN_DEBUG "rtw_sta_mgt.c - _rtw_free_sta_priv");
 	_irqL 	irqL;
 	_list	*phead, *plist;
 	struct sta_info *psta = NULL;
@@ -474,7 +474,7 @@ _func_exit_;
 //struct	sta_info *rtw_alloc_stainfo(_queue *pfree_sta_queue, unsigned char *hwaddr)
 struct	sta_info *rtw_alloc_stainfo(struct	sta_priv *pstapriv, const u8 *hwaddr)
 {	
-	printk(KERN_DEBUG "rtw_sta_mgt.c - ");
+	printk(KERN_DEBUG "rtw_sta_mgt.c - rtw_alloc_stainfo");
 	_irqL irqL, irqL2;
 	uint tmp_aid;
 	s32	index;
@@ -608,7 +608,7 @@ _func_exit_;
 // using pstapriv->sta_hash_lock to protect
 u32	rtw_free_stainfo(_adapter *padapter , struct sta_info *psta)
 {	
-	printk(KERN_DEBUG "rtw_sta_mgt.c - ");
+	printk(KERN_DEBUG "rtw_sta_mgt.c - rtw_free_stainfo");
 	int i;
 	_irqL irqL0;
 	_queue *pfree_sta_queue;
@@ -821,7 +821,7 @@ _func_exit_;
 // free all stainfo which in sta_hash[all]
 void rtw_free_all_stainfo(_adapter *padapter)
 {
-	printk(KERN_DEBUG "rtw_sta_mgt.c - ");
+	printk(KERN_DEBUG "rtw_sta_mgt.c - rtw_free_all_stainfo");
 	_irqL	 irqL;
 	_list	*plist, *phead;
 	s32	index;
@@ -881,7 +881,7 @@ _func_exit_;
 /* any station allocated can be searched by hash list */
 struct sta_info *rtw_get_stainfo(struct sta_priv *pstapriv, const u8 *hwaddr)
 {
-	printk(KERN_DEBUG "rtw_sta_mgt.c - ");
+	printk(KERN_DEBUG "rtw_sta_mgt.c - rtw_get_stainfo");
 
 	_irqL	 irqL;
 
@@ -934,7 +934,7 @@ _func_exit_;
 
 u32 rtw_init_bcmc_stainfo(_adapter* padapter)
 {
-	printk(KERN_DEBUG "rtw_sta_mgt.c - ");
+	printk(KERN_DEBUG "rtw_sta_mgt.c - rtw_init_bcmc_stainfo");
 
 	struct sta_info 	*psta;
 	struct tx_servq	*ptxservq;
@@ -977,7 +977,7 @@ _func_exit_;
 
 struct sta_info* rtw_get_bcmc_stainfo(_adapter* padapter)
 {
-	printk(KERN_DEBUG "rtw_sta_mgt.c - ");
+	printk(KERN_DEBUG "rtw_sta_mgt.c - rtw_get_bcmc_stainfo");
 	struct sta_info 	*psta;
 	struct sta_priv 	*pstapriv = &padapter->stapriv;
 	u8 bc_addr[ETH_ALEN] = {0xff,0xff,0xff,0xff,0xff,0xff};
@@ -990,7 +990,7 @@ _func_exit_;
 
 u8 rtw_access_ctrl(_adapter *padapter, u8 *mac_addr)
 {
-	printk(KERN_DEBUG "rtw_sta_mgt.c - ");
+	printk(KERN_DEBUG "rtw_sta_mgt.c - rtw_access_ctrl");
 	u8 res = _TRUE;
 #ifdef  CONFIG_AP_MODE
 	_irqL irqL;

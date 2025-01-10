@@ -31,7 +31,7 @@ static u8 RFC1042_OUI[P80211_OUI_LEN] = { 0x00, 0x00, 0x00 };
 
 static void _init_txservq(struct tx_servq *ptxservq)
 {
-	printk(KERN_DEBUG "rtw_xmit.c - ");
+	printk(KERN_DEBUG "rtw_xmit.c - _init_txservq");
 _func_enter_;
 	_rtw_init_listhead(&ptxservq->tx_pending);
 	_rtw_init_queue(&ptxservq->sta_pending);
@@ -42,7 +42,7 @@ _func_exit_;
 
 void	_rtw_init_sta_xmit_priv(struct sta_xmit_priv *psta_xmitpriv)
 {	
-	printk(KERN_DEBUG "rtw_xmit.c - ");
+	printk(KERN_DEBUG "rtw_xmit.c - _rtw_init_sta_xmit_priv");
 	
 _func_enter_;
 
@@ -66,7 +66,7 @@ _func_exit_;
 
 s32	_rtw_init_xmit_priv(struct xmit_priv *pxmitpriv, _adapter *padapter)
 {
-	printk(KERN_DEBUG "rtw_xmit.c - ");
+	printk(KERN_DEBUG "rtw_xmit.c - _rtw_init_xmit_priv");
 	int i;
 	struct xmit_buf *pxmitbuf;
 	struct xmit_frame *pxframe;
@@ -340,7 +340,7 @@ _func_exit_;
 void  rtw_mfree_xmit_priv_lock (struct xmit_priv *pxmitpriv);
 void  rtw_mfree_xmit_priv_lock (struct xmit_priv *pxmitpriv)
 {
-	printk(KERN_DEBUG "rtw_xmit.c - ");
+	printk(KERN_DEBUG "rtw_xmit.c - rtw_mfree_xmit_priv_lock");
 	_rtw_spinlock_free(&pxmitpriv->lock);
 	_rtw_free_sema(&pxmitpriv->xmit_sema);
 	_rtw_free_sema(&pxmitpriv->terminate_xmitthread_sema);
@@ -362,7 +362,7 @@ void  rtw_mfree_xmit_priv_lock (struct xmit_priv *pxmitpriv)
 
 void _rtw_free_xmit_priv (struct xmit_priv *pxmitpriv)
 {
-	printk(KERN_DEBUG "rtw_xmit.c - ");
+	printk(KERN_DEBUG "rtw_xmit.c - _rtw_free_xmit_priv");
        int i;
       _adapter *padapter = pxmitpriv->adapter;
 	struct xmit_frame	*pxmitframe = (struct xmit_frame*) pxmitpriv->pxmit_frame_buf;
@@ -446,7 +446,7 @@ _func_exit_;
 
 u8	query_ra_short_GI(struct sta_info *psta)
 {
-	printk(KERN_DEBUG "rtw_xmit.c - ");
+	printk(KERN_DEBUG "rtw_xmit.c - query_ra_short_GI");
 	u8	sgi = _FALSE, sgi_20m = _FALSE, sgi_40m = _FALSE, sgi_80m = _FALSE;
 
 #ifdef CONFIG_80211N_HT
@@ -479,7 +479,7 @@ u8	query_ra_short_GI(struct sta_info *psta)
 
 static void update_attrib_vcs_info(_adapter *padapter, struct xmit_frame *pxmitframe)
 {
-	printk(KERN_DEBUG "rtw_xmit.c - ");
+	printk(KERN_DEBUG "rtw_xmit.c - update_attrib_vcs_info");
 	u32	sz;
 	struct pkt_attrib	*pattrib = &pxmitframe->attrib;
 	//struct sta_info	*psta = pattrib->psta;
@@ -624,7 +624,7 @@ static void update_attrib_vcs_info(_adapter *padapter, struct xmit_frame *pxmitf
 
 static void update_attrib_phy_info(_adapter *padapter, struct pkt_attrib *pattrib, struct sta_info *psta)
 {
-	printk(KERN_DEBUG "rtw_xmit.c - ");
+	printk(KERN_DEBUG "rtw_xmit.c - update_attrib_phy_info");
 	struct mlme_ext_priv *mlmeext = &padapter->mlmeextpriv;
 
 	pattrib->rtsen = psta->rtsen;
@@ -691,7 +691,7 @@ static void update_attrib_phy_info(_adapter *padapter, struct pkt_attrib *pattri
 
 static s32 update_attrib_sec_info(_adapter *padapter, struct pkt_attrib *pattrib, struct sta_info *psta)
 {
-	printk(KERN_DEBUG "rtw_xmit.c - ");
+	printk(KERN_DEBUG "rtw_xmit.c - update_attrib_sec_info");
 	sint res = _SUCCESS;
 	struct mlme_priv	*pmlmepriv = &padapter->mlmepriv;
 	struct security_priv *psecuritypriv = &padapter->securitypriv;
@@ -857,7 +857,7 @@ exit:
 
 u8	qos_acm(u8 acm_mask, u8 priority)
 {
-	printk(KERN_DEBUG "rtw_xmit.c - ");
+	printk(KERN_DEBUG "rtw_xmit.c - qos_acm");
 	u8	change_priority = priority;
 
 	switch (priority)
@@ -890,7 +890,7 @@ u8	qos_acm(u8 acm_mask, u8 priority)
 
 static void set_qos(struct pkt_file *ppktfile, struct pkt_attrib *pattrib)
 {
-	printk(KERN_DEBUG "rtw_xmit.c - ");
+	printk(KERN_DEBUG "rtw_xmit.c - set_qos");
 	struct ethhdr etherhdr;
 	struct iphdr ip_hdr;
 	s32 UserPriority = 0;
@@ -920,7 +920,7 @@ static void set_qos(struct pkt_file *ppktfile, struct pkt_attrib *pattrib)
 #ifdef CONFIG_TDLS
 u8 rtw_check_tdls_established(_adapter *padapter, struct pkt_attrib *pattrib)
 {
-	printk(KERN_DEBUG "rtw_xmit.c - ");
+	printk(KERN_DEBUG "rtw_xmit.c - rtw_check_tdls_established");
 	pattrib->ptdls_sta = NULL;
 
 	pattrib->direct_link = _FALSE;
@@ -954,7 +954,7 @@ u8 rtw_check_tdls_established(_adapter *padapter, struct pkt_attrib *pattrib)
 
 s32 update_tdls_attrib(_adapter *padapter, struct pkt_attrib *pattrib)
 {
-	printk(KERN_DEBUG "rtw_xmit.c - ");
+	printk(KERN_DEBUG "rtw_xmit.c - update_tdls_attrib");
 
 	struct sta_info *psta = NULL;
 	struct sta_priv		*pstapriv = &padapter->stapriv;
@@ -1007,7 +1007,7 @@ exit:
 //get non-qos hw_ssn control register,mapping to REG_HW_SEQ0,1,2,3
 inline u8 rtw_get_hwseq_no(_adapter *padapter)
 {
-	printk(KERN_DEBUG "rtw_xmit.c - ");
+	printk(KERN_DEBUG "rtw_xmit.c - rtw_get_hwseq_no");
 	u8 hwseq_num = 0;
 #ifdef CONFIG_CONCURRENT_MODE
 	if(padapter->adapter_type == SECONDARY_ADAPTER)
@@ -1019,7 +1019,7 @@ inline u8 rtw_get_hwseq_no(_adapter *padapter)
 }
 static s32 update_attrib(_adapter *padapter, _pkt *pkt, struct pkt_attrib *pattrib)
 {
-	printk(KERN_DEBUG "rtw_xmit.c - ");
+	printk(KERN_DEBUG "rtw_xmit.c - update_attrib");
 	uint i;
 	struct pkt_file pktfile;
 	struct sta_info *psta = NULL;
@@ -1268,7 +1268,7 @@ _func_exit_;
 }
 
 static s32 xmitframe_addmic(_adapter *padapter, struct xmit_frame *pxmitframe){
-	printk(KERN_DEBUG "rtw_xmit.c - ");
+	printk(KERN_DEBUG "rtw_xmit.c - xmitframe_addmic");
 	sint 			curfragnum,length;
 	u8	*pframe, *payload,mic[8];
 	struct	mic_data		micdata;
@@ -1422,7 +1422,7 @@ _func_exit_;
 }
 
 static s32 xmitframe_swencrypt(_adapter *padapter, struct xmit_frame *pxmitframe){
-	printk(KERN_DEBUG "rtw_xmit.c - ");
+	printk(KERN_DEBUG "rtw_xmit.c - xmitframe_swencrypt");
 
 	struct	pkt_attrib	 *pattrib = &pxmitframe->attrib;
 	//struct 	security_priv	*psecuritypriv=&padapter->securitypriv;
@@ -1464,7 +1464,7 @@ _func_exit_;
 
 s32 rtw_make_wlanhdr (_adapter *padapter , u8 *hdr, struct pkt_attrib *pattrib)
 {
-	printk(KERN_DEBUG "rtw_xmit.c - ");
+	printk(KERN_DEBUG "rtw_xmit.c - rtw_make_wlanhdr");
 	u16 *qc;
 
 	struct rtw_ieee80211_hdr *pwlanhdr = (struct rtw_ieee80211_hdr *)hdr;
@@ -1663,7 +1663,7 @@ _func_exit_;
 
 s32 rtw_txframes_pending(_adapter *padapter)
 {
-	printk(KERN_DEBUG "rtw_xmit.c - ");
+	printk(KERN_DEBUG "rtw_xmit.c - rtw_txframes_pending");
 	struct xmit_priv *pxmitpriv = &padapter->xmitpriv;
 
 	return ((_rtw_queue_empty(&pxmitpriv->be_pending) == _FALSE) || 
@@ -1674,7 +1674,7 @@ s32 rtw_txframes_pending(_adapter *padapter)
 
 s32 rtw_txframes_sta_ac_pending(_adapter *padapter, struct pkt_attrib *pattrib)
 {	
-	printk(KERN_DEBUG "rtw_xmit.c - ");
+	printk(KERN_DEBUG "rtw_xmit.c - rtw_txframes_sta_ac_pending");
 	struct sta_info *psta;
 	struct tx_servq *ptxservq;
 	int priority = pattrib->priority;
@@ -1737,7 +1737,7 @@ s32 rtw_txframes_sta_ac_pending(_adapter *padapter, struct pkt_attrib *pattrib)
 
 int rtw_build_tdls_ies(_adapter * padapter, struct xmit_frame * pxmitframe, u8 *pframe, struct tdls_txmgmt *ptxmgmt)
 {
-	printk(KERN_DEBUG "rtw_xmit.c - ");
+	printk(KERN_DEBUG "rtw_xmit.c - rtw_build_tdls_ies");
 	int res=_SUCCESS;
 
 	switch(ptxmgmt->action_code){
@@ -1788,7 +1788,7 @@ int rtw_build_tdls_ies(_adapter * padapter, struct xmit_frame * pxmitframe, u8 *
 
 s32 rtw_make_tdls_wlanhdr (_adapter *padapter , u8 *hdr, struct pkt_attrib *pattrib, struct tdls_txmgmt *ptxmgmt)
 {
-	printk(KERN_DEBUG "rtw_xmit.c - ");
+	printk(KERN_DEBUG "rtw_xmit.c - rtw_make_tdls_wlanhdr");
 	u16 *qc;
 	struct rtw_ieee80211_hdr *pwlanhdr = (struct rtw_ieee80211_hdr *)hdr;
 	struct mlme_priv *pmlmepriv = &padapter->mlmepriv;
@@ -1903,7 +1903,7 @@ _func_exit_;
 
 s32 rtw_xmit_tdls_coalesce(_adapter * padapter, struct xmit_frame * pxmitframe, struct tdls_txmgmt *ptxmgmt)
 {
-	printk(KERN_DEBUG "rtw_xmit.c - ");
+	printk(KERN_DEBUG "rtw_xmit.c - rtw_xmit_tdls_coalesce");
 	s32 llc_sz;
 
 	u8 *pframe, *mem_start;
@@ -2022,7 +2022,7 @@ _func_exit_;
  */
 u32 rtw_calculate_wlan_pkt_size_by_attribue(struct pkt_attrib *pattrib)
 {
-	printk(KERN_DEBUG "rtw_xmit.c - ");
+	printk(KERN_DEBUG "rtw_xmit.c - rtw_calculate_wlan_pkt_size_by_attribue");
 	u32	len = 0;
 
 	len = pattrib->hdrlen + pattrib->iv_len; // WLAN Header and IV
@@ -2048,7 +2048,7 @@ This sub-routine will perform all the following:
 */
 s32 rtw_xmitframe_coalesce(_adapter *padapter, _pkt *pkt, struct xmit_frame *pxmitframe)
 {
-	printk(KERN_DEBUG "rtw_xmit.c - ");
+	printk(KERN_DEBUG "rtw_xmit.c - rtw_xmitframe_coalesce");
 	struct pkt_file pktfile;
 
 	s32 frg_inx, frg_len, mpdu_len, llc_sz, mem_sz;
@@ -2263,7 +2263,7 @@ _func_exit_;
 //broadcast or multicast management pkt use BIP, unicast management pkt use CCMP encryption
 s32 rtw_mgmt_xmitframe_coalesce(_adapter *padapter, _pkt *pkt, struct xmit_frame *pxmitframe)
 {
-	printk(KERN_DEBUG "rtw_xmit.c - ");
+	printk(KERN_DEBUG "rtw_xmit.c - rtw_mgmt_xmitframe_coalesce");
 	struct pkt_file pktfile;
 	s32 frg_inx, frg_len, mpdu_len, llc_sz, mem_sz;
 	SIZE_PTR addr;
@@ -2510,7 +2510,7 @@ _func_exit_;
  */
 s32 rtw_put_snap(u8 *data, u16 h_proto)
 {
-	printk(KERN_DEBUG "rtw_xmit.c - ");
+	printk(KERN_DEBUG "rtw_xmit.c - rtw_put_snap");
 	struct ieee80211_snap_hdr *snap;
 	u8 *oui;
 
@@ -2539,7 +2539,7 @@ _func_exit_;
 
 void rtw_update_protection(_adapter *padapter, u8 *ie, uint ie_len)
 {
-	printk(KERN_DEBUG "rtw_xmit.c - ");
+	printk(KERN_DEBUG "rtw_xmit.c - rtw_update_protection");
 
 	uint	protection;
 	u8	*perp;
@@ -2589,7 +2589,7 @@ _func_exit_;
 
 void rtw_count_tx_stats(PADAPTER padapter, struct xmit_frame *pxmitframe, int sz)
 {
-	printk(KERN_DEBUG "rtw_xmit.c - ");
+	printk(KERN_DEBUG "rtw_xmit.c - rtw_count_tx_stats");
 	struct sta_info *psta = NULL;
 	struct stainfo_stats *pstats = NULL;
 	struct xmit_priv	*pxmitpriv = &padapter->xmitpriv;
@@ -2635,7 +2635,7 @@ void rtw_count_tx_stats(PADAPTER padapter, struct xmit_frame *pxmitframe, int sz
 static struct xmit_buf *__rtw_alloc_cmd_xmitbuf(struct xmit_priv *pxmitpriv,
 		enum cmdbuf_type buf_type)
 {
-	printk(KERN_DEBUG "rtw_xmit.c - ");
+	printk(KERN_DEBUG "rtw_xmit.c - __rtw_alloc_cmd_xmitbuf");
 	struct xmit_buf *pxmitbuf =  NULL;
 
 _func_enter_;
@@ -2673,7 +2673,7 @@ _func_exit_;
 struct xmit_frame *__rtw_alloc_cmdxmitframe(struct xmit_priv *pxmitpriv,
 		enum cmdbuf_type buf_type)
 {
-	printk(KERN_DEBUG "rtw_xmit.c - ");
+	printk(KERN_DEBUG "rtw_xmit.c - __rtw_alloc_cmdxmitframe");
 	struct xmit_frame		*pcmdframe;
 	struct xmit_buf		*pxmitbuf;
 
@@ -2703,7 +2703,7 @@ struct xmit_frame *__rtw_alloc_cmdxmitframe(struct xmit_priv *pxmitpriv,
 
 struct xmit_buf *rtw_alloc_xmitbuf_ext(struct xmit_priv *pxmitpriv)
 {
-	printk(KERN_DEBUG "rtw_xmit.c - ");
+	printk(KERN_DEBUG "rtw_xmit.c - rtw_alloc_xmitbuf_ext");
 	_irqL irqL;
 	struct xmit_buf *pxmitbuf =  NULL;
 	_list *plist, *phead;
@@ -2762,7 +2762,7 @@ _func_exit_;
 
 s32 rtw_free_xmitbuf_ext(struct xmit_priv *pxmitpriv, struct xmit_buf *pxmitbuf)
 {
-	printk(KERN_DEBUG "rtw_xmit.c - ");
+	printk(KERN_DEBUG "rtw_xmit.c - rtw_free_xmitbuf_ext");
 	_irqL irqL;
 	_queue *pfree_queue = &pxmitpriv->free_xmit_extbuf_queue;
 
@@ -2792,7 +2792,7 @@ _func_exit_;
 
 struct xmit_buf *rtw_alloc_xmitbuf(struct xmit_priv *pxmitpriv)
 {
-	printk(KERN_DEBUG "rtw_xmit.c - ");
+	printk(KERN_DEBUG "rtw_xmit.c - rtw_alloc_xmitbuf");
 	_irqL irqL;
 	struct xmit_buf *pxmitbuf =  NULL;
 	_list *plist, *phead;
@@ -2859,7 +2859,7 @@ _func_exit_;
 
 s32 rtw_free_xmitbuf(struct xmit_priv *pxmitpriv, struct xmit_buf *pxmitbuf)
 {
-	printk(KERN_DEBUG "rtw_xmit.c - ");
+	printk(KERN_DEBUG "rtw_xmit.c - rtw_free_xmitbuf");
 	_irqL irqL;
 	_queue *pfree_xmitbuf_queue = &pxmitpriv->free_xmitbuf_queue;
 
@@ -2905,7 +2905,7 @@ _func_exit_;
 
 void rtw_init_xmitframe(struct xmit_frame *pxframe)
 {
-	printk(KERN_DEBUG "rtw_xmit.c - ");
+	printk(KERN_DEBUG "rtw_xmit.c - rtw_init_xmitframe");
 	if (pxframe !=  NULL)//default value setting
 	{
 		pxframe->buf_addr = NULL;
@@ -2955,7 +2955,7 @@ Must be very very cautious...
 */
 struct xmit_frame *rtw_alloc_xmitframe(struct xmit_priv *pxmitpriv)//(_queue *pfree_xmit_queue)
 {
-	printk(KERN_DEBUG "rtw_xmit.c - ");
+	printk(KERN_DEBUG "rtw_xmit.c - rtw_alloc_xmitframe");
 	/*
 		Please remember to use all the osdep_service api,
 		and lock/unlock or _enter/_exit critical to protect 
@@ -2997,7 +2997,7 @@ _func_exit_;
 
 struct xmit_frame *rtw_alloc_xmitframe_ext(struct xmit_priv *pxmitpriv)
 {
-	printk(KERN_DEBUG "rtw_xmit.c - ");
+	printk(KERN_DEBUG "rtw_xmit.c - rtw_alloc_xmitframe_ext");
 	_irqL irqL;
 	struct xmit_frame *pxframe = NULL;
 	_list *plist, *phead;
@@ -3031,7 +3031,7 @@ _func_exit_;
 
 struct xmit_frame *rtw_alloc_xmitframe_once(struct xmit_priv *pxmitpriv)
 {
-	printk(KERN_DEBUG "rtw_xmit.c - ");
+	printk(KERN_DEBUG "rtw_xmit.c - rtw_alloc_xmitframe_once");
 	struct xmit_frame *pxframe = NULL;
 	u8 *alloc_addr;
 
@@ -3061,7 +3061,7 @@ exit:
 
 s32 rtw_free_xmitframe(struct xmit_priv *pxmitpriv, struct xmit_frame *pxmitframe)
 {	
-	printk(KERN_DEBUG "rtw_xmit.c - ");
+	printk(KERN_DEBUG "rtw_xmit.c - rtw_free_xmitframe");
 	_irqL irqL;
 	_queue *queue = NULL;
 	_adapter *padapter = pxmitpriv->adapter;
@@ -3121,7 +3121,7 @@ _func_exit_;
 
 void rtw_free_xmitframe_queue(struct xmit_priv *pxmitpriv, _queue *pframequeue)
 {
-	printk(KERN_DEBUG "rtw_xmit.c - ");
+	printk(KERN_DEBUG "rtw_xmit.c - rtw_free_xmitframe_queue");
 	_irqL irqL;
 	_list	*plist, *phead;
 	struct	xmit_frame 	*pxmitframe;
@@ -3150,7 +3150,7 @@ _func_exit_;
 
 s32 rtw_xmitframe_enqueue(_adapter *padapter, struct xmit_frame *pxmitframe)
 {
-	printk(KERN_DEBUG "rtw_xmit.c - ");
+	printk(KERN_DEBUG "rtw_xmit.c - rtw_xmitframe_enqueue");
 	DBG_COUNTER(padapter->tx_logs.core_tx_enqueue);
 	if (rtw_xmit_classifier(padapter, pxmitframe) == _FAIL)
 	{
@@ -3165,7 +3165,7 @@ s32 rtw_xmitframe_enqueue(_adapter *padapter, struct xmit_frame *pxmitframe)
 
 static struct xmit_frame *dequeue_one_xmitframe(struct xmit_priv *pxmitpriv, struct hw_xmit *phwxmit, struct tx_servq *ptxservq, _queue *pframe_queue)
 {
-	printk(KERN_DEBUG "rtw_xmit.c - ");
+	printk(KERN_DEBUG "rtw_xmit.c - dequeue_one_xmitframe");
 	_list	*xmitframe_plist, *xmitframe_phead;
 	struct	xmit_frame	*pxmitframe=NULL;
 
@@ -3209,7 +3209,7 @@ static struct xmit_frame *dequeue_one_xmitframe(struct xmit_priv *pxmitpriv, str
 
 struct xmit_frame* rtw_dequeue_xframe(struct xmit_priv *pxmitpriv, struct hw_xmit *phwxmit_i, sint entry)
 {
-	printk(KERN_DEBUG "rtw_xmit.c - ");
+	printk(KERN_DEBUG "rtw_xmit.c - rtw_dequeue_xframe");
 	_irqL irqL0;
 	_list *sta_plist, *sta_phead;
 	struct hw_xmit *phwxmit;
@@ -3298,7 +3298,7 @@ _func_exit_;
 #if 1
 struct tx_servq *rtw_get_sta_pending(_adapter *padapter, struct sta_info *psta, sint up, u8 *ac)
 {
-	printk(KERN_DEBUG "rtw_xmit.c - ");
+	printk(KERN_DEBUG "rtw_xmit.c - rtw_get_sta_pending");
 	struct tx_servq *ptxservq=NULL;
 	
 _func_enter_;	
@@ -3410,7 +3410,7 @@ _func_exit_;
  */
 s32 rtw_xmit_classifier(_adapter *padapter, struct xmit_frame *pxmitframe)
 {
-	printk(KERN_DEBUG "rtw_xmit.c - ");
+	printk(KERN_DEBUG "rtw_xmit.c - rtw_xmit_classifier");
 	//_irqL irqL0;
 	u8	ac_index;
 	struct sta_info	*psta;
@@ -3483,7 +3483,7 @@ _func_exit_;
 
 void rtw_alloc_hwxmits(_adapter *padapter)
 {
-	printk(KERN_DEBUG "rtw_xmit.c - ");
+	printk(KERN_DEBUG "rtw_xmit.c - rtw_alloc_hwxmits");
 	struct hw_xmit *hwxmits;
 	struct xmit_priv *pxmitpriv = &padapter->xmitpriv;
 
@@ -3554,7 +3554,7 @@ void rtw_alloc_hwxmits(_adapter *padapter)
 
 void rtw_free_hwxmits(_adapter *padapter)
 {
-	printk(KERN_DEBUG "rtw_xmit.c - ");
+	printk(KERN_DEBUG "rtw_xmit.c - rtw_free_hwxmits");
 	struct hw_xmit *hwxmits;
 	struct xmit_priv *pxmitpriv = &padapter->xmitpriv;
 
@@ -3565,7 +3565,7 @@ void rtw_free_hwxmits(_adapter *padapter)
 
 void rtw_init_hwxmits(struct hw_xmit *phwxmit, sint entry)
 {
-	printk(KERN_DEBUG "rtw_xmit.c - ");
+	printk(KERN_DEBUG "rtw_xmit.c - rtw_init_hwxmits");
 	sint i;
 _func_enter_;	
 	for(i = 0; i < entry; i++, phwxmit++)
@@ -3581,7 +3581,7 @@ _func_exit_;
 #ifdef CONFIG_BR_EXT
 int rtw_br_client_tx(_adapter *padapter, struct sk_buff **pskb)
 {
-	printk(KERN_DEBUG "rtw_xmit.c - ");
+	printk(KERN_DEBUG "rtw_xmit.c - rtw_br_client_tx");
 	struct sk_buff *skb = *pskb;
 	struct xmit_priv *pxmitpriv = &padapter->xmitpriv;
 	_irqL irqL;
@@ -3764,7 +3764,7 @@ int rtw_br_client_tx(_adapter *padapter, struct sk_buff **pskb)
 
 u32 rtw_get_ff_hwaddr(struct xmit_frame *pxmitframe)
 {
-	printk(KERN_DEBUG "rtw_xmit.c - ");
+	printk(KERN_DEBUG "rtw_xmit.c - rtw_get_ff_hwaddr");
 	u32 addr;
 	struct pkt_attrib *pattrib = &pxmitframe->attrib;	
 	
@@ -3805,7 +3805,7 @@ u32 rtw_get_ff_hwaddr(struct xmit_frame *pxmitframe)
 
 static void do_queue_select(_adapter	*padapter, struct pkt_attrib *pattrib)
 {
-	printk(KERN_DEBUG "rtw_xmit.c - ");
+	printk(KERN_DEBUG "rtw_xmit.c - do_queue_select");
 	u8 qsel;
 		
 	qsel = pattrib->priority;
@@ -3829,7 +3829,7 @@ static void do_queue_select(_adapter	*padapter, struct pkt_attrib *pattrib)
  */
 s32 rtw_monitor_xmit_entry(struct sk_buff *skb, struct net_device *ndev)
 {
-	printk(KERN_DEBUG "rtw_xmit.c - ");
+	printk(KERN_DEBUG "rtw_xmit.c - rtw_monitor_xmit_entry");
 	int ret = 0;
 	int rtap_len;
 	int qos_len = 0;
@@ -3971,7 +3971,7 @@ fail:
  */
 s32 rtw_xmit(_adapter *padapter, _pkt **ppkt)
 {
-	printk(KERN_DEBUG "rtw_xmit.c - ");
+	printk(KERN_DEBUG "rtw_xmit.c - rtw_xmit");
 	static u32 start = 0;
 	static u32 drop_cnt = 0;
 #ifdef CONFIG_AP_MODE
@@ -4077,7 +4077,7 @@ s32 rtw_xmit(_adapter *padapter, _pkt **ppkt)
 #ifdef CONFIG_TDLS
 sint xmitframe_enqueue_for_tdls_sleeping_sta(_adapter *padapter, struct xmit_frame *pxmitframe)
 {
-	printk(KERN_DEBUG "rtw_xmit.c - ");
+	printk(KERN_DEBUG "rtw_xmit.c - xmitframe_enqueue_for_tdls_sleeping_sta");
 	sint ret=_FALSE;
 
 	_irqL irqL;
@@ -4154,7 +4154,7 @@ sint xmitframe_enqueue_for_tdls_sleeping_sta(_adapter *padapter, struct xmit_fra
 
 inline bool xmitframe_hiq_filter(struct xmit_frame *xmitframe)
 {
-	printk(KERN_DEBUG "rtw_xmit.c - ");
+	printk(KERN_DEBUG "rtw_xmit.c - xmitframe_hiq_filter");
 	bool allow = _FALSE;
 	_adapter *adapter = xmitframe->padapter;
 	struct registry_priv *registry = &adapter->registrypriv;
@@ -4196,7 +4196,7 @@ if (rtw_get_intf_type(adapter) != RTW_PCIE) {
 
 sint xmitframe_enqueue_for_sleeping_sta(_adapter *padapter, struct xmit_frame *pxmitframe)
 {
-	printk(KERN_DEBUG "rtw_xmit.c - ");
+	printk(KERN_DEBUG "rtw_xmit.c - xmitframe_enqueue_for_sleeping_sta");
 	_irqL irqL;
 	sint ret=_FALSE;
 	struct sta_info *psta=NULL;
@@ -4390,7 +4390,7 @@ sint xmitframe_enqueue_for_sleeping_sta(_adapter *padapter, struct xmit_frame *p
 
 static void dequeue_xmitframes_to_sleeping_queue(_adapter *padapter, struct sta_info *psta, _queue *pframequeue)
 {
-	printk(KERN_DEBUG "rtw_xmit.c - ");
+	printk(KERN_DEBUG "rtw_xmit.c - dequeue_xmitframes_to_sleeping_queue");
 	sint ret;
 	_list	*plist, *phead;
 	u8	ac_index;
@@ -4432,7 +4432,7 @@ static void dequeue_xmitframes_to_sleeping_queue(_adapter *padapter, struct sta_
 
 void stop_sta_xmit(_adapter *padapter, struct sta_info *psta)
 {	
-	printk(KERN_DEBUG "rtw_xmit.c - ");
+	printk(KERN_DEBUG "rtw_xmit.c - stop_sta_xmit");
 	_irqL irqL0;	
 	struct sta_info *psta_bmc;
 	struct sta_xmit_priv *pstaxmitpriv;
@@ -4492,7 +4492,7 @@ void stop_sta_xmit(_adapter *padapter, struct sta_info *psta)
 
 void wakeup_sta_to_xmit(_adapter *padapter, struct sta_info *psta)
 {	 
-	printk(KERN_DEBUG "rtw_xmit.c - ");
+	printk(KERN_DEBUG "rtw_xmit.c - wakeup_sta_to_xmit");
 	_irqL irqL;	 
 	u8 update_mask=0, wmmps_ac=0;
 	struct sta_info *psta_bmc;
@@ -4682,7 +4682,7 @@ _exit:
 
 void xmit_delivery_enabled_frames(_adapter *padapter, struct sta_info *psta)
 {
-	printk(KERN_DEBUG "rtw_xmit.c - ");
+	printk(KERN_DEBUG "rtw_xmit.c - xmit_delivery_enabled_frames");
 	_irqL irqL;
 	u8 wmmps_ac=0;
 	_list	*xmitframe_plist, *xmitframe_phead;
@@ -4780,7 +4780,7 @@ void enqueue_pending_xmitbuf(
 	struct xmit_priv *pxmitpriv,
 	struct xmit_buf *pxmitbuf)
 {
-	printk(KERN_DEBUG "rtw_xmit.c - ");
+	printk(KERN_DEBUG "rtw_xmit.c - enqueue_pending_xmitbuf");
 	_irqL irql;
 	_queue *pqueue;
 	_adapter *pri_adapter = pxmitpriv->adapter;
@@ -4806,7 +4806,7 @@ void enqueue_pending_xmitbuf_to_head(
 	struct xmit_priv *pxmitpriv,
 	struct xmit_buf *pxmitbuf)
 {
-	printk(KERN_DEBUG "rtw_xmit.c - ");
+	printk(KERN_DEBUG "rtw_xmit.c - enqueue_pending_xmitbuf_to_head");
 	_irqL irql;
 	_queue *pqueue;
 	_adapter *pri_adapter = pxmitpriv->adapter;
@@ -4822,7 +4822,7 @@ void enqueue_pending_xmitbuf_to_head(
 struct xmit_buf* dequeue_pending_xmitbuf(
 	struct xmit_priv *pxmitpriv)
 {
-	printk(KERN_DEBUG "rtw_xmit.c - ");
+	printk(KERN_DEBUG "rtw_xmit.c - dequeue_pending_xmitbuf");
 	_irqL irql;
 	struct xmit_buf *pxmitbuf;
 	_queue *pqueue;
@@ -4851,7 +4851,7 @@ struct xmit_buf* dequeue_pending_xmitbuf(
 struct xmit_buf* dequeue_pending_xmitbuf_under_survey(
 	struct xmit_priv *pxmitpriv)
 {
-	printk(KERN_DEBUG "rtw_xmit.c - ");
+	printk(KERN_DEBUG "rtw_xmit.c - dequeue_pending_xmitbuf_under_survey");
 	_irqL irql;
 	struct xmit_buf *pxmitbuf;
 #ifdef CONFIG_USB_HCI	
@@ -4911,7 +4911,7 @@ struct xmit_buf* dequeue_pending_xmitbuf_under_survey(
 sint check_pending_xmitbuf(
 	struct xmit_priv *pxmitpriv)
 {
-	printk(KERN_DEBUG "rtw_xmit.c - ");
+	printk(KERN_DEBUG "rtw_xmit.c - check_pending_xmitbuf");
 	_irqL irql;
 	_queue *pqueue;
 	sint	ret = _FALSE;
@@ -4930,7 +4930,7 @@ sint check_pending_xmitbuf(
 
 thread_return rtw_xmit_thread(thread_context context)
 {
-	printk(KERN_DEBUG "rtw_xmit.c - ");
+	printk(KERN_DEBUG "rtw_xmit.c - rtw_xmit_thread");
 	s32 err;
 	PADAPTER padapter;
 
@@ -4953,7 +4953,7 @@ thread_return rtw_xmit_thread(thread_context context)
 
 bool rtw_xmit_ac_blocked(_adapter *adapter)
 {
-	printk(KERN_DEBUG "rtw_xmit.c - ");
+	printk(KERN_DEBUG "rtw_xmit.c - rtw_xmit_ac_blocked");
 	struct dvobj_priv *dvobj = adapter_to_dvobj(adapter);
 	_adapter *iface;
 	struct mlme_ext_priv *mlmeext;
@@ -4987,7 +4987,7 @@ exit:
 
 void rtw_sctx_init(struct submit_ctx *sctx, int timeout_ms)
 {
-	printk(KERN_DEBUG "rtw_xmit.c - ");
+	printk(KERN_DEBUG "rtw_xmit.c - rtw_sctx_init");
 	sctx->timeout_ms = timeout_ms;
 	sctx->submit_time= rtw_get_current_time();
 #ifdef PLATFORM_LINUX /* TODO: add condition wating interface for other os */
@@ -4998,7 +4998,7 @@ void rtw_sctx_init(struct submit_ctx *sctx, int timeout_ms)
 
 int rtw_sctx_wait(struct submit_ctx *sctx, const char *msg)
 {
-	printk(KERN_DEBUG "rtw_xmit.c - ");
+	printk(KERN_DEBUG "rtw_xmit.c - rtw_sctx_wait");
 	int ret = _FAIL;
 	unsigned long expire; 
 	int status = 0;
@@ -5023,7 +5023,7 @@ int rtw_sctx_wait(struct submit_ctx *sctx, const char *msg)
 
 bool rtw_sctx_chk_waring_status(int status)
 {
-	printk(KERN_DEBUG "rtw_xmit.c - ");
+	printk(KERN_DEBUG "rtw_xmit.c - rtw_sctx_chk_waring_status");
 	switch(status) {
 	case RTW_SCTX_DONE_UNKNOWN:
 	case RTW_SCTX_DONE_BUF_ALLOC:
@@ -5039,7 +5039,7 @@ bool rtw_sctx_chk_waring_status(int status)
 
 void rtw_sctx_done_err(struct submit_ctx **sctx, int status)
 {
-	printk(KERN_DEBUG "rtw_xmit.c - ");
+	printk(KERN_DEBUG "rtw_xmit.c - rtw_sctx_done_err");
 	if (*sctx) {
 		if (rtw_sctx_chk_waring_status(status))
 			DBG_871X("%s status:%d\n", __func__, status);
@@ -5053,7 +5053,7 @@ void rtw_sctx_done_err(struct submit_ctx **sctx, int status)
 
 void rtw_sctx_done(struct submit_ctx **sctx)
 {
-	printk(KERN_DEBUG "rtw_xmit.c - ");
+	printk(KERN_DEBUG "rtw_xmit.c - rtw_sctx_done");
 	rtw_sctx_done_err(sctx, RTW_SCTX_DONE_SUCCESS);
 }
 
@@ -5073,7 +5073,7 @@ s32 c2h_evt_hdl(_adapter *adapter, u8 *c2h_evt, c2h_id_filter filter);
  */
 int rtw_ack_tx_polling(struct xmit_priv *pxmitpriv, u32 timeout_ms)
 {
-	printk(KERN_DEBUG "rtw_xmit.c - ");
+	printk(KERN_DEBUG "rtw_xmit.c - rtw_ack_tx_polling");
 	int ret = _FAIL;
 	struct submit_ctx *pack_tx_ops = &pxmitpriv->ack_tx_ops;
 	_adapter *adapter = container_of(pxmitpriv, _adapter, xmitpriv);
@@ -5113,7 +5113,7 @@ int rtw_ack_tx_polling(struct xmit_priv *pxmitpriv, u32 timeout_ms)
 
 int rtw_ack_tx_wait(struct xmit_priv *pxmitpriv, u32 timeout_ms)
 {
-	printk(KERN_DEBUG "rtw_xmit.c - ");
+	printk(KERN_DEBUG "rtw_xmit.c - rtw_ack_tx_wait");
 #ifdef CONFIG_XMIT_ACK_POLLING
 	return rtw_ack_tx_polling(pxmitpriv, timeout_ms);
 #else
@@ -5129,7 +5129,7 @@ int rtw_ack_tx_wait(struct xmit_priv *pxmitpriv, u32 timeout_ms)
 
 void rtw_ack_tx_done(struct xmit_priv *pxmitpriv, int status)
 {
-	printk(KERN_DEBUG "rtw_xmit.c - ");
+	printk(KERN_DEBUG "rtw_xmit.c - rtw_ack_tx_done");
 	struct submit_ctx *pack_tx_ops = &pxmitpriv->ack_tx_ops;
 	
 	if (pxmitpriv->ack_tx) {

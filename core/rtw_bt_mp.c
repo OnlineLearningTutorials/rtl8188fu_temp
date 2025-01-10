@@ -29,7 +29,7 @@
 #if defined(CONFIG_RTL8723B) || defined(CONFIG_RTL8821A)
 void MPh2c_timeout_handle(void *FunctionContext)
 {
-	printk(KERN_DEBUG "rtw_bt_mp.c - ");
+	printk(KERN_DEBUG "rtw_bt_mp.c - MPh2c_timeout_handle");
 	PADAPTER pAdapter;
 	PMPT_CONTEXT pMptCtx;
 
@@ -51,7 +51,7 @@ void MPh2c_timeout_handle(void *FunctionContext)
 
 u32 WaitC2Hevent(PADAPTER pAdapter, u8 *C2H_event, u32 delay_time)
 {
-	printk(KERN_DEBUG "rtw_bt_mp.c - ");
+	printk(KERN_DEBUG "rtw_bt_mp.c - WaitC2Hevent");
 	PMPT_CONTEXT		pMptCtx=&(pAdapter->mppriv.MptCtx);
 	pMptCtx->bMPh2c_timeout=_FALSE;
 	
@@ -85,7 +85,7 @@ mptbt_CheckC2hFrame(
 	PBT_EXT_C2H		pExtC2h
 	)
 {
-	printk(KERN_DEBUG "rtw_bt_mp.c - ");
+	printk(KERN_DEBUG "rtw_bt_mp.c - mptbt_CheckC2hFrame");
 	BT_CTRL_STATUS	c2hStatus = BT_STATUS_C2H_SUCCESS;
 		
 	//DBG_8192C("[MPT], MPT rsp C2H hex: %x %x %x  %x %x %x \n"), pExtC2h , pExtC2h+1 ,pExtC2h+2 ,pExtC2h+3 ,pExtC2h+4 ,pExtC2h+5);
@@ -115,7 +115,7 @@ mptbt_SendH2c(
 	u2Byte		h2cCmdLen
 	)
 {
-	printk(KERN_DEBUG "rtw_bt_mp.c - ");
+	printk(KERN_DEBUG "rtw_bt_mp.c - mptbt_SendH2c");
 	//KIRQL				OldIrql = KeGetCurrentIrql();
 	BT_CTRL_STATUS	h2cStatus=BT_STATUS_H2C_SUCCESS;
 	PMPT_CONTEXT		pMptCtx=&(Adapter->mppriv.MptCtx);
@@ -182,7 +182,7 @@ mptbt_CheckBtRspStatus(
 	PBT_EXT_C2H			pExtC2h
 	)
 {
-	printk(KERN_DEBUG "rtw_bt_mp.c - ");
+	printk(KERN_DEBUG "rtw_bt_mp.c - mptbt_CheckBtRspStatus");
 	BT_CTRL_STATUS	retStatus=BT_OP_STATUS_SUCCESS;
 
 	switch(pExtC2h->statusCode)
@@ -223,7 +223,7 @@ mptbt_BtFwOpCodeProcess(
 	u1Byte			h2cParaLen
 	)
 {
-	printk(KERN_DEBUG "rtw_bt_mp.c - ");
+	printk(KERN_DEBUG "rtw_bt_mp.c - mptbt_BtFwOpCodeProcess");
 	u1Byte				H2C_Parameter[6] ={0};
 	PBT_H2C				pH2c=(PBT_H2C)&H2C_Parameter[0];
 	PMPT_CONTEXT		pMptCtx=&(Adapter->mppriv.MptCtx);
@@ -290,7 +290,7 @@ mptbt_BtReady(
 	PBT_RSP_CMD 	pBtRsp
 	)
 {
-	printk(KERN_DEBUG "rtw_bt_mp.c - ");
+	printk(KERN_DEBUG "rtw_bt_mp.c - mptbt_BtReady");
 	u1Byte				h2cParaBuf[6] ={0};
 	u1Byte				h2cParaLen=0;
 	u2Byte				paraLen=0;
@@ -398,7 +398,7 @@ mptbt_BtReady(
 
 void mptbt_close_WiFiRF(PADAPTER Adapter)
 {
-	printk(KERN_DEBUG "rtw_bt_mp.c - ");
+	printk(KERN_DEBUG "rtw_bt_mp.c - mptbt_close_WiFiRF");
 	PHY_SetBBReg(Adapter, 0x824, 0xF, 0x0);
 	PHY_SetBBReg(Adapter, 0x824, 0x700000, 0x0);
 	PHY_SetRFReg(Adapter, RF_PATH_A, 0x0, 0xF0000, 0x0);
@@ -406,7 +406,7 @@ void mptbt_close_WiFiRF(PADAPTER Adapter)
 
 void mptbt_open_WiFiRF(PADAPTER	Adapter)
 {
-	printk(KERN_DEBUG "rtw_bt_mp.c - ");
+	printk(KERN_DEBUG "rtw_bt_mp.c - mptbt_open_WiFiRF");
 	PHY_SetBBReg(Adapter, 0x824, 0x700000, 0x3);
 	PHY_SetBBReg(Adapter, 0x824, 0xF, 0x2);
 	PHY_SetRFReg(Adapter, RF_PATH_A, 0x0, 0xF0000, 0x3);
@@ -414,7 +414,7 @@ void mptbt_open_WiFiRF(PADAPTER	Adapter)
 
 u4Byte mptbt_switch_RF(PADAPTER	Adapter, u1Byte	Enter)
 {
-	printk(KERN_DEBUG "rtw_bt_mp.c - ");
+	printk(KERN_DEBUG "rtw_bt_mp.c - mptbt_switch_RF");
 	u2Byte	tmp_2byte = 0;
 
 	//Enter test mode
@@ -450,7 +450,7 @@ mptbt_BtSetMode(
 	PBT_RSP_CMD 	pBtRsp
 	)
 {
-	printk(KERN_DEBUG "rtw_bt_mp.c - ");
+	printk(KERN_DEBUG "rtw_bt_mp.c - mptbt_BtSetMode");
 	u1Byte				h2cParaBuf[6] ={0};
 	u1Byte				h2cParaLen=0;
 	u2Byte				paraLen=0;
@@ -526,7 +526,7 @@ MPTBT_FwC2hBtMpCtrl(
 	u1Byte		length
 	)
 {
-	printk(KERN_DEBUG "rtw_bt_mp.c - ");
+	printk(KERN_DEBUG "rtw_bt_mp.c - MPTBT_FwC2hBtMpCtrl");
 	u32 i;
 	PMPT_CONTEXT	pMptCtx=&(Adapter->mppriv.MptCtx);
 	PBT_EXT_C2H pExtC2h=(PBT_EXT_C2H)tmpBuf;
@@ -608,7 +608,7 @@ mptbt_BtGetGeneral(
 	IN	PBT_RSP_CMD 	pBtRsp
 	)
 {
-	printk(KERN_DEBUG "rtw_bt_mp.c - ");
+	printk(KERN_DEBUG "rtw_bt_mp.c - mptbt_BtGetGeneral");
 	PMPT_CONTEXT		pMptCtx=&(Adapter->mppriv.MptCtx);
 	PBT_EXT_C2H 		pExtC2h=(PBT_EXT_C2H)&pMptCtx->c2hBuf[0];
 	u1Byte				h2cParaBuf[6] ={0};
@@ -949,7 +949,7 @@ mptbt_BtSetGeneral(
 	IN	PBT_RSP_CMD 	pBtRsp
 	)
 {
-	printk(KERN_DEBUG "rtw_bt_mp.c - ");
+	printk(KERN_DEBUG "rtw_bt_mp.c - mptbt_BtSetGeneral");
 	u1Byte				h2cParaBuf[6] ={0};
 	u1Byte				h2cParaLen=0;
 	u2Byte				paraLen=0;
@@ -1274,7 +1274,7 @@ mptbt_BtSetTxRxPars(
 	IN	PBT_RSP_CMD 	pBtRsp
 	)
 {
-	printk(KERN_DEBUG "rtw_bt_mp.c - ");
+	printk(KERN_DEBUG "rtw_bt_mp.c - mptbt_BtSetTxRxPars");
 	u1Byte				h2cParaBuf[6] ={0};
 	u1Byte				h2cParaLen=0;
 	u2Byte				paraLen=0;
@@ -1583,7 +1583,7 @@ mptbt_BtTestCtrl(
 	IN	PBT_RSP_CMD 	pBtRsp
 	)
 {
-	printk(KERN_DEBUG "rtw_bt_mp.c - ");
+	printk(KERN_DEBUG "rtw_bt_mp.c - mptbt_BtTestCtrl");
 	u1Byte				h2cParaBuf[6] ={0};
 	u1Byte				h2cParaLen=0;
 	u2Byte				paraLen=0;
@@ -1657,7 +1657,7 @@ mptbt_TestBT(
 	IN	PBT_RSP_CMD 	pBtRsp
 	)
 {
-	printk(KERN_DEBUG "rtw_bt_mp.c - ");
+	printk(KERN_DEBUG "rtw_bt_mp.c - mptbt_TestBT");
 
 	u1Byte				h2cParaBuf[6] ={0};
 	u1Byte				h2cParaLen=0;
@@ -1697,7 +1697,7 @@ mptbt_BtControlProcess(
 	PVOID		pInBuf
 	)
 {
-	printk(KERN_DEBUG "rtw_bt_mp.c - ");
+	printk(KERN_DEBUG "rtw_bt_mp.c - mptbt_BtControlProcess");
 	u1Byte			H2C_Parameter[6] ={0};
 	PBT_H2C 		pH2c=(PBT_H2C)&H2C_Parameter[0];
 	PMPT_CONTEXT	pMptCtx=&(Adapter->mppriv.MptCtx);

@@ -16,7 +16,7 @@ u32 wapi_debug_component =
 
 void WapiFreeAllStaInfo(_adapter *padapter)
 {
-	printk(KERN_DEBUG "rtw_wapi.c - ");
+	printk(KERN_DEBUG "rtw_wapi.c - WapiFreeAllStaInfo");
 	PRT_WAPI_T				pWapiInfo;
 	PRT_WAPI_STA_INFO		pWapiStaInfo;
 	PRT_WAPI_BKID			pWapiBkid;
@@ -46,7 +46,7 @@ void WapiFreeAllStaInfo(_adapter *padapter)
 
 void WapiSetIE(_adapter *padapter)
 {
-	printk(KERN_DEBUG "rtw_wapi.c - ");
+	printk(KERN_DEBUG "rtw_wapi.c - WapiSetIE");
 	PRT_WAPI_T		pWapiInfo = &(padapter->wapiInfo);
 	//PRT_WAPI_BKID	pWapiBkid;
 	u16		protocolVer = 1;
@@ -104,7 +104,7 @@ void WapiSetIE(_adapter *padapter)
  */
 u32 WapiComparePN(u8 *PN1, u8 *PN2)
 {
-	printk(KERN_DEBUG "rtw_wapi.c - ");
+	printk(KERN_DEBUG "rtw_wapi.c - WapiComparePN");
 	char i;
 
 	if ((NULL == PN1) || (NULL == PN2))
@@ -130,7 +130,7 @@ u32 WapiComparePN(u8 *PN1, u8 *PN2)
 u8
 WapiGetEntryForCamWrite(_adapter *padapter,u8 *pMacAddr,u8 KID,BOOLEAN IsMsk)
 {
-	printk(KERN_DEBUG "rtw_wapi.c - ");
+	printk(KERN_DEBUG "rtw_wapi.c - WapiGetEntryForCamWrite");
 	PRT_WAPI_T		pWapiInfo=NULL;
 	//PRT_WAPI_CAM_ENTRY	pEntry=NULL;
 	u8 i=0;
@@ -188,7 +188,7 @@ WapiGetEntryForCamWrite(_adapter *padapter,u8 *pMacAddr,u8 KID,BOOLEAN IsMsk)
 
 u8 WapiGetEntryForCamClear(_adapter *padapter,u8 *pPeerMac,u8 keyid,u8 IsMsk)
 {
-	printk(KERN_DEBUG "rtw_wapi.c - ");
+	printk(KERN_DEBUG "rtw_wapi.c - WapiGetEntryForCamClear");
 	PRT_WAPI_T		pWapiInfo=NULL;
 	u8		i=0;
 
@@ -241,7 +241,7 @@ u8 WapiGetEntryForCamClear(_adapter *padapter,u8 *pPeerMac,u8 keyid,u8 IsMsk)
 void
 WapiResetAllCamEntry(_adapter *padapter)
 {
-	printk(KERN_DEBUG "rtw_wapi.c - ");
+	printk(KERN_DEBUG "rtw_wapi.c - WapiResetAllCamEntry");
 	PRT_WAPI_T		pWapiInfo;
 	int				i;
 
@@ -272,7 +272,7 @@ u8 WapiWriteOneCamEntry(
 	u8 			*pKey
 )
 {
-	printk(KERN_DEBUG "rtw_wapi.c - ");
+	printk(KERN_DEBUG "rtw_wapi.c - WapiWriteOneCamEntry");
 	u8 retVal = 0;
 	u16 usConfig = 0;
 
@@ -302,7 +302,7 @@ u8 WapiWriteOneCamEntry(
 
 void rtw_wapi_init(_adapter *padapter)
 {
-	printk(KERN_DEBUG "rtw_wapi.c - ");
+	printk(KERN_DEBUG "rtw_wapi.c - rtw_wapi_init");
 	PRT_WAPI_T		pWapiInfo;
 	int				i;
 
@@ -346,7 +346,7 @@ void rtw_wapi_init(_adapter *padapter)
 
 void rtw_wapi_free(_adapter *padapter)
 {
-	printk(KERN_DEBUG "rtw_wapi.c - ");
+	printk(KERN_DEBUG "rtw_wapi.c - rtw_wapi_free");
 	WAPI_TRACE(WAPI_INIT, "===========> %s\n", __FUNCTION__);
 	RT_ASSERT_RET(padapter);
 
@@ -363,7 +363,7 @@ void rtw_wapi_free(_adapter *padapter)
 
 void rtw_wapi_disable_tx(_adapter *padapter)
 {
-	printk(KERN_DEBUG "rtw_wapi.c - ");
+	printk(KERN_DEBUG "rtw_wapi.c - rtw_wapi_disable_tx");
 	WAPI_TRACE(WAPI_INIT, "===========> %s\n", __FUNCTION__);
 	RT_ASSERT_RET(padapter);
 
@@ -381,7 +381,7 @@ void rtw_wapi_disable_tx(_adapter *padapter)
 
 u8 rtw_wapi_is_wai_packet(_adapter* padapter,u8 *pkt_data)
 {
-	printk(KERN_DEBUG "rtw_wapi.c - ");
+	printk(KERN_DEBUG "rtw_wapi.c - rtw_wapi_is_wai_packet");
 	PRT_WAPI_T pWapiInfo = &(padapter->wapiInfo);
 	struct mlme_priv 	*pmlmepriv = &padapter->mlmepriv;
 	struct security_priv   *psecuritypriv = &padapter->securitypriv;
@@ -442,7 +442,7 @@ u8 rtw_wapi_is_wai_packet(_adapter* padapter,u8 *pkt_data)
 
 void rtw_wapi_update_info(_adapter *padapter, union recv_frame *precv_frame)
 {
-	printk(KERN_DEBUG "rtw_wapi.c - ");
+	printk(KERN_DEBUG "rtw_wapi.c - rtw_wapi_update_info");
 	PRT_WAPI_T     pWapiInfo = &(padapter->wapiInfo);
 	struct recv_frame_hdr *precv_hdr;
 	u8 	*ptr;
@@ -488,7 +488,7 @@ u8 rtw_wapi_check_for_drop(
 	union recv_frame *precv_frame
 )
 {
-	printk(KERN_DEBUG "rtw_wapi.c - ");
+	printk(KERN_DEBUG "rtw_wapi.c - rtw_wapi_check_for_drop");
 	PRT_WAPI_T     pWapiInfo = &(padapter->wapiInfo);
 	u8			*pLastRecvPN = NULL;
 	u8			bFind = false;
@@ -609,7 +609,7 @@ u8 rtw_wapi_check_for_drop(
 
 void rtw_build_probe_resp_wapi_ie(_adapter *padapter, unsigned char *pframe, struct pkt_attrib *pattrib)
 {
-	printk(KERN_DEBUG "rtw_wapi.c - ");
+	printk(KERN_DEBUG "rtw_wapi.c - rtw_build_probe_resp_wapi_ie");
 	PRT_WAPI_T pWapiInfo = &(padapter->wapiInfo);
 	u8 WapiIELength = 0;
 
@@ -634,7 +634,7 @@ void rtw_build_probe_resp_wapi_ie(_adapter *padapter, unsigned char *pframe, str
 
 void rtw_build_beacon_wapi_ie(_adapter *padapter, unsigned char *pframe, struct pkt_attrib *pattrib)
 {
-	printk(KERN_DEBUG "rtw_wapi.c - ");
+	printk(KERN_DEBUG "rtw_wapi.c - rtw_build_beacon_wapi_ie");
 	PRT_WAPI_T pWapiInfo = &(padapter->wapiInfo);
 	u8 WapiIELength = 0;
 	WAPI_TRACE(WAPI_MLME, "===========> %s\n", __FUNCTION__);
@@ -658,7 +658,7 @@ void rtw_build_beacon_wapi_ie(_adapter *padapter, unsigned char *pframe, struct 
 
 void rtw_build_assoc_req_wapi_ie(_adapter *padapter, unsigned char *pframe, struct pkt_attrib *pattrib)
 {
-	printk(KERN_DEBUG "rtw_wapi.c - ");
+	printk(KERN_DEBUG "rtw_wapi.c - rtw_build_assoc_req_wapi_ie");
 	PRT_WAPI_BKID		pWapiBKID;
 	u16					bkidNum;
 	PRT_WAPI_T			pWapiInfo = &(padapter->wapiInfo);
@@ -695,7 +695,7 @@ void rtw_build_assoc_req_wapi_ie(_adapter *padapter, unsigned char *pframe, stru
 
 void rtw_wapi_on_assoc_ok(_adapter *padapter, PNDIS_802_11_VARIABLE_IEs pIE)
 {
-	printk(KERN_DEBUG "rtw_wapi.c - ");
+	printk(KERN_DEBUG "rtw_wapi.c - rtw_wapi_on_assoc_ok");
 	PRT_WAPI_T pWapiInfo = &(padapter->wapiInfo);
 	PRT_WAPI_STA_INFO pWapiSta;
 	u8 WapiAEPNInitialValueSrc[16] = {0x37,0x5C,0x36,0x5C,0x36,0x5C,0x36,0x5C,0x36,0x5C,0x36,0x5C,0x36,0x5C,0x36,0x5C} ;
@@ -729,7 +729,7 @@ void rtw_wapi_on_assoc_ok(_adapter *padapter, PNDIS_802_11_VARIABLE_IEs pIE)
 
 void rtw_wapi_return_one_sta_info(_adapter *padapter, u8 *MacAddr)
 {
-	printk(KERN_DEBUG "rtw_wapi.c - ");
+	printk(KERN_DEBUG "rtw_wapi.c - rtw_wapi_return_one_sta_info");
 	PRT_WAPI_T				pWapiInfo;
 	PRT_WAPI_STA_INFO		pWapiStaInfo = NULL;
 	PRT_WAPI_BKID			pWapiBkid = NULL;
@@ -827,7 +827,7 @@ void rtw_wapi_return_one_sta_info(_adapter *padapter, u8 *MacAddr)
 
 void rtw_wapi_return_all_sta_info(_adapter *padapter)
 {
-	printk(KERN_DEBUG "rtw_wapi.c - ");
+	printk(KERN_DEBUG "rtw_wapi.c - rtw_wapi_return_all_sta_info");
 	PRT_WAPI_T				pWapiInfo;
 	PRT_WAPI_STA_INFO		pWapiStaInfo;
 	PRT_WAPI_BKID			pWapiBkid;
@@ -864,7 +864,7 @@ void rtw_wapi_return_all_sta_info(_adapter *padapter)
 
 void rtw_wapi_clear_cam_entry(_adapter *padapter, u8 *pMacAddr)
 {
-	printk(KERN_DEBUG "rtw_wapi.c - ");
+	printk(KERN_DEBUG "rtw_wapi.c - rtw_wapi_clear_cam_entry");
 	u8 UcIndex = 0;
 
 	WAPI_TRACE(WAPI_API, "===========> %s\n", __FUNCTION__);
@@ -904,7 +904,7 @@ void rtw_wapi_clear_cam_entry(_adapter *padapter, u8 *pMacAddr)
 
 void rtw_wapi_clear_all_cam_entry(_adapter *padapter)
 {
-	printk(KERN_DEBUG "rtw_wapi.c - ");
+	printk(KERN_DEBUG "rtw_wapi.c - rtw_wapi_clear_all_cam_entry");
 	WAPI_TRACE(WAPI_API, "===========> %s\n", __FUNCTION__);
 
 	if ((!padapter->WapiSupport) || (!padapter->wapiInfo.bWapiEnable))
@@ -921,7 +921,7 @@ void rtw_wapi_clear_all_cam_entry(_adapter *padapter)
 
 void rtw_wapi_set_key(_adapter *padapter, RT_WAPI_KEY *pWapiKey, RT_WAPI_STA_INFO *pWapiSta, u8 bGroupKey, u8 bUseDefaultKey)
 {
-	printk(KERN_DEBUG "rtw_wapi.c - ");
+	printk(KERN_DEBUG "rtw_wapi.c - rtw_wapi_set_key");
 	PRT_WAPI_T		pWapiInfo =  &padapter->wapiInfo;
 	u8				*pMacAddr = pWapiSta->PeerMacAddr;
 	u32 EntryId = 0;
@@ -1222,7 +1222,7 @@ void wapi_test_init(struct _adapter *padapter)
 
 void rtw_wapi_get_iv(_adapter *padapter,u8 *pRA, u8*IV)
 {
-	printk(KERN_DEBUG "rtw_wapi.c - ");
+	printk(KERN_DEBUG "rtw_wapi.c - rtw_wapi_get_iv");
 	PWLAN_HEADER_WAPI_EXTENSION pWapiExt = NULL;
        PRT_WAPI_T         pWapiInfo = &padapter->wapiInfo;
 	bool	bPNOverflow = false;
@@ -1289,7 +1289,7 @@ void rtw_wapi_get_iv(_adapter *padapter,u8 *pRA, u8*IV)
 
 bool rtw_wapi_drop_for_key_absent(_adapter *padapter,u8 *pRA)
 {
-	printk(KERN_DEBUG "rtw_wapi.c - ");
+	printk(KERN_DEBUG "rtw_wapi.c - rtw_wapi_drop_for_key_absent");
 	PRT_WAPI_T         pWapiInfo = &padapter->wapiInfo;
 	bool				bFindMatchPeer = false;
 	bool				bDrop = false;

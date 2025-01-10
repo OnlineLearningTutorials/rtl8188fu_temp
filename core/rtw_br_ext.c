@@ -91,7 +91,7 @@
 //Find a tag in pppoe frame and return the pointer
 static __inline__ unsigned char *__nat25_find_pppoe_tag(struct pppoe_hdr *ph, unsigned short type)
 {
-	printk(KERN_DEBUG "rtw_br_ext.c - ");
+	printk(KERN_DEBUG "rtw_br_ext.c - __nat25_find_pppoe_tag");
 	unsigned char *cur_ptr, *start_ptr;
 	unsigned short tagLen, tagType;
 
@@ -110,7 +110,7 @@ static __inline__ unsigned char *__nat25_find_pppoe_tag(struct pppoe_hdr *ph, un
 
 static __inline__ int __nat25_add_pppoe_tag(struct sk_buff *skb, struct pppoe_tag *tag)
 {
-	printk(KERN_DEBUG "rtw_br_ext.c - ");
+	printk(KERN_DEBUG "rtw_br_ext.c - __nat25_add_pppoe_tag");
 	struct pppoe_hdr *ph = (struct pppoe_hdr *)(skb->data + ETH_HLEN);
 	int data_len;
 
@@ -130,7 +130,7 @@ static __inline__ int __nat25_add_pppoe_tag(struct sk_buff *skb, struct pppoe_ta
 
 static int skb_pull_and_merge(struct sk_buff *skb, unsigned char *src, int len)
 {
-	printk(KERN_DEBUG "rtw_br_ext.c - ");
+	printk(KERN_DEBUG "rtw_br_ext.c - skb_pull_and_merge");
 	int tail_len;
 	unsigned long end, tail;
 
@@ -152,7 +152,7 @@ static int skb_pull_and_merge(struct sk_buff *skb, unsigned char *src, int len)
 
 static __inline__ unsigned long __nat25_timeout(_adapter *priv)
 {
-	printk(KERN_DEBUG "rtw_br_ext.c - ");
+	printk(KERN_DEBUG "rtw_br_ext.c - __nat25_timeout");
 	unsigned long timeout;
 
 	timeout = jiffies - NAT25_AGEING_TIME*HZ;
@@ -164,7 +164,7 @@ static __inline__ unsigned long __nat25_timeout(_adapter *priv)
 static __inline__ int  __nat25_has_expired(_adapter *priv,
 				struct nat25_network_db_entry *fdb)
 {
-	printk(KERN_DEBUG "rtw_br_ext.c - ");
+	printk(KERN_DEBUG "rtw_br_ext.c - __nat25_has_expired");
 	if(time_before_eq(fdb->ageing_timer, __nat25_timeout(priv)))
 		return 1;
 
@@ -175,7 +175,7 @@ static __inline__ int  __nat25_has_expired(_adapter *priv,
 static __inline__ void __nat25_generate_ipv4_network_addr(unsigned char *networkAddr,
 				unsigned int *ipAddr)
 {
-	printk(KERN_DEBUG "rtw_br_ext.c - ");
+	printk(KERN_DEBUG "rtw_br_ext.c - __nat25_generate_ipv4_network_addr");
 	memset(networkAddr, 0, MAX_NETWORK_ADDR_LEN);
 
 	networkAddr[0] = NAT25_IPV4;
@@ -187,7 +187,7 @@ static __inline__ void __nat25_generate_ipv4_network_addr(unsigned char *network
 static __inline__ void __nat25_generate_ipx_network_addr_with_node(unsigned char *networkAddr,
 				unsigned int *ipxNetAddr, unsigned char *ipxNodeAddr)
 {
-	printk(KERN_DEBUG "rtw_br_ext.c - ");
+	printk(KERN_DEBUG "rtw_br_ext.c - __nat25_generate_ipx_network_addr_with_node");
 	memset(networkAddr, 0, MAX_NETWORK_ADDR_LEN);
 
 	networkAddr[0] = NAT25_IPX;
@@ -199,7 +199,7 @@ static __inline__ void __nat25_generate_ipx_network_addr_with_node(unsigned char
 static __inline__ void __nat25_generate_ipx_network_addr_with_socket(unsigned char *networkAddr,
 				unsigned int *ipxNetAddr, unsigned short *ipxSocketAddr)
 {
-	printk(KERN_DEBUG "rtw_br_ext.c - ");
+	printk(KERN_DEBUG "rtw_br_ext.c - __nat25_generate_ipx_network_addr_with_socket");
 	memset(networkAddr, 0, MAX_NETWORK_ADDR_LEN);
 
 	networkAddr[0] = NAT25_IPX;
@@ -211,7 +211,7 @@ static __inline__ void __nat25_generate_ipx_network_addr_with_socket(unsigned ch
 static __inline__ void __nat25_generate_apple_network_addr(unsigned char *networkAddr,
 				unsigned short *network, unsigned char *node)
 {
-	printk(KERN_DEBUG "rtw_br_ext.c - ");
+	printk(KERN_DEBUG "rtw_br_ext.c - __nat25_generate_apple_network_addr");
 	memset(networkAddr, 0, MAX_NETWORK_ADDR_LEN);
 
 	networkAddr[0] = NAT25_APPLE;
@@ -224,7 +224,7 @@ static __inline__ void __nat25_generate_apple_network_addr(unsigned char *networ
 static __inline__ void __nat25_generate_pppoe_network_addr(unsigned char *networkAddr,
 				unsigned char *ac_mac, unsigned short *sid)
 {
-	printk(KERN_DEBUG "rtw_br_ext.c - ");
+	printk(KERN_DEBUG "rtw_br_ext.c - __nat25_generate_pppoe_network_addr");
 	memset(networkAddr, 0, MAX_NETWORK_ADDR_LEN);
 
 	networkAddr[0] = NAT25_PPPOE;
@@ -237,7 +237,7 @@ static __inline__ void __nat25_generate_pppoe_network_addr(unsigned char *networ
 static  void __nat25_generate_ipv6_network_addr(unsigned char *networkAddr,
 				unsigned int *ipAddr)
 {
-	printk(KERN_DEBUG "rtw_br_ext.c - ");
+	printk(KERN_DEBUG "rtw_br_ext.c - __nat25_generate_ipv6_network_addr");
 	memset(networkAddr, 0, MAX_NETWORK_ADDR_LEN);
 
 	networkAddr[0] = NAT25_IPV6;
@@ -247,7 +247,7 @@ static  void __nat25_generate_ipv6_network_addr(unsigned char *networkAddr,
 
 static unsigned char *scan_tlv(unsigned char *data, int len, unsigned char tag, unsigned char len8b)
 {
-	printk(KERN_DEBUG "rtw_br_ext.c - ");
+	printk(KERN_DEBUG "rtw_br_ext.c - scan_tlv");
 	while (len > 0) {
 		if (*data == tag && *(data+1) == len8b && len >= len8b*8)
 			return data+2;	
@@ -261,7 +261,7 @@ static unsigned char *scan_tlv(unsigned char *data, int len, unsigned char tag, 
 
 static int update_nd_link_layer_addr(unsigned char *data, int len, unsigned char *replace_mac)
 {
-	printk(KERN_DEBUG "rtw_br_ext.c - ");
+	printk(KERN_DEBUG "rtw_br_ext.c - update_nd_link_layer_addr");
 	struct icmp6hdr *icmphdr = (struct icmp6hdr *)data;
 	unsigned char *mac;
 	
@@ -331,7 +331,7 @@ static int update_nd_link_layer_addr(unsigned char *data, int len, unsigned char
 
 static void convert_ipv6_mac_to_mc(struct sk_buff *skb)
 {	
-	printk(KERN_DEBUG "rtw_br_ext.c - ");
+	printk(KERN_DEBUG "rtw_br_ext.c - convert_ipv6_mac_to_mc");
 	struct ipv6hdr *iph = (struct ipv6hdr *)(skb->data + ETH_HLEN);
 	unsigned char *dst_mac = skb->data;
 
@@ -351,7 +351,7 @@ static void convert_ipv6_mac_to_mc(struct sk_buff *skb)
 
 static __inline__ int __nat25_network_hash(unsigned char *networkAddr)
 {
-	printk(KERN_DEBUG "rtw_br_ext.c - ");
+	printk(KERN_DEBUG "rtw_br_ext.c - __nat25_network_hash");
 	if(networkAddr[0] == NAT25_IPV4)
 	{
 		unsigned long x;
@@ -414,7 +414,7 @@ static __inline__ int __nat25_network_hash(unsigned char *networkAddr)
 static __inline__ void __network_hash_link(_adapter *priv,
 				struct nat25_network_db_entry *ent, int hash)
 {
-	printk(KERN_DEBUG "rtw_br_ext.c - ");
+	printk(KERN_DEBUG "rtw_br_ext.c - __network_hash_link");
 	// Caller must _enter_critical_bh already!
 	//_irqL irqL;
 	//_enter_critical_bh(&priv->br_ext_lock, &irqL);
@@ -431,7 +431,7 @@ static __inline__ void __network_hash_link(_adapter *priv,
 
 static __inline__ void __network_hash_unlink(struct nat25_network_db_entry *ent)
 {
-	printk(KERN_DEBUG "rtw_br_ext.c - ");
+	printk(KERN_DEBUG "rtw_br_ext.c - __network_hash_unlink");
 	// Caller must _enter_critical_bh already!
 	//_irqL irqL;
 	//_enter_critical_bh(&priv->br_ext_lock, &irqL);
@@ -449,7 +449,7 @@ static __inline__ void __network_hash_unlink(struct nat25_network_db_entry *ent)
 static int __nat25_db_network_lookup_and_replace(_adapter *priv,
 				struct sk_buff *skb, unsigned char *networkAddr)
 {
-	printk(KERN_DEBUG "rtw_br_ext.c - ");
+	printk(KERN_DEBUG "rtw_br_ext.c - __nat25_db_network_lookup_and_replace");
 	struct nat25_network_db_entry *db;
 	_irqL irqL;
 	_enter_critical_bh(&priv->br_ext_lock, &irqL);
@@ -527,7 +527,7 @@ static int __nat25_db_network_lookup_and_replace(_adapter *priv,
 static void __nat25_db_network_insert(_adapter *priv,
 				unsigned char *macAddr, unsigned char *networkAddr)
 {
-	printk(KERN_DEBUG "rtw_br_ext.c - ");
+	printk(KERN_DEBUG "rtw_br_ext.c - __nat25_db_network_insert");
 	struct nat25_network_db_entry *db;
 	int hash;
 	_irqL irqL;
@@ -657,7 +657,7 @@ static void __nat25_db_print(_adapter *priv)
 
 void nat25_db_cleanup(_adapter *priv)
 {
-	printk(KERN_DEBUG "rtw_br_ext.c - ");
+	printk(KERN_DEBUG "rtw_br_ext.c - nat25_db_cleanup");
 	int i;
 	_irqL irqL;
 	_enter_critical_bh(&priv->br_ext_lock, &irqL);
@@ -689,7 +689,7 @@ void nat25_db_cleanup(_adapter *priv)
 
 void nat25_db_expire(_adapter *priv)
 {
-	printk(KERN_DEBUG "rtw_br_ext.c - ");
+	printk(KERN_DEBUG "rtw_br_ext.c - nat25_db_expire");
 	int i;
 	_irqL irqL;
 	_enter_critical_bh(&priv->br_ext_lock, &irqL);
@@ -784,7 +784,7 @@ void nat25_db_expire(_adapter *priv)
 #ifdef SUPPORT_TX_MCAST2UNI
 static int checkIPMcAndReplace(_adapter *priv, struct sk_buff *skb, unsigned int *dst_ip)
 {
-	printk(KERN_DEBUG "rtw_br_ext.c - ");
+	printk(KERN_DEBUG "rtw_br_ext.c - checkIPMcAndReplace");
 	struct stat_info	*pstat;
 	struct list_head	*phead, *plist;
 	int i;
@@ -812,7 +812,7 @@ static int checkIPMcAndReplace(_adapter *priv, struct sk_buff *skb, unsigned int
 
 int nat25_db_handle(_adapter *priv, struct sk_buff *skb, int method)
 {
-	printk(KERN_DEBUG "rtw_br_ext.c - ");
+	printk(KERN_DEBUG "rtw_br_ext.c - nat25_db_handle");
 	unsigned short protocol;
 	unsigned char networkAddr[MAX_NETWORK_ADDR_LEN];
 
@@ -1516,7 +1516,7 @@ int nat25_db_handle(_adapter *priv, struct sk_buff *skb, int method)
 
 int nat25_handle_frame(_adapter *priv, struct sk_buff *skb)
 {
-	printk(KERN_DEBUG "rtw_br_ext.c - ");
+	printk(KERN_DEBUG "rtw_br_ext.c - nat25_handle_frame");
 #ifdef BR_EXT_DEBUG
 	if((!priv->ethBrExtInfo.nat25_disable) && (!(skb->data[0] & 1)))
 	{
@@ -1656,7 +1656,7 @@ struct dhcpMessage {
 
 void dhcp_flag_bcast(_adapter *priv, struct sk_buff *skb)
 {
-	printk(KERN_DEBUG "rtw_br_ext.c - ");
+	printk(KERN_DEBUG "rtw_br_ext.c - dhcp_flag_bcast");
 	if(skb == NULL)
 		return;
 
@@ -1705,7 +1705,7 @@ void dhcp_flag_bcast(_adapter *priv, struct sk_buff *skb)
 void *scdb_findEntry(_adapter *priv, unsigned char *macAddr,
 				unsigned char *ipAddr)
 {
-	printk(KERN_DEBUG "rtw_br_ext.c - ");
+	printk(KERN_DEBUG "rtw_br_ext.c - scdb_findEntry");
 	unsigned char networkAddr[MAX_NETWORK_ADDR_LEN];
 	struct nat25_network_db_entry *db;
 	int hash;

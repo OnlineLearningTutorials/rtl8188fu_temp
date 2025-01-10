@@ -71,7 +71,7 @@ int new_bcn_max = 3;
 
 int cckrates_included(unsigned char *rate, int ratelen)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - cckrates_included");
 	int	i;
 	
 	for(i = 0; i < ratelen; i++)
@@ -87,7 +87,7 @@ int cckrates_included(unsigned char *rate, int ratelen)
 
 int cckratesonly_included(unsigned char *rate, int ratelen)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - cckratesonly_included");
 	int	i;
 	
 	for(i = 0; i < ratelen; i++)
@@ -102,7 +102,7 @@ int cckratesonly_included(unsigned char *rate, int ratelen)
 
 s8 rtw_get_tx_nss(_adapter *adapter, struct sta_info *psta)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - rtw_get_tx_nss");
 	u8 rf_type = RF_1T1R, custom_rf_type, vht_mcs[2];
 	s8 nss = 1;
 
@@ -180,7 +180,7 @@ s8 rtw_get_tx_nss(_adapter *adapter, struct sta_info *psta)
 
 u8 networktype_to_raid(_adapter *adapter,struct sta_info *psta)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - networktype_to_raid");
 	unsigned char raid;
 	switch(psta->wireless_mode)
 	{
@@ -216,7 +216,7 @@ u8 networktype_to_raid(_adapter *adapter,struct sta_info *psta)
 
 u8 networktype_to_raid_ex(_adapter *adapter, struct sta_info *psta)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - networktype_to_raid_ex");
 	struct mlme_ext_priv	*pmlmeext = &adapter->mlmeextpriv;
 	u8 raid = RATEID_IDX_BGN_40M_1SS, cur_rf_type, rf_type, custom_rf_type;
 	s8 tx_nss;
@@ -320,7 +320,7 @@ u8 networktype_to_raid_ex(_adapter *adapter, struct sta_info *psta)
 
 u8 judge_network_type(_adapter *padapter, unsigned char *rate, int ratelen)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - judge_network_type");
 	u8 network_type = 0;
 	struct mlme_ext_priv	*pmlmeext = &padapter->mlmeextpriv;
 	struct mlme_ext_info	*pmlmeinfo = &(pmlmeext->mlmext_info);
@@ -362,7 +362,7 @@ u8 judge_network_type(_adapter *padapter, unsigned char *rate, int ratelen)
 unsigned char ratetbl_val_2wifirate(unsigned char rate);
 unsigned char ratetbl_val_2wifirate(unsigned char rate)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - ratetbl_val_2wifirate");
 	unsigned char val = 0;
 
 	switch (rate & 0x7f) 
@@ -424,7 +424,7 @@ unsigned char ratetbl_val_2wifirate(unsigned char rate)
 int is_basicrate(_adapter *padapter, unsigned char rate);
 int is_basicrate(_adapter *padapter, unsigned char rate)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - is_basicrate");
 	int i;
 	unsigned char val;
 	struct mlme_ext_priv *pmlmeext = &padapter->mlmeextpriv;
@@ -448,7 +448,7 @@ int is_basicrate(_adapter *padapter, unsigned char rate)
 unsigned int ratetbl2rateset(_adapter *padapter, unsigned char *rateset);
 unsigned int ratetbl2rateset(_adapter *padapter, unsigned char *rateset)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - ratetbl2rateset");
 	int i;
 	unsigned char rate;
 	unsigned int	len = 0;
@@ -484,7 +484,7 @@ unsigned int ratetbl2rateset(_adapter *padapter, unsigned char *rateset)
 
 void get_rate_set(_adapter *padapter, unsigned char *pbssrate, int *bssrate_len)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - get_rate_set");
 	unsigned char supportedrates[NumRates];
 
 	_rtw_memset(supportedrates, 0, NumRates);
@@ -494,7 +494,7 @@ void get_rate_set(_adapter *padapter, unsigned char *pbssrate, int *bssrate_len)
 
 void set_mcs_rate_by_mask(u8 *mcs_set, u32 mask)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - set_mcs_rate_by_mask");
 	u8 mcs_rate_1r = (u8)(mask&0xff);
 	u8 mcs_rate_2r = (u8)((mask>>8)&0xff);
 	u8 mcs_rate_3r = (u8)((mask>>16)&0xff);
@@ -511,7 +511,7 @@ void UpdateBrateTbl(
 	IN u8			*mBratesOS
 )
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - UpdateBrateTbl");
 	u8	i;
 	u8	rate;
 
@@ -537,7 +537,7 @@ void UpdateBrateTbl(
 
 void UpdateBrateTblForSoftAP(u8 *bssrateset, u32 bssratelen)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - UpdateBrateTblForSoftAP");
 	u8	i;
 	u8	rate;
 
@@ -558,19 +558,19 @@ void UpdateBrateTblForSoftAP(u8 *bssrateset, u32 bssratelen)
 }
 static void Set_NETYPE1_MSR(_adapter *padapter, u8 type)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - Set_NETYPE1_MSR");
 	rtw_hal_set_hwreg(padapter, HW_VAR_MEDIA_STATUS1, (u8 *)(&type));
 }
 
 static void Set_NETYPE0_MSR(_adapter *padapter, u8 type)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - Set_NETYPE0_MSR");
 	rtw_hal_set_hwreg(padapter, HW_VAR_MEDIA_STATUS, (u8 *)(&type));
 }
 
 void Set_MSR(_adapter *padapter, u8 type)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - Set_MSR");
 #ifdef CONFIG_CONCURRENT_MODE
 	if(padapter->iface_type == IFACE_PORT1)
 	{
@@ -585,13 +585,13 @@ void Set_MSR(_adapter *padapter, u8 type)
 
 inline u8 rtw_get_oper_ch(_adapter *adapter)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - rtw_get_oper_ch");
 	return adapter_to_dvobj(adapter)->oper_channel;
 }
 
 inline void rtw_set_oper_ch(_adapter *adapter, u8 ch)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - rtw_set_oper_ch");
 #ifdef DBG_CH_SWITCH
 	const int len = 128;
 	char msg[128] = {0};
@@ -629,31 +629,31 @@ inline void rtw_set_oper_ch(_adapter *adapter, u8 ch)
 
 inline u8 rtw_get_oper_bw(_adapter *adapter)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - rtw_get_oper_bw");
 	return adapter_to_dvobj(adapter)->oper_bwmode;
 }
 
 inline void rtw_set_oper_bw(_adapter *adapter, u8 bw)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - rtw_set_oper_bw");
 	adapter_to_dvobj(adapter)->oper_bwmode = bw;
 }
 
 inline u8 rtw_get_oper_choffset(_adapter *adapter)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - rtw_get_oper_choffset");
 	return adapter_to_dvobj(adapter)->oper_ch_offset;
 }
 
 inline void rtw_set_oper_choffset(_adapter *adapter, u8 offset)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - rtw_set_oper_choffset");
 	adapter_to_dvobj(adapter)->oper_ch_offset = offset;
 }
 
 u8 rtw_get_offset_by_ch(u8 channel)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - rtw_get_offset_by_ch");
 	u8 offset = HAL_PRIME_CHNL_OFFSET_DONT_CARE;
 
 	if(channel>=1 && channel<=4)
@@ -707,7 +707,7 @@ u8 rtw_get_offset_by_ch(u8 channel)
 
 u8	rtw_get_center_ch(u8 channel, u8 chnl_bw, u8 chnl_offset)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - rtw_get_center_ch");
 	u8	center_ch = channel;
 
 	if(chnl_bw == CHANNEL_WIDTH_80)
@@ -740,13 +740,13 @@ u8	rtw_get_center_ch(u8 channel, u8 chnl_bw, u8 chnl_offset)
 
 inline u32 rtw_get_on_oper_ch_time(_adapter *adapter)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - rtw_get_on_oper_ch_time");
 	return adapter_to_dvobj(adapter)->on_oper_ch_time;
 }
 
 inline u32 rtw_get_on_cur_ch_time(_adapter *adapter)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - rtw_get_on_cur_ch_time");
 	if (adapter->mlmeextpriv.cur_channel == adapter_to_dvobj(adapter)->oper_channel)
 		return adapter_to_dvobj(adapter)->on_oper_ch_time;
 	else
@@ -755,7 +755,7 @@ inline u32 rtw_get_on_cur_ch_time(_adapter *adapter)
 
 void SelectChannel(_adapter *padapter, unsigned char channel)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - SelectChannel");
 	struct mlme_ext_priv *pmlmeext = &padapter->mlmeextpriv;	
 
 	_enter_critical_mutex(&(adapter_to_dvobj(padapter)->setch_mutex), NULL);
@@ -798,7 +798,7 @@ void SelectChannel(_adapter *padapter, unsigned char channel)
 
 void SetBWMode(_adapter *padapter, unsigned short bwmode, unsigned char channel_offset)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - SetBWMode");
 	struct mlme_ext_priv *pmlmeext = &padapter->mlmeextpriv;
 
 	_enter_critical_mutex(&(adapter_to_dvobj(padapter)->setbw_mutex), NULL);
@@ -841,7 +841,7 @@ void SetBWMode(_adapter *padapter, unsigned short bwmode, unsigned char channel_
 
 void set_channel_bwmode(_adapter *padapter, unsigned char channel, unsigned char channel_offset, unsigned short bwmode)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - set_channel_bwmode");
 	u8 center_ch, chnl_offset80 = HAL_PRIME_CHNL_OFFSET_DONT_CARE;
 	struct mlme_ext_priv *pmlmeext = &padapter->mlmeextpriv;
 #if (defined(CONFIG_TDLS) && defined(CONFIG_TDLS_CH_SW)) || defined(CONFIG_MCC_MODE)
@@ -922,7 +922,7 @@ void set_channel_bwmode(_adapter *padapter, unsigned char channel, unsigned char
 
 int get_bsstype(unsigned short capability)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - get_bsstype");
 	if (capability & BIT(0))
 	{
 		return WIFI_FW_AP_STATE;
@@ -939,13 +939,13 @@ int get_bsstype(unsigned short capability)
 
 __inline u8 *get_my_bssid(WLAN_BSSID_EX *pnetwork)
 {	
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - get_my_bssid");
 	return (pnetwork->MacAddress); 
 }
 
 u16 get_beacon_interval(WLAN_BSSID_EX *bss)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - get_beacon_interval");
 	unsigned short val;
 	_rtw_memcpy((unsigned char *)&val, rtw_get_beacon_interval_from_ie(bss->IEs), 2);
 
@@ -955,7 +955,7 @@ u16 get_beacon_interval(WLAN_BSSID_EX *bss)
 
 int is_client_associated_to_ap(_adapter *padapter)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - is_client_associated_to_ap");
 	struct mlme_ext_priv	*pmlmeext;
 	struct mlme_ext_info	*pmlmeinfo;
 
@@ -977,7 +977,7 @@ int is_client_associated_to_ap(_adapter *padapter)
 
 int is_client_associated_to_ibss(_adapter *padapter)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - is_client_associated_to_ibss");
 	struct mlme_ext_priv	*pmlmeext = &padapter->mlmeextpriv;
 	struct mlme_ext_info	*pmlmeinfo = &(pmlmeext->mlmext_info);
 	
@@ -993,7 +993,7 @@ int is_client_associated_to_ibss(_adapter *padapter)
 
 int is_IBSS_empty(_adapter *padapter)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - is_IBSS_empty");
 	int i;
 	struct macid_ctl_t *macid_ctl = &padapter->dvobj->macid_ctl;
 
@@ -1013,7 +1013,7 @@ int is_IBSS_empty(_adapter *padapter)
 
 unsigned int decide_wait_for_beacon_timeout(unsigned int bcn_interval)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - decide_wait_for_beacon_timeout");
 	if ((bcn_interval << 2) < WAIT_FOR_BCN_TO_MIN)
 	{
 		return WAIT_FOR_BCN_TO_MIN;
@@ -1033,13 +1033,13 @@ void CAM_empty_entry(
 	u8 			ucIndex
 )
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - CAM_empty_entry");
 	rtw_hal_set_hwreg(Adapter, HW_VAR_CAM_EMPTY_ENTRY, (u8 *)(&ucIndex));
 }
 
 void invalidate_cam_all(_adapter *padapter)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - invalidate_cam_all");
 	struct dvobj_priv *dvobj = adapter_to_dvobj(padapter);
 	struct cam_ctl_t *cam_ctl = &dvobj->cam_ctl;
 	_irqL irqL;
@@ -1055,7 +1055,7 @@ void invalidate_cam_all(_adapter *padapter)
 
 void _clear_cam_entry(_adapter *padapter, u8 entry)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - _clear_cam_entry");
 	unsigned char null_sta[] = {0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
 	unsigned char null_key[] = {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,0x00, 0x00, 0x00, 0x00,0x00, 0x00, 0x00, 0x00};
 
@@ -1064,7 +1064,7 @@ void _clear_cam_entry(_adapter *padapter, u8 entry)
 
 inline void write_cam(_adapter *adapter, u8 id, u16 ctrl, u8 *mac, u8 *key)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - write_cam");
 #ifdef CONFIG_WRITE_CACHE_ONLY
 	write_cam_cache(adapter, id ,ctrl, mac, key);
 #else
@@ -1075,14 +1075,14 @@ inline void write_cam(_adapter *adapter, u8 id, u16 ctrl, u8 *mac, u8 *key)
 
 inline void clear_cam_entry(_adapter *adapter, u8 id)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - clear_cam_entry");
 	_clear_cam_entry(adapter, id);
 	clear_cam_cache(adapter, id);
 }
 
 inline void write_cam_from_cache(_adapter *adapter, u8 id)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - write_cam_from_cache");
 	struct dvobj_priv *dvobj = adapter_to_dvobj(adapter);
 	struct cam_ctl_t *cam_ctl = &dvobj->cam_ctl;
 	_irqL irqL;
@@ -1097,7 +1097,7 @@ inline void write_cam_from_cache(_adapter *adapter, u8 id)
 
 void write_cam_cache(_adapter *adapter, u8 id, u16 ctrl, u8 *mac, u8 *key)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - write_cam_cache");
 	struct dvobj_priv *dvobj = adapter_to_dvobj(adapter);
 	struct cam_ctl_t *cam_ctl = &dvobj->cam_ctl;
 	_irqL irqL;
@@ -1113,7 +1113,7 @@ void write_cam_cache(_adapter *adapter, u8 id, u16 ctrl, u8 *mac, u8 *key)
 
 void clear_cam_cache(_adapter *adapter, u8 id)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - clear_cam_cache");
 	struct dvobj_priv *dvobj = adapter_to_dvobj(adapter);
 	struct cam_ctl_t *cam_ctl = &dvobj->cam_ctl;
 	_irqL irqL;
@@ -1127,7 +1127,7 @@ void clear_cam_cache(_adapter *adapter, u8 id)
 
 s16 rtw_get_camid(_adapter *adapter, struct sta_info *sta, s16 kid)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - rtw_get_camid");
 	u8 macid;
 	s16 camid;
 
@@ -1171,7 +1171,7 @@ exit:
 
 inline bool _rtw_camctl_chk_cap(_adapter *adapter, u8 cap)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - _rtw_camctl_chk_cap");
 	struct dvobj_priv *dvobj = adapter_to_dvobj(adapter);
 	struct cam_ctl_t *cam_ctl = &dvobj->cam_ctl;
 
@@ -1182,7 +1182,7 @@ inline bool _rtw_camctl_chk_cap(_adapter *adapter, u8 cap)
 
 inline void _rtw_camctl_set_flags(_adapter *adapter, u32 flags)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - _rtw_camctl_set_flags");
 	struct dvobj_priv *dvobj = adapter_to_dvobj(adapter);
 	struct cam_ctl_t *cam_ctl = &dvobj->cam_ctl;
 
@@ -1191,7 +1191,7 @@ inline void _rtw_camctl_set_flags(_adapter *adapter, u32 flags)
 
 inline void rtw_camctl_set_flags(_adapter *adapter, u32 flags)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - rtw_camctl_set_flags");
 	struct dvobj_priv *dvobj = adapter_to_dvobj(adapter);
 	struct cam_ctl_t *cam_ctl = &dvobj->cam_ctl;
 	_irqL irqL;
@@ -1203,7 +1203,7 @@ inline void rtw_camctl_set_flags(_adapter *adapter, u32 flags)
 
 inline void _rtw_camctl_clr_flags(_adapter *adapter, u32 flags)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - _rtw_camctl_clr_flags");
 	struct dvobj_priv *dvobj = adapter_to_dvobj(adapter);
 	struct cam_ctl_t *cam_ctl = &dvobj->cam_ctl;
 
@@ -1212,7 +1212,7 @@ inline void _rtw_camctl_clr_flags(_adapter *adapter, u32 flags)
 
 inline void rtw_camctl_clr_flags(_adapter *adapter, u32 flags)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - rtw_camctl_clr_flags");
 	struct dvobj_priv *dvobj = adapter_to_dvobj(adapter);
 	struct cam_ctl_t *cam_ctl = &dvobj->cam_ctl;
 	_irqL irqL;
@@ -1224,7 +1224,7 @@ inline void rtw_camctl_clr_flags(_adapter *adapter, u32 flags)
 
 inline bool _rtw_camctl_chk_flags(_adapter *adapter, u32 flags)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - _rtw_camctl_chk_flags");
 	struct dvobj_priv *dvobj = adapter_to_dvobj(adapter);
 	struct cam_ctl_t *cam_ctl = &dvobj->cam_ctl;
 
@@ -1235,7 +1235,7 @@ inline bool _rtw_camctl_chk_flags(_adapter *adapter, u32 flags)
 
 void dump_sec_cam_map(void *sel, struct sec_cam_bmp *map, u8 max_num)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - dump_sec_cam_map");
 	DBG_871X_SEL_NL(sel, "0x%08x\n", map->m0);
 #if (SEC_CAM_ENT_NUM_SW_LIMIT > 32)
 	if (max_num && max_num > 32)
@@ -1253,7 +1253,7 @@ void dump_sec_cam_map(void *sel, struct sec_cam_bmp *map, u8 max_num)
 
 inline bool rtw_sec_camid_is_set(struct sec_cam_bmp *map, u8 id)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - rtw_sec_camid_is_set");
 	if (id < 32)
 		return (map->m0 & BIT(id));
 #if (SEC_CAM_ENT_NUM_SW_LIMIT > 32)
@@ -1276,7 +1276,7 @@ inline bool rtw_sec_camid_is_set(struct sec_cam_bmp *map, u8 id)
 
 inline void rtw_sec_cam_map_set(struct sec_cam_bmp *map, u8 id)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - rtw_sec_cam_map_set");
 	if (id < 32)
 		map->m0 |= BIT(id);
 #if (SEC_CAM_ENT_NUM_SW_LIMIT > 32)
@@ -1297,7 +1297,7 @@ inline void rtw_sec_cam_map_set(struct sec_cam_bmp *map, u8 id)
 
 inline void rtw_sec_cam_map_clr(struct sec_cam_bmp *map, u8 id)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - rtw_sec_cam_map_clr");
 	if (id < 32)
 		map->m0 &= ~BIT(id);
 #if (SEC_CAM_ENT_NUM_SW_LIMIT > 32)
@@ -1318,7 +1318,7 @@ inline void rtw_sec_cam_map_clr(struct sec_cam_bmp *map, u8 id)
 
 inline void rtw_sec_cam_map_clr_all(struct sec_cam_bmp *map)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - rtw_sec_cam_map_clr_all");
 	map->m0 = 0;
 #if (SEC_CAM_ENT_NUM_SW_LIMIT > 32)
 	map->m1 = 0;
@@ -1333,7 +1333,7 @@ inline void rtw_sec_cam_map_clr_all(struct sec_cam_bmp *map)
 
 inline bool rtw_sec_camid_is_drv_forbid(struct cam_ctl_t *cam_ctl, u8 id)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - rtw_sec_camid_is_drv_forbid");
 	struct sec_cam_bmp forbid_map;
 
 	forbid_map.m0 = 0x00000ff0;
@@ -1369,7 +1369,7 @@ inline bool rtw_sec_camid_is_drv_forbid(struct cam_ctl_t *cam_ctl, u8 id)
 
 bool _rtw_sec_camid_is_used(struct cam_ctl_t *cam_ctl, u8 id)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - _rtw_sec_camid_is_used");
 	bool ret = _FALSE;
 
 	if (id >= cam_ctl->num) {
@@ -1392,7 +1392,7 @@ exit:
 
 inline bool rtw_sec_camid_is_used(struct cam_ctl_t *cam_ctl, u8 id)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - rtw_sec_camid_is_used");
 	_irqL irqL;
 	bool ret;
 
@@ -1405,7 +1405,7 @@ inline bool rtw_sec_camid_is_used(struct cam_ctl_t *cam_ctl, u8 id)
 
 inline bool _rtw_camid_is_gk(_adapter *adapter, u8 cam_id)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - _rtw_camid_is_gk");
 	struct dvobj_priv *dvobj = adapter_to_dvobj(adapter);
 	struct cam_ctl_t *cam_ctl = &dvobj->cam_ctl;
 	bool ret = _FALSE;
@@ -1426,7 +1426,7 @@ exit:
 
 inline bool rtw_camid_is_gk(_adapter *adapter, u8 cam_id)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - rtw_camid_is_gk");
 	struct dvobj_priv *dvobj = adapter_to_dvobj(adapter);
 	struct cam_ctl_t *cam_ctl = &dvobj->cam_ctl;
 	_irqL irqL;
@@ -1441,7 +1441,7 @@ inline bool rtw_camid_is_gk(_adapter *adapter, u8 cam_id)
 
 bool cam_cache_chk(_adapter *adapter, u8 id, u8 *addr, s16 kid, s8 gk)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - cam_cache_chk");
 	struct dvobj_priv *dvobj = adapter_to_dvobj(adapter);
 	bool ret = _FALSE;
 
@@ -1460,7 +1460,7 @@ exit:
 
 s16 _rtw_camid_search(_adapter *adapter, u8 *addr, s16 kid, s8 gk)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - _rtw_camid_search");
 	struct dvobj_priv *dvobj = adapter_to_dvobj(adapter);
 	struct cam_ctl_t *cam_ctl = &dvobj->cam_ctl;
 	int i;
@@ -1487,7 +1487,7 @@ s16 _rtw_camid_search(_adapter *adapter, u8 *addr, s16 kid, s8 gk)
 
 s16 rtw_camid_search(_adapter *adapter, u8 *addr, s16 kid, s8 gk)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - rtw_camid_search");
 	struct dvobj_priv *dvobj = adapter_to_dvobj(adapter);
 	struct cam_ctl_t *cam_ctl = &dvobj->cam_ctl;
 	_irqL irqL;
@@ -1502,7 +1502,7 @@ s16 rtw_camid_search(_adapter *adapter, u8 *addr, s16 kid, s8 gk)
 
 s16 rtw_camid_alloc(_adapter *adapter, struct sta_info *sta, u8 kid, bool *used)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - rtw_camid_alloc");
 	struct dvobj_priv *dvobj = adapter_to_dvobj(adapter);
 	struct cam_ctl_t *cam_ctl = &dvobj->cam_ctl;
 	_irqL irqL;
@@ -1597,7 +1597,7 @@ bitmap_handle:
 
 void rtw_camid_free(_adapter *adapter, u8 cam_id)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - rtw_camid_free");
 	struct dvobj_priv *dvobj = adapter_to_dvobj(adapter);
 	struct cam_ctl_t *cam_ctl = &dvobj->cam_ctl;
 	_irqL irqL;
@@ -1612,7 +1612,7 @@ void rtw_camid_free(_adapter *adapter, u8 cam_id)
 
 void flush_all_cam_entry(_adapter *padapter)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - flush_all_cam_entry");
 	struct mlme_ext_priv *pmlmeext = &padapter->mlmeextpriv;
 	struct mlme_ext_info *pmlmeinfo = &(pmlmeext->mlmext_info);
 	struct mlme_priv *pmlmepriv = &(padapter->mlmepriv);
@@ -1670,7 +1670,7 @@ void flush_all_cam_entry(_adapter *padapter)
 #if defined(CONFIG_P2P) && defined(CONFIG_WFD)
 void rtw_process_wfd_ie(_adapter *adapter, u8 *wfd_ie, u8 wfd_ielen, const char *tag)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - rtw_process_wfd_ie");
 	struct wifidirect_info *wdinfo = &adapter->wdinfo;
 
 	u8 *attr_content;
@@ -1689,7 +1689,7 @@ void rtw_process_wfd_ie(_adapter *adapter, u8 *wfd_ie, u8 wfd_ielen, const char 
 
 void rtw_process_wfd_ies(_adapter *adapter, u8 *ies, u8 ies_len, const char *tag)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - rtw_process_wfd_ies");
 	u8 *wfd_ie;
 	u32	wfd_ielen;
 
@@ -1706,7 +1706,7 @@ void rtw_process_wfd_ies(_adapter *adapter, u8 *ies, u8 ies_len, const char *tag
 
 int WMM_param_handler(_adapter *padapter, PNDIS_802_11_VARIABLE_IEs	pIE)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - WMM_param_handler");
 	//struct registry_priv	*pregpriv = &padapter->registrypriv;
 	struct mlme_priv	*pmlmepriv = &(padapter->mlmepriv);
 	struct mlme_ext_priv	*pmlmeext = &padapter->mlmeextpriv;
@@ -1753,7 +1753,7 @@ int WMM_param_handler(_adapter *padapter, PNDIS_802_11_VARIABLE_IEs	pIE)
 
 void WMMOnAssocRsp(_adapter *padapter)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - WMMOnAssocRsp");
 	u8	ACI, ACM, AIFS, ECWMin, ECWMax, aSifsTime;
 	u8	acm_mask;
 	u16	TXOP;
@@ -1902,7 +1902,7 @@ void WMMOnAssocRsp(_adapter *padapter)
 
 static void bwmode_update_check(_adapter *padapter, PNDIS_802_11_VARIABLE_IEs pIE)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - bwmode_update_check");
 #ifdef CONFIG_80211N_HT
 	unsigned char	 new_bwmode;
 	unsigned char  new_ch_offset;
@@ -2017,7 +2017,7 @@ static void bwmode_update_check(_adapter *padapter, PNDIS_802_11_VARIABLE_IEs pI
 
 void HT_caps_handler(_adapter *padapter, PNDIS_802_11_VARIABLE_IEs pIE)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - HT_caps_handler");
 #ifdef CONFIG_80211N_HT
 	unsigned int	i;
 	u8	rf_type = RF_1T1R;
@@ -2186,7 +2186,7 @@ void HT_caps_handler(_adapter *padapter, PNDIS_802_11_VARIABLE_IEs pIE)
 
 void HT_info_handler(_adapter *padapter, PNDIS_802_11_VARIABLE_IEs pIE)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - HT_info_handler");
 #ifdef CONFIG_80211N_HT
 	struct mlme_ext_priv	*pmlmeext = &padapter->mlmeextpriv;
 	struct mlme_ext_info	*pmlmeinfo = &(pmlmeext->mlmext_info);
@@ -2209,7 +2209,7 @@ void HT_info_handler(_adapter *padapter, PNDIS_802_11_VARIABLE_IEs pIE)
 
 void HTOnAssocRsp(_adapter *padapter)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - HTOnAssocRsp");
 	unsigned char		max_AMPDU_len;
 	unsigned char		min_MPDU_spacing;
 	//struct registry_priv	 *pregpriv = &padapter->registrypriv;
@@ -2296,7 +2296,7 @@ void HTOnAssocRsp(_adapter *padapter)
 
 void ERP_IE_handler(_adapter *padapter, PNDIS_802_11_VARIABLE_IEs pIE)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - ERP_IE_handler");
 	struct mlme_ext_priv	*pmlmeext = &padapter->mlmeextpriv;
 	struct mlme_ext_info	*pmlmeinfo = &(pmlmeext->mlmext_info);
 
@@ -2309,7 +2309,7 @@ void ERP_IE_handler(_adapter *padapter, PNDIS_802_11_VARIABLE_IEs pIE)
 
 void VCS_update(_adapter *padapter, struct sta_info *psta)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - VCS_update");
 	struct registry_priv	 *pregpriv = &padapter->registrypriv;
 	struct mlme_priv	*pmlmepriv = &padapter->mlmepriv;
 	struct mlme_ext_priv	*pmlmeext = &padapter->mlmeextpriv;
@@ -2357,7 +2357,7 @@ void VCS_update(_adapter *padapter, struct sta_info *psta)
 
 void	update_ldpc_stbc_cap(struct sta_info *psta)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - update_ldpc_stbc_cap");
 #ifdef CONFIG_80211N_HT
 
 #ifdef CONFIG_80211AC_VHT
@@ -2397,7 +2397,7 @@ void	update_ldpc_stbc_cap(struct sta_info *psta)
 int rtw_get_bcn_keys(ADAPTER *Adapter, u8 *pframe, u32 packet_len,
 		struct beacon_keys *recv_beacon)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - rtw_get_bcn_keys");
 	int left;
 	u16 capability;
 	unsigned char *pos;
@@ -2478,7 +2478,7 @@ int rtw_get_bcn_keys(ADAPTER *Adapter, u8 *pframe, u32 packet_len,
 
 void rtw_dump_bcn_keys(struct beacon_keys *recv_beacon)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - rtw_dump_bcn_keys");
 	int i;
 	char *p;
 	u8 ssid[IW_ESSID_MAX_SIZE + 1];
@@ -2497,7 +2497,7 @@ void rtw_dump_bcn_keys(struct beacon_keys *recv_beacon)
 
 int rtw_check_bcn_info(ADAPTER *Adapter, u8 *pframe, u32 packet_len)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - rtw_check_bcn_info");
 #if 0
 	unsigned int		len;
 	unsigned char		*p;
@@ -2814,7 +2814,7 @@ _mismatch:
 
 void update_beacon_info(_adapter *padapter, u8 *pframe, uint pkt_len, struct sta_info *psta)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - update_beacon_info");
 	unsigned int i;
 	unsigned int len;
 	PNDIS_802_11_VARIABLE_IEs	pIE;
@@ -2874,7 +2874,7 @@ void update_beacon_info(_adapter *padapter, u8 *pframe, uint pkt_len, struct sta
 #ifdef CONFIG_DFS
 void process_csa_ie(_adapter *padapter, u8 *pframe, uint pkt_len)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - process_csa_ie");
 	unsigned int i;
 	unsigned int len;
 	PNDIS_802_11_VARIABLE_IEs	pIE;
@@ -2907,7 +2907,7 @@ void process_csa_ie(_adapter *padapter, u8 *pframe, uint pkt_len)
 
 unsigned int is_ap_in_tkip(_adapter *padapter)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - is_ap_in_tkip");
 	u32 i;
 	PNDIS_802_11_VARIABLE_IEs	pIE;
 	struct mlme_ext_priv *pmlmeext = &padapter->mlmeextpriv;
@@ -2953,7 +2953,7 @@ unsigned int is_ap_in_tkip(_adapter *padapter)
 
 unsigned int should_forbid_n_rate(_adapter * padapter)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - should_forbid_n_rate");
 	u32 i;
 	PNDIS_802_11_VARIABLE_IEs	pIE;
 	struct mlme_priv	*pmlmepriv = &padapter->mlmepriv;
@@ -2998,7 +2998,7 @@ unsigned int should_forbid_n_rate(_adapter * padapter)
 
 unsigned int is_ap_in_wep(_adapter *padapter)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - is_ap_in_wep");
 	u32 i;
 	PNDIS_802_11_VARIABLE_IEs	pIE;
 	struct mlme_ext_priv *pmlmeext = &padapter->mlmeextpriv;
@@ -3040,7 +3040,7 @@ unsigned int is_ap_in_wep(_adapter *padapter)
 int wifirate2_ratetbl_inx(unsigned char rate);
 int wifirate2_ratetbl_inx(unsigned char rate)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - wifirate2_ratetbl_inx");
 	int	inx = 0;
 	rate = rate & 0x7f;
 
@@ -3099,7 +3099,7 @@ int wifirate2_ratetbl_inx(unsigned char rate)
 
 unsigned int update_basic_rate(unsigned char *ptn, unsigned int ptn_sz)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - update_basic_rate");
 	unsigned int i, num_of_rate;
 	unsigned int mask = 0;
 	
@@ -3117,7 +3117,7 @@ unsigned int update_basic_rate(unsigned char *ptn, unsigned int ptn_sz)
 
 unsigned int update_supported_rate(unsigned char *ptn, unsigned int ptn_sz)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - update_supported_rate");
 	unsigned int i, num_of_rate;
 	unsigned int mask = 0;
 	
@@ -3133,7 +3133,7 @@ unsigned int update_supported_rate(unsigned char *ptn, unsigned int ptn_sz)
 
 unsigned int update_MCS_rate(struct HT_caps_element *pHT_caps)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - update_MCS_rate");
 	unsigned int mask = 0;
 	
 	mask = ((pHT_caps->u.HT_cap_element.MCS_rate[0] << 12) | (pHT_caps->u.HT_cap_element.MCS_rate[1] << 20));
@@ -3143,7 +3143,7 @@ unsigned int update_MCS_rate(struct HT_caps_element *pHT_caps)
 
 int support_short_GI(_adapter *padapter, struct HT_caps_element *pHT_caps, u8 bwmode)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - support_short_GI");
 	unsigned char					bit_offset;
 	struct mlme_ext_priv	*pmlmeext = &padapter->mlmeextpriv;
 	struct mlme_ext_info	*pmlmeinfo = &(pmlmeext->mlmext_info);
@@ -3165,7 +3165,7 @@ int support_short_GI(_adapter *padapter, struct HT_caps_element *pHT_caps, u8 bw
 
 unsigned char get_highest_rate_idx(u32 mask)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - get_highest_rate_idx");
 	int i;
 	unsigned char rate_idx=0;
 
@@ -3184,7 +3184,7 @@ unsigned char get_highest_rate_idx(u32 mask)
 unsigned char get_highest_mcs_rate(struct HT_caps_element *pHT_caps);
 unsigned char get_highest_mcs_rate(struct HT_caps_element *pHT_caps)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - get_highest_mcs_rate");
 	int i, mcs_rate;
 	
 	mcs_rate = (pHT_caps->u.HT_cap_element.MCS_rate[0] | (pHT_caps->u.HT_cap_element.MCS_rate[1] << 8));
@@ -3202,20 +3202,20 @@ unsigned char get_highest_mcs_rate(struct HT_caps_element *pHT_caps)
 
 void Update_RA_Entry(_adapter *padapter, struct sta_info *psta)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - Update_RA_Entry");
 	rtw_hal_update_ra_mask(psta, psta->rssi_level);
 }
 
 void enable_rate_adaptive(_adapter *padapter, struct sta_info *psta);
 void enable_rate_adaptive(_adapter *padapter, struct sta_info *psta)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - enable_rate_adaptive");
 	Update_RA_Entry(padapter, psta);
 }
 
 void set_sta_rate(_adapter *padapter, struct sta_info *psta)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - set_sta_rate");
 	//rate adaptive	
 	enable_rate_adaptive(padapter, psta);
 }
@@ -3223,7 +3223,7 @@ void set_sta_rate(_adapter *padapter, struct sta_info *psta)
 // Update RRSR and Rate for USERATE
 void update_tx_basic_rate(_adapter *padapter, u8 wirelessmode)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - update_tx_basic_rate");
 	NDIS_802_11_RATES_EX	supported_rates;
 	struct mlme_ext_priv	*pmlmeext = &padapter->mlmeextpriv;
 #ifdef CONFIG_P2P
@@ -3264,7 +3264,7 @@ void update_tx_basic_rate(_adapter *padapter, u8 wirelessmode)
 
 unsigned char check_assoc_AP(u8 *pframe, uint len)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - check_assoc_AP");
 	unsigned int	i;
 	PNDIS_802_11_VARIABLE_IEs	pIE;
 
@@ -3361,7 +3361,7 @@ unsigned char check_assoc_AP(u8 *pframe, uint len)
 
 void update_capinfo(PADAPTER Adapter, u16 updateCap)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - update_capinfo");
 	struct mlme_ext_priv	*pmlmeext = &Adapter->mlmeextpriv;
 	struct mlme_ext_info	*pmlmeinfo = &(pmlmeext->mlmext_info);
 	BOOLEAN		ShortPreamble;
@@ -3432,7 +3432,7 @@ void update_capinfo(PADAPTER Adapter, u16 updateCap)
 */
 void update_wireless_mode(_adapter *padapter)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - update_wireless_mode");
 	int ratelen, network_type = 0;
 	u32 SIFS_Timer;
 	struct mlme_ext_priv	*pmlmeext = &padapter->mlmeextpriv;
@@ -3510,7 +3510,7 @@ void update_wireless_mode(_adapter *padapter)
 void fire_write_MAC_cmd(_adapter *padapter, unsigned int addr, unsigned int value);
 void fire_write_MAC_cmd(_adapter *padapter, unsigned int addr, unsigned int value)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - fire_write_MAC_cmd");
 #if 0
 	struct cmd_obj					*ph2c;
 	struct reg_rw_parm			*pwriteMacPara;
@@ -3538,7 +3538,7 @@ void fire_write_MAC_cmd(_adapter *padapter, unsigned int addr, unsigned int valu
 
 void update_sta_basic_rate(struct sta_info *psta, u8 wireless_mode)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - update_sta_basic_rate");
 	if(IsSupportedTxCCK(wireless_mode))
 	{
 		// Only B, B/G, and B/G/N AP could use CCK rate
@@ -3554,7 +3554,7 @@ void update_sta_basic_rate(struct sta_info *psta, u8 wireless_mode)
 
 int rtw_ies_get_supported_rate(u8 *ies, uint ies_len, u8 *rate_set, u8 *rate_num)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - rtw_ies_get_supported_rate");
 	u8 *ie;
 	unsigned int ie_len;
 
@@ -3592,7 +3592,7 @@ ext_rate:
 
 void process_addba_req(_adapter *padapter, u8 *paddba_req, u8 *addr)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - process_addba_req");
 	struct sta_info *psta;
 	u16 tid, start_seq, param;	
 	struct sta_priv *pstapriv = &padapter->stapriv;	
@@ -3625,7 +3625,7 @@ exit:
 
 void update_TSF(struct mlme_ext_priv *pmlmeext, u8 *pframe, uint len)
 {	
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - update_TSF");
 	u8* pIE;
 	u32 *pbuf;
 		
@@ -3641,13 +3641,13 @@ void update_TSF(struct mlme_ext_priv *pmlmeext, u8 *pframe, uint len)
 
 void correct_TSF(_adapter *padapter, struct mlme_ext_priv *pmlmeext)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - correct_TSF");
 	rtw_hal_set_hwreg(padapter, HW_VAR_CORRECT_TSF, 0);
 }
 
 void adaptive_early_32k(struct mlme_ext_priv *pmlmeext, u8 *pframe, uint len)
 {	
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - adaptive_early_32k");
 	int i;
 	u8* pIE;
 	u32 *pbuf;
@@ -3746,7 +3746,7 @@ void adaptive_early_32k(struct mlme_ext_priv *pmlmeext, u8 *pframe, uint len)
 
 void beacon_timing_control(_adapter *padapter)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - beacon_timing_control");
 	rtw_hal_bcn_related_reg_setting(padapter);
 }
 
@@ -3754,7 +3754,7 @@ void beacon_timing_control(_adapter *padapter)
 
 void dump_macid_map(void *sel, struct macid_bmp *map, u8 max_num)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - dump_macid_map");
 	DBG_871X_SEL_NL(sel, "0x%08x\n", map->m0);
 #if (MACID_NUM_SW_LIMIT > 32)
 	if (max_num && max_num > 32)
@@ -3772,7 +3772,7 @@ void dump_macid_map(void *sel, struct macid_bmp *map, u8 max_num)
 
 inline bool rtw_macid_is_set(struct macid_bmp *map, u8 id)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - rtw_macid_is_set");
 	if (id < 32)
 		return (map->m0 & BIT(id));
 #if (MACID_NUM_SW_LIMIT > 32)
@@ -3795,7 +3795,7 @@ inline bool rtw_macid_is_set(struct macid_bmp *map, u8 id)
 
 inline void rtw_macid_map_set(struct macid_bmp *map, u8 id)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - rtw_macid_map_set");
 	if (id < 32)
 		map->m0 |= BIT(id);
 #if (MACID_NUM_SW_LIMIT > 32)
@@ -3816,7 +3816,7 @@ inline void rtw_macid_map_set(struct macid_bmp *map, u8 id)
 
 inline void rtw_macid_map_clr(struct macid_bmp *map, u8 id)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - rtw_macid_map_clr");
 	if (id < 32)
 		map->m0 &= ~BIT(id);
 #if (MACID_NUM_SW_LIMIT > 32)
@@ -3837,19 +3837,19 @@ inline void rtw_macid_map_clr(struct macid_bmp *map, u8 id)
 
 inline bool rtw_macid_is_used(struct macid_ctl_t *macid_ctl, u8 id)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - rtw_macid_is_used");
 	return rtw_macid_is_set(&macid_ctl->used, id);
 }
 
 inline bool rtw_macid_is_bmc(struct macid_ctl_t *macid_ctl, u8 id)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - rtw_macid_is_bmc");
 	return rtw_macid_is_set(&macid_ctl->bmc, id);
 }
 
 inline s8 rtw_macid_get_if_g(struct macid_ctl_t *macid_ctl, u8 id)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - rtw_macid_get_if_g");
 	int i;
 
 #ifdef CONFIG_SHARED_BMC_MACID
@@ -3866,7 +3866,7 @@ inline s8 rtw_macid_get_if_g(struct macid_ctl_t *macid_ctl, u8 id)
 
 inline s8 rtw_macid_get_ch_g(struct macid_ctl_t *macid_ctl, u8 id)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - rtw_macid_get_ch_g");
 	int i;
 
 	for (i=0;i<2;i++) {
@@ -3878,7 +3878,7 @@ inline s8 rtw_macid_get_ch_g(struct macid_ctl_t *macid_ctl, u8 id)
 
 void rtw_alloc_macid(_adapter *padapter, struct sta_info *psta)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - rtw_alloc_macid");
 	int i;
 	_irqL irqL;
 	u8 bc_addr[ETH_ALEN] = {0xff,0xff,0xff,0xff,0xff,0xff};
@@ -3959,7 +3959,7 @@ exit:
 
 void rtw_release_macid(_adapter *padapter, struct sta_info *psta)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - rtw_release_macid");
 	_irqL irqL;
 	u8 bc_addr[ETH_ALEN] = {0xff,0xff,0xff,0xff,0xff,0xff};
 	struct dvobj_priv *dvobj = adapter_to_dvobj(padapter);
@@ -4008,7 +4008,7 @@ void rtw_release_macid(_adapter *padapter, struct sta_info *psta)
 //For 8188E RA
 u8 rtw_search_max_mac_id(_adapter *padapter)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - rtw_search_max_mac_id");
 	u8 max_mac_id=0;
 	struct dvobj_priv *dvobj = adapter_to_dvobj(padapter);
 	struct macid_ctl_t *macid_ctl = dvobj_to_macidctl(dvobj);
@@ -4030,7 +4030,7 @@ u8 rtw_search_max_mac_id(_adapter *padapter)
 
 inline void rtw_macid_ctl_set_h2c_msr(struct macid_ctl_t *macid_ctl, u8 id, u8 h2c_msr)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - rtw_macid_ctl_set_h2c_msr");
 	if (id >= macid_ctl->num) {
 		rtw_warn_on(1);
 		return;
@@ -4043,13 +4043,13 @@ inline void rtw_macid_ctl_set_h2c_msr(struct macid_ctl_t *macid_ctl, u8 id, u8 h
 
 inline void rtw_macid_ctl_init(struct macid_ctl_t *macid_ctl)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - rtw_macid_ctl_init");
 	_rtw_spinlock_init(&macid_ctl->lock);
 }
 
 inline void rtw_macid_ctl_deinit(struct macid_ctl_t *macid_ctl)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - rtw_macid_ctl_deinit");
 	_rtw_spinlock_free(&macid_ctl->lock);
 }
 
@@ -4157,7 +4157,7 @@ unsigned int setup_beacon_frame(_adapter *padapter, unsigned char *beacon_frame)
 
 _adapter *dvobj_get_port0_adapter(struct dvobj_priv *dvobj)
 {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - dvobj_get_port0_adapter");
 	_adapter *port0_iface = NULL;
 	int i;
 	for (i=0;i<dvobj->iface_nums;i++) {
@@ -4184,7 +4184,7 @@ _adapter *dvobj_get_port0_adapter(struct dvobj_priv *dvobj)
  */
 int rtw_parse_ssid_list_tlv(char** list_str, pno_ssid_t* ssid,
 	int max, int *bytes_left) {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - rtw_parse_ssid_list_tlv");
 	char* str;
 
 	int idx = 0;
@@ -4253,7 +4253,7 @@ int rtw_parse_ssid_list_tlv(char** list_str, pno_ssid_t* ssid,
 }
 
 int rtw_parse_cipher_list(struct pno_nlo_info *nlo_info, char* list_str) {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - rtw_parse_cipher_list");
 
 	char *pch, *pnext, *pend;
 	u8 key_len = 0, index = 0;
@@ -4291,7 +4291,7 @@ int rtw_parse_cipher_list(struct pno_nlo_info *nlo_info, char* list_str) {
 
 int rtw_dev_nlo_info_set(struct pno_nlo_info *nlo_info, pno_ssid_t* ssid,
 	int num, int pno_time, int pno_repeat, int pno_freq_expo_max) {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - rtw_dev_nlo_info_set");
 
 	int i = 0;
 	struct file *fp;
@@ -4358,7 +4358,7 @@ int rtw_dev_nlo_info_set(struct pno_nlo_info *nlo_info, pno_ssid_t* ssid,
 
 int rtw_dev_ssid_list_set(struct pno_ssid_list *pno_ssid_list,
 	pno_ssid_t* ssid, u8 num) {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - rtw_dev_ssid_list_set");
 
 	int i = 0;
 	if(num > MAX_PNO_LIST_COUNT)
@@ -4374,7 +4374,7 @@ int rtw_dev_ssid_list_set(struct pno_ssid_list *pno_ssid_list,
 
 int rtw_dev_scan_info_set(_adapter *padapter, pno_ssid_t* ssid,
 	unsigned char ch, unsigned char ch_offset, unsigned short bw_mode) {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - rtw_dev_scan_info_set");
 
 	struct pwrctrl_priv *pwrctl = adapter_to_pwrctl(padapter);
 	struct pno_scan_info *scan_info = pwrctl->pscan_info;
@@ -4407,7 +4407,7 @@ int rtw_dev_scan_info_set(_adapter *padapter, pno_ssid_t* ssid,
 
 int rtw_dev_pno_set(struct net_device *net, pno_ssid_t* ssid, int num,
 	int pno_time, int pno_repeat, int pno_freq_expo_max) {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - rtw_dev_pno_set");
 
 	_adapter *padapter = (_adapter *)rtw_netdev_priv(net);
 	struct pwrctrl_priv *pwrctl = adapter_to_pwrctl(padapter);
@@ -4477,7 +4477,7 @@ failing:
 
 #ifdef CONFIG_PNO_SET_DEBUG
 void rtw_dev_pno_debug(struct net_device *net) {
-	printk(KERN_DEBUG "rtw_wlan_util.c - ");
+	printk(KERN_DEBUG "rtw_wlan_util.c - rtw_dev_pno_debug");
 	_adapter *padapter = (_adapter *)rtw_netdev_priv(net);
 	struct pwrctrl_priv *pwrctl = adapter_to_pwrctl(padapter);
 	int i = 0, j = 0;
